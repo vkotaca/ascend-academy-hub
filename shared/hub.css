@@ -130,40 +130,41 @@ nav {
 /* HERO BIRD */
 .hero-bird {
   position: absolute;
-  width: 60px;
-  height: 30px;
+  width: 150px;
+  height: auto;
   z-index: 3;
   opacity: 0;
-  animation: birdFly 4s ease-in-out 1.5s forwards;
+  animation: birdFly 5s ease-in-out 1.5s forwards;
   pointer-events: none;
+  filter: drop-shadow(0 4px 20px rgba(200,16,46,0.3));
 }
 
 @keyframes birdFly {
   0% {
-    top: 70%;
-    left: -5%;
+    top: 75%;
+    left: -10%;
     opacity: 0;
-    transform: scale(0.6) rotate(-5deg);
+    transform: scale(0.5) rotate(-8deg);
   }
-  10% {
-    opacity: 0.7;
-  }
-  40% {
-    top: 30%;
-    left: 40%;
-    transform: scale(1) rotate(2deg);
-    opacity: 0.6;
-  }
-  70% {
-    top: 15%;
-    left: 70%;
-    transform: scale(0.8) rotate(-3deg);
+  15% {
     opacity: 0.5;
   }
+  45% {
+    top: 25%;
+    left: 45%;
+    transform: scale(1.1) rotate(3deg);
+    opacity: 0.4;
+  }
+  75% {
+    top: 10%;
+    left: 75%;
+    transform: scale(0.9) rotate(-2deg);
+    opacity: 0.35;
+  }
   100% {
-    top: 5%;
-    left: 105%;
-    transform: scale(0.5) rotate(5deg);
+    top: 0%;
+    left: 110%;
+    transform: scale(0.6) rotate(5deg);
     opacity: 0;
   }
 }
