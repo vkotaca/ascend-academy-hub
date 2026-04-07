@@ -10,12 +10,12 @@ var MODULES = [
     desc: 'How the event works, what judges look for, and why it\u2019s the most strategic event in speech & debate.',
     file: 'modules/what-is-congress.html',
     lessons: [
-      { icon: '\uD83C\uDFDB\uFE0F', text: 'The event at a glance \u2014 competing against 20 people at once' },
-      { icon: '\uD83D\uDD04', text: 'How a round works \u2014 docket, speeches, cross-examination' },
+      { icon: '\uD83C\uDFDB\uFE0F', text: 'The event at a glance \u2014 the Battle Royale of debate, Rep vs. Senator, and why your side winning doesn\u2019t determine your rank' },
+      { icon: '\uD83D\uDD04', text: 'How a round works \u2014 sponsorship speeches, choosing aff or neg, and local vs. national tournament scale' },
       { icon: '\uD83C\uDFAF', text: 'The three pillars: argumentation, delivery, strategy' },
       { icon: '\uD83D\uDC53', text: 'What judges actually look for \u2014 experienced vs. lay' },
-      { icon: '\u23F1\uFE0F', text: 'Speeches & speaking time \u2014 3 minutes, 30 seconds CX' },
-      { icon: '\u2728', text: 'Why Congress is different from other debate events' },
+      { icon: '\u23F1\uFE0F', text: 'Speeches & CX timing \u2014 3 minutes per speech, 2 min or 1 min cross-examination' },
+      { icon: '\u2728', text: 'Why Congress is different \u2014 no direct opponent, speeches are independent, the round evolves' },
       { icon: '\uD83C\uDFC6', text: 'Tournament structure \u2014 prelims, elims, nationals' },
       { icon: '\uD83D\uDE80', text: 'The Ascend approach \u2014 one deep argument beats three shallow ones' }
     ] },
@@ -77,7 +77,7 @@ var MODULES = [
     desc: 'Every argument has four parts: Claim, Warrant, Evidence, and Impact. Master CWEI and you\u2019ll have the foundation for everything that follows.',
     file: 'modules/anatomy-of-argument.html',
     lessons: [
-      { icon: '\uD83C\uDFAC', text: 'What makes a good argument \u2014 the universal structure' },
+      { icon: '\uD83C\uDFAC', text: 'What makes a good argument \u2014 the CWEI framework (Claim, Warrant, Evidence, Impact)' },
       { icon: '\uD83C\uDFAF', text: 'The Claim \u2014 your one-sentence thesis' },
       { icon: '\uD83E\uDDE0', text: 'The Warrant \u2014 the "because" behind the claim' },
       { icon: '\uD83D\uDCCA', text: 'Evidence & Data \u2014 backing it up with credible sources' },
@@ -89,13 +89,13 @@ var MODULES = [
     file: 'modules/block-format.html',
     lessons: [
       { icon: '\uD83D\uDCD6', text: 'Why argument formats matter \u2014 efficiency, clarity, depth' },
-      { icon: '\uD83D\uDD04', text: 'From CWEI to Block Format \u2014 the origin story' },
+      { icon: '\uD83D\uDD04', text: 'The origin of Block Format \u2014 from Greg Seabrooks to 5 TOC wins' },
       { icon: '\uD83E\uDDF1', text: 'The 3 components: Status Quo, Outcome, Impact' },
-      { icon: '\u270D\uFE0F', text: 'Status Quo deep dive \u2014 context + problem' },
+      { icon: '\u270D\uFE0F', text: 'The Status Quo \u2014 proving a specific problem exists in the current world' },
       { icon: '\u26A1',       text: 'Outcome & Action \u2014 the legislative mechanism' },
       { icon: '\uD83D\uDCA5', text: 'Impact \u2014 humanizing and connecting to judges' },
       { icon: '\uD83C\uDFAC', text: 'Analyze a championship speech (Tyler Luu 2023 Nationals)' },
-      { icon: '\uD83D\uDCDD', text: 'Pre-Requisites \u2014 framing before your argument' }
+      { icon: '\uD83D\uDCDD', text: 'The Pre-Requisite \u2014 orienting judges and controlling the round\u2019s narrative' }
     ]
   },
   { id: 'squo-deep-dive',       unit: 2, num: '2.3', title: 'The Status Quo Deep Dive',           icon: '\uD83D\uDD2D', duration: '20 min', activities: 5, badge: null,
@@ -153,7 +153,7 @@ var MODULES = [
     desc: 'How to frame the debate before your argument, where to place refutation inside block format, and when to cut content and adapt.',
     file: 'modules/refutation.html',
     lessons: [
-      { icon: '\uD83D\uDD04', text: 'The prerequisite block \u2014 your road map for the round' },
+      { icon: '\uD83D\uDD04', text: 'The prerequisite block \u2014 orienting judges with a summary of the debate and your direction' },
       { icon: '\uD83D\uDDE3\uFE0F', text: 'Prereqs in practice \u2014 addressing opposition vs. framing clash' },
       { icon: '\uD83D\uDEE1\uFE0F', text: 'Where refutation goes \u2014 beginning of block, end of block, or prereq' },
       { icon: '\u2694\uFE0F', text: 'On-case vs. off-case refutation \u2014 what to prioritize' },
@@ -176,11 +176,11 @@ var MODULES = [
     file: 'modules/championship-speeches.html',
     lessons: [
       { icon: '\uD83D\uDDF3\uFE0F', text: 'Redistricting \u2014 Block Format fundamentals in a clean first speech' },
-      { icon: '\uD83D\uDC6E', text: 'Police reform (education) \u2014 prereqs and on-case refutation' },
+      { icon: '\uD83D\uDC6E', text: 'Police reform \u2014 prereqs and integrated refutation' },
       { icon: '\uD83C\uDFE5', text: 'Medicare for All \u2014 late-round crystallization and the comparative' },
       { icon: '\uD83D\uDD12', text: 'Data privacy \u2014 filling gaps and quantifying what others missed' },
-      { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI) \u2014 flipping the negation and playing offense' },
-      { icon: '\u2696\uFE0F', text: 'Final crystallization \u2014 tying a full round together with moral weight' }
+      { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI) \u2014 playing offense by turning the negation\u2019s strongest argument' },
+      { icon: '\u2696\uFE0F', text: 'Final crystallization \u2014 telling judges why the affirmation wins the debate' }
     ] },
 
   // ── UNIT 3: Research & Case Preparation (5 modules) ──
@@ -189,20 +189,20 @@ var MODULES = [
     file: 'modules/how-to-research.html',
     lessons: [
       { icon: '\uD83D\uDCC4', text: 'Start with the bill \u2014 read the legislation before anything else' },
-      { icon: '\uD83D\uDD0D', text: 'Research strategy \u2014 where to look and what to look for' },
-      { icon: '\uD83C\uDFAF', text: 'Finding the angle others miss \u2014 going beyond the obvious' },
-      { icon: '\uD83D\uDCCA', text: 'Evaluating sources \u2014 credibility, recency, specificity' },
-      { icon: '\uD83D\uDCC1', text: 'Organizing your research \u2014 from raw notes to usable prep' }
+      { icon: '\uD83D\uDD0D', text: 'Google Scholar & source hierarchy \u2014 where to find credible evidence' },
+      { icon: '\uD83D\uDCA1', text: 'The keyword strategy \u2014 search the mechanism, not the topic' },
+      { icon: '\uD83D\uDCDA', text: 'Building a source library \u2014 organizing evidence for quick access' },
+      { icon: '\u26A1', text: 'Research efficiency \u2014 getting more done in less time' }
     ] },
   { id: 'turning-research-case', unit: 3, num: '3.2', title: 'Turning Research Into a Case',      icon: '\uD83D\uDCDD', duration: '20 min', activities: 5, badge: null,
-    desc: 'From raw notes to a polished block. Proving outcome, finding past precedent, and stress-testing your argument.',
+    desc: 'From raw notes to a polished block. Writing taglines, proving outcome, and stress-testing your argument.',
     file: 'modules/turning-research-case.html',
     lessons: [
       { icon: '\uD83D\uDCDD', text: 'From notes to blocks \u2014 mapping research to SQUO, Outcome, Impact' },
-      { icon: '\uD83D\uDD17', text: 'Proving outcome \u2014 the evidence-to-mechanism link' },
-      { icon: '\uD83D\uDCDC', text: 'Past precedent \u2014 finding real-world proof your argument works' },
-      { icon: '\uD83E\uDD14', text: 'Stress-testing \u2014 attacking your own argument before opponents do' },
-      { icon: '\u2728', text: 'Polishing \u2014 from functional block to competition-ready speech' }
+      { icon: '\uD83C\uDFAF', text: 'Writing your taglines \u2014 one-sentence summaries for each block' },
+      { icon: '\uD83D\uDD17', text: 'Proving the outcome \u2014 the evidence-to-mechanism link' },
+      { icon: '\uD83E\uDD14', text: 'Stress-testing your argument \u2014 finding weaknesses before opponents do' },
+      { icon: '\u2728', text: 'The finished product \u2014 from functional block to competition-ready speech' }
     ] },
   { id: 'prime-prep',           unit: 3, num: '3.3', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
     desc: 'What championship-level preparation actually looks like. The habits and frameworks that produce consistently high ranks.',
@@ -219,7 +219,7 @@ var MODULES = [
     file: 'modules/aff-neg-strategy.html',
     lessons: [
       { icon: '\uD83D\uDD04', text: 'Always prep both sides \u2014 understanding opposition makes you stronger' },
-      { icon: '\u2705', text: 'Affirmation strategy \u2014 proving the bill solves the problem' },
+      { icon: '\u2705', text: 'Affirmation strategy \u2014 proving the problem exists, the bill fixes it, and fixing it matters' },
       { icon: '\u274C', text: 'Negation strategy \u2014 multiple angles of attack' },
       { icon: '\uD83D\uDEE1\uFE0F', text: 'Anticipating the opposition \u2014 preemptive refutation' },
       { icon: '\uD83E\uDDE0', text: 'Strategic side selection \u2014 choosing your side in round' }
@@ -239,12 +239,12 @@ var MODULES = [
     desc: 'How to turn arguments into stories judges remember. Writing rhetoric within blocks, crafting intros, tying conclusions, and finding your voice on paper.',
     file: 'modules/rhetoric-intros.html',
     lessons: [
-      { icon: '\uD83C\uDFAC', text: 'What is rhetoric \u2014 persuasion with words, not just facts' },
+      { icon: '\uD83C\uDFAC', text: 'What is rhetoric \u2014 telling a story with your argument using vivid imagery and plain language' },
       { icon: '\uD83D\uDCDD', text: 'Rhetoric within blocks \u2014 summarize, humanize, move on' },
       { icon: '\uD83C\uDFAD', text: 'Writing rhetoric in practice \u2014 the universal pre-K example' },
       { icon: '\uD83C\uDFA4', text: 'Crafting your intro \u2014 theme first, first line last' },
       { icon: '\uD83D\uDD17', text: 'Conclusions \u2014 tying back to your theme and stakeholders' },
-      { icon: '\uD83D\uDD25', text: 'Finding your voice \u2014 write about what interests you most' }
+      { icon: '\uD83D\uDD25', text: 'Finding your voice \u2014 quantity first, quality second; experiment then refine' }
     ] },
   { id: 'voice-delivery',       unit: 4, num: '4.2', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 5, badge: 'presence',
     desc: 'Finding your voice, base tone, fluctuation, speed, and passion \u2014 how to sound like yourself, not a debate robot.',
@@ -309,9 +309,9 @@ var MODULES = [
     desc: 'From the night before to the final round \u2014 the routines, mindset, and adaptations that produce peak performance.',
     file: 'modules/tournament-day.html',
     lessons: [
-      { icon: '\uD83C\uDF19', text: 'The night before \u2014 read bills, preliminary research, get sleep' },
+      { icon: '\uD83C\uDF19', text: 'The night before \u2014 read every bill, finalize prep, get sleep' },
       { icon: '\u2600\uFE0F', text: 'Morning routine \u2014 arrive early, review, trust your prep' },
-      { icon: '\uD83D\uDD04', text: 'Between rounds \u2014 ballots, adjustments, switching backup angles' },
+      { icon: '\uD83D\uDD04', text: 'Between rounds \u2014 read ballots, assess what worked, adapt for the next round' },
       { icon: '\uD83C\uDFC6', text: 'The finals mindset \u2014 execution over preparation at the top level' }
     ] }
 ];
