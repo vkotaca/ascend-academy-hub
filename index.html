@@ -29,8 +29,8 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">Your championship curriculum starts here.</div>
-  <h1 class="hero-title">Train. Win.<br><em>Ascend.</em></h1>
-  <p class="hero-sub">Self-paced modules built from decades of coaching national champions. Learn the techniques, strategy, and presence that win rounds at the highest level.</p>
+  <h1 class="hero-title" id="heroTitle"></h1>
+  <p class="hero-sub">Self-paced modules built from over a decade of coaching national champions. Learn the techniques, strategy, and presence that win rounds at the highest level.</p>
   <div class="hero-stats">
     <div class="hero-stat">
       <div class="hero-stat-num">27</div>
@@ -178,5 +178,53 @@
 </div>
 
 <script src="shared/hub.js"></script>
+<script>
+(function () {
+  var parts = [
+    { text: 'Train. ', tag: 'span' },
+    { text: 'Win. ', tag: 'span' },
+    { text: '\n', tag: 'br' },
+    { text: 'Ascend.', tag: 'em' }
+  ];
+  var el = document.getElementById('heroTitle');
+  var cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+  var partIdx = 0;
+  var charIdx = 0;
+  var currentNode = null;
+  var speed = 70;
+  var pauseBetween = 400;
+
+  function type() {
+    if (partIdx >= parts.length) {
+      cursor.remove();
+      return;
+    }
+    var part = parts[partIdx];
+    if (part.tag === 'br') {
+      el.appendChild(document.createElement('br'));
+      partIdx++;
+      setTimeout(type, pauseBetween);
+      return;
+    }
+    if (charIdx === 0) {
+      currentNode = document.createElement(part.tag);
+      el.appendChild(currentNode);
+    }
+    if (charIdx < part.text.length) {
+      currentNode.textContent += part.text[charIdx];
+      el.appendChild(cursor);
+      charIdx++;
+      setTimeout(type, speed);
+    } else {
+      charIdx = 0;
+      partIdx++;
+      setTimeout(type, pauseBetween);
+    }
+  }
+
+  setTimeout(type, 500);
+})();
+</script>
 </body>
 </html>

@@ -144,11 +144,27 @@ nav {
   line-height: 1.05;
   max-width: 700px;
   margin-bottom: 20px;
+  min-height: 1.1em;
 }
 
 .hero-title em {
-  color: var(--white);
+  color: var(--red);
   font-style: normal;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--red);
+  margin-left: 4px;
+  vertical-align: baseline;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero-sub {
@@ -174,7 +190,7 @@ nav {
   font-family: 'Playfair Display', serif;
   font-size: 32px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--red);
 }
 
 .hero-stat-label {
