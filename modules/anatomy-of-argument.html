@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Anatomy of an Argument — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Anatomy of an Argument</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 6</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.1 · Congressional Debate</div>
+  <div class="mod-title">The Anatomy of an Argument</div>
+  <div class="mod-desc">Whether you're in a debate round, writing an essay, or bargaining for a later curfew — every good argument has the same four parts. Master them here.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: WHAT MAKES A GOOD ARGUMENT -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 6</div>
+    <div class="section-title">What Makes a Good Argument?</div>
+
+    <div style="position:relative;width:100%;max-width:720px;aspect-ratio:16/9;margin:0 0 28px;border-radius:12px;overflow:hidden;">
+      <iframe src="https://www.youtube.com/embed/bZCo4kuuDUs" title="How to Make an Argument — Congress Basics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    </div>
+
+    <div class="section-body">
+      <p>You've probably made hundreds of arguments in your life without thinking about it — convincing a friend to watch your show, persuading a teacher to extend a deadline, or debating whether pineapple belongs on pizza. But in competitive debate, <strong>"trust me, it's good" doesn't cut it.</strong></p>
+      <p>Every strong argument follows the same universal structure called <strong>CWEI</strong>:</p>
+      <ul style="margin:16px 0 16px 20px; line-height:2;">
+        <li><strong>C</strong> — Claim (your position)</li>
+        <li><strong>W</strong> — Warrant (your reasoning)</li>
+        <li><strong>E</strong> — Evidence (your proof)</li>
+        <li><strong>I</strong> — Impact (why it matters)</li>
+      </ul>
+      <p>If any one of these is missing, your argument has a hole — and in debate, your opponents will find it. The rest of this module teaches you how to build each piece so your arguments are airtight.</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What are the four components of the CWEI argument structure?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Context, Warrant, Explanation, Inference</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Claim, Warrant, Evidence, Impact</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Claim, Warrant, Example, Implication</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Case, Warrant, Evidence, Interpretation</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → The Claim</button>
+  </div>
+
+  <!-- STEP 2: THE CLAIM -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 6</div>
+    <div class="section-title">The Claim</div>
+    <div class="section-body">
+      <p>A claim is your <strong>one-sentence thesis</strong> — a clear statement of your position on a topic. It's the anchor of your entire argument. Everything that follows exists to support this sentence.</p>
+      <p>Good claims are <strong>debatable</strong>. That means someone could reasonably disagree with you. If no one would argue against it, it's not a claim — it's a fact.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Strong Claims vs. Weak Claims</div>
+      <div class="callout-text">
+        <strong>Strong:</strong> "Homework should be banned in public schools."<br>
+        <strong>Strong:</strong> "Solar panels are the most effective way to combat climate change."<br>
+        <strong>Weak:</strong> "Climate change exists." (This is a fact, not debatable.)<br>
+        <strong>Weak:</strong> "Some people like homework." (This is an observation, not a position.)
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>In Congressional Debate, your claim is the core position of your speech. It should be <strong>specific enough to argue deeply</strong> and <strong>clear enough that a judge can repeat it back from memory.</strong> If a judge can't summarize your claim in one sentence after your speech, you've already lost ground.</p>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">"Chocolate chip cookies are delicious" is a strong claim for a debate argument.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The Warrant</button>
+  </div>
+
+  <!-- STEP 3: THE WARRANT -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 6</div>
+    <div class="section-title">The Warrant</div>
+    <div class="section-body">
+      <p>A warrant is the <strong>logical reasoning behind your claim</strong> — the explanation of <em>why</em> what you're asserting is true. Think of it as the "because" statement.</p>
+      <p>Your claim says <em>what</em> you believe. Your warrant says <em>why</em> you believe it. Without a warrant, you're just stating an opinion and expecting people to take your word for it.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Claims + Warrants</div>
+      <div class="callout-text">
+        "Homework should be banned <strong>because</strong> students experience more stress without seeing actual educational benefits."<br><br>
+        "Solar panels are the best way to combat climate change <strong>because</strong> they're the most accessible and scalable form of renewable energy."
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>Notice how the warrant gives the judge a <strong>logical reason to believe your claim</strong>. It connects the dots. In debate, judges won't rank you well just because you made an assertion — they need to understand the reasoning behind it. A strong warrant makes your argument feel inevitable rather than arbitrary.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">In the argument "The voting age should be lowered to 16 because teenagers are already affected by tax policy and should have a say in how their money is spent," which part is the warrant?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">The voting age should be lowered to 16</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Teenagers are already affected by tax policy and should have a say in how their money is spent</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">The voting age should be lowered</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Teenagers should have a say</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Evidence & Data</button>
+  </div>
+
+  <!-- STEP 4: EVIDENCE & DATA -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 6</div>
+    <div class="section-title">Evidence & Data</div>
+    <div class="section-body">
+      <p>You have a claim and a warrant — but let's face it, <strong>you're a student.</strong> An adult judging you, or anyone listening, needs to know that what you're saying is backed up by experts. That's where evidence comes in.</p>
+      <p>Evidence is <strong>outside proof that supports your claim and warrant.</strong> It comes from credible sources — academic journals, government reports, research publications, news organizations — and it usually takes one of two forms:</p>
+      <ul style="margin:16px 0 16px 20px; line-height:2;">
+        <li><strong>Statistics</strong> — numbers, percentages, data points that quantify your argument</li>
+        <li><strong>Past precedent</strong> — examples of when something similar happened before, proving your reasoning works in the real world</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">What Makes Evidence Credible?</div>
+      <div class="callout-text">
+        <strong>Good sources:</strong> Stanford University research, Congressional Budget Office reports, The Brookings Institution, peer-reviewed journals, major news outlets.<br><br>
+        <strong>Weak sources:</strong> Random blogs, opinion pieces without data, Wikipedia (as a primary source), social media posts.<br><br>
+        A judge hearing "According to a 2024 Stanford study..." instantly trusts your argument more than "I read somewhere that..."
+      </div>
+    </div>
+
+    <div class="quiz" id="q4">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of the following is the strongest form of evidence for a debate argument?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4',this,'wrong')">A personal anecdote about your own experience</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">A quote from a popular social media influencer</button>
+        <button class="option" onclick="mc('q4',this,'correct')">A statistic from a peer-reviewed academic study</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">A general claim that "experts agree"</button>
+      </div>
+      <div class="feedback" id="q4-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → The Impact</button>
+  </div>
+
+  <!-- STEP 5: THE IMPACT -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 6</div>
+    <div class="section-title">The Impact</div>
+    <div class="section-body">
+      <p>You've made your claim, explained your reasoning, and backed it up with evidence. Now comes the part that wins rounds: <strong>the impact.</strong></p>
+      <p>An impact answers the question: <strong>why does your argument matter?</strong> How are real people affected? Is their life getting better or getting worse? This is where you make judges <em>feel</em> the stakes of your argument, not just understand them logically.</p>
+      <p>If you're arguing <strong>for</strong> something (affirmation), your impact shows why the outcome is <strong>good</strong> for people. If you're arguing <strong>against</strong> something (negation), your impact shows why the outcome is <strong>bad</strong> for people.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Impact in Action</div>
+      <div class="callout-text">
+        <strong>Claim:</strong> Homework should be banned.<br>
+        <strong>Warrant:</strong> Students are more stressed and don't see educational benefits.<br>
+        <strong>Evidence:</strong> Stanford research showing homework beyond 2 hours correlates with higher stress and lower performance.<br>
+        <strong>Impact:</strong> Reducing this mental strain means students are happier, healthier, and more eager to learn. When we remove the source of burnout, students actually <em>want</em> to engage with content — leading to better educational outcomes and better lives.
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>Notice how the impact doesn't just say "this is good." It explains <strong>how people's lives change</strong> — happier, healthier, more eager to learn. That emotional connection is what separates a decent argument from one that sticks with judges.</p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each part of CWEI to the correct piece of this argument about renewable energy.</div>
+      <div class="drag-area">
+        <div class="drag-label">Components (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="claim" ondragstart="dragStart(event)">The U.S. should invest $50 billion in solar infrastructure</div>
+          <div class="drag-chip" draggable="true" data-val="warrant" ondragstart="dragStart(event)">Solar is the most scalable renewable and costs have dropped 90% since 2010</div>
+          <div class="drag-chip" draggable="true" data-val="evidence" ondragstart="dragStart(event)">DOE reports show solar capacity doubled in 3 years with federal incentives</div>
+          <div class="drag-chip" draggable="true" data-val="impact" ondragstart="dragStart(event)">Millions of families see lower energy bills and cleaner air in their communities</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="claim" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Claim</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="warrant" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Warrant</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="evidence" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Evidence</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="impact" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Impact</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → Putting It All Together</button>
+  </div>
+
+  <!-- STEP 6: PUTTING IT ALL TOGETHER -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 6</div>
+    <div class="section-title">Putting It All Together</div>
+    <div class="section-body">
+      <p>Let's see a complete CWEI argument in action. Imagine you're debating a bill to ban single-use plastics:</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Full CWEI Example</div>
+      <div class="callout-text">
+        <strong>Claim:</strong> The United States should ban single-use plastics nationwide.<br><br>
+        <strong>Warrant:</strong> Single-use plastics are the largest contributor to ocean pollution and take over 400 years to decompose, meaning every piece ever produced still exists in some form today.<br><br>
+        <strong>Evidence:</strong> According to a 2023 report from the UN Environment Programme, over 11 million metric tons of plastic enter the ocean annually, and single-use items account for roughly 50% of all plastic waste globally.<br><br>
+        <strong>Impact:</strong> Banning single-use plastics would protect marine ecosystems that billions of people depend on for food and livelihood. Coastal communities — particularly in developing nations — would see cleaner waters, healthier fisheries, and reduced healthcare costs from microplastic contamination.
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>See how each piece builds on the last? The claim states the position. The warrant explains why. The evidence proves it with data. And the impact makes you care about real people.</p>
+      <p><strong>This is the foundation of every argument you'll ever build in debate.</strong> In the next module, you'll learn how Ascend took CWEI and evolved it into something more powerful: <strong>Block Format</strong> — the argument structure behind 5 TOC wins. Block Format doesn't replace CWEI; it deepens it by reorganizing these four components into a structure built specifically for Congressional Debate.</p>
+    </div>
+
+    <div class="quiz" id="q6">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What's the relationship between CWEI and Block Format?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6',this,'wrong')">Block Format replaces CWEI with a completely different system</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">CWEI is for beginners and Block Format is for advanced debaters only</button>
+        <button class="option" onclick="mc('q6',this,'correct')">Block Format builds on CWEI by reorganizing its components for deeper, more effective arguments in Congress</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">They are two unrelated approaches to argumentation</button>
+      </div>
+      <div class="feedback" id="q6-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">💡</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand the four building blocks of every argument: Claim, Warrant, Evidence, and Impact. Next up: learn how Ascend evolved CWEI into Block Format — the argument structure behind national championships.</div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var MODULE_ID = 'anatomy-of-argument';
+var TOTAL_STEPS = 6;
+
+var CORRECT_MSGS = {
+  q1: "CWEI — Claim, Warrant, Evidence, Impact. Four components, one airtight argument.",
+  q2: "\"Delicious\" is subjective taste, not a debatable position. A strong claim takes a stance that someone could argue against with logic and evidence.",
+  q3: "The warrant is the reasoning after \"because\" — it explains WHY the claim is true.",
+  q4: "Peer-reviewed research is the gold standard. Judges trust specific, sourced data far more than general assertions or personal stories.",
+  q5: "Each component plays a distinct role: the claim states your position, the warrant explains why, the evidence proves it, and the impact shows why it matters to real people.",
+  q6: "Block Format is an evolution of CWEI — it reorganizes and deepens the same core components into a structure built for winning Congressional Debate rounds."
+};
+
+var WRONG_MSGS = {
+  q1: "Close — remember the acronym. Each letter stands for a distinct component of argument structure.",
+  q2: "Think about whether someone could reasonably construct a logical counter-argument to this statement.",
+  q3: "Look for the part that explains the reasoning — the \"because\" portion that connects the position to its logical justification.",
+  q4: "Think about what a judge would find most credible. Which source is hardest to argue against?",
+  q5: "Think about the role each sentence plays: which one states the position? Which one explains why? Which one cites data? Which one connects to people's lives?",
+  q6: "Think about what Tyler said at the end of the video — Block Format takes the basics you just learned and structures them for competitive debate."
+};
+
+var UNLOCK_MAP = {
+  q1: 'next1',
+  q2: 'next2',
+  q3: 'next3',
+  q4: 'next4',
+  q5: 'next5',
+  q6: 'next6'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

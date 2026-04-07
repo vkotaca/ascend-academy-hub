@@ -72,8 +72,19 @@ var MODULES = [
       { icon: '\uD83E\uDDE0', text: 'The early-round mindset \u2014 every interaction is a scoring opportunity' }
     ] },
 
-  // ── UNIT 2: Building Championship Arguments (8 modules) ──
-  { id: 'block-format',         unit: 2, num: '2.1', title: 'The Block Format',                   icon: '\uD83E\uDDF1', duration: '25 min', activities: 6, badge: 'block-master',
+  // ── UNIT 2: Building Championship Arguments (9 modules) ──
+  { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: null,
+    desc: 'Every argument has four parts: Claim, Warrant, Evidence, and Impact. Master CWEI and you\u2019ll have the foundation for everything that follows.',
+    file: 'modules/anatomy-of-argument.html',
+    lessons: [
+      { icon: '\uD83C\uDFAC', text: 'What makes a good argument \u2014 the universal structure' },
+      { icon: '\uD83C\uDFAF', text: 'The Claim \u2014 your one-sentence thesis' },
+      { icon: '\uD83E\uDDE0', text: 'The Warrant \u2014 the "because" behind the claim' },
+      { icon: '\uD83D\uDCCA', text: 'Evidence & Data \u2014 backing it up with credible sources' },
+      { icon: '\uD83D\uDCA5', text: 'The Impact \u2014 why your argument matters to real people' },
+      { icon: '\uD83D\uDD17', text: 'Putting it all together \u2014 building a complete CWEI argument' }
+    ] },
+  { id: 'block-format',         unit: 2, num: '2.2', title: 'The Block Format',                   icon: '\uD83E\uDDF1', duration: '25 min', activities: 6, badge: 'block-master',
     desc: 'Ascend\u2019s signature argument structure. The same format that has won 5 TOCs and countless national championships.',
     file: 'modules/block-format.html',
     lessons: [
@@ -87,19 +98,28 @@ var MODULES = [
       { icon: '\uD83D\uDCDD', text: 'Pre-Requisites \u2014 framing before your argument' }
     ]
   },
-  { id: 'squo-deep-dive',       unit: 2, num: '2.2', title: 'The Status Quo Deep Dive',           icon: '\uD83D\uDD2D', duration: '20 min', activities: 4, badge: null,
+  { id: 'squo-deep-dive',       unit: 2, num: '2.3', title: 'The Status Quo Deep Dive',           icon: '\uD83D\uDD2D', duration: '20 min', activities: 4, badge: null,
     desc: 'How to construct a SQUO that provides context, proves a problem, and doubles as preemptive refutation.' },
-  { id: 'outcome-action',       unit: 2, num: '2.3', title: 'Crafting Your Outcome & Action',     icon: '\u26A1',       duration: '20 min', activities: 4, badge: null,
+  { id: 'outcome-action',       unit: 2, num: '2.4', title: 'Crafting Your Outcome & Action',     icon: '\u26A1',       duration: '20 min', activities: 4, badge: null,
     desc: 'The pivot from problem to solution \u2014 referencing legislation, proving the mechanism, making the link chain airtight.' },
-  { id: 'impact-calculus',      unit: 2, num: '2.4', title: 'Impact Calculus',                     icon: '\uD83D\uDCA5', duration: '22 min', activities: 5, badge: null,
+  { id: 'impact-calculus',      unit: 2, num: '2.5', title: 'Impact Calculus',                     icon: '\uD83D\uDCA5', duration: '22 min', activities: 5, badge: null,
     desc: 'Judge roleplay, the comparative, terminalization. How to humanize your impact and make judges feel the stakes.' },
-  { id: 'win-conditions',       unit: 2, num: '2.5', title: 'Win Conditions & The Comparative',   icon: '\uD83C\uDFAF', duration: '18 min', activities: 4, badge: null,
+  { id: 'win-conditions',       unit: 2, num: '2.6', title: 'Win Conditions & The Comparative',   icon: '\uD83C\uDFAF', duration: '18 min', activities: 4, badge: null,
     desc: 'What actually wins rounds. The comparative framework, offense vs. defense, believability, and picking your side.' },
-  { id: 'finding-gaps',         unit: 2, num: '2.6', title: 'Finding Gaps & Generating Arguments', icon: '\uD83D\uDCA1', duration: '20 min', activities: 5, badge: null,
+  { id: 'finding-gaps',         unit: 2, num: '2.7', title: 'Finding Gaps & Generating Arguments', icon: '\uD83D\uDCA1', duration: '20 min', activities: 5, badge: null,
     desc: 'How to identify strengths and weaknesses in a debate, predict gaps, and create arguments that fill them.' },
-  { id: 'refutation',           unit: 2, num: '2.7', title: 'Refutation & Defense-Offense',       icon: '\uD83D\uDEE1\uFE0F', duration: '18 min', activities: 4, badge: null,
-    desc: 'Ascend\u2019s defense-offense format: how to refute, turn, and weigh while building your own case in the same speech.' },
-  { id: 'block-format-late',    unit: 2, num: '2.8', title: 'Block Format in Late Rounds',        icon: '\uD83C\uDFC6', duration: '22 min', activities: 5, badge: null,
+  { id: 'refutation',           unit: 2, num: '2.8', title: 'Prerequisites & Refutation',         icon: '\uD83D\uDEE1\uFE0F', duration: '20 min', activities: 6, badge: null,
+    desc: 'How to frame the debate before your argument, where to place refutation inside block format, and when to cut content and adapt.',
+    file: 'modules/refutation.html',
+    lessons: [
+      { icon: '\uD83D\uDD04', text: 'The prerequisite block \u2014 your road map for the round' },
+      { icon: '\uD83D\uDDE3\uFE0F', text: 'Prereqs in practice \u2014 addressing opposition vs. framing clash' },
+      { icon: '\uD83D\uDEE1\uFE0F', text: 'Where refutation goes \u2014 beginning of block, end of block, or prereq' },
+      { icon: '\u2694\uFE0F', text: 'On-case vs. off-case refutation \u2014 what to prioritize' },
+      { icon: '\u2702\uFE0F', text: 'Letting go \u2014 cutting content to make room for what judges want to hear' },
+      { icon: '\uD83E\uDDE0', text: 'Know your debate \u2014 adapting to status quo debates vs. outcome debates' }
+    ] },
+  { id: 'block-format-late',    unit: 2, num: '2.9', title: 'Block Format in Late Rounds',        icon: '\uD83C\uDFC6', duration: '22 min', activities: 5, badge: null,
     desc: 'How the block format evolves as the round progresses \u2014 identifying clash, cutting content, and controlling the narrative.' },
 
   // ── UNIT 3: Research & Case Preparation (5 modules) ──
@@ -114,20 +134,31 @@ var MODULES = [
   { id: 'evidence-citing',      unit: 3, num: '3.5', title: 'Evidence & Citing Sources',          icon: '\uD83D\uDCCA', duration: '15 min', activities: 3, badge: null,
     desc: 'What makes evidence credible, how to cite it in round, and how to attack weak evidence from opponents.' },
 
-  // ── UNIT 4: Performance, Presence & Strategy (6 modules) ──
-  { id: 'voice-delivery',       unit: 4, num: '4.1', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 4, badge: 'presence',
+  // ── UNIT 4: Performance, Presence & Strategy (8 modules) ──
+  { id: 'rhetoric-intros',      unit: 4, num: '4.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: null,
+    desc: 'How to turn arguments into stories judges remember. Writing rhetoric within blocks, crafting intros, tying conclusions, and finding your voice on paper.',
+    file: 'modules/rhetoric-intros.html',
+    lessons: [
+      { icon: '\uD83C\uDFAC', text: 'What is rhetoric \u2014 persuasion with words, not just facts' },
+      { icon: '\uD83D\uDCDD', text: 'Rhetoric within blocks \u2014 summarize, humanize, move on' },
+      { icon: '\uD83C\uDFAD', text: 'Writing rhetoric in practice \u2014 the universal pre-K example' },
+      { icon: '\uD83C\uDFA4', text: 'Crafting your intro \u2014 theme first, first line last' },
+      { icon: '\uD83D\uDD17', text: 'Conclusions \u2014 tying back to your theme and stakeholders' },
+      { icon: '\uD83D\uDD25', text: 'Finding your voice \u2014 write about what interests you most' }
+    ] },
+  { id: 'voice-delivery',       unit: 4, num: '4.2', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 4, badge: 'presence',
     desc: 'Finding your voice, base tone, fluctuation, speed, and passion \u2014 how to sound like yourself, not a debate robot.' },
-  { id: 'movement-physicality', unit: 4, num: '4.2', title: 'Movement & Physicality',             icon: '\uD83E\uDDD1\u200D\uD83C\uDFA4', duration: '18 min', activities: 4, badge: null,
+  { id: 'movement-physicality', unit: 4, num: '4.3', title: 'Movement & Physicality',             icon: '\uD83E\uDDD1\u200D\uD83C\uDFA4', duration: '18 min', activities: 4, badge: null,
     desc: 'Speaking stance, the speaker diamond, hand motions, and facial expressions \u2014 what judges see before they hear you.' },
-  { id: 'chamber-presence',     unit: 4, num: '4.3', title: 'Chamber Presence & Walk-Ups',        icon: '\u2728',       duration: '18 min', activities: 4, badge: null,
+  { id: 'chamber-presence',     unit: 4, num: '4.4', title: 'Chamber Presence & Walk-Ups',        icon: '\u2728',       duration: '18 min', activities: 4, badge: null,
     desc: 'How to carry yourself before, between, and after speeches. Walk-ups, stereotypes to avoid, and commanding the room.' },
-  { id: 'personality-energy',   unit: 4, num: '4.4', title: 'Personality & Stage Energy',         icon: '\uD83D\uDD25', duration: '15 min', activities: 3, badge: null,
+  { id: 'personality-energy',   unit: 4, num: '4.5', title: 'Personality & Stage Energy',         icon: '\uD83D\uDD25', duration: '15 min', activities: 3, badge: null,
     desc: 'Developing your persona, visual indicators, energy management, and the traits judges reward in close rounds.' },
-  { id: 'ballot-watch',         unit: 4, num: '4.5', title: 'Reading the Ballot',                 icon: '\uD83D\uDCCB', duration: '18 min', activities: 4, badge: null,
+  { id: 'ballot-watch',         unit: 4, num: '4.6', title: 'Reading the Ballot',                 icon: '\uD83D\uDCCB', duration: '18 min', activities: 4, badge: null,
     desc: 'What judges actually write down, what they reward, and how to improve even from bare ballots.' },
-  { id: 'cx-strategy',          unit: 4, num: '4.6', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'strategist',
+  { id: 'cx-strategy',          unit: 4, num: '4.7', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'strategist',
     desc: 'How to ask questions that expose weaknesses, how to handle hostile questioning, and how to use CX to set up your next speech.' },
-  { id: 'tournament-day',       unit: 4, num: '4.7', title: 'Tournament Day Execution',           icon: '\uD83D\uDDD3\uFE0F', duration: '15 min', activities: 3, badge: null,
+  { id: 'tournament-day',       unit: 4, num: '4.8', title: 'Tournament Day Execution',           icon: '\uD83D\uDDD3\uFE0F', duration: '15 min', activities: 3, badge: null,
     desc: 'From the night before to the final round \u2014 the routines, mindset, and adaptations that produce peak performance.' }
 ];
 

@@ -519,9 +519,105 @@ nav {
   color: #bbb;
 }
 
+/* PROMO SECTION */
+.promo-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px 64px;
+}
+
+.promo-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.promo-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--black);
+  border-radius: 16px;
+  padding: 36px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px; height: 100%;
+  background: linear-gradient(135deg, transparent 30%, rgba(200,16,46,0.15));
+  pointer-events: none;
+}
+
+.promo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.promo-card.sandel::before {
+  background: linear-gradient(135deg, transparent 30%, rgba(212,175,55,0.15));
+}
+
+.promo-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  background: rgba(200,16,46,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.promo-card.sandel .promo-badge {
+  color: var(--gold);
+  background: rgba(212,175,55,0.15);
+}
+
+.promo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.promo-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.promo-cta {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.promo-card.sandel .promo-cta {
+  color: var(--gold);
+}
+
 /* FOOTER */
 footer {
-  background: var(--black);
+  background: var(--white);
+  border-top: 1px solid var(--border);
   padding: 32px 48px;
   display: flex;
   justify-content: space-between;
@@ -532,7 +628,7 @@ footer .footer-logo {
   font-family: 'Playfair Display', serif;
   font-size: 18px;
   font-weight: 700;
-  color: white;
+  color: var(--black);
 }
 
 footer .footer-logo span {
@@ -541,7 +637,7 @@ footer .footer-logo span {
 
 footer p {
   font-size: 12px;
-  color: rgba(255,255,255,0.3);
+  color: var(--gray);
 }
 
 /* MODULE PANEL (overlay) */
@@ -707,8 +803,9 @@ footer p {
 }
 
 @media (max-width: 768px) {
-  nav, .hero, .main, footer { padding-left: 20px; padding-right: 20px; }
+  nav, .hero, .main, footer, .promo-section { padding-left: 20px; padding-right: 20px; }
   .hero-stats { gap: 24px; }
   .module-grid { grid-template-columns: 1fr; }
+  .promo-grid { grid-template-columns: 1fr; }
   .panel-hero, .panel-body { padding: 28px 24px; }
 }
