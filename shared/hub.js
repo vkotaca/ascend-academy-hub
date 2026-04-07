@@ -512,6 +512,22 @@ function closeModule() {
   document.getElementById('moduleOverlay').classList.remove('open');
 }
 
+// --- TAB SWITCHING ---
+var dataLoaded = false;
+function switchMainTab(tab) {
+  var tabs = document.querySelectorAll('.main-tab');
+  tabs.forEach(function (t) { t.classList.remove('active'); });
+  event.target.classList.add('active');
+
+  document.getElementById('section-learn').style.display = tab === 'learn' ? '' : 'none';
+  document.getElementById('section-data').style.display = tab === 'data' ? '' : 'none';
+
+  if (tab === 'data' && !dataLoaded) {
+    dataLoaded = true;
+    if (typeof initDataDashboard === 'function') initDataDashboard();
+  }
+}
+
 // --- INIT ---
 document.addEventListener('DOMContentLoaded', function () {
   renderBadgeShelf();
