@@ -130,41 +130,67 @@ nav {
 /* HERO BIRD */
 .hero-bird {
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: auto;
   z-index: 3;
   opacity: 0;
   animation: birdFly 5s ease-in-out 1.5s forwards;
   pointer-events: none;
-  filter: drop-shadow(0 4px 20px rgba(200,16,46,0.3));
+  filter: drop-shadow(0 4px 24px rgba(200,16,46,0.4));
+}
+
+.wing-left {
+  transform-origin: 60px 30px;
+  animation: flapLeft 0.4s ease-in-out 1.5s infinite;
+}
+
+.wing-right {
+  transform-origin: 60px 30px;
+  animation: flapRight 0.4s ease-in-out 1.5s infinite;
+}
+
+@keyframes flapLeft {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(8deg) scaleY(0.7); }
+}
+
+@keyframes flapRight {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(-8deg) scaleY(0.7); }
 }
 
 @keyframes birdFly {
   0% {
     top: 75%;
-    left: -10%;
+    left: -12%;
     opacity: 0;
-    transform: scale(0.5) rotate(-8deg);
+    transform: scale(0.5) rotate(-5deg);
   }
-  15% {
+  12% {
+    opacity: 0.6;
+  }
+  35% {
+    top: 30%;
+    left: 35%;
+    transform: scale(1.2) rotate(2deg);
+    opacity: 0.55;
+  }
+  55% {
+    top: 18%;
+    left: 55%;
+    transform: scale(1) rotate(-2deg);
     opacity: 0.5;
   }
-  45% {
-    top: 25%;
-    left: 45%;
-    transform: scale(1.1) rotate(3deg);
-    opacity: 0.4;
-  }
-  75% {
-    top: 10%;
-    left: 75%;
-    transform: scale(0.9) rotate(-2deg);
+  80% {
+    top: 8%;
+    left: 80%;
+    transform: scale(0.8) rotate(3deg);
     opacity: 0.35;
   }
   100% {
-    top: 0%;
-    left: 110%;
-    transform: scale(0.6) rotate(5deg);
+    top: 2%;
+    left: 112%;
+    transform: scale(0.5) rotate(5deg);
     opacity: 0;
   }
 }
