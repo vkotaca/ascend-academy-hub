@@ -185,10 +185,11 @@ function renderModuleCards() {
 
     container.innerHTML = unitModules.map(function (mod) {
       var completed = state.completed.includes(mod.id);
-      var statusClass = completed ? 'status-completed' : 'status-available';
-      var statusText = completed ? 'Completed \u2713' : 'Available';
-      var cardClass = 'module-card' + (completed ? ' completed' : '') + (mod.file ? ' active' : '');
-      return '<div class="' + cardClass + '" onclick="openModule(\'' + mod.id + '\')" id="card-' + mod.id + '">' +
+      var isBuilt = !!mod.file;
+      var statusClass = completed ? 'status-completed' : (isBuilt ? 'status-available' : 'status-locked');
+      var statusText = completed ? 'Completed \u2713' : (isBuilt ? 'Available' : 'Coming Soon');
+      var cardClass = 'module-card' + (completed ? ' completed' : '') + (isBuilt ? ' active' : ' locked');
+      return '<div class="' + cardClass + '"' + (isBuilt ? ' onclick="openModule(\'' + mod.id + '\')"' : '') + ' id="card-' + mod.id + '">' +
         '<div class="module-top">' +
           '<div class="module-icon">' + mod.icon + '</div>' +
           '<span class="module-status ' + statusClass + '" id="status-' + mod.id + '">' + statusText + '</span>' +
