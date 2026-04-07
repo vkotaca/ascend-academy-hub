@@ -28,28 +28,55 @@
 
 <!-- HERO -->
 <div class="hero">
-  <svg class="hero-bird" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
-    <!-- body -->
-    <path d="M60 30 L52 28 L38 22 L28 18 L18 20 L8 26 L2 30 L12 27 L22 25 L34 26 L48 29 L60 30Z" fill="url(#eagleGrad)" class="wing-left"/>
-    <path d="M60 30 L68 28 L82 22 L92 18 L102 20 L112 26 L118 30 L108 27 L98 25 L86 26 L72 29 L60 30Z" fill="url(#eagleGrad)" class="wing-right"/>
-    <!-- head -->
-    <ellipse cx="60" cy="30" rx="8" ry="5" fill="#C8102E"/>
-    <path d="M68 29 L76 28 L68 30Z" fill="#D4AF37"/>
-    <!-- tail feathers -->
-    <path d="M52 31 L40 36 L30 40 L38 37 L48 33Z" fill="rgba(200,16,46,0.6)"/>
-    <path d="M52 32 L42 40 L34 46 L40 42 L50 35Z" fill="rgba(212,175,55,0.4)"/>
-    <!-- wing detail feathers -->
-    <path d="M30 20 L20 16 L10 18 L20 22 L30 23Z" fill="rgba(212,175,55,0.5)"/>
-    <path d="M90 20 L100 16 L110 18 L100 22 L90 23Z" fill="rgba(212,175,55,0.5)"/>
-    <path d="M36 24 L26 20 L16 23 L26 26Z" fill="rgba(200,16,46,0.4)"/>
-    <path d="M84 24 L94 20 L104 23 L94 26Z" fill="rgba(200,16,46,0.4)"/>
+  <svg class="hero-bird" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="eagleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="80%">
         <stop offset="0%" stop-color="#C8102E"/>
-        <stop offset="60%" stop-color="#C8102E"/>
+        <stop offset="70%" stop-color="#C8102E"/>
         <stop offset="100%" stop-color="#D4AF37"/>
       </linearGradient>
+      <linearGradient id="featherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#D4AF37"/>
+        <stop offset="100%" stop-color="#C8102E"/>
+      </linearGradient>
     </defs>
+    <!-- left wing main -->
+    <g class="wing-left">
+      <path d="M95 48 L80 38 L62 26 L44 18 L28 14 L14 16 L4 22 L14 24 L28 22 L44 24 L62 30 L80 40 L95 48Z" fill="url(#wingGrad)"/>
+      <!-- left feather tips -->
+      <path d="M28 14 L18 8 L8 6 L14 16Z" fill="#C8102E" opacity="0.8"/>
+      <path d="M44 18 L32 10 L22 10 L28 14Z" fill="#C8102E" opacity="0.7"/>
+      <path d="M14 16 L4 10 L0 14 L4 22Z" fill="url(#featherGrad)" opacity="0.6"/>
+      <!-- left wing secondary feathers -->
+      <path d="M62 26 L48 16 L36 14 L44 18Z" fill="rgba(200,16,46,0.6)"/>
+      <path d="M4 22 L10 28 L24 26 L14 24Z" fill="rgba(212,175,55,0.4)"/>
+    </g>
+    <!-- right wing main -->
+    <g class="wing-right">
+      <path d="M105 48 L120 38 L138 26 L156 18 L172 14 L186 16 L196 22 L186 24 L172 22 L156 24 L138 30 L120 40 L105 48Z" fill="url(#wingGrad)"/>
+      <!-- right feather tips -->
+      <path d="M172 14 L182 8 L192 6 L186 16Z" fill="#C8102E" opacity="0.8"/>
+      <path d="M156 18 L168 10 L178 10 L172 14Z" fill="#C8102E" opacity="0.7"/>
+      <path d="M186 16 L196 10 L200 14 L196 22Z" fill="url(#featherGrad)" opacity="0.6"/>
+      <!-- right wing secondary feathers -->
+      <path d="M138 26 L152 16 L164 14 L156 18Z" fill="rgba(200,16,46,0.6)"/>
+      <path d="M196 22 L190 28 L176 26 L186 24Z" fill="rgba(212,175,55,0.4)"/>
+    </g>
+    <!-- body -->
+    <ellipse cx="100" cy="48" rx="12" ry="7" fill="#C8102E"/>
+    <!-- head -->
+    <ellipse cx="100" cy="38" rx="7" ry="6" fill="#C8102E"/>
+    <!-- beak -->
+    <path d="M107 37 L116 36 L107 39Z" fill="#D4AF37"/>
+    <!-- eye -->
+    <circle cx="104" cy="36" r="1.5" fill="#fff"/>
+    <circle cx="104.5" cy="36" r="0.8" fill="#111"/>
+    <!-- chest detail -->
+    <path d="M94 44 L100 40 L106 44 L100 52Z" fill="#9e0c23" opacity="0.5"/>
+    <!-- tail -->
+    <path d="M94 52 L82 62 L76 70 L84 66 L92 58 L96 52Z" fill="#C8102E" opacity="0.7"/>
+    <path d="M92 54 L78 66 L72 76 L80 70 L90 60Z" fill="#D4AF37" opacity="0.4"/>
+    <path d="M96 53 L86 60 L82 66 L88 62 L94 56Z" fill="rgba(200,16,46,0.5)"/>
   </svg>
   <div class="hero-eyebrow">Your championship curriculum starts here.</div>
   <h1 class="hero-title" id="heroTitle"></h1>
