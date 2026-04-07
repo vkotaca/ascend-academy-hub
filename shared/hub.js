@@ -171,6 +171,18 @@ var MODULES = [
       { icon: '\uD83D\uDC8E', text: 'The crystallization speech \u2014 summarize, compare, win' }
     ] },
 
+  { id: 'championship-speeches', unit: 2, num: '2.10', title: 'Championship Speeches: Watch & Learn', icon: '\uD83C\uDFA5', duration: '25 min', activities: 6, badge: null,
+    desc: 'Real competition speeches broken down lesson by lesson. See Block Format, prereqs, refutation, rhetoric, and CX in action at the national level.',
+    file: 'modules/championship-speeches.html',
+    lessons: [
+      { icon: '\uD83D\uDDF3\uFE0F', text: 'Redistricting \u2014 Block Format fundamentals in a clean first speech' },
+      { icon: '\uD83D\uDC6E', text: 'Police reform (education) \u2014 prereqs and on-case refutation' },
+      { icon: '\uD83C\uDFE5', text: 'Medicare for All \u2014 late-round crystallization and the comparative' },
+      { icon: '\uD83D\uDD12', text: 'Data privacy \u2014 filling gaps and quantifying what others missed' },
+      { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI) \u2014 flipping the negation and playing offense' },
+      { icon: '\u2696\uFE0F', text: 'Final crystallization \u2014 tying a full round together with moral weight' }
+    ] },
+
   // ── UNIT 3: Research & Case Preparation (5 modules) ──
   { id: 'how-to-research',      unit: 3, num: '3.1', title: 'How to Research',                    icon: '\uD83D\uDD0D', duration: '20 min', activities: 5, badge: 'researcher',
     desc: 'From reading the bill to building a case \u2014 the systematic approach that finds evidence others miss.',
