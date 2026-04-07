@@ -39,9 +39,17 @@ body {
   font-size: 16px;
   color: white;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .topbar-logo span { color: var(--red); }
+
+.topbar-logo-img {
+  height: 32px;
+  object-fit: contain;
+}
 
 .progress-row {
   display: flex;

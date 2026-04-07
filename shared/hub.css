@@ -44,15 +44,8 @@ nav {
 .nav-logo-icon {
   width: 36px;
   height: 36px;
-  background: var(--red);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 900;
-  font-size: 18px;
-  font-family: 'Playfair Display', serif;
+  object-fit: contain;
+  border-radius: 0;
 }
 
 .nav-logo-text {

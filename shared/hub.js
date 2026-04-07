@@ -140,12 +140,17 @@ var UNITS = [
 
 var BADGES = [
   { id: 'first-step',        emoji: '\uD83D\uDE80', name: 'First Step' },
+  { id: 'presiding-officer', emoji: '\u2696\uFE0F', name: 'PO Expert' },
   { id: 'block-master',      emoji: '\uD83E\uDDF1', name: 'Block Master' },
   { id: 'researcher',        emoji: '\uD83D\uDD0D', name: 'Researcher' },
   { id: 'presence',          emoji: '\uD83C\uDFA4', name: 'Presence' },
   { id: 'strategist',        emoji: '\u265F\uFE0F', name: 'Strategist' },
-  { id: 'presiding-officer', emoji: '\u2696\uFE0F', name: 'PO Expert' },
-  { id: 'congress-scholar',  emoji: '\uD83C\uDFDB\uFE0F', name: 'Congress Scholar' }
+  { id: 'unit-1-complete',   emoji: '\uD83C\uDFDB\uFE0F', name: 'Foundations' },
+  { id: 'unit-2-complete',   emoji: '\u2694\uFE0F', name: 'Argument Architect' },
+  { id: 'unit-3-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine' },
+  { id: 'unit-4-complete',   emoji: '\uD83C\uDFAD', name: 'Performer' },
+  { id: 'halfway',           emoji: '\uD83D\uDD25', name: 'Halfway There' },
+  { id: 'congress-scholar',  emoji: '\uD83C\uDFC6', name: 'Congress Scholar' }
 ];
 
 // --- STATE ---
@@ -230,6 +235,15 @@ function showBadgeToast(id) {
   setTimeout(function () { toast.remove(); }, 3500);
 }
 
+function checkUnitBadges() {
+  var unitBadgeMap = { 1: 'unit-1-complete', 2: 'unit-2-complete', 3: 'unit-3-complete', 4: 'unit-4-complete' };
+  UNITS.forEach(function (unit) {
+    var unitModules = MODULES.filter(function (m) { return m.unit === unit.num; });
+    var allDone = unitModules.every(function (m) { return state.completed.includes(m.id); });
+    if (allDone) awardBadge(unitBadgeMap[unit.num]);
+  });
+}
+
 // --- MODULE OVERLAY ---
 function openModule(id) {
   var mod = MODULES.find(function (m) { return m.id === id; });
@@ -294,6 +308,10 @@ function launchModule(id) {
       if (state.completed.length === 1) awardBadge('first-step');
       // Award module-specific badge
       if (mod.badge) awardBadge(mod.badge);
+      // Check unit completion badges
+      checkUnitBadges();
+      // Halfway milestone
+      if (state.completed.length >= Math.ceil(MODULES.length / 2)) awardBadge('halfway');
       // Check congress-scholar (all modules done)
       if (state.completed.length === MODULES.length) awardBadge('congress-scholar');
       renderModuleCards();
