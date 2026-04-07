@@ -27,7 +27,7 @@
 
 <div class="content" id="moduleContent">
 
-  <!-- STEP 1 -->
+  <!-- STEP 1: THE EVENT AT A GLANCE -->
   <div class="section" id="step1">
     <div class="section-eyebrow">Lesson 1 of 8</div>
     <div class="section-title">The Event at a Glance</div>
@@ -37,16 +37,14 @@
     </div>
 
     <div class="section-body">
-      <p>Congressional Debate simulates the United States Congress. Students act as legislators — debating and voting on bills and resolutions in a chamber of 12–18 competitors.</p>
-      <p>You'll role-play as a legislator — either a <strong>Representative</strong> or a <strong>Senator</strong> (you typically start as a Representative and become a Senator once you place well at a tournament). The distinction doesn't change how you compete, but it's how you'll address everyone in the room: "Representative Smith" or "Senator Jones."</p>
-      <p>Think of it as the <strong>Battle Royale of debate events.</strong> Unlike Public Forum or Lincoln-Douglas where you face a single opponent, in Congress you compete against everyone in the room simultaneously. You might be on the same side as other people, but you as an individual are trying to compete for the number one spot — like a presidential primary where everyone supports the same cause but brings a different argument.</p>
-      <p>Judges rank every speaker from 1 (best) to the total number of speakers. And here's the part that surprises beginners: <strong>just because your side "won" doesn't mean you're ranked first.</strong> If Timmy gave the best speech in the round on the negation but the affirmation passed the bill, the judges can still give Timmy the 1. It's not about being on the winning side — it's about being the best speaker and debater overall.</p>
-      <p>The event rewards three things above all else: <strong>argumentation</strong> (is your argument logically airtight?), <strong>delivery</strong> (can you hold a room's attention for 3 minutes?), and <strong>strategy</strong> (do you know when to speak, what to say, and how to adapt?).</p>
+      <p>Congressional Debate simulates the United States Congress. You'll act as a legislator — debating and voting on bills and resolutions in a chamber of 12–18 competitors.</p>
+      <p>You'll be addressed as either <strong>Representative</strong> or <strong>Senator</strong> (you typically start as a Representative and become a Senator once you place well). The distinction doesn't change how you compete — it's just how you'll address everyone in the room. "Representative Smith" or "Senator Jones."</p>
+      <p>Now here's where it gets interesting. Think of Congress as the <strong>Battle Royale of debate events.</strong> In Public Forum or Lincoln-Douglas, you face a single opponent. In Congress? You compete against <em>everyone in the room simultaneously.</em> You might be on the same side as other people, but you as an individual are trying to compete for the number one spot — like a presidential primary where everyone supports the same cause but brings a different argument.</p>
     </div>
 
     <div class="callout">
-      <div class="callout-label">Think of It This Way</div>
-      <div class="callout-text">Imagine a room with 18 people, 3 judges, and a 2-hour clock. Everyone wants to speak. The judges will rank every person who speaks — and they're doing it from memory. Your job: be so clear, so compelling, and so strategic that when judges fill out their ballot, your name is at the top.</div>
+      <div class="callout-label">The Part That Surprises Beginners</div>
+      <div class="callout-text">Judges rank every speaker from 1 (best) to the total number of speakers. And here's the thing — <strong>just because your side "won" doesn't mean you're ranked first.</strong> If Timmy gave the best speech on the negation but the affirmation passed the bill, judges can still give Timmy the 1. It's not about being on the winning side. It's about being the best speaker and debater, period.</div>
     </div>
 
     <div class="quiz" id="q1">
@@ -64,15 +62,40 @@
     <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → How a Round Works</button>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- STEP 2: HOW A ROUND WORKS -->
   <div class="section hidden" id="step2">
     <div class="section-eyebrow">Lesson 2 of 8</div>
     <div class="section-title">How a Round Works</div>
     <div class="section-body">
-      <p>A round of Congress revolves around a <strong>docket</strong> — a list of bills and resolutions the chamber will debate. The legislation changes every tournament, and topics can range from energy policy to criminal justice to foreign policy.</p>
-      <p>For each piece of legislation, a student delivers the <strong>sponsorship speech</strong> (also called authorship) — the first affirmative speech that introduces and argues for the bill. After that, speeches alternate: negation, affirmation, negation, affirmation. <strong>You get to choose which side you're on.</strong> If you feel strongly about a bill, go aff. If you think it's a bad idea, go neg. The choice is yours.</p>
-      <p>After several speeches, the chamber votes to move to the next item on the docket. A <strong>Presiding Officer</strong> (PO) — a student elected at the start of the round — manages the entire proceeding: recognizing speakers, tracking precedence, and handling motions.</p>
-      <p><strong>What to expect at your first tournament:</strong> If you're going to a local tournament, you'll usually debate <strong>3 pieces of legislation — one per round, about an hour each.</strong> Nothing too intense. At national-level tournaments, the game gets bigger: you may debate 9-21 pieces of legislation across rounds that last 2.5-3 hours each.</p>
+      <p>Every round revolves around a <strong>docket</strong> — a list of bills and resolutions the chamber will debate. Topics change every tournament and can range from energy policy to criminal justice to foreign policy. (Yes, someone once debated a bill to fund research into memes. And yes, it passed.)</p>
+      <p>For each bill, a student delivers the <strong>sponsorship speech</strong> (also called authorship) — the first affirmative speech that introduces and argues for the legislation. After that, speeches alternate sides:</p>
+    </div>
+
+    <!-- SPEECH CYCLE DIAGRAM -->
+    <div style="background:#f9f9f9; border-radius:12px; padding:24px; margin:0 0 24px; overflow-x:auto;">
+      <div style="display:flex; align-items:center; gap:8px; min-width:500px; justify-content:center; flex-wrap:nowrap;">
+        <div style="background:#C8102E; color:#fff; padding:10px 16px; border-radius:8px; font-size:12px; font-weight:700; text-align:center; white-space:nowrap;">Sponsorship<br><span style="font-weight:400;opacity:0.8;">1st Aff</span></div>
+        <div style="color:#ccc; font-size:18px;">→</div>
+        <div style="background:#333; color:#fff; padding:10px 16px; border-radius:8px; font-size:12px; font-weight:700; text-align:center; white-space:nowrap;">1st Neg</div>
+        <div style="color:#ccc; font-size:18px;">→</div>
+        <div style="background:#C8102E; color:#fff; padding:10px 16px; border-radius:8px; font-size:12px; font-weight:700; text-align:center; white-space:nowrap;">2nd Aff</div>
+        <div style="color:#ccc; font-size:18px;">→</div>
+        <div style="background:#333; color:#fff; padding:10px 16px; border-radius:8px; font-size:12px; font-weight:700; text-align:center; white-space:nowrap;">2nd Neg</div>
+        <div style="color:#ccc; font-size:18px;">→</div>
+        <div style="background:linear-gradient(135deg,#C8102E,#333); color:#fff; padding:10px 16px; border-radius:8px; font-size:12px; font-weight:700; text-align:center; white-space:nowrap;">...cycle<br><span style="font-weight:400;opacity:0.8;">continues</span></div>
+        <div style="color:#ccc; font-size:18px;">→</div>
+        <div style="background:#D4AF37; color:#111; padding:10px 16px; border-radius:8px; font-size:12px; font-weight:700; text-align:center; white-space:nowrap;">Vote on<br><span style="font-weight:400;">the bill</span></div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p><strong>You get to choose which side you're on.</strong> If you feel strongly about a bill, go aff. If you think it's a bad idea, go neg. The choice is yours every single time.</p>
+      <p>A <strong>Presiding Officer</strong> (PO) — a student elected at the start of the round — manages everything: recognizing speakers, tracking who's spoken, and handling motions. (More on this in Module 1.3.)</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">What to Expect at Your First Tournament</div>
+      <div class="callout-text">If you're going to a local tournament, you'll usually debate <strong>3 pieces of legislation — one per round, about an hour each.</strong> Nothing too intense. At national-level tournaments, the game gets bigger: you may debate 9–21 pieces of legislation across rounds that last 2.5–3 hours. But you'll work up to that.</div>
     </div>
 
     <div class="quiz" id="q2">
@@ -90,15 +113,15 @@
     <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The Three Pillars</button>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- STEP 3: THE THREE PILLARS -->
   <div class="section hidden" id="step3">
     <div class="section-eyebrow">Lesson 3 of 8</div>
     <div class="section-title">The Three Pillars: Argumentation, Delivery, Strategy</div>
     <div class="section-body">
-      <p>Congress rewards a unique combination of skills that no other event tests in the same way:</p>
-      <p><strong>Argumentation</strong> — Can you construct a logically airtight case? Do your claims have evidence, warrants, and impacts? This is the substance of what you say.</p>
-      <p><strong>Delivery</strong> — Can you hold a room's attention? Are you conversational, passionate, and dynamic? Judges score not just what you say but how you say it.</p>
-      <p><strong>Strategy</strong> — Do you know when to speak, which side to argue, and how to adapt your speech based on what's been said? The best debaters read the room and position themselves to fill gaps.</p>
+      <p>Congress rewards a unique combination of skills that no other debate event tests in the same way. Think of them as three pillars — you need all three to win consistently:</p>
+      <p><strong>Argumentation</strong> — Can you construct a logically airtight case? Do your claims have evidence, warrants, and impacts? This is the <em>substance</em> of what you say. A beautiful delivery with a weak argument still loses.</p>
+      <p><strong>Delivery</strong> — Can you hold a room's attention for 3 minutes? Are you conversational, passionate, and dynamic — or are you reading off a page in a monotone? Judges score not just <em>what</em> you say but <em>how</em> you say it. And when they're ranking 20 people from memory, the forgettable speakers don't make the cut.</p>
+      <p><strong>Strategy</strong> — Do you know <em>when</em> to speak, which side to argue, and how to adapt based on what's been said? The best debaters read the room, fill gaps, and position their speech to say something judges haven't heard yet.</p>
     </div>
 
     <div class="quiz" id="q3">
@@ -123,15 +146,15 @@
     <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → What Judges Look For</button>
   </div>
 
-  <!-- STEP 4 -->
+  <!-- STEP 4: WHAT JUDGES LOOK FOR -->
   <div class="section hidden" id="step4">
     <div class="section-eyebrow">Lesson 4 of 8</div>
     <div class="section-title">What Judges Actually Look For</div>
     <div class="section-body">
-      <p>Judges in Congress fall into two categories: <strong>experienced judges</strong> (coaches, former debaters) and <strong>lay judges</strong> (parents, community members). Understanding both is critical.</p>
-      <p><strong>Experienced judges</strong> evaluate the logical quality of your argument, the strength of your evidence, and how well you engage with the debate. They want to see clash — direct engagement with what the other side has said.</p>
-      <p><strong>Lay judges</strong> reward speakers they can understand and connect with emotionally. They care about clarity, confidence, and whether your argument "makes sense" in plain language. Many lay judges can't articulate exactly why they ranked you where they did — but they consistently reward <strong>clear warranting, humanized impacts, and engaging delivery.</strong></p>
-      <p>The best debaters don't choose between these audiences — they build speeches that satisfy both.</p>
+      <p>Here's a secret most beginners don't learn until it's too late: not all judges evaluate the same way. They fall into two categories, and you need to win over <em>both.</em></p>
+      <p><strong>Experienced judges</strong> (coaches, former debaters) evaluate the logical quality of your argument, the strength of your evidence, and how well you engage with the debate. Their #1 thing? <strong>Clash</strong> — direct engagement with what the other side has said. A speech that exists in a vacuum, no matter how polished, won't impress them.</p>
+      <p><strong>Lay judges</strong> (parents, community members) reward speakers they can <em>understand</em> and <em>connect with</em> emotionally. They care about clarity, confidence, and whether your argument "makes sense" in plain language. They may not know debate jargon, but they consistently reward <strong>clear warranting, humanized impacts, and engaging delivery.</strong></p>
+      <p>The best debaters don't pick one audience — they build speeches that satisfy both. Clear enough for a parent, deep enough for a coach.</p>
     </div>
 
     <div class="quiz" id="q4a">
@@ -159,14 +182,36 @@
     <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → Speeches & Speaking Time</button>
   </div>
 
-  <!-- STEP 5 -->
+  <!-- STEP 5: SPEECHES & SPEAKING TIME -->
   <div class="section hidden" id="step5">
     <div class="section-eyebrow">Lesson 5 of 8</div>
     <div class="section-title">Speeches & Speaking Time</div>
     <div class="section-body">
       <p>Every speech in Congress is <strong>3 minutes long</strong> with a 10-second grace period. That's it. You don't get more time for being good, and you don't get less for being new. The constraint is the same for everyone — which means <strong>how you use those 3 minutes is everything.</strong></p>
-      <p>After each speech comes <strong>cross-examination (CX)</strong> — and the time depends on where you are in the cycle. The first affirmative and first negative speakers get <strong>2 minutes of CX with 4 questioners</strong> (30 seconds each). Every speaker after that gets <strong>1 minute with 2 questioners</strong> (30 seconds each). CX is strategically valuable — asking a sharp question shows judges you're engaged and can expose weaknesses in the speaker's argument.</p>
-      <p>In a typical preliminary round, you'll give <strong>1-2 speeches</strong> and ask <strong>1-3 questions.</strong> In elimination rounds with smaller chambers, you may speak more. Every interaction is a scoring opportunity — judges rank you on the totality of your participation.</p>
+      <p>After each speech comes <strong>cross-examination (CX)</strong> — and the format depends on where you are in the cycle:</p>
+    </div>
+
+    <!-- CX TIMING DIAGRAM -->
+    <div style="background:#f9f9f9; border-radius:12px; padding:24px; margin:0 0 24px;">
+      <div style="display:flex; gap:20px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:220px; background:#fff; border:2px solid #C8102E; border-radius:10px; padding:20px; text-align:center;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#C8102E;">2 min</div>
+          <div style="font-size:13px; color:#666; margin:8px 0 4px;">1st Aff & 1st Neg speakers</div>
+          <div style="font-size:20px; font-weight:700; color:#111;">4 questioners</div>
+          <div style="font-size:12px; color:#999;">30 seconds each</div>
+        </div>
+        <div style="flex:1; min-width:220px; background:#fff; border:2px solid #333; border-radius:10px; padding:20px; text-align:center;">
+          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#333;">1 min</div>
+          <div style="font-size:13px; color:#666; margin:8px 0 4px;">All other speakers</div>
+          <div style="font-size:20px; font-weight:700; color:#111;">2 questioners</div>
+          <div style="font-size:12px; color:#999;">30 seconds each</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>CX is strategically valuable — asking a sharp question shows judges you're engaged and can expose weaknesses in the speaker's argument. Don't skip it just because you're nervous. Even a simple, well-aimed question gets noticed.</p>
+      <p>In a typical preliminary round, you'll give <strong>1–2 speeches</strong> and ask <strong>1–3 questions.</strong> Every interaction is a scoring opportunity — judges rank you on the totality of your participation.</p>
     </div>
 
     <div class="quiz" id="q5">
@@ -184,23 +229,24 @@
     <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → Why Congress Is Different</button>
   </div>
 
-  <!-- STEP 6 -->
+  <!-- STEP 6: WHY CONGRESS IS DIFFERENT -->
   <div class="section hidden" id="step6">
     <div class="section-eyebrow">Lesson 6 of 8</div>
     <div class="section-title">Why Congress Is Different from Other Events</div>
     <div class="section-body">
       <p>If you've done (or heard of) Public Forum, Lincoln-Douglas, or Policy debate, Congress will feel different in several important ways:</p>
-      <p><strong>No direct opponent.</strong> In PF or LD, you face one team or person. In Congress, you compete against 12-24 people simultaneously. Your "opponent" is everyone who isn't you.</p>
+      <p><strong>No direct opponent.</strong> In PF or LD, you face one team or person. In Congress, you compete against 12–24 people simultaneously. Your "opponent" is everyone who isn't you.</p>
+    </div>
 
-    <div class="example-quote">
-      <div class="eq-label">What This Means in Practice</div>
-      In PF, a mediocre debater who faces a weaker opponent can still win. In Congress, a mediocre debater who faces 20 strong competitors will end up ranked 15th regardless. There's nowhere to hide — every round demands your best.
+    <div class="callout">
+      <div class="callout-label">What This Means in Practice</div>
+      <div class="callout-text">In PF, a mediocre debater who faces a weaker opponent can still win. In Congress, a mediocre debater who faces 20 strong competitors will end up ranked 15th regardless. There's nowhere to hide — every round demands your best.</div>
     </div>
 
     <div class="section-body">
       <p><strong>Speeches are independent.</strong> You don't have to respond to a specific person's case. You choose what to argue, when to argue it, and how much to engage with previous speakers. This creates enormous strategic freedom — and the debaters who use that freedom wisely are the ones who win.</p>
-      <p><strong>Delivery matters more.</strong> In technical debate events, judges can tolerate fast or flat delivery because they're evaluating arguments on paper. In Congress, <strong>judges are ranking you against 20 other people from memory.</strong> If you're forgettable, you lose — no matter how good your argument is.</p>
-      <p><strong>The round evolves.</strong> A speech that would have been great in the first cycle might be irrelevant by the third. Congress rewards debaters who pay attention, adapt, and contribute something new.</p>
+      <p><strong>Delivery matters more.</strong> In technical debate events, judges can tolerate fast or flat delivery because they're evaluating arguments on paper (or "flowing"). In Congress, <strong>judges are ranking you against 20 other people from memory.</strong> If you're forgettable, you lose — no matter how good your argument is.</p>
+      <p><strong>The round evolves.</strong> A speech that would've been great in the first cycle might be irrelevant by the third. Congress rewards debaters who pay attention, adapt, and contribute something the room hasn't heard yet.</p>
     </div>
 
     <div class="quiz" id="q6a">
@@ -228,15 +274,41 @@
     <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Tournament Structure</button>
   </div>
 
-  <!-- STEP 7 -->
+  <!-- STEP 7: TOURNAMENT STRUCTURE -->
   <div class="section hidden" id="step7">
     <div class="section-eyebrow">Lesson 7 of 8</div>
     <div class="section-title">Tournament Structure</div>
     <div class="section-body">
-      <p>A typical Congress tournament has <strong>preliminary rounds</strong> (prelims) and <strong>elimination rounds</strong> (elims). Here's how advancement works:</p>
-      <p><strong>Prelims (2-3 rounds):</strong> You're placed in a chamber of ~20 students. Judges rank you in each round. Your rankings are combined across rounds to determine who advances. At most tournaments, the top 30-50% of competitors advance to elimination rounds.</p>
-      <p><strong>Elims (semifinals, finals):</strong> Chambers get smaller and competition gets tighter. In finals, you may be in a chamber of 12-16 of the best competitors at the tournament. The top 6 speakers receive trophies or bids to national tournaments.</p>
-      <p><strong>National qualifiers:</strong> The biggest stages in Congress are the <strong>NSDA National Tournament</strong>, the <strong>Tournament of Champions (TOC)</strong>, and major invitational tournaments. Ascend debaters have won 5 TOCs and multiple NSDA National titles using the techniques you'll learn in this curriculum.</p>
+      <p>A typical Congress tournament has <strong>preliminary rounds</strong> and <strong>elimination rounds.</strong> Here's how the path works:</p>
+    </div>
+
+    <!-- TOURNAMENT FLOW DIAGRAM -->
+    <div style="background:#f9f9f9; border-radius:12px; padding:24px; margin:0 0 24px;">
+      <div style="display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="background:#111; color:#fff; padding:14px 20px; border-radius:10px; font-size:13px; font-weight:700;">Prelims</div>
+          <div style="font-size:11px; color:#999; margin-top:6px;">2–3 rounds<br>~20 per chamber<br>All ranked</div>
+        </div>
+        <div style="color:#C8102E; font-size:22px; font-weight:700;">→</div>
+        <div style="text-align:center;">
+          <div style="background:#C8102E; color:#fff; padding:14px 20px; border-radius:10px; font-size:13px; font-weight:700;">Top 30–50%<br>Advance</div>
+        </div>
+        <div style="color:#C8102E; font-size:22px; font-weight:700;">→</div>
+        <div style="text-align:center;">
+          <div style="background:#111; color:#fff; padding:14px 20px; border-radius:10px; font-size:13px; font-weight:700;">Semis</div>
+          <div style="font-size:11px; color:#999; margin-top:6px;">Smaller chambers<br>Tighter competition</div>
+        </div>
+        <div style="color:#D4AF37; font-size:22px; font-weight:700;">→</div>
+        <div style="text-align:center;">
+          <div style="background:linear-gradient(135deg,#D4AF37,#C8102E); color:#fff; padding:14px 20px; border-radius:10px; font-size:13px; font-weight:700;">Finals</div>
+          <div style="font-size:11px; color:#999; margin-top:6px;">12–16 best<br>Top 6 awarded</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>In prelims, judges rank you each round and your rankings are combined across rounds. The best cumulative records advance.</p>
+      <p><strong>The biggest stages:</strong> the <strong>NSDA National Tournament</strong>, the <strong>Tournament of Champions (TOC)</strong>, and major invitationals. Ascend debaters have won 5 TOCs and multiple NSDA National titles using the techniques you'll learn in this curriculum.</p>
     </div>
 
     <div class="quiz" id="q7">
@@ -254,7 +326,7 @@
     <button class="next-btn hidden" id="next7" onclick="advance(7)">Continue → The Ascend Approach</button>
   </div>
 
-  <!-- STEP 8 -->
+  <!-- STEP 8: THE ASCEND APPROACH -->
   <div class="section hidden" id="step8">
     <div class="section-eyebrow">Lesson 8 of 8</div>
     <div class="section-title">The Ascend Approach</div>
@@ -263,22 +335,27 @@
       <p>The philosophy is simple: <strong>one deep argument beats three shallow ones.</strong> That's the core of Block Format, which you'll learn in Unit 2. But before you build arguments, you need to understand the foundation — how the chamber works, how to read legislation, and how to position yourself strategically.</p>
     </div>
 
-    <div class="coach-callout">
-      <img class="coach-avatar" src="../shared/quest.jpg" alt="Quest Sandel">
-      <div class="coach-body">
-        <div class="coach-name">Quest Sandel</div>
-        <div class="coach-role">Ascend Academy Founder</div>
-        <div class="coach-quote">"When we started Ascend, the conventional wisdom was that you needed 2-3 arguments per speech. We flipped it — prove one thing deeply, make judges feel it, and you'll outscore the person who gestured at three ideas without landing any of them. Rohit Jhawar won NSDA Nationals with this approach. Five TOC wins later, nothing has changed."</div>
+    <div style="display:flex;gap:20px;align-items:flex-start;background:#f9f9f9;border-radius:12px;padding:24px;margin:0 0 24px;">
+      <img src="../Pictures/Quest Sandel_View 1SA.jpeg" alt="Quest Sandel" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#111;">Quest Sandel</div>
+        <div style="font-size:12px;color:#C8102E;font-weight:600;margin-bottom:10px;">Ascend Academy Founder</div>
+        <div style="font-size:14px;color:#444;line-height:1.6;font-style:italic;">"When we started Ascend, the conventional wisdom was that you needed 2–3 arguments per speech. We flipped it — prove one thing deeply, make judges feel it, and you'll outscore the person who gestured at three ideas without landing any of them. Rohit Jhawar won NSDA Nationals with this approach. Five TOC wins later, nothing has changed."</div>
       </div>
     </div>
 
     <div class="section-body">
-      <p>The modules ahead will take you from the foundations to championship-level technique. Each module builds on the last.</p>
+      <p>But what does a Congress speech actually <em>sound</em> like? Here's a taste — the opening of a real championship speech on redistricting reform:</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">What a Real Speech Sounds Like</div>
+      <div class="callout-text">"Friendship is a beautiful thing. Friends can sing Adele with you when you're going through a tough breakup. They can support terrible financial decisions by helping you buy those Taylor Swift tickets. And if you're a member of the US House and your friend is on the state legislature, they can draw districts for you in a way that almost guarantees you victory. Affirm this legislation to take partisanship out of the redistricting process..."<br><br><em>Notice: it's conversational, it's funny, it draws you in — and then it pivots to the argument. That's what championship-level Congress sounds like. You'll learn how to do this in Unit 2 (Block Format) and Unit 4 (Rhetoric).</em></div>
     </div>
 
     <div class="callout">
       <div class="callout-label">What's Ahead</div>
-      <div class="callout-text">Unit 1 teaches you the rules and foundations. Unit 2 teaches you how to build championship arguments. Unit 3 teaches you how to research. Unit 4 teaches you how to perform. By the end, you'll have the same toolkit that has won national titles.</div>
+      <div class="callout-text"><strong>Unit 1</strong> teaches you the rules and foundations. <strong>Unit 2</strong> teaches you how to build championship arguments. <strong>Unit 3</strong> teaches you how to research. <strong>Unit 4</strong> teaches you how to perform. By the end, you'll have the same toolkit that has won national titles.</div>
     </div>
 
     <div class="quiz" id="q8a">
@@ -303,7 +380,7 @@
       <div class="feedback" id="q8b-fb"></div>
     </div>
 
-    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module 🏅</button>
+    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module</button>
   </div>
 
   <!-- COMPLETION -->
@@ -311,7 +388,7 @@
     <div class="completion">
       <div class="completion-icon">🏛️</div>
       <div class="completion-title">Module Complete!</div>
-      <div class="completion-sub">You now understand what Congressional Debate is, how rounds work, what judges look for, and what makes this event uniquely strategic. Time to learn how the chamber actually runs.</div>
+      <div class="completion-sub">You now understand what Congressional Debate is, how rounds work, what judges look for, and what makes this event uniquely strategic. Next up: learn how the chamber actually runs.</div>
       <div class="completion-badge">
         <div class="completion-badge-icon">🚀</div>
         <div class="completion-badge-text">
@@ -370,7 +447,6 @@ var UNLOCK_MAP = {
   q7:  'next7',
   q8a: 'q8b',
   q8b: 'next8'
-
 };
 </script>
 <script src="../shared/module.js"></script>
