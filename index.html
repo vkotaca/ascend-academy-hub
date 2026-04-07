@@ -59,238 +59,67 @@
 <!-- MAIN -->
 <main class="main">
 
-  <!-- TOP-LEVEL TABS -->
-  <div class="main-tabs">
-    <button class="main-tab active" onclick="switchMainTab('learn')">Learn</button>
-    <button class="main-tab" onclick="switchMainTab('data')">Data Explorer</button>
+  <!-- BADGE SHELF -->
+  <div class="badge-section">
+    <div class="badge-section-title">🏅 Your Badges</div>
+    <div class="badge-shelf" id="badgeShelf"></div>
   </div>
 
-  <!-- ═══ LEARN SECTION ═══ -->
-  <div id="section-learn" class="tab-section">
-
-    <!-- BADGE SHELF -->
-    <div class="badge-section">
-      <div class="badge-section-title">🏅 Your Badges</div>
-      <div class="badge-shelf" id="badgeShelf"></div>
-    </div>
-
-    <!-- EVENT TABS -->
-    <div class="event-tabs">
-      <button class="event-tab active" onclick="void(0)">Congressional Debate</button>
-      <button class="event-tab locked" onclick="void(0)">Public Forum <span class="coming-soon">Coming Soon</span></button>
-      <button class="event-tab locked" onclick="void(0)">Extemp <span class="coming-soon">Coming Soon</span></button>
-    </div>
-
-    <!-- CONGRESSIONAL DEBATE TRACK -->
-    <div id="event-congress">
-
-      <!-- UNIT 1 -->
-      <div class="unit">
-        <div class="unit-header">
-          <div class="unit-number">Unit 1</div>
-          <div class="unit-title">Foundations of Congressional Debate</div>
-          <div class="unit-line"></div>
-          <div class="unit-count" id="unit-1-count">5 modules</div>
-        </div>
-        <div class="module-grid" id="unit-1-grid"></div>
-      </div>
-
-      <!-- UNIT 2 -->
-      <div class="unit">
-        <div class="unit-header">
-          <div class="unit-number">Unit 2</div>
-          <div class="unit-title">Building Championship Arguments</div>
-          <div class="unit-line"></div>
-          <div class="unit-count" id="unit-2-count">10 modules</div>
-        </div>
-        <div class="module-grid" id="unit-2-grid"></div>
-      </div>
-
-      <!-- UNIT 3 -->
-      <div class="unit">
-        <div class="unit-header">
-          <div class="unit-number">Unit 3</div>
-          <div class="unit-title">Research & Case Preparation</div>
-          <div class="unit-line"></div>
-          <div class="unit-count" id="unit-3-count">5 modules</div>
-        </div>
-        <div class="module-grid" id="unit-3-grid"></div>
-      </div>
-
-      <!-- UNIT 4 -->
-      <div class="unit">
-        <div class="unit-header">
-          <div class="unit-number">Unit 4</div>
-          <div class="unit-title">Performance, Presence & Strategy</div>
-          <div class="unit-line"></div>
-          <div class="unit-count" id="unit-4-count">8 modules</div>
-        </div>
-        <div class="module-grid" id="unit-4-grid"></div>
-      </div>
-
-    </div>
+  <!-- EVENT TABS -->
+  <div class="event-tabs">
+    <button class="event-tab active" onclick="void(0)">Congressional Debate</button>
+    <button class="event-tab locked" onclick="void(0)">Public Forum <span class="coming-soon">Coming Soon</span></button>
+    <button class="event-tab locked" onclick="void(0)">Extemp <span class="coming-soon">Coming Soon</span></button>
   </div>
 
-  <!-- ═══ DATA EXPLORER SECTION ═══ -->
-  <div id="section-data" class="tab-section" style="display:none;">
+  <!-- CONGRESSIONAL DEBATE TRACK -->
+  <div id="event-congress">
 
-    <div class="data-intro">
-      <div class="data-intro-title">Real data for real arguments.</div>
-      <div class="data-intro-sub">Explore federal spending, economic trends, demographics, and global indicators — all from official government sources. Find the evidence that wins rounds.</div>
+    <!-- UNIT 1 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 1</div>
+        <div class="unit-title">Foundations of Congressional Debate</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-1-count">5 modules</div>
+      </div>
+      <div class="module-grid" id="unit-1-grid"></div>
     </div>
 
-    <div class="data-grid">
-
-      <!-- FEDERAL BUDGET -->
-      <div class="data-card" id="card-budget">
-        <div class="data-card-header">
-          <div class="data-card-icon">💰</div>
-          <div class="data-card-info">
-            <div class="data-card-title">Federal Budget Explorer</div>
-            <div class="data-card-source">USAspending.gov</div>
-          </div>
-        </div>
-        <div class="data-card-desc">Where does $6+ trillion go? Explore federal spending by category and drill into sub-categories.</div>
-        <div class="data-controls">
-          <select id="budget-year" onchange="fetchBudget()">
-            <option value="2025">FY 2025</option>
-            <option value="2024">FY 2024</option>
-            <option value="2023">FY 2023</option>
-            <option value="2022">FY 2022</option>
-          </select>
-        </div>
-        <div class="data-chart" id="budget-chart"><div class="data-loading">Loading...</div></div>
+    <!-- UNIT 2 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 2</div>
+        <div class="unit-title">Building Championship Arguments</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-2-count">10 modules</div>
       </div>
-
-      <!-- BLS JOBS & WAGES -->
-      <div class="data-card" id="card-bls">
-        <div class="data-card-header">
-          <div class="data-card-icon">📊</div>
-          <div class="data-card-info">
-            <div class="data-card-title">Jobs & Wages Dashboard</div>
-            <div class="data-card-source">Bureau of Labor Statistics</div>
-          </div>
-        </div>
-        <div class="data-card-desc">Unemployment, wages, and inflation over time — the data behind every economic argument.</div>
-        <div class="data-controls">
-          <select id="bls-series" onchange="fetchBLS()">
-            <option value="LNS14000000">Unemployment Rate</option>
-            <option value="CUUR0000SA0">Consumer Price Index (CPI)</option>
-            <option value="CES0000000001">Total Nonfarm Employment</option>
-          </select>
-        </div>
-        <div class="data-chart" id="bls-chart"><div class="data-loading">Loading...</div></div>
-      </div>
-
-      <!-- FRED ECONOMIC TRENDS -->
-      <div class="data-card" id="card-fred">
-        <div class="data-card-header">
-          <div class="data-card-icon">🏦</div>
-          <div class="data-card-info">
-            <div class="data-card-title">Economic Trends</div>
-            <div class="data-card-source">Federal Reserve (FRED)</div>
-          </div>
-        </div>
-        <div class="data-card-desc">GDP, national debt, interest rates, housing prices — the macro-economic picture for fiscal policy debates.</div>
-        <div class="data-controls">
-          <select id="fred-series" onchange="fetchFRED()">
-            <option value="GDP">GDP (Billions $)</option>
-            <option value="GFDEBTN">National Debt</option>
-            <option value="FEDFUNDS">Federal Funds Rate</option>
-            <option value="CSUSHPINSA">Housing Price Index</option>
-            <option value="CPIAUCSL">Consumer Price Index</option>
-          </select>
-          <select id="fred-range" onchange="fetchFRED()">
-            <option value="10">10 Years</option>
-            <option value="20">20 Years</option>
-            <option value="5">5 Years</option>
-            <option value="50">Max</option>
-          </select>
-        </div>
-        <div class="data-chart" id="fred-chart"><div class="data-loading">Loading...</div></div>
-      </div>
-
-      <!-- CENSUS -->
-      <div class="data-card" id="card-census">
-        <div class="data-card-header">
-          <div class="data-card-icon">🗺️</div>
-          <div class="data-card-info">
-            <div class="data-card-title">America by the Numbers</div>
-            <div class="data-card-source">U.S. Census Bureau</div>
-          </div>
-        </div>
-        <div class="data-card-desc">Compare states side-by-side — population, income, poverty, education. Evidence for any domestic policy topic.</div>
-        <div class="data-controls">
-          <select id="census-state1" onchange="fetchCensus()">
-            <option value="06">California</option>
-            <option value="48">Texas</option>
-            <option value="36">New York</option>
-            <option value="12">Florida</option>
-            <option value="17">Illinois</option>
-            <option value="42">Pennsylvania</option>
-            <option value="39">Ohio</option>
-            <option value="13">Georgia</option>
-            <option value="37">North Carolina</option>
-            <option value="26">Michigan</option>
-          </select>
-          <span class="data-vs">vs</span>
-          <select id="census-state2" onchange="fetchCensus()">
-            <option value="48">Texas</option>
-            <option value="06">California</option>
-            <option value="36">New York</option>
-            <option value="12">Florida</option>
-            <option value="17">Illinois</option>
-            <option value="42">Pennsylvania</option>
-            <option value="39">Ohio</option>
-            <option value="13">Georgia</option>
-            <option value="37">North Carolina</option>
-            <option value="26">Michigan</option>
-          </select>
-        </div>
-        <div class="data-chart" id="census-chart"><div class="data-loading">Loading...</div></div>
-      </div>
-
-      <!-- WORLD BANK -->
-      <div class="data-card" id="card-worldbank">
-        <div class="data-card-header">
-          <div class="data-card-icon">🌍</div>
-          <div class="data-card-info">
-            <div class="data-card-title">Global Comparison Tool</div>
-            <div class="data-card-source">World Bank</div>
-          </div>
-        </div>
-        <div class="data-card-desc">Compare countries on GDP, life expectancy, CO2, education spending — essential for foreign policy debates.</div>
-        <div class="data-controls">
-          <select id="wb-country1" onchange="fetchWorldBank()">
-            <option value="USA">United States</option>
-            <option value="CHN">China</option>
-            <option value="GBR">United Kingdom</option>
-            <option value="DEU">Germany</option>
-            <option value="JPN">Japan</option>
-            <option value="IND">India</option>
-            <option value="BRA">Brazil</option>
-            <option value="MEX">Mexico</option>
-            <option value="NGA">Nigeria</option>
-            <option value="KOR">South Korea</option>
-          </select>
-          <span class="data-vs">vs</span>
-          <select id="wb-country2" onchange="fetchWorldBank()">
-            <option value="CHN">China</option>
-            <option value="USA">United States</option>
-            <option value="GBR">United Kingdom</option>
-            <option value="DEU">Germany</option>
-            <option value="JPN">Japan</option>
-            <option value="IND">India</option>
-            <option value="BRA">Brazil</option>
-            <option value="MEX">Mexico</option>
-            <option value="NGA">Nigeria</option>
-            <option value="KOR">South Korea</option>
-          </select>
-        </div>
-        <div class="data-chart" id="wb-chart"><div class="data-loading">Loading...</div></div>
-      </div>
-
+      <div class="module-grid" id="unit-2-grid"></div>
     </div>
+
+    <!-- UNIT 3 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 3</div>
+        <div class="unit-title">Research & Case Preparation</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-3-count">5 modules</div>
+      </div>
+      <div class="module-grid" id="unit-3-grid"></div>
+    </div>
+
+    <!-- UNIT 4 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 4</div>
+        <div class="unit-title">Performance, Presence & Strategy</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-4-count">8 modules</div>
+      </div>
+      <div class="module-grid" id="unit-4-grid"></div>
+    </div>
+
+
   </div>
 
 </main>
@@ -338,7 +167,6 @@
 </div>
 
 <script src="shared/hub.js"></script>
-<script src="shared/data.js"></script>
 <script>
 (function () {
   var parts = [
