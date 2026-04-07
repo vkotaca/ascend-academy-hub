@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personality &amp; Stage Energy — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Personality &amp; Stage Energy</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 4</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 4 · Module 4.5 · Congressional Debate</div>
+  <div class="mod-title">Personality &amp; Stage Energy</div>
+  <div class="mod-desc">Developing your persona, energy management, and the traits judges reward in close rounds.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 4</div>
+    <div class="section-title">Your Debate Persona</div>
+    <div class="section-body">
+      <p>The best debaters in the country are recognizable. Not because they wear distinctive clothing or have unusual voices — but because they have a <strong>consistent, authentic speaking style</strong> that judges remember long after the round ends.</p>
+      <p>You're not playing a character. A debate persona is simply the most intentional version of yourself at the podium. Some common personas that work:</p>
+      <p><strong>The Calm Analyst.</strong> Measured tone, precise language, devastating logic. This debater wins by making complex arguments feel simple and irrefutable. Their power comes from clarity and composure — they never raise their voice because they don't need to.</p>
+      <p><strong>The Passionate Advocate.</strong> Genuine emotion, moral urgency, compelling storytelling. This debater wins by making judges care about the issue at a human level. Their power comes from conviction — you believe they mean every word because they do.</p>
+      <p><strong>The Witty Strategist.</strong> Sharp observations, occasional humor, incisive questions. This debater wins by making the debate intellectually engaging. Their power comes from making judges think: "I wish I'd said that."</p>
+      <p>The key question isn't "which persona should I adopt?" — it's <strong>"which of these is closest to who I naturally am?"</strong> Find what's authentic and lean into it. Don't try to be the passionate advocate if you're naturally analytical. Don't try to be witty if humor isn't your strength. Authenticity is the only persona that works consistently.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Finding Your Style</div>
+      <div class="callout-text">Record yourself giving a practice speech on a topic you genuinely care about. Watch it back. Whatever you naturally do when you're passionate and prepared — that's your persona. Now do it intentionally every time.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the most important quality of an effective debate persona?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Being as dramatic and loud as possible to stand out</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Copying the style of the most successful debater on your team</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Authenticity — finding and leaning into your natural speaking strengths</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Switching your style every round to keep judges guessing</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Energy Management</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 4</div>
+    <div class="section-title">Energy Management</div>
+    <div class="section-body">
+      <p>One of the biggest mistakes debaters make is delivering their entire speech at the same energy level. Whether it's constant high energy (exhausting for judges) or constant low energy (forgettable), <strong>monotone energy kills otherwise strong arguments.</strong></p>
+      <p>Great speakers vary their energy intentionally, matching it to the content they're delivering:</p>
+      <p><strong>High energy for impacts.</strong> When you're describing why your argument matters — the human cost, the economic consequence, the moral imperative — your energy should rise. This is where passion lives. Lean forward slightly, increase your pace just a touch, let genuine urgency enter your voice.</p>
+      <p><strong>Measured energy for evidence.</strong> When citing statistics or studies, pull back to a controlled, authoritative tone. Evidence should sound precise and reliable, not breathless. Slow down, make eye contact with judges, and let the numbers land.</p>
+      <p><strong>Conversational energy for prerequisites.</strong> When establishing context, explaining mechanisms, or walking through a causal chain, use a natural, explanatory tone. You're teaching the judge something — talk like a knowledgeable person explaining an issue to someone they respect.</p>
+      <p>Think of your speech as a piece of music. It has quiet verses, building bridges, and powerful choruses. <strong>The variation itself is what creates impact.</strong> A loud moment only feels loud if there were quiet moments before it. An intense line only feels intense if the lines before it were calm.</p>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each type of speech content to its ideal energy level.</div>
+      <div class="drag-area">
+        <div class="drag-label">Energy levels (drag these):</div>
+        <div class="drag-source" id="drag-source-2a">
+          <div class="drag-chip" draggable="true" data-val="measured" ondragstart="dragStart(event)">Controlled and authoritative</div>
+          <div class="drag-chip" draggable="true" data-val="high" ondragstart="dragStart(event)">Elevated passion and urgency</div>
+          <div class="drag-chip" draggable="true" data-val="convo" ondragstart="dragStart(event)">Natural and explanatory</div>
+        </div>
+        <div class="drag-targets" id="q2a-targets">
+          <div class="drag-target" data-correct="high" ondragover="dragOver(event)" ondrop="drop(event,'q2a')"><span class="drag-target-label">Impact / Why It Matters</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="measured" ondragover="dragOver(event)" ondrop="drop(event,'q2a')"><span class="drag-target-label">Evidence / Statistics</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="convo" ondragover="dragOver(event)" ondrop="drop(event,'q2a')"><span class="drag-target-label">Context / Mechanism</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Maintaining consistently high energy throughout your entire speech is the best way to show passion and keep judges engaged.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; What Judges Reward in Close Rounds</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 4</div>
+    <div class="section-title">What Judges Reward in Close Rounds</div>
+    <div class="section-body">
+      <p>Here's a reality of Congressional Debate that most debaters don't understand: <strong>in close rounds, arguments are roughly equal.</strong> When a judge is deciding between their 3rd and 4th ranked speakers, both of whom had solid arguments and good evidence, the tiebreaker is almost always something beyond the argument itself.</p>
+      <p>These are the tiebreakers that judges consistently cite:</p>
+      <p><strong>Memorability.</strong> Can the judge recall a specific moment from your speech 30 minutes later? A vivid analogy, a striking statistic presented with perfect timing, or a closing line that landed — these stick. Generic arguments, no matter how correct, fade from memory.</p>
+      <p><strong>Personality.</strong> Did the speaker feel like a real person at the podium, or a script-reading machine? Judges rank humans higher than robots. A moment of genuine emotion, a flash of humor, an authentic aside — these humanize you and create connection.</p>
+      <p><strong>Genuine emotion.</strong> Not performed emotion — the real thing. When a speaker clearly cares about the people affected by a bill, it shows. Judges respond to speakers who treat legislation as something that affects real human lives, not as an abstract exercise.</p>
+      <p><strong>A memorable line.</strong> Championship debaters often have one prepared line per speech that's designed to stick. Not a soundbite for the sake of cleverness — a line that crystallizes their argument in a way that's impossible to forget. "This bill isn't about budget numbers — it's about whether we can look a single mother in the eye and tell her we chose savings over her child's health."</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When two speakers have roughly equal arguments, what most commonly determines which one gets ranked higher?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Whoever spoke first in the round</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Whoever had more evidence cards</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Memorability, personality, genuine emotion, and whether the judge can recall a specific moment from their speech</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Whoever spoke for closer to the full time limit</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Being Yourself</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 4</div>
+    <div class="section-title">Being Yourself</div>
+    <div class="section-body">
+      <p>The biggest mistake in Congressional Debate — bigger than bad evidence, bigger than poor structure, bigger than weak impacts — is <strong>trying to be someone you're not.</strong></p>
+      <p>Every year, novice debaters watch a successful upperclassman or a national finalist and try to copy their style. They adopt a tone that isn't theirs, use vocabulary that feels forced, or perform emotions they don't actually feel. And judges can tell. Every time.</p>
+      <p>Inauthenticity is the single fastest way to lose a judge's trust. When something feels performed rather than genuine, judges instinctively discount everything that follows — including your arguments. It's the uncanny valley of public speaking: close to real, but just off enough to be unsettling.</p>
+      <p>The best version of you in debate is still YOU — just more prepared, more confident, and more intentional. Here's what that means in practice:</p>
+      <p><strong>More prepared</strong> doesn't mean scripted. It means you've thought deeply about the issue and have genuine opinions backed by evidence. When you know your material cold, confidence follows naturally.</p>
+      <p><strong>More confident</strong> doesn't mean louder. It means you trust your preparation enough to pause, to make eye contact, to deliver a line slowly because you know it's strong.</p>
+      <p><strong>More intentional</strong> doesn't mean calculated. It means you've thought about your energy, your structure, and your key moments — but you deliver them as a human being, not as a performance.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Authenticity Test</div>
+      <div class="callout-text">If you wouldn't say it that way in a passionate conversation with a friend, don't say it that way at the podium. The gap between how you speak at the podium and how you speak when you genuinely care is the gap between performance and authenticity. Close it.</div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Watching successful debaters and copying their exact speaking style is an effective strategy for improving your own performance.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4a',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4a',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What does "the best version of you in debate" actually mean?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4b',this,'wrong')">A completely different person who is louder, more dramatic, and more aggressive</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Whoever won the last national tournament — you should sound like them</button>
+        <button class="option" onclick="mc('q4b',this,'correct')">Your authentic self, but more deeply prepared, genuinely confident, and intentional about delivery</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Someone who never shows emotion because it might seem unprofessional</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've learned to develop an authentic persona, manage energy intentionally, and understand what judges reward when arguments are close. The best debater you can be is a more prepared, more confident version of yourself.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Stage Presence Pro</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'personality-energy';
+var TOTAL_STEPS = 4;
+
+var CORRECT_MSGS = {
+  q1:  "Authenticity is the foundation. The best persona is the one that's closest to who you naturally are — just more intentional and polished.",
+  q2a: "Different content calls for different energy. Impacts need passion, evidence needs precision, and context needs clarity. The variation itself creates impact.",
+  q2b: "Constant high energy is exhausting for judges and flattens the emotional arc of your speech. Variation is what makes moments land.",
+  q3:  "When arguments are equal, judges rank the speaker they remember. Personality, genuine emotion, and memorable moments are the tiebreakers.",
+  q4a: "Copying someone else's style leads to inauthenticity, which judges detect immediately. Learn from others, but develop your own voice.",
+  q4b: "More prepared, more confident, more intentional — but still fundamentally you. That's the formula for authentic, high-ranking debate."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what judges respond to. Do they rank speakers who seem like they're performing a role, or speakers who seem genuine?",
+  q2a: "Think about what each type of content requires. Does a statistic need the same energy as a moral appeal?",
+  q2b: "Imagine listening to someone speak at maximum intensity for 3 straight minutes. Would that be engaging or exhausting?",
+  q3:  "When two speakers have equally strong arguments, what makes one stick in a judge's memory more than the other?",
+  q4a: "What happens when someone copies a style that doesn't match their natural personality? Do judges perceive it as authentic?",
+  q4b: "The best version of you is still you — not someone else. What three qualities should you amplify?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

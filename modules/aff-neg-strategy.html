@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aff vs. Neg Strategy — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Aff vs. Neg Strategy</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 3 · Module 3.4 · Congressional Debate</div>
+  <div class="mod-title">Aff vs. Neg Strategy</div>
+  <div class="mod-desc">How to prepare both sides of any legislation — anticipating opposition arguments before you're in the room.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Always Prep Both Sides</div>
+    <div class="section-body">
+      <p>This is the first rule of championship-level preparation: <strong>always prep both sides of every bill.</strong> No exceptions.</p>
+      <p>Many debaters make the mistake of only preparing the side they agree with. They read a bill about raising the minimum wage, decide they're for it, and only prep aff arguments. Then they walk into round, find that three speakers have already made strong aff cases — and they have nothing for the neg side.</p>
+      <p>There are three reasons to always prep both sides:</p>
+      <p><strong>1. Strategic flexibility.</strong> You might need to switch sides in round if your preferred angle is already covered. Having both sides ready means you can always find an opening.</p>
+      <p><strong>2. Stronger arguments.</strong> Understanding the opposition makes your own argument more powerful. If you know the best neg arguments against a bill, your aff speech can preemptively address them. That's how you become nearly impossible to refute.</p>
+      <p><strong>3. Better CX.</strong> When you understand both sides deeply, you can ask sharper questions during cross-examination — because you know exactly where the weaknesses are on each side.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Both-Sides Rule</div>
+      <div class="callout-text">For every bill, you should be able to give a competitive speech on either side. If you can only argue one side, you're leaving rounds — and ranks — on the table.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why should you prepare both sides of every bill, even if you strongly favor one side?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Because judges penalize speakers who only argue one side across rounds</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Because the tournament requires you to switch sides each round</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Because it gives you strategic flexibility, strengthens your arguments, and improves your cross-examination</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Because you should never have a personal opinion on legislation</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Affirmation Strategy</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Affirmation Strategy</div>
+    <div class="section-body">
+      <p>When you affirm a bill, your fundamental job is to prove three things in sequence: <strong>the problem exists, the bill fixes it, and fixing it matters.</strong> This maps directly to the block format you already know — SQUO, Outcome, Impact.</p>
+      <p><strong>Prove the problem exists (SQUO).</strong> Establish that the status quo has a real, documented problem. Use specific data: "Currently, 28 million Americans lack health insurance, according to the Census Bureau's 2023 report." The more concrete, the harder it is to dismiss.</p>
+      <p><strong>Prove the bill fixes it (Outcome).</strong> This is where most aff speakers fail. They describe the problem beautifully but never explain the <em>mechanism</em> by which the bill solves it. Walk judges through the causal chain: "Section 3 of this bill expands Medicaid eligibility to 138% of the poverty line. The Kaiser Family Foundation estimates this would cover 4.8 million of those currently uninsured Americans."</p>
+      <p><strong>Prove why it matters (Impact).</strong> Connect the solution to a broader value. Don't just say "more people get healthcare" — explain what that means: "Preventive care access reduces emergency room visits by 40%, saving the healthcare system $78 billion annually while extending average life expectancy in underserved communities."</p>
+      <p>The strongest aff arguments have a <strong>clear, unbroken causal chain</strong> from problem to solution to impact. Every link must be explicit — if judges have to guess how your argument connects, you've lost them.</p>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A strong affirmation speech can succeed by vividly describing the problem, even if it doesn't explain the specific mechanism by which the bill solves it.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2a',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2a',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of the following is the strongest affirmation outcome for a minimum wage bill?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2b',this,'wrong')">This bill will help workers earn more money and improve their lives</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">Raising the minimum wage is the right thing to do for American families</button>
+        <button class="option" onclick="mc('q2b',this,'correct')">The bill's phased increase to $15/hour by 2027 would raise wages for 17 million workers, according to the CBO, increasing annual earnings by an average of $3,300 per affected household</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">Many economists agree that higher wages are good for the economy</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Negation Strategy</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Negation Strategy</div>
+    <div class="section-body">
+      <p>Negation is more versatile than affirmation. While the aff must prove a specific causal chain (problem → solution → impact), the neg can <strong>attack at any point in that chain</strong> — or introduce entirely new concerns.</p>
+      <p>There are three primary negation strategies:</p>
+      <p><strong>1. Attack the Status Quo (The problem isn't that bad).</strong> Challenge whether the problem is as severe as the aff claims. "Yes, the uninsured rate is 8.6%, but that's actually the lowest it's been in decades. The trend is already moving in the right direction without this bill."</p>
+      <p><strong>2. Attack the Outcome (The bill won't work).</strong> Accept the problem but argue the bill's mechanism is flawed. "The bill relies on state-level implementation, but 12 states have already indicated they won't participate. Without nationwide adoption, the coverage gap persists — it just shifts geographically."</p>
+      <p><strong>3. Counter-Impact (The bill causes new problems).</strong> Accept both the problem and the mechanism, but argue the side effects are worse. "While this bill might cover 4 million more people, the CBO projects it will add $1.2 trillion to the deficit over ten years, forcing cuts to existing programs that serve vulnerable populations."</p>
+      <p>The strategic choice: <strong>pick the approach that's hardest to refute.</strong> If the problem is genuinely severe, don't waste time minimizing it — attack the mechanism or introduce counter-impacts instead. Meet the debate where it actually is, not where you wish it were.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each negation strategy to the correct example argument.</div>
+      <div class="drag-area">
+        <div class="drag-label">Arguments (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">Youth unemployment has already dropped 12% in the past 3 years without intervention</div>
+          <div class="drag-chip" draggable="true" data-val="outcome" ondragstart="dragStart(event)">The bill's job training program requires state matching funds that rural states can't afford</div>
+          <div class="drag-chip" draggable="true" data-val="counter" ondragstart="dragStart(event)">This program would divert $8 billion from existing Pell Grants that currently serve 7 million students</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="squo" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Attack the SQUO</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="outcome" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Attack the Outcome</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="counter" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Counter-Impact</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Anticipating the Opposition</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Anticipating the Opposition</div>
+    <div class="section-body">
+      <p>The highest level of preparation isn't just building your own arguments — it's <strong>predicting what opponents will say and preparing your responses in advance.</strong> This is called preemptive refutation, and it makes you nearly impossible to beat in round.</p>
+      <p>For every argument you prep, ask yourself: <strong>"What would the other side say to this?"</strong> Then write down that counter-argument. Then write your response to the counter-argument. You now have a three-layer deep preparation:</p>
+      <p>Layer 1: Your argument. Layer 2: Their likely response. Layer 3: Your refutation of their response.</p>
+      <p>For example, if you're arguing aff on a gun control bill:</p>
+      <p><strong>Your argument:</strong> Universal background checks would prevent an estimated 22% of gun sales to prohibited buyers, according to the Giffords Law Center.</p>
+      <p><strong>Their likely response:</strong> Criminals don't buy guns through legal channels, so background checks won't stop them.</p>
+      <p><strong>Your refutation:</strong> Actually, a 2017 study from the Annals of Internal Medicine found that 22% of gun owners who acquired their most recent firearm did so without a background check — and states with universal background check laws have 35% fewer gun homicides per capita.</p>
+      <p>When that neg speaker makes their point in round, you're not scrambling — you're smiling, because you prepped this exact exchange three days ago.</p>
+    </div>
+
+    <div class="quiz" id="q4">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is preemptive refutation?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4',this,'wrong')">Refuting an opponent's argument before they finish speaking</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">Arguing against a bill before reading it</button>
+        <button class="option" onclick="mc('q4',this,'correct')">Preparing responses to likely opposition arguments before the round begins</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">Preventing opponents from speaking by using all available time</button>
+      </div>
+      <div class="feedback" id="q4-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; Strategic Side Selection</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">Strategic Side Selection</div>
+    <div class="section-body">
+      <p>In Congressional Debate, you choose when and how to speak. This means <strong>side selection is a strategic decision</strong> — not just a matter of personal preference.</p>
+      <p>When deciding which side to argue in a given round, consider three factors:</p>
+      <p><strong>1. What angles are available?</strong> If four speakers have already given aff speeches covering economics, healthcare access, and equity, the aff side is crowded. A strong neg speech will stand out simply because it's different — and judges reward uniqueness.</p>
+      <p><strong>2. What's been covered?</strong> Listen carefully to what's been said. If every neg speaker has attacked the bill's cost, but nobody has questioned whether the bill's mechanism actually works, that's your opening. The uncovered angle is always the most valuable.</p>
+      <p><strong>3. Where can you be most unique?</strong> Sometimes the unpopular side has more room to stand out. If everyone is affirming a popular bill, a well-crafted neg speech will be memorable. Judges appreciate speakers who can argue effectively against the grain — it signals genuine understanding of the issue.</p>
+      <p>The tactical principle: <strong>don't choose the side you agree with — choose the side where you can add the most to the debate.</strong> That's what gets you ranked highest.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Contrarian Advantage</div>
+      <div class="callout-text">In many rounds, the highest-ranked speaker is arguing the less popular side. When 8 out of 12 speakers affirm, the few strong neg speakers have less competition and stand out automatically. Use this to your advantage.</div>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">You should always choose the side of the bill you personally agree with, since genuine passion makes for better speeches.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5a',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5a',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q5a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q5b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Seven speakers have affirmed a popular environmental bill. Only one neg speaker has gone, arguing cost. What's your best strategic move?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5b',this,'wrong')">Give another aff speech with a new angle on environmental benefits</button>
+        <button class="option" onclick="mc('q5b',this,'wrong')">Give a neg speech also focusing on cost to reinforce the first neg speaker</button>
+        <button class="option" onclick="mc('q5b',this,'correct')">Give a neg speech attacking the bill's mechanism — a completely uncovered angle with less competition</button>
+        <button class="option" onclick="mc('q5b',this,'wrong')">Wait for the next bill since this one is too covered</button>
+      </div>
+      <div class="feedback" id="q5b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand how to prepare both sides of any bill, build aff and neg strategies, anticipate opposition, and make strategic side selections. You're thinking like a championship debater.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Both-Sides Strategist</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'aff-neg-strategy';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Preparing both sides gives you flexibility when your preferred angle is covered, makes your arguments stronger through opposition understanding, and sharpens your CX.",
+  q2a: "Describing the problem isn't enough. Judges need to understand the specific mechanism by which the bill solves it — that's what separates a good speech from a great one.",
+  q2b: "Specificity wins. The CBO data, the phased timeline, and the per-household impact give judges concrete reasons to believe the bill works.",
+  q3:  "Each negation strategy attacks a different part of the aff's causal chain. Recognizing which approach fits best is a critical strategic skill.",
+  q4:  "Preemptive refutation means preparing your responses before the round. When opponents make their points, you're ready — not scrambling.",
+  q5a: "Personal agreement doesn't win rounds — strategic positioning does. The best side to argue is the one where you can add the most to the debate.",
+  q5b: "The neg side has less competition, and attacking the mechanism is an uncovered angle. You'll stand out with less effort than trying to be the 8th aff speaker."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about the three practical benefits: what happens when your preferred side is covered, how does knowing both sides help your own argument, and how does it improve CX?",
+  q2a: "Consider: if you describe a terrible problem but never explain how the bill fixes it, what has the judge actually learned about why they should support the legislation?",
+  q2b: "Which option gives the judge specific numbers, a timeline, and a source they can trust? Vague claims don't survive cross-examination.",
+  q3:  "Read each argument carefully. One says the problem isn't bad, one says the solution won't work, and one says the solution creates worse problems.",
+  q4:  "Preemptive means before the event. Which option describes preparation that happens before the round begins?",
+  q5a: "In Congress, you might end up in a round where your preferred side is overcrowded. What matters more — personal passion or strategic positioning?",
+  q5b: "Think about where the least competition is and where the biggest gap in the debate exists. Which choice maximizes your uniqueness?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4:  'next4',
+  q5a: 'q5b',
+  q5b: 'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

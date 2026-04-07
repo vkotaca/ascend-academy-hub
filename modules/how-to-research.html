@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Research — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · How to Research</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 3 · Module 3.1 · Congressional Debate</div>
+  <div class="mod-title">How to Research</div>
+  <div class="mod-desc">From reading the bill to building a case — the systematic approach that finds evidence others miss.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: START WITH THE BILL -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Start with the Bill</div>
+    <div class="section-body">
+      <p>Before you Google anything, before you open a single article, before you even think about your argument — <strong>read the actual legislation.</strong> This is the single most common mistake novice debaters make: they research the topic without reading the bill itself.</p>
+      <p>Why does this matter? Because a bill about "healthcare reform" could do a hundred different things. It could expand Medicaid. It could cap insulin prices. It could create a public option. If you research "healthcare reform" generally, you'll waste hours reading about things the bill doesn't even address.</p>
+      <p>When you read a bill, ask yourself four questions:</p>
+      <p><strong>1. What does it DO?</strong> What specific action does the bill take? Does it fund a program, ban a practice, create an agency, change a law?</p>
+      <p><strong>2. What does it FUND?</strong> Follow the money. Where does the funding come from? How much? This tells you what the bill actually prioritizes.</p>
+      <p><strong>3. What does it CHANGE?</strong> What's different about the world if this bill passes versus the status quo? This is the foundation of every argument you'll make.</p>
+      <p><strong>4. What does it NOT do?</strong> Equally important — what's missing? If a climate bill funds solar panels but ignores nuclear energy, that's a potential neg argument.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Example: Reading a Minimum Wage Bill</div>
+      <div class="callout-text">Suppose the bill raises the federal minimum wage to $17/hour over three years. Reading the bill tells you: it phases in (not overnight), it applies federally (not state-by-state), and it includes no exemptions for small businesses. Each of those details becomes an argument — the phase-in addresses "economic shock" concerns, the federal scope creates uniformity, and the lack of small business exemptions is a potential neg angle.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why should you read the actual bill before starting any research?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Because judges will quiz you on the bill's exact text during cross-examination</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Because the bill's specific provisions tell you what to research — without reading it, you'll waste time on irrelevant information</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Because you need to memorize the bill number and sponsors to cite in your speech</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Because the bill's formatting reveals whether it will pass or fail in the real Congress</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Source Hierarchy</button>
+  </div>
+
+  <!-- STEP 2: GOOGLE SCHOLAR & SOURCE HIERARCHY -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Google Scholar &amp; Source Hierarchy</div>
+    <div class="section-body">
+      <p>Not all sources are created equal. In Congressional Debate, the strength of your evidence is directly tied to the credibility of your source. Judges — especially experienced ones — can tell the difference between a debater who cites the Brookings Institution and one who cites a random blog post.</p>
+      <p>Here's the source hierarchy from strongest to weakest:</p>
+      <p><strong>Tier 1: Academic journals and peer-reviewed research.</strong> These have been vetted by experts in the field. A study published in the American Economic Review carries enormous weight. Use Google Scholar (scholar.google.com) or JSTOR to find these.</p>
+      <p><strong>Tier 2: Government reports and official data.</strong> The Congressional Budget Office (CBO), Bureau of Labor Statistics (BLS), and Government Accountability Office (GAO) produce nonpartisan analyses that judges trust implicitly.</p>
+      <p><strong>Tier 3: Established think tanks.</strong> Brookings, RAND Corporation, the Heritage Foundation, the Urban Institute. These have known methodologies and reputations. Note: some lean left or right, so knowing the lean helps you anticipate challenges.</p>
+      <p><strong>Tier 4: Major news outlets.</strong> The New York Times, The Washington Post, Reuters. Good for recent developments and context, but they report on studies — they don't conduct them.</p>
+      <p><strong>Tier 5: Opinion pieces and editorials.</strong> These are the weakest form of evidence. An op-ed is one person's opinion, not a finding. Use them for framing ideas, never as your primary proof.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">How to Use Google Scholar</div>
+      <div class="callout-text">Go to scholar.google.com. Type your search terms. Click "Since 2022" on the left sidebar to filter for recent research. Look at the citation count — a paper cited 200+ times is well-established in the field. Click "Cited by" to find newer papers that build on that research. Pro tip: if a paper is behind a paywall, click "All versions" — often a free PDF exists on the author's university page.</div>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">Rank these sources from strongest (most credible) to weakest (least credible) for Congressional Debate evidence.</div>
+      <div class="drag-area">
+        <div class="drag-label">Sources (drag these):</div>
+        <div class="drag-source" id="drag-source-2a">
+          <div class="drag-chip" draggable="true" data-val="news" ondragstart="dragStart(event)">A Washington Post article reporting on economic trends</div>
+          <div class="drag-chip" draggable="true" data-val="academic" ondragstart="dragStart(event)">A peer-reviewed study in the Journal of Public Economics</div>
+          <div class="drag-chip" draggable="true" data-val="opinion" ondragstart="dragStart(event)">An op-ed by a political commentator on a news website</div>
+        </div>
+        <div class="drag-targets" id="q2a-targets">
+          <div class="drag-target" data-correct="academic" ondragover="dragOver(event)" ondrop="drop(event,'q2a')"><span class="drag-target-label">Strongest</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="news" ondragover="dragOver(event)" ondrop="drop(event,'q2a')"><span class="drag-target-label">Middle</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="opinion" ondragover="dragOver(event)" ondrop="drop(event,'q2a')"><span class="drag-target-label">Weakest</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Government reports from agencies like the CBO and BLS are considered weaker than major news articles because they are less accessible to judges.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; The Keyword Strategy</button>
+  </div>
+
+  <!-- STEP 3: THE KEYWORD STRATEGY -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">The Keyword Strategy</div>
+    <div class="section-body">
+      <p>Here's a secret that separates good researchers from great ones: <strong>don't search the topic — search the MECHANISM.</strong></p>
+      <p>What does this mean? Most debaters see a bill about universal pre-K and search "universal pre-K" or "early childhood education." They get the same generic articles everyone else finds. The same arguments. The same evidence. Nothing unique.</p>
+      <p>Great researchers search the mechanism — the specific way the bill works. Instead of "universal pre-K," they search:</p>
+      <p><strong>"universal pre-K long-term outcomes"</strong> — finds studies tracking kids who went through pre-K programs into adulthood.</p>
+      <p><strong>"pre-K workforce participation mothers"</strong> — finds research on how free childcare affects maternal employment rates.</p>
+      <p><strong>"Head Start program effectiveness meta-analysis"</strong> — finds comprehensive reviews of the closest existing program.</p>
+      <p>Each of these searches targets a specific mechanism: long-term educational outcomes, labor force participation, and program effectiveness. They produce specific, unique evidence that generic searches miss.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Keyword Strategy in Action: Criminal Justice Reform</div>
+      <div class="callout-text">Bill: Eliminates mandatory minimums for nonviolent drug offenses. Generic search: "criminal justice reform" (gives you everything, helps you with nothing). Mechanism searches: "mandatory minimum recidivism rates" (does sentencing length affect reoffending?), "judicial discretion sentencing outcomes" (what happens when judges can choose?), "drug offense incarceration cost per inmate" (what's the financial burden?). Each mechanism search produces a different card for a different block of your speech.</div>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A bill proposes expanding Medicare to cover dental, vision, and hearing for seniors. Which search query best follows the keyword strategy?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">"Medicare expansion pros and cons"</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">"healthcare reform debate arguments"</button>
+        <button class="option" onclick="mc('q3',this,'correct')">"untreated dental disease elderly hospitalization rates"</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">"Medicare history and overview"</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Building a Source Library</button>
+  </div>
+
+  <!-- STEP 4: BUILDING A SOURCE LIBRARY -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Building a Source Library</div>
+    <div class="section-body">
+      <p>Raw research is useless if you can't find it when you need it. The difference between a debater who fumbles for evidence mid-speech and one who delivers it effortlessly is <strong>organization.</strong></p>
+      <p>The best system: organize your evidence into cards sorted by which block they support. Every piece of evidence you find should be tagged with three things:</p>
+      <p><strong>1. The source:</strong> Author/organization, publication, date. Write this exactly as you'd cite it in round: "2024 Brookings Institution study by Dr. Sarah Chen."</p>
+      <p><strong>2. The block it supports:</strong> Is this a SQUO card (proves the problem exists), an Outcome card (proves the mechanism works), or an Impact card (proves why it matters)?</p>
+      <p><strong>3. The key finding:</strong> One sentence summarizing what this source proves. Not a quote — a summary in your own words that you can deliver from memory.</p>
+    </div>
+
+    <div class="components-row">
+      <div class="component-box squo">
+        <div class="component-icon">&#128196;</div>
+        <div class="component-name">SQUO Card</div>
+        <div class="component-desc">Source: BLS Employment Report, March 2024. Block: Status Quo. Finding: 38% of minimum wage workers hold two or more jobs to meet basic expenses.</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">&#128196;</div>
+        <div class="component-name">Outcome Card</div>
+        <div class="component-desc">Source: UC Berkeley Labor Center, 2023. Block: Outcome. Finding: Cities that raised minimum wage to $15 saw a 12% reduction in workers holding multiple jobs within two years.</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">&#128196;</div>
+        <div class="component-name">Impact Card</div>
+        <div class="component-desc">Source: American Journal of Public Health, 2023. Block: Impact. Finding: Workers holding multiple jobs have 40% higher rates of depression and 25% higher rates of cardiovascular disease.</div>
+      </div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What three pieces of information should every evidence card include?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">The full text of the article, the author's biography, and the journal's impact factor</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">The source (author, publication, date), which block it supports (SQUO/Outcome/Impact), and the key finding in one sentence</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">The URL, a direct quote of at least three sentences, and a personal note on why you found it interesting</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">The search query that found it, the page number of the relevant section, and a difficulty rating</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Your evidence cards should contain the full direct quote from the source so you can read it verbatim during your speech.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; Research Efficiency</button>
+  </div>
+
+  <!-- STEP 5: RESEARCH EFFICIENCY -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">Research Efficiency</div>
+    <div class="section-body">
+      <p>The biggest trap in research is the rabbit hole. You start looking for one piece of evidence and suddenly it's 45 minutes later and you've read six fascinating articles that have nothing to do with your argument. <strong>Research without a system is just reading.</strong></p>
+      <p>Here's the system that keeps you efficient:</p>
+      <p><strong>Set a timer.</strong> Give yourself 20 minutes per argument. When the timer goes off, stop. Assess what you have and decide if you need more time or if you should move on.</p>
+      <p><strong>Use a research checklist.</strong> For each argument, you need at minimum:</p>
+      <p>1 SQUO card (proves the problem exists in the current system)</p>
+      <p>1 Outcome card (proves the bill's mechanism actually works)</p>
+      <p>1 Impact angle (shows why the outcome matters to real people)</p>
+      <p>Once you have all three, you have a complete argument. <em>Then</em> you can refine — find a second SQUO card, a stronger Outcome source, a more specific Impact statistic. But don't refine until you have the basics for every argument you're prepping.</p>
+      <p><strong>The priority order:</strong> Outcome evidence first (hardest to find and most important), then SQUO (usually easy — the problem is well-documented), then Impact (often flows naturally from your Outcome research).</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The 20-Minute Research Sprint</div>
+      <div class="callout-text">Minutes 0-5: Read the bill provision related to your argument. Identify the mechanism. Minutes 5-12: Search for Outcome evidence using mechanism keywords. Find at least one source that proves the mechanism works. Minutes 12-17: Search for SQUO evidence. Find at least one source quantifying the current problem. Minutes 17-20: Write your card summaries. Label each card with source, block, and key finding. Done. You now have one complete argument ready to build into a block.</div>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which type of evidence should you prioritize finding first when researching a new argument?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5a',this,'wrong')">Impact evidence — because it's the most emotionally compelling part of the speech</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">SQUO evidence — because you need to prove the problem exists before anything else</button>
+        <button class="option" onclick="mc('q5a',this,'correct')">Outcome evidence — because it's the hardest to find and proves the bill's mechanism actually works</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">Historical evidence — because precedent is always the strongest form of proof</button>
+      </div>
+      <div class="feedback" id="q5a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q5b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">You should fully refine and perfect your first argument's evidence before moving on to research your second argument.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q5b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've mastered the systematic approach to research — from reading the bill first, to using the source hierarchy and keyword strategy, to building organized evidence cards and researching efficiently. You'll never waste time on generic searches again.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128269;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Research Strategist</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'how-to-research';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Exactly. The bill's specific provisions are your research roadmap. Without reading it, you're researching blind.",
+  q2a: "Peer-reviewed research is the gold standard, news reports are useful for context, and opinion pieces are the weakest form of evidence.",
+  q2b: "Government reports are among the strongest sources available. Their nonpartisan methodology makes them highly credible with judges.",
+  q3:  "That's a mechanism search. It targets the specific way untreated dental issues harm seniors — not the generic topic of Medicare expansion.",
+  q4a: "These three tags let you instantly find the right evidence for the right part of your speech. Source for credibility, block for organization, finding for delivery.",
+  q4b: "Your cards should have a one-sentence summary you can deliver from memory. In Congress, you paraphrase evidence — you don't read full quotes verbatim.",
+  q5a: "Outcome evidence is the hardest to find and the most critical. It proves the bill's mechanism actually works, which is the core of your argument.",
+  q5b: "Get the basics for every argument first — one SQUO, one Outcome, one Impact. Only refine after you have complete coverage across all your arguments."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what happens if you research 'healthcare reform' without knowing whether the bill expands Medicaid or caps drug prices. How much time would you waste?",
+  q2a: "Think about which source has been vetted by experts, which one reports on findings, and which one is just personal opinion.",
+  q2b: "Think about who produces government reports. Are agencies like the CBO known for being biased, or are they specifically designed to be nonpartisan?",
+  q3:  "Remember the keyword strategy: search the MECHANISM, not the topic. Which option targets a specific way the bill's provisions affect real outcomes?",
+  q4a: "Think about what you need in the heat of a round. What information lets you quickly find and cite the right evidence for each part of your block?",
+  q4b: "Think about how evidence works in Congressional Debate specifically. Do you read verbatim quotes, or do you paraphrase and cite the source?",
+  q5a: "Think about which type of evidence is easiest to find versus hardest. SQUO evidence (the problem exists) is usually well-documented. Which type requires more digging?",
+  q5b: "Think about risk management. What happens if you spend 40 minutes perfecting one argument and then run out of time to research your second and third arguments?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5a: 'q5b',
+  q5b: 'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

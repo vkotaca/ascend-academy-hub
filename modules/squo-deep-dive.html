@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Status Quo Deep Dive — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Status Quo Deep Dive</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.3 · Congressional Debate</div>
+  <div class="mod-title">The Status Quo Deep Dive</div>
+  <div class="mod-desc">How to construct a SQUO that provides context, proves a problem, and doubles as preemptive refutation.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: WHAT THE SQUO REALLY DOES -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">What the SQUO Really Does</div>
+    <div class="section-body">
+      <p>Most debaters treat the Status Quo like background information — a paragraph of context before they get to the "real" argument. That misunderstanding is exactly why their blocks fall apart under refutation.</p>
+      <p>The SQUO is not background. <strong>It is the foundation of your entire argument.</strong> Its job is to prove that a specific problem exists in the current world — a problem that your Outcome will directly solve. If your SQUO doesn't prove a clear, specific problem, your Outcome has nothing to build on.</p>
+      <p>Here's what makes this tricky: <strong>the SQUO is unique to your argument, not the topic.</strong> Two debaters on the same minimum wage bill can run completely different SQUOs. One debater might focus on the problem of overworked Americans. Another might focus on the racial wage gap. Both are valid — because each debater is proving a different problem that their specific Outcome addresses.</p>
+      <p>Think of it this way: the topic is "minimum wage." Your argument is "overworking." Your SQUO proves overworking is a crisis. Your Outcome proves the bill fixes overworking. If you wrote a SQUO about the general state of minimum wage in America, you'd have background — not an argument foundation.</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Two debaters are arguing the same education reform bill. Debater A's SQUO focuses on teacher shortages. Debater B's SQUO focuses on outdated curricula. Which statement is correct?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">One of them must be wrong — a bill can only have one Status Quo</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Both can be valid because the SQUO is unique to each debater's argument, not the topic</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Debater A is stronger because teacher shortages are a bigger problem</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Both are wrong — the SQUO should cover all problems with education broadly</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; The Tagline</button>
+  </div>
+
+  <!-- STEP 2: THE TAGLINE -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">The Tagline</div>
+    <div class="section-body">
+      <p>Every great SQUO starts with a <strong>tagline</strong> — a single sentence that captures the exact problem you're about to prove. Think of it as the thesis statement of your Status Quo section.</p>
+      <p>The tagline does two critical things: it <strong>tells judges exactly what to listen for</strong> in your evidence, and it <strong>frames the problem in your terms</strong> before anyone can reframe it in theirs. When a judge hears your tagline, they should immediately understand what your argument is about.</p>
+      <p>A strong tagline is specific, opinionated, and sets up a clear problem. Compare these two:</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Weak Tagline</div>
+      "The current minimum wage has been a topic of debate for many years."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Strong Tagline</div>
+      "Workers, who are the backbones of companies, are being squeezed for profit."
+    </div>
+
+    <div class="section-body">
+      <p>The weak tagline is a statement of fact that doesn't commit to a problem. The strong tagline immediately establishes a specific injustice — workers are being exploited. Judges now know exactly what evidence to expect and what problem your argument will solve.</p>
+      <p>Your tagline should be <strong>memorable, assertive, and narrow.</strong> If your tagline could apply to any argument on the topic, it's too broad. If your tagline doesn't suggest a problem, it's too neutral.</p>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A debater arguing a healthcare bill writes this tagline: "Healthcare is an important issue in the United States." What's wrong with it?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2a',this,'wrong')">It mentions the United States, which is too geographically specific</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">Taglines should be questions, not statements</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">It doesn't identify a specific problem — it's a neutral observation that could apply to any healthcare argument</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">It's too short — taglines should be at least two sentences</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A tagline that could apply to any argument on the same topic is a sign that it's too broad.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,false)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Evidence Selection</button>
+  </div>
+
+  <!-- STEP 3: EVIDENCE SELECTION -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Evidence Selection</div>
+    <div class="section-body">
+      <p>After your tagline, you need evidence that <strong>proves the problem is real.</strong> This is where many debaters go wrong — they pick evidence that's interesting but doesn't actually prove their specific problem.</p>
+      <p>Your SQUO card should do one of two things: provide a <strong>statistic that quantifies the problem</strong> or cite <strong>past precedent that demonstrates the problem's pattern.</strong> One strong card is always better than two weak ones. Judges remember the strongest piece of evidence you present, and weak cards dilute the strong ones.</p>
+      <p>The key test: <strong>does this evidence prove MY argument's problem, or does it just relate to the topic?</strong></p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Weak Evidence (Minimum Wage — Overworking Argument)</div>
+      "The federal minimum wage has not been raised since 2009." — This is a fact about minimum wage, but it doesn't prove that workers are being overworked.
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Strong Evidence (Minimum Wage — Overworking Argument)</div>
+      "The Census Bureau, June 2019: more than 13 million minimum wage workers have to work more than one permanent job just to afford rent." — This directly proves workers are being overworked because of low wages.
+    </div>
+
+    <div class="section-body">
+      <p>Notice the difference: both cards are about minimum wage, but only the second one proves the specific problem (overworking) that the argument is built around. The first card is background information. The second is proof.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">A debater is arguing that a criminal justice reform bill is needed because incarceration destroys families. Sort each piece of evidence as either "Strong" (proves the family destruction problem) or "Weak" (relates to the topic but not the specific problem).</div>
+      <div class="drag-area">
+        <div class="drag-label">Evidence cards (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="weak" ondragstart="dragStart(event)">The U.S. has the highest incarceration rate in the world</div>
+          <div class="drag-chip" draggable="true" data-val="strong" ondragstart="dragStart(event)">2.7 million children have a parent behind bars, and 1 in 4 of them develop anxiety or depression</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="strong" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Strong (proves family destruction)</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="weak" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Weak (topic background only)</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; SQUO as Preemptive Refutation</button>
+  </div>
+
+  <!-- STEP 4: SQUO AS PREEMPTIVE REFUTATION -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">SQUO as Preemptive Refutation</div>
+    <div class="section-body">
+      <p>Here's the advanced play that separates good debaters from championship debaters: <strong>a great SQUO doesn't just prove a problem — it makes your entire argument harder to refute.</strong></p>
+      <p>Think about what an opponent has to do to beat your argument. Normally, they attack your Outcome: "The bill won't actually reduce overworking." But if your SQUO has already proven — with hard evidence — that overworking is a massive crisis affecting 13 million workers, the opponent now has a two-step problem:</p>
+      <p><strong>Step 1:</strong> They must disprove that the problem exists (or show it's not that bad).<br>
+      <strong>Step 2:</strong> Only THEN can they attack whether the bill fixes it.</p>
+      <p>Most opponents skip Step 1 and go straight to Step 2. When they do, your SQUO still stands unchallenged — and judges notice. The problem is proven, the solution is questioned, and judges lean toward "even if the solution isn't perfect, the problem clearly needs addressing."</p>
+      <p>This is why your SQUO evidence matters so much. A vague SQUO can be waved away. A SQUO backed by specific data forces opponents to engage with your evidence — and that's a fight they often don't want to have.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Strategic Insight</div>
+      <div class="callout-text">The strongest SQUOs create what coaches call a "two-front war." Opponents must fight your problem AND your solution. If they only fight the solution, your problem stands and judges wonder why we wouldn't try to fix something that's clearly broken.</div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">An opponent attacks your Outcome but never addresses your SQUO. What advantage does this give you?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">None — the Outcome is the only part judges evaluate</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">It means you automatically win the round</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">Your problem stands unchallenged, so judges still accept that something needs to be done — even if the solution is debated</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">It proves the opponent didn't read the legislation</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A SQUO backed by vague, general claims is just as effective for preemptive refutation as one backed by specific data.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; Common Mistakes</button>
+  </div>
+
+  <!-- STEP 5: COMMON MISTAKES -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">Common SQUO Mistakes</div>
+    <div class="section-body">
+      <p>Now that you know what a great SQUO looks like, let's diagnose the three most common mistakes that undermine even well-researched arguments.</p>
+      <p><strong>Mistake 1: Too Broad.</strong> Your SQUO covers the entire topic instead of your specific problem. If your argument is about overworking, don't give judges a history of the minimum wage debate. Every sentence in your SQUO should serve your specific problem.</p>
+      <p><strong>Mistake 2: Too Vague.</strong> Your SQUO gestures at a problem but doesn't prove it with specific data. "Many Americans struggle with low wages" is vague. "13 million minimum wage workers hold two or more jobs" is specific. Judges need numbers, sources, and concrete reality — not impressions.</p>
+      <p><strong>Mistake 3: Too Long.</strong> Your SQUO eats into your Outcome and Impact time. The SQUO should be tight — a tagline plus one strong piece of evidence. If your SQUO is running 90 seconds in a 3-minute speech, you've left yourself no time to prove the solution works or why judges should care. The SQUO sets the table; the Outcome and Impact are the meal.</p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">Match each SQUO problem to the correct mistake category.</div>
+      <div class="drag-area">
+        <div class="drag-label">SQUO problems (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="broad" ondragstart="dragStart(event)">A debater's SQUO on an education bill covers teacher pay, class sizes, AND test scores — none connected to their specific Outcome</div>
+          <div class="drag-chip" draggable="true" data-val="vague" ondragstart="dragStart(event)">A debater says "Healthcare costs are hurting families" but cites no statistics or sources</div>
+          <div class="drag-chip" draggable="true" data-val="long" ondragstart="dragStart(event)">A debater spends 2 minutes on their SQUO in a 3-minute speech, leaving only 60 seconds for Outcome and Impact combined</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="broad" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Too Broad</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="vague" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Too Vague</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="long" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Too Long</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've mastered the Status Quo deep dive. You now know how to write a focused tagline, select evidence that proves your specific problem, and use your SQUO as a preemptive shield against refutation.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128270;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">SQUO Specialist</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'squo-deep-dive';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "The SQUO is unique to your argument, not the topic. Different arguments need different SQUOs, even on the same bill.",
+  q2a: "A tagline must name a specific problem. Neutral observations don't give judges anything to anchor your argument to.",
+  q2b: "If your tagline fits any argument on the topic, it's not doing its job — it needs to point directly at YOUR problem.",
+  q3:  "The incarceration rate is topic background. The children's statistic directly proves that families are being destroyed.",
+  q4a: "This is the 'two-front war' principle. When the problem stands uncontested, judges lean toward fixing it — even if the fix is imperfect.",
+  q4b: "Vague SQUOs can be waved away. Specific data forces opponents to engage with your evidence or concede the problem.",
+  q5:  "Recognizing these mistakes is the first step to avoiding them. Keep your SQUO focused, specific, and concise."
+};
+
+var WRONG_MSGS = {
+  q1:  "Remember: the SQUO proves a specific problem that YOUR argument solves. Different arguments can target different problems on the same bill.",
+  q2a: "Think about what a tagline needs to do — it should tell judges exactly what specific problem to listen for.",
+  q2b: "Think about the purpose of a tagline: to identify YOUR specific problem, not the topic in general.",
+  q3:  "Ask yourself: which evidence directly proves that incarceration destroys families, and which just describes mass incarceration in general?",
+  q4a: "Think about what happens when the problem is proven but the solution is questioned — where does that leave judges?",
+  q4b: "Consider what's easier for an opponent to dismiss: 'things are bad' or '13 million workers hold two jobs'?",
+  q5:  "Read each problem carefully. Is it about covering too much ground, lacking specifics, or taking too much time?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

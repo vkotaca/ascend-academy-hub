@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice &amp; Delivery — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Voice &amp; Delivery</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 4 · Module 4.2 · Congressional Debate</div>
+  <div class="mod-title">Voice &amp; Delivery</div>
+  <div class="mod-desc">Finding your voice, base tone, fluctuation, speed, and passion — how to sound like yourself, not a debate robot.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: FINDING YOUR BASE TONE -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Finding Your Base Tone</div>
+    <div class="section-body">
+      <p>Your natural speaking voice is your starting point. The biggest mistake new debaters make is trying to sound like someone else — imitating a coach, a champion debater they watched on YouTube, or some imagined "debate voice." Judges see through this instantly, and it kills your credibility.</p>
+      <p>Your base tone is the voice you use when you're explaining something you care about to a friend. Not your classroom presentation voice. Not your "talking to adults" voice. The voice you use when you're genuinely passionate about a topic and want someone to understand why it matters.</p>
+      <p><strong>The best speakers in Congress sound conversational, not performative.</strong> They sound like they're talking TO the chamber, not AT the chamber. Think about the difference: a speaker who recites a memorized block sounds like a student giving a report. A speaker who delivers the same content conversationally sounds like a legislator making a case.</p>
+      <p>To find your base tone, try this: record yourself explaining your favorite argument to a friend. Then record yourself delivering the same argument "in debate mode." Listen to both. The first recording is almost always more compelling — that's your base tone. Your job isn't to change your voice for debate. It's to bring your real voice into the chamber.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Try This Exercise</div>
+      <div class="callout-text">Pick any bill topic and explain your position to an empty chair as if your best friend were sitting there. Record it on your phone. Then deliver the same argument as if you were in a round. Compare the two recordings — the conversational version almost always sounds more persuasive.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the best starting point for developing your delivery voice in Congressional Debate?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Study championship round videos and imitate the winning speaker's tone</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Your natural conversational voice when you're genuinely explaining something you care about</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">A loud, projecting voice that fills the room and commands attention</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">A formal, academic tone that signals intelligence and preparation</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Vocal Variety &amp; Fluctuation</button>
+  </div>
+
+  <!-- STEP 2: VOCAL VARIETY AND FLUCTUATION -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Vocal Variety &amp; Fluctuation</div>
+    <div class="section-body">
+      <p><strong>Monotone is the fastest way to lose a judge's attention in Congress.</strong> When every sentence sounds exactly the same — same pitch, same speed, same volume — judges stop listening. Their pen stops moving. Your ranking drops.</p>
+      <p>Vocal variety means intentionally changing your pitch, speed, and volume to match your content. Think of your voice like a highlighter — you use it to mark what's important. If everything is highlighted, nothing stands out. If nothing is highlighted, judges pick what to remember (and they'll pick wrong).</p>
+      <p>Here's how to use each dimension strategically:</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Slow Down for Impacts</div>
+      <div class="callout-text">When you reach the most important line of your speech — the human story, the comparative, the final impact — slow your pace by about 30%. Drop your volume slightly. This creates contrast with the rest of your speech and signals to judges: "This is the part that matters." Example: after building your argument at normal pace, slow down for "That single mother... finally gets to be home... when her kids wake up."</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Speed Up for Evidence</div>
+      <div class="callout-text">When citing statistics or source names, you can increase your pace slightly. This communicates confidence — you know the data cold. But never speed up so much that judges can't follow. The goal is efficiency, not a race. "According to the Bureau of Labor Statistics, 13.2 million Americans hold multiple jobs — an increase of 4% since 2019" — delivered briskly but clearly.</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Pause Before Key Lines</div>
+      <div class="callout-text">A one-second pause before your most important sentence is more powerful than any volume change. It creates anticipation. Judges look up from their ballots. The room gets quiet. Then you deliver. "We've heard a lot about economic theory today. [pause] But here's what this bill actually means for a family of four in rural Ohio."</div>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When should a speaker slow down their delivery pace in a Congressional Debate speech?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2a',this,'wrong')">During evidence citations — judges need time to write down source names</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">During the SQUO section — it's the most complex part of the argument</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">During the impact and key emotional moments — the contrast signals importance</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">Throughout the entire speech — slower always sounds more authoritative</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A one-second pause before a key line can be more powerful than changing your volume.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,false)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Speed &amp; Pacing</button>
+  </div>
+
+  <!-- STEP 3: SPEED AND PACING -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Speed &amp; Pacing</div>
+    <div class="section-body">
+      <p>You have 3 minutes for a speech in Congress. That's short — but <strong>rushing kills your score far more than running out of time.</strong> Judges rank speakers they can follow. A debater who delivers three clear, well-paced arguments will always outrank one who rushes through five arguments that blur together.</p>
+      <p>The ideal pace for Congressional Debate is approximately 140-160 words per minute. That's a conversational speed — about the pace of a news anchor, not an auctioneer. At this speed, judges can write notes, process your logic, and absorb your impacts.</p>
+      <p>Here's a practical reality check: <strong>a well-paced 3-minute speech contains roughly 420-480 words.</strong> That's about 1.5 pages double-spaced. If your speech is significantly longer than that, you'll either rush or run out of time — both hurt your ranking.</p>
+      <p>Many new debaters think more content = better speech. The opposite is true. Judges reward depth over breadth. One fully developed argument with a humanized impact will outscore three rushed arguments with no emotional weight every single time.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Pacing Test</div>
+      <div class="callout-text">Time yourself reading your speech aloud. If it takes less than 2 minutes 30 seconds, you're rushing. If it takes more than 3 minutes 15 seconds, you need to trim. The sweet spot is 2:45 to 3:00 — leaving a few seconds of buffer for natural pauses and audience reaction.</div>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">Match each pacing strategy to when you should use it in a Congressional Debate speech.</div>
+      <div class="drag-area">
+        <div class="drag-label">Pacing strategies (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="brisk" ondragstart="dragStart(event)">Slightly faster, efficient delivery</div>
+          <div class="drag-chip" draggable="true" data-val="slow" ondragstart="dragStart(event)">Slow, deliberate delivery with pauses</div>
+          <div class="drag-chip" draggable="true" data-val="conversational" ondragstart="dragStart(event)">Steady, conversational pace</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="conversational" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">SQUO setup and Outcome explanation</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="brisk" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Evidence citations and statistics</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="slow" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Impact and comparative moments</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Passion &amp; Authenticity</button>
+  </div>
+
+  <!-- STEP 4: PASSION AND AUTHENTICITY -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Passion &amp; Authenticity</div>
+    <div class="section-body">
+      <p><strong>Judges reward speakers who sound like they CARE about what they're saying.</strong> This isn't about faking enthusiasm or performing emotion. It's about genuinely connecting with your own argument. If you're bored by your own case, judges will be too.</p>
+      <p>Here's the uncomfortable truth: most debaters treat their speeches like homework. They write a technically correct block, memorize it, and recite it. The content might be strong, but the delivery says "I'm performing a task," not "I believe in what I'm saying."</p>
+      <p>The fix is simple but requires honesty. For every argument you prep, ask yourself: <strong>"What part of this actually matters to me?"</strong> Maybe you're arguing for a healthcare bill and you have a family member who struggled with medical debt. Maybe you're arguing for education reform and you've seen underfunded schools firsthand. That personal connection — even if you never mention it explicitly — changes how you deliver the argument.</p>
+      <p>When you find that connection, lean into it. Let your voice carry genuine weight during the impact. Let your eyes show that you mean what you're saying. Judges can tell the difference between performed passion and real conviction. Real conviction wins ballots.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Technically Correct but Flat Delivery</div>
+      "The status quo is failing low-income students. According to the National Center for Education Statistics, schools in the lowest income quartile receive 15.6% less per-pupil funding. This bill addresses that disparity."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Same Content with Genuine Conviction</div>
+      "Right now, a student's zip code determines the quality of their education. Not their effort. Not their potential. Their address. Schools in the lowest income quartile receive 15.6% less per-pupil funding — and every dollar missing is a book that isn't bought, a teacher that isn't hired, a future that's cut short before it starts."
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the most reliable way to bring authentic passion to your delivery?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">Practice raising your volume during the impact section of every speech</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">Watch videos of passionate speakers and mirror their facial expressions</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">Find a genuine personal connection to your argument and let that conviction show in your delivery</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">Memorize your block perfectly so you never break eye contact with judges</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Judges cannot tell the difference between performed passion and genuine conviction.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; Common Delivery Mistakes</button>
+  </div>
+
+  <!-- STEP 5: COMMON DELIVERY MISTAKES -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">Common Delivery Mistakes</div>
+    <div class="section-body">
+      <p>Even debaters with strong arguments sabotage their rankings through delivery mistakes they don't realize they're making. Here are the five most common — and how to fix each one.</p>
+      <p><strong>1. Reading off paper without looking up.</strong> This is the single most damaging delivery habit. When you read, you lose eye contact, your voice drops, and you sound like you're reciting someone else's words. The fix: practice speaking your blocks out loud before the round, not just reading them silently. Know your content well enough to glance down at bullet points rather than reading full sentences.</p>
+      <p><strong>2. Speaking too fast.</strong> Anxiety speeds you up. You think you're going at normal pace, but judges are struggling to keep up. The fix: during practice rounds, have a friend raise their hand every time you rush. You'll be surprised how often it happens.</p>
+      <p><strong>3. Monotone delivery.</strong> Same pitch, same volume, same speed for 3 minutes straight. The fix: mark your speech with delivery notes. Underline words to emphasize. Draw a slash where you want to pause. Write "SLOW" next to your impact section.</p>
+      <p><strong>4. Fake enthusiasm.</strong> The opposite of monotone — forced energy that doesn't match your content. You can hear it: every sentence sounds excited, even when delivering dry evidence. The fix: let your energy match your content. Evidence should sound confident, not excited. Impacts should sound convicted, not theatrical.</p>
+      <p><strong>5. Vocal filler.</strong> "Um," "uh," "like," "so," "you know" — these creep in when you're thinking of what to say next. One or two per speech is human. Ten or more is distracting. The fix: replace filler with silence. A pause sounds intentional. An "um" sounds unprepared.</p>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">Match each delivery mistake with its most effective fix.</div>
+      <div class="drag-area">
+        <div class="drag-label">Fixes (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="practice-aloud" ondragstart="dragStart(event)">Practice blocks out loud beforehand — use bullet points, not full sentences</div>
+          <div class="drag-chip" draggable="true" data-val="mark-speech" ondragstart="dragStart(event)">Mark your speech with delivery notes — underline emphasis, add pause slashes</div>
+          <div class="drag-chip" draggable="true" data-val="replace-silence" ondragstart="dragStart(event)">Replace filler words with deliberate pauses</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="practice-aloud" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Reading off paper without looking up</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="mark-speech" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Monotone delivery</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="replace-silence" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Excessive vocal filler ("um," "uh," "like")</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127908;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've mastered Voice &amp; Delivery — from finding your natural base tone and using vocal variety strategically, to pacing your speeches, bringing authentic passion, and eliminating common delivery mistakes. Your voice is your most powerful tool in the chamber.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#127775;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Voice Commander</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'voice-delivery';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Your natural conversational voice is always the best starting point. Judges reward speakers who sound genuine, not performers who sound rehearsed.",
+  q2a: "Slowing down during impacts creates contrast with your normal pace and signals to judges that this is the moment that matters most.",
+  q2b: "Strategic pauses create anticipation and draw judges' attention more effectively than volume alone. The silence before a key line makes that line land harder.",
+  q3:  "Matching your pace to your content is the key to effective delivery. Conversational for logic, brisk for evidence, slow for impact.",
+  q4a: "Genuine connection to your argument is what separates memorable speakers from forgettable ones. Find the part of your case that truly matters to you.",
+  q4b: "Judges are experienced at reading speakers. Performed passion sounds hollow, while genuine conviction creates a connection that affects rankings.",
+  q5:  "Each delivery mistake has a specific, practical fix. The common thread is preparation — practicing out loud catches most of these issues before the round."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what makes a speaker sound authentic versus rehearsed. Which approach helps you sound like YOU rather than an imitation?",
+  q2a: "Think about which parts of a speech carry the most emotional weight. Where does contrast in pacing create the biggest effect?",
+  q2b: "Think about what happens in a conversation when someone suddenly goes quiet before saying something important. What effect does that silence create?",
+  q3:  "Consider the purpose of each section. Where do you need judges to absorb logic? Where do you need them to write quickly? Where do you need them to feel?",
+  q4a: "Think about the difference between performed passion and genuine conviction. Which approach is sustainable and which do judges see through?",
+  q4b: "Think about your own experience listening to speakers. Can you usually tell when someone genuinely believes what they're saying versus when they're performing?",
+  q5:  "Think about the root cause of each mistake. Reading too much? You need to know your content better. Monotone? You need visual cues in your speech."
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross-Examination Strategy — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Cross-Examination Strategy</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 4 · Module 4.7 · Congressional Debate</div>
+  <div class="mod-title">Cross-Examination Strategy</div>
+  <div class="mod-desc">How to ask questions that expose weaknesses, handle hostile questioning, and use CX to set up your next speech.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Why CX Matters</div>
+    <div class="section-body">
+      <p>Cross-examination is one of the most underused scoring opportunities in Congressional Debate. Most debaters treat CX as a formality — a brief interruption between speeches. <strong>Championship debaters treat it as a weapon.</strong></p>
+      <p>Here's why CX matters more than most competitors realize:</p>
+      <p><strong>It's a scoring opportunity.</strong> Judges notice who asks questions and how sharp those questions are. A well-crafted CX question demonstrates intellectual engagement, critical thinking, and mastery of the issue. These are all things judges reward on the ballot.</p>
+      <p><strong>It affects perception.</strong> Even if CX doesn't have a formal scoring category on every ballot, it shapes how judges view you. A debater who asks incisive questions is perceived as smarter, more prepared, and more engaged — and that perception carries over into how they evaluate your speech.</p>
+      <p><strong>It sets up arguments.</strong> The most strategic use of CX is to preview your own argument. Ask about the weakness you're about to exploit. When the speaker gives a weak answer — and they usually will, because you've identified a genuine gap — you've just set up your next speech with a live demonstration of the flaw you're about to address.</p>
+      <p>You only get about 30 seconds. That's enough time for one, maybe two questions. Make them count.</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the most strategic purpose of asking a CX question?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">To embarrass the speaker in front of judges</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">To show judges you're paying attention even when you're not speaking</button>
+        <button class="option" onclick="mc('q1',this,'correct')">To expose a weakness you're about to address in your own speech, setting up your argument with a live demonstration</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">To use up the speaker's remaining time so they can't make more points</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Asking Good Questions</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Asking Good Questions</div>
+    <div class="section-body">
+      <p>The best CX questions share two qualities: they are <strong>specific</strong> and they <strong>expose genuine gaps</strong> in the speaker's argument. Vague questions get vague answers. Specific questions force the speaker to either reveal a weakness or dodge the question — both of which work in your favor.</p>
+      <p>Effective question templates:</p>
+      <p><strong>Challenge the evidence:</strong> "Your evidence is from 2016 — given that the policy landscape has shifted significantly since the 2020 reforms, do you have anything more current?" This targets outdated evidence with a specific reason why the date matters.</p>
+      <p><strong>Expose a logical gap:</strong> "Your Status Quo describes the problem clearly, but your Outcome doesn't explain the specific mechanism by which this bill addresses it. Can you walk me through that causal chain?" This forces the speaker to either fill the gap (unlikely on the spot) or reveal that it exists.</p>
+      <p><strong>Test the impact:</strong> "You mentioned this bill would create jobs, but you didn't quantify how many or over what timeframe. Can you be more specific?" This challenges vague impact claims with a demand for precision.</p>
+      <p><strong>Reveal an unaddressed tradeoff:</strong> "You've argued this bill reduces costs, but haven't addressed the CBO's projection that it would also reduce coverage for 2 million people. How do you weigh those two outcomes?" This introduces information the speaker likely didn't prepare for.</p>
+      <p>Notice the pattern: every strong question is based on something specific the speaker said (or didn't say). <strong>You have to be listening carefully to ask good questions.</strong></p>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A broad question like "Don't you think your argument has some problems?" is effective because it gives the speaker room to reveal weaknesses on their own.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2a',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2a',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A speaker argued that a trade bill will boost GDP but didn't explain how. Which CX question is most effective?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2b',this,'wrong')">Don't you think trade is complicated?</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">Are you sure about your argument?</button>
+        <button class="option" onclick="mc('q2b',this,'correct')">You claimed this bill boosts GDP, but which specific provision creates that growth, and through what mechanism?</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">Why do you support this bill?</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Setting Up Your Speech</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Setting Up Your Speech</div>
+    <div class="section-body">
+      <p>The most powerful use of CX is <strong>previewing the argument you're about to make.</strong> When done well, your CX question and your speech form a one-two punch that judges find incredibly compelling.</p>
+      <p>Here's how it works:</p>
+      <p><strong>Step 1: Identify the weakness you plan to exploit.</strong> Before you ask your question, know exactly what gap in the speaker's argument you're going to build your speech around.</p>
+      <p><strong>Step 2: Ask about that weakness.</strong> Your CX question should probe exactly the point where the speaker's argument is weakest. Their answer — whether a weak defense or an outright dodge — becomes exhibit A in your speech.</p>
+      <p><strong>Step 3: Reference the CX exchange in your speech.</strong> When you stand up to speak, open with: "I asked the previous speaker about [X], and they couldn't provide a satisfactory answer. That's because [your argument]." The judge watched the exchange happen in real time — now you're framing it.</p>
+      <p>For example, if you're about to argue that a jobs bill lacks a credible implementation mechanism, ask the aff speaker: "Can you explain which specific agency would administer this program and with what funding?" When they fumble, you've just demonstrated live — in front of the judge — the exact weakness you're about to spend three minutes dissecting.</p>
+      <p>This technique is powerful because it turns CX from a standalone moment into <strong>the opening act of your speech.</strong></p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What makes the "CX-to-speech" technique so effective?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">It lets you speak for longer than the normal time limit</button>
+        <button class="option" onclick="mc('q3',this,'correct')">The judge witnessed the weakness in real time during CX, so your speech's analysis of that weakness feels proven rather than theoretical</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">It embarrasses the previous speaker so judges rank them lower</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">CX questions count for double points in most judging rubrics</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Handling Hostile Questions</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Handling Hostile Questions</div>
+    <div class="section-body">
+      <p>CX isn't just about asking questions — sometimes you're the one being questioned. And when a skilled questioner targets a genuine weakness in your argument, <strong>how you respond matters as much as what you say.</strong></p>
+      <p>Four rules for handling tough CX questions:</p>
+      <p><strong>1. Stay calm.</strong> The worst thing you can do is get flustered, defensive, or visibly rattled. Judges watch your composure under pressure. A calm response to a hard question earns more respect than a perfect response delivered with anxiety.</p>
+      <p><strong>2. Be concise.</strong> Don't ramble. Long, winding answers look like you're trying to avoid the question. A brief, direct response — even if it doesn't fully address the point — is always better than a nervous monologue.</p>
+      <p><strong>3. Pivot strategically.</strong> If a question targets a weakness you can't defend, redirect to your argument's strength: "That's a fair point about the implementation timeline, but the core of my argument is that the economic benefit of $47 billion outweighs those logistical concerns." You've acknowledged the point without conceding your entire argument.</p>
+      <p><strong>4. Never get defensive.</strong> Phrases like "That's not what I said" or "You're twisting my argument" make you look combative. Instead, restate your position positively: "What I'm arguing is [X], and the evidence from [Y] supports that." Let the judge decide who's right.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Composure Rule</div>
+      <div class="callout-text">If you don't know the answer to a CX question, don't fake it. Judges can tell. Instead, pivot: "I don't have that specific data point, but what I can tell you is that the broader trend supports my argument because..." Honesty with a redirect beats a bad bluff every time.</div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each CX response strategy to the correct situation.</div>
+      <div class="drag-area">
+        <div class="drag-label">Strategies (drag these):</div>
+        <div class="drag-source" id="drag-source-4a">
+          <div class="drag-chip" draggable="true" data-val="pivot" ondragstart="dragStart(event)">Acknowledge the point, then redirect to your argument's core strength</div>
+          <div class="drag-chip" draggable="true" data-val="concise" ondragstart="dragStart(event)">Give a brief, direct answer without overexplaining</div>
+          <div class="drag-chip" draggable="true" data-val="restate" ondragstart="dragStart(event)">Positively restate your position without being combative</div>
+        </div>
+        <div class="drag-targets" id="q4a-targets">
+          <div class="drag-target" data-correct="concise" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">You know the answer and it's straightforward</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="pivot" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">The question targets a genuine weakness</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="restate" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">The questioner mischaracterizes your argument</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If a CX questioner mischaracterizes your argument, the best response is to say "That's not what I said — you're twisting my words."</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; The 30-Second Rule</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">The 30-Second Rule</div>
+    <div class="section-body">
+      <p>In Congressional Debate, CX periods are brief — typically 30 seconds. That's not enough time for a cross-examination battle. <strong>It's enough time for exactly one focused question.</strong></p>
+      <p>This constraint means everything about your CX approach must be distilled to maximum efficiency:</p>
+      <p><strong>Ask ONE question, not a compound.</strong> "How does your bill address both the funding gap AND the implementation timeline?" is two questions disguised as one. The speaker will answer whichever is easier and ignore the harder one. Instead, pick the more impactful question and ask it alone.</p>
+      <p><strong>Make it specific.</strong> The more specific your question, the harder it is to dodge. "How does your bill fix this problem?" is easy to deflect. "Which provision in the bill creates the job training mechanism you described, and what's the projected cost per participant?" requires a real answer.</p>
+      <p><strong>Don't ask questions you don't want answered.</strong> If the speaker has strong evidence on a point, don't ask about it. You'll give them a platform to reinforce their argument. Only ask questions where a weak answer (or no answer) helps you.</p>
+      <p><strong>Know your question before the speech ends.</strong> Don't wait until CX starts to think of something. Formulate your question during the speech, so when the PO calls for questions, your hand goes up instantly. Speed signals preparation.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Pre-Loaded Question</div>
+      <div class="callout-text">Write down your CX question while the speaker is still talking. By the time they finish, you should already have your question ready and your hand up. The first questioner gets the most attention from judges — and the best questions come from active listening, not last-second improvisation.</div>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why should you avoid asking compound questions during CX?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5a',this,'wrong')">Because compound questions are against the rules in Congressional Debate</button>
+        <button class="option" onclick="mc('q5a',this,'correct')">Because the speaker will answer whichever part is easier and ignore the harder, more impactful part</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">Because judges prefer speakers who only ask simple questions</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">Because compound questions take too long to ask in the 30-second window</button>
+      </div>
+      <div class="feedback" id="q5a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q5b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">You should wait until the CX period starts to think of a question, so you can consider the entire speech before deciding what to ask.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q5b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now know how to use CX strategically — asking questions that expose weaknesses, setting up your own speeches, handling hostile questions with composure, and maximizing your 30 seconds. CX is no longer a formality — it's your secret weapon.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Cross-Examination Tactician</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'cx-strategy';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "The most strategic CX question sets up your next speech. When the speaker reveals a weakness live, your speech about that weakness feels proven before you even start.",
+  q2a: "Broad questions get broad (useless) answers. Specific questions force speakers to either reveal a gap or dodge — both of which work in your favor.",
+  q2b: "This question targets the exact mechanism gap. The speaker must either explain the specific provision and its economics, or admit they can't.",
+  q3:  "Judges saw the weakness in real time. Your speech becomes a post-mortem on what they just witnessed — that's infinitely more compelling than theoretical analysis.",
+  q4a: "Different situations call for different responses. Direct answers for straightforward questions, pivots for weaknesses, and positive restatements for mischaracterizations.",
+  q4b: "Combative language makes you look defensive. Positively restating your position is more effective and looks more composed to judges.",
+  q5a: "Compound questions let speakers cherry-pick the easy half. One focused, specific question is much harder to dodge than two vague ones combined.",
+  q5b: "Formulate your question during the speech so your hand goes up instantly when CX begins. Speed signals preparation and engagement."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think beyond scoring. What's the most powerful thing you can accomplish in 30 seconds of CX that carries into the rest of the round?",
+  q2a: "Think about what happens when you ask a vague question. Does the speaker reveal weaknesses voluntarily, or do they give a comfortable, vague answer?",
+  q2b: "Which question targets a specific gap in the argument that the speaker will struggle to fill on the spot?",
+  q3:  "Think about what the judge experienced. They watched the CX exchange happen. How does that change how they hear your speech?",
+  q4a: "Match each strategy to the scenario where it works best. When do you need to pivot? When can you be direct? When should you restate?",
+  q4b: "How do judges perceive combative language? Is there a way to correct a mischaracterization that looks composed instead of defensive?",
+  q5a: "Think about what the speaker does when faced with a two-part question. Do they answer both parts equally?",
+  q5b: "Think about speed and preparation. Who gets called on first — the person with their hand up instantly, or the one still thinking?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5a: 'q5b',
+  q5b: 'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

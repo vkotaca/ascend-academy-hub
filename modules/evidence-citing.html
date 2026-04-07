@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evidence &amp; Citing Sources — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Evidence &amp; Citing Sources</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 4</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 3 · Module 3.5 · Congressional Debate</div>
+  <div class="mod-title">Evidence &amp; Citing Sources</div>
+  <div class="mod-desc">What makes evidence credible, how to cite it in round, and how to attack weak evidence from opponents.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 4</div>
+    <div class="section-title">What Makes Evidence Credible</div>
+    <div class="section-body">
+      <p>Not all evidence is created equal. In Congressional Debate, judges evaluate the <strong>quality of your sources</strong> just as much as the content of your arguments. Using weak evidence can actually hurt you more than using no evidence at all — because it signals that you don't know the difference.</p>
+      <p>Here's the credibility hierarchy, from strongest to weakest:</p>
+      <p><strong>Tier 1: Academic journals and government reports.</strong> Peer-reviewed research from institutions like the National Bureau of Economic Research, Congressional Budget Office, or major universities. These are the gold standard because they've been vetted by experts.</p>
+      <p><strong>Tier 2: Major think tanks and research organizations.</strong> Brookings Institution, RAND Corporation, Pew Research Center. These produce rigorous analysis, though they may have identifiable leanings.</p>
+      <p><strong>Tier 3: Major news outlets' reporting.</strong> The New York Times, Wall Street Journal, Reuters. Their investigative reporting is generally reliable, but distinguish between reporting and opinion sections.</p>
+      <p><strong>Tier 4: Opinion pieces and advocacy organizations.</strong> These have clear agendas. Not useless, but judges discount them heavily. If your best evidence comes from an advocacy group, your argument has a credibility problem.</p>
+      <p>Beyond source quality, two other factors matter: <strong>recency</strong> (2023 data beats 2015 data — conditions change) and <strong>specificity</strong> (exact numbers beat vague claims like "studies show").</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Credibility Shortcut</div>
+      <div class="callout-text">When in doubt, start your research with the Congressional Budget Office (CBO) and Congressional Research Service (CRS). Both are nonpartisan, highly respected, and specifically analyze legislation — exactly what you need in Congress.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Rank these evidence sources from most credible (top) to least credible (bottom) for a Congressional Debate speech.</div>
+      <div class="drag-area">
+        <div class="drag-label">Sources (drag these):</div>
+        <div class="drag-source" id="drag-source-1">
+          <div class="drag-chip" draggable="true" data-val="tier3" ondragstart="dragStart(event)">Reuters investigative report</div>
+          <div class="drag-chip" draggable="true" data-val="tier1" ondragstart="dragStart(event)">Congressional Budget Office analysis</div>
+          <div class="drag-chip" draggable="true" data-val="tier4" ondragstart="dragStart(event)">Blog post from an advocacy group</div>
+          <div class="drag-chip" draggable="true" data-val="tier2" ondragstart="dragStart(event)">Brookings Institution study</div>
+        </div>
+        <div class="drag-targets" id="q1-targets">
+          <div class="drag-target" data-correct="tier1" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">Most Credible</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="tier2" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">2nd Most Credible</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="tier3" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">3rd Most Credible</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="tier4" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">Least Credible</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; How to Cite in Round</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 4</div>
+    <div class="section-title">How to Cite in Round</div>
+    <div class="section-body">
+      <p>Citing evidence in a speech isn't the same as writing an academic paper. You need to be <strong>brief, clear, and authoritative.</strong> Judges need enough information to trust your source, but not so much that your citation eats into your argument time.</p>
+      <p>The standard Congressional Debate citation format is: <strong>"Author or Organization, Publication, Date: [quote or paraphrase]."</strong></p>
+      <p>For example: "According to Ben Zipperer at the Economic Policy Institute, February 2019, a $15 minimum wage would raise earnings for 33.5 million workers while causing minimal job displacement."</p>
+      <p>Key rules for in-round citations:</p>
+      <p><strong>1. Lead with the organization.</strong> "The Congressional Budget Office" carries more weight than a name judges don't recognize. If the author is well-known, use their name. If not, lead with the organization.</p>
+      <p><strong>2. Include the year.</strong> Judges will mentally discount evidence that sounds old. If your source is recent, make sure they know: "...in their 2024 analysis..."</p>
+      <p><strong>3. Keep it flowing.</strong> Weave citations into your speech naturally: "The CBO's March 2024 analysis confirms this — they project a 2.1% GDP increase over five years." Don't stop your speech to formally announce a citation.</p>
+      <p><strong>4. Never cite the URL.</strong> Judges don't need "www.cbo.gov/publication/59234." They need the organization, date, and the relevant finding.</p>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which is the best way to cite evidence during a Congressional Debate speech?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2a',this,'wrong')">According to www.cbo.gov/report/59234, the federal deficit will increase by $1.4 trillion</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">The Congressional Budget Office's 2024 analysis projects the federal deficit will increase by $1.4 trillion over the next decade</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">Studies show the deficit will increase significantly</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">I found a report online that says the deficit goes up by a lot</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">When citing evidence, you should always stop your speech and formally announce the full citation with author name, publication, volume number, and date before continuing.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Using Evidence Strategically</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 4</div>
+    <div class="section-title">Using Evidence Strategically</div>
+    <div class="section-body">
+      <p>Evidence is a tool, not a crutch. The most common mistake debaters make is treating evidence as a substitute for reasoning: they cite a statistic and act like the argument is made. <strong>Evidence supports your reasoning — it doesn't replace it.</strong></p>
+      <p>Here's the strategic approach:</p>
+      <p><strong>One strong card is better than three weak ones.</strong> If you have one study from the CBO and three from opinion blogs, use only the CBO study. Stacking weak evidence dilutes your credibility — judges notice when you're padding.</p>
+      <p><strong>Lead with your best evidence.</strong> Place your most powerful statistic or study early in your argument. First impressions matter, and judges are most attentive at the start of your speech. Don't save your best card for the end when attention has waned.</p>
+      <p><strong>Place statistics where they reinforce your warrant.</strong> A warrant is your reasoning — the "why" behind your argument. Statistics should land right after your warrant to prove it: "This bill's job training provision works because it targets industries with documented labor shortages. The Bureau of Labor Statistics reports 1.8 million unfilled positions in skilled trades as of 2024 — exactly the gap this program is designed to close."</p>
+      <p><strong>Never let evidence stand alone.</strong> Always explain what your evidence means for the debate. "The CBO says X" isn't enough. "The CBO says X, which means Y for this bill, because Z" — that's a complete evidentiary argument.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">You have one CBO study and three blog post citations that all support your argument. What's the best approach?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Use all four citations to show you did extensive research</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Use only the CBO study — one strong card is more credible than padding with weak sources</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Lead with the blog posts to build up to the CBO study as your closer</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Skip all evidence and focus on logical reasoning alone</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Attacking Weak Evidence</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 4</div>
+    <div class="section-title">Attacking Weak Evidence</div>
+    <div class="section-body">
+      <p>Knowing how to evaluate evidence isn't just about strengthening your own speeches — it's about <strong>identifying and exposing weaknesses in opponents' evidence</strong> during CX or in your own speeches. This is one of the most effective ways to undermine an opposing argument.</p>
+      <p>Four common evidence weaknesses to target:</p>
+      <p><strong>1. Outdated sources.</strong> Data from 2014 about the economy, healthcare, or technology is practically ancient. Challenge it directly: "Senator, your evidence is from 2016. Given that the policy landscape has shifted dramatically since then, do you have anything more current?"</p>
+      <p><strong>2. Biased organizations.</strong> If an opponent cites an advocacy group, point out the bias: "Your source, the National Association of [Industry], has a financial interest in opposing this regulation. Do you have a nonpartisan source that supports the same conclusion?"</p>
+      <p><strong>3. Cherry-picked statistics.</strong> Opponents often cite one favorable data point while ignoring the broader trend. Call it out: "You cited the one quarter where employment dropped, but the overall trend shows 18 months of consecutive growth. One data point doesn't override the trend."</p>
+      <p><strong>4. Evidence that doesn't prove the claim.</strong> Sometimes evidence sounds relevant but doesn't actually support the argument being made. "Your study shows that people support this policy in polls, but public opinion doesn't prove the policy will be effective. Those are two different questions."</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The CX Evidence Trap</div>
+      <div class="callout-text">In CX, ask opponents about the date and source of their evidence. Many debaters cite vague "studies" without knowing the actual source. A simple "Can you tell me which study that's from?" often reveals that they don't know — and judges notice.</div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each evidence weakness to the correct attack.</div>
+      <div class="drag-area">
+        <div class="drag-label">Attacks (drag these):</div>
+        <div class="drag-source" id="drag-source-4a">
+          <div class="drag-chip" draggable="true" data-val="outdated" ondragstart="dragStart(event)">Your data is from 2015 — the landscape has changed significantly since then</div>
+          <div class="drag-chip" draggable="true" data-val="cherry" ondragstart="dragStart(event)">You cited one quarter but the 18-month trend shows the opposite</div>
+          <div class="drag-chip" draggable="true" data-val="biased" ondragstart="dragStart(event)">That organization has a financial stake in this debate</div>
+        </div>
+        <div class="drag-targets" id="q4a-targets">
+          <div class="drag-target" data-correct="outdated" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Outdated Source</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="biased" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Biased Organization</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="cherry" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Cherry-Picked Stats</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">An opponent says: "A poll shows 72% of Americans support this bill, proving it's good policy." What's the best response?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4b',this,'wrong')">72% is actually not that high of a number</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Polls are always unreliable and should never be used as evidence</button>
+        <button class="option" onclick="mc('q4b',this,'correct')">Public support doesn't prove policy effectiveness — popularity and efficacy are different questions entirely</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">You need to tell us which polling organization conducted that survey</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now know how to evaluate evidence quality, cite sources effectively in round, use evidence strategically, and attack weak evidence from opponents. Your arguments just got a lot harder to beat.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Evidence Expert</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'evidence-citing';
+var TOTAL_STEPS = 4;
+
+var CORRECT_MSGS = {
+  q1:  "Government reports and academic journals sit at the top because they're nonpartisan and peer-reviewed. Advocacy groups sit at the bottom because they have built-in biases.",
+  q2a: "Organization name, date, and the key finding — woven naturally into your speech. That's all judges need to trust your evidence.",
+  q2b: "Citations should flow naturally within your speech. Stopping to formally announce every citation wastes time and breaks your momentum.",
+  q3:  "Quality over quantity. One authoritative source is more persuasive than a stack of weak ones. Judges respect restraint.",
+  q4a: "Each type of weakness requires a specific attack. Outdated sources need recency challenges, biased sources need credibility challenges, and cherry-picked stats need context.",
+  q4b: "This is the evidence-doesn't-prove-the-claim weakness. A poll about popularity says nothing about whether the policy will actually work."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about which sources have the most rigorous vetting process. Government analysis agencies are nonpartisan by mandate, while advocacy groups exist to push a viewpoint.",
+  q2a: "Which option gives the judge the source name, date, and specific finding without wasting time on unnecessary details?",
+  q2b: "Think about speech flow. Does a formal citation pause help or hurt your delivery momentum?",
+  q3:  "Remember: stacking weak evidence dilutes your credibility. What does it signal to judges when most of your sources are low-tier?",
+  q4a: "Match the specific language of each attack to the weakness it addresses. One challenges the date, one challenges the source's motivation, and one challenges the scope of the data.",
+  q4b: "Focus on the logical gap in the argument. Does popular support actually prove a policy will work? What's the real flaw here?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Block Format in Late Rounds — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Block Format: Late Rounds</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.9 · Congressional Debate</div>
+  <div class="mod-title">Block Format in Late Rounds</div>
+  <div class="mod-desc">How the block format evolves as the round progresses — identifying clash, cutting content, and controlling the narrative.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: WHY LATE ROUNDS ARE DIFFERENT -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Why Late Rounds Are Different</div>
+    <div class="section-body">
+      <p>By the 3rd or 4th cycle of speeches on a bill, the debate has fundamentally changed. Most arguments have been made. The obvious aff and neg positions have been staked out, clashed over, and reinforced. <strong>Judges don't want to hear the same points again.</strong></p>
+      <p>This is where most debaters fail. They walk up with the same prepped speech they would have given in the first cycle — same SQUO, same outcome, same impact — and judges tune out within 30 seconds. The speech might be technically sound, but it adds nothing to the debate.</p>
+      <p>Late-round speeches must do three things that early-round speeches don't: <strong>engage with what's been said</strong> (prove you've been listening), <strong>fill gaps</strong> (cover what hasn't been addressed), and <strong>demonstrate higher-level understanding</strong> (show you see the debate as a whole, not just your one argument).</p>
+      <p>The reward for mastering late-round speaking is enormous. Judges save their highest ranks for speakers who can do this — because it's the hardest skill in Congress and the one that demonstrates the most competitive maturity.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Late-Round Test</div>
+      <div class="callout-text">Ask yourself before you speak: "If a judge has been listening to every speech for the past 45 minutes, does MY speech add something they haven't heard yet?" If the answer is no, you're not ready to speak. Rewrite until the answer is yes.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why do judges typically give their highest ranks to late-round speakers?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Because late-round speakers get more time to prepare their speech</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Because judges are more alert and attentive in later cycles</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Because late-round speaking requires engaging with the full debate, filling gaps, and demonstrating higher-level understanding</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Because late-round speakers always have better evidence than early speakers</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → Identifying the Central Clash</button>
+  </div>
+
+  <!-- STEP 2: IDENTIFYING THE CENTRAL CLASH -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Identifying the Central Clash</div>
+    <div class="section-body">
+      <p>Every debate, no matter how many arguments are made, eventually narrows to <strong>1-2 key points of disagreement.</strong> These are the central clashes — the core questions that the entire round is really about.</p>
+      <p>For example, on a universal healthcare bill, the round might start with a dozen different arguments. But by the 3rd cycle, the central clash has emerged: "Does expanding coverage actually improve health outcomes, or does it just increase wait times and reduce quality?" Every other argument feeds into one side or the other of that question.</p>
+      <p>Your job in late rounds is to <strong>name the central clash explicitly</strong> and then build your speech around resolving it. This is what judges want to hear — not another isolated argument, but a speech that addresses the fundamental question the debate has been circling.</p>
+      <p>Naming the clash sounds like this: "This debate has come down to one question: [X]. The affirmation says [A], the negation says [B]. I'm going to prove why [A/B] is correct." That opening alone tells judges you understand the debate at a level most speakers don't.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Naming the Clash (Criminal Justice Bill)</div>
+      "After eight speeches, this debate has crystallized around a single question: does reducing mandatory minimums make communities less safe, or does it allow judges to deliver more just sentences? The negation has argued that mandatory minimums deter crime. The affirmation has argued they fill prisons with nonviolent offenders. I'm going to resolve this clash by proving that states which have already reduced mandatory minimums have seen no increase in violent crime — proving that deterrence was never the mechanism keeping communities safe."
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">In late rounds, it's better to introduce a completely new argument unrelated to the debate's central clash than to engage with what's been discussed.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2a',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2a',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which opening best demonstrates that a speaker has identified the central clash?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2b',this,'wrong')">I stand in affirmation of this bill. My argument today is about economic growth.</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">The previous speaker was wrong, and I'm going to explain why.</button>
+        <button class="option" onclick="mc('q2b',this,'correct')">This debate has come down to one question: does the benefit to rural hospitals outweigh the cost to taxpayers? I'll resolve that clash today.</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">I have three arguments for why we should negate this bill.</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → Cutting Content</button>
+  </div>
+
+  <!-- STEP 3: CUTTING CONTENT -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Cutting Content</div>
+    <div class="section-body">
+      <p>Here's the hardest lesson for debaters who prep hard: <strong>most of your prepped material should be cut by the 4th cycle.</strong> Not because it's bad, but because the round has moved past it.</p>
+      <p>Your pre-prepped SQUO might be irrelevant if three speakers have already established the same problem. Cut it — or reduce it to one sentence that acknowledges what's been said. Your outcome might overlap with what the 2nd speaker argued. Trim it to just the new angle. Your impact might land differently now that the debate has shifted to a different central question. Reframe it.</p>
+      <p>Late-round speeches are about <strong>EFFICIENCY</strong> — say only what's new and what matters. A tight 2-minute speech that adds one crucial new piece to the debate will always outrank a bloated 3-minute speech that repeats what's been said.</p>
+      <p>Practical cutting rules:</p>
+      <p><strong>1. If it's been said, don't say it again.</strong> At most, reference it in one sentence: "As Speaker 3 established, [X]. Building on that..."</p>
+      <p><strong>2. If your SQUO is common knowledge by now, skip it.</strong> Go straight to outcome.</p>
+      <p><strong>3. If your evidence overlaps with someone else's, cut yours and cite theirs.</strong> "The evidence from Speaker 5 supports my argument that..."</p>
+    </div>
+
+    <div class="quiz" id="q3a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">You prepped a 90-second Status Quo about income inequality for an aff speech. By the 4th cycle, three speakers have already covered income inequality extensively. What should you do?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3a',this,'wrong')">Deliver the full 90-second SQUO because your evidence is stronger</button>
+        <button class="option" onclick="mc('q3a',this,'correct')">Cut it to one sentence referencing what's been established and move straight to your outcome</button>
+        <button class="option" onclick="mc('q3a',this,'wrong')">Drop the SQUO entirely and start your speech with the impact</button>
+        <button class="option" onclick="mc('q3a',this,'wrong')">Switch to a completely different topic that hasn't been discussed</button>
+      </div>
+      <div class="feedback" id="q3a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q3b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Referencing another speaker's evidence to support your own argument ("As Speaker 5 proved...") is a strong late-round technique.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q3b',this,true)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q3b',this,false)">✗ False</button>
+      </div>
+      <div class="feedback" id="q3b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Controlling the Narrative</button>
+  </div>
+
+  <!-- STEP 4: CONTROLLING THE NARRATIVE -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Controlling the Narrative</div>
+    <div class="section-body">
+      <p>The best late-round speakers don't just respond to the debate — <strong>they REFRAME it.</strong> They take control of how judges think about the entire round.</p>
+      <p>Reframing sounds like this: "Both sides have been arguing about the economic impact of this bill, but the real question is whether we're willing to accept a moral failure in exchange for fiscal savings." That single sentence shifts the entire debate from economics to ethics — and suddenly, all the economic arguments the other side made feel less important.</p>
+      <p>This is the highest form of strategic speaking. You're not just making an argument — you're changing the lens through which judges evaluate EVERY argument in the round. If you can successfully reframe the debate, you control how judges weigh everything they've heard.</p>
+      <p>Three reframing techniques:</p>
+      <p><strong>1. Elevate the question.</strong> Move from specific policy details to the broader principle at stake. "This isn't about budget numbers — it's about whether we value human life over line items."</p>
+      <p><strong>2. Expose the hidden assumption.</strong> "The neg's entire case rests on the assumption that the free market will solve this problem. But 30 years of data show it hasn't."</p>
+      <p><strong>3. Shift the burden.</strong> "The aff has to prove this bill works perfectly. The neg only has to prove the status quo is tolerable. I'll show you it isn't."</p>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each reframing technique to the correct example.</div>
+      <div class="drag-area">
+        <div class="drag-label">Examples (drag these):</div>
+        <div class="drag-source" id="drag-source-4a">
+          <div class="drag-chip" draggable="true" data-val="elevate" ondragstart="dragStart(event)">This debate isn't about tax policy — it's about whether we believe every child deserves an equal start</div>
+          <div class="drag-chip" draggable="true" data-val="assumption" ondragstart="dragStart(event)">Every neg argument assumes private insurers will lower costs voluntarily — but a decade of data says they won't</div>
+          <div class="drag-chip" draggable="true" data-val="burden" ondragstart="dragStart(event)">The question isn't whether this bill is perfect — it's whether doing nothing is acceptable when 40,000 people die annually</div>
+        </div>
+        <div class="drag-targets" id="q4a-targets">
+          <div class="drag-target" data-correct="elevate" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Elevate the Question</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="assumption" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Expose the Hidden Assumption</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="burden" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Shift the Burden</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is reframing the debate so powerful in late rounds?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4b',this,'wrong')">It lets you avoid having to make your own argument</button>
+        <button class="option" onclick="mc('q4b',this,'correct')">It changes the lens through which judges evaluate every argument in the round, not just yours</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">It confuses the other speakers so they don't know how to respond</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Judges give bonus points specifically for reframing</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → The Crystallization Speech</button>
+  </div>
+
+  <!-- STEP 5: THE CRYSTALLIZATION SPEECH -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">The Crystallization Speech</div>
+    <div class="section-body">
+      <p>The final speeches in a round should <strong>crystallize the debate.</strong> A crystallization speech is the most advanced form of late-round speaking — it's the speech that puts the entire debate into perspective and tells judges exactly why one side wins.</p>
+      <p>A crystallization speech has three parts:</p>
+      <p><strong>1. Summarize both sides fairly.</strong> This is crucial. If you strawman the other side, judges won't trust your analysis. Show that you understand the strongest version of their case: "The negation has argued [A], supported by [B]. That's a real concern."</p>
+      <p><strong>2. Identify the deciding question.</strong> "But this debate comes down to one thing: [X]." This is the central clash, distilled into a single question that resolves the round.</p>
+      <p><strong>3. Explain why your side wins that question.</strong> "And on that question, the affirmation wins because [Y]. The negation has not adequately addressed [Z], and that's why you should vote aff." This is your win condition — the unanswered reason to vote for your side.</p>
+      <p>This is the highest-level skill in Congress — and the one that wins finals rounds at nationals. It requires everything you've learned: understanding win conditions, making comparatives, playing offense, finding gaps, cutting content, and controlling the narrative. The crystallization speech is where it all comes together.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Finals Round Standard</div>
+      <div class="callout-text">In national finals, the speaker who crystallizes the debate almost always finishes in the top 3. Judges recognize it immediately because so few speakers can do it. It signals that you're not just a good debater — you're someone who understands the entire intellectual landscape of the round.</div>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Put the three parts of a crystallization speech in the correct order.</div>
+      <div class="drag-area">
+        <div class="drag-label">Parts (drag these):</div>
+        <div class="drag-source" id="drag-source-5a">
+          <div class="drag-chip" draggable="true" data-val="part2" ondragstart="dragStart(event)">Identify the single deciding question of the debate</div>
+          <div class="drag-chip" draggable="true" data-val="part3" ondragstart="dragStart(event)">Explain why your side wins that deciding question</div>
+          <div class="drag-chip" draggable="true" data-val="part1" ondragstart="dragStart(event)">Summarize both sides of the debate fairly and accurately</div>
+        </div>
+        <div class="drag-targets" id="q5a-targets">
+          <div class="drag-target" data-correct="part1" ondragover="dragOver(event)" ondrop="drop(event,'q5a')"><span class="drag-target-label">Part 1</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="part2" ondragover="dragOver(event)" ondrop="drop(event,'q5a')"><span class="drag-target-label">Part 2</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="part3" ondragover="dragOver(event)" ondrop="drop(event,'q5a')"><span class="drag-target-label">Part 3</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q5b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">When summarizing the other side's arguments in a crystallization speech, you should present the weakest version of their case to make yours look better.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q5b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">🏆</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've learned the most advanced skills in Congressional Debate — identifying the central clash, cutting content for efficiency, reframing the debate, and delivering a crystallization speech. These are the skills that win national finals rounds.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">💎</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Late Round Strategist</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'block-format-late';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Late-round speaking is the hardest skill in Congress. Judges reserve their highest ranks for speakers who prove they've been listening and can synthesize the debate.",
+  q2a: "In late rounds, judges want to hear speeches that engage with the central clash — not isolated arguments that ignore what's been discussed for the past 45 minutes.",
+  q2b: "Naming the clash explicitly tells judges you see the debate at a higher level than speakers who just make isolated arguments.",
+  q3a: "Efficiency is the name of the game. Reference what's been established, then spend your time on what's new.",
+  q3b: "Citing other speakers' evidence shows judges you've been listening and builds credibility. It's a sign of a mature debater who sees the round as a conversation.",
+  q4a: "Each technique shifts the debate in a different way — elevating moves to principle, exposing assumptions undercuts foundations, and shifting the burden changes what each side must prove.",
+  q4b: "Reframing doesn't just help your argument — it changes how judges evaluate the entire round. That's why it's the most powerful late-round technique.",
+  q5a: "Summarize fairly, identify the deciding question, then prove your side wins it. That's the formula for the most powerful speech in any round.",
+  q5b: "Strawmanning the other side destroys your credibility. Judges trust speakers who can fairly represent the opposition and STILL explain why their side wins."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what makes late-round speaking uniquely difficult. What can a late-round speaker do that an early-round speaker can't?",
+  q2a: "Think about what judges want to hear after 45 minutes of debate. Do they want a completely unrelated argument, or one that helps resolve the core disagreement?",
+  q2b: "Which opening tells the judge that the speaker understands the full debate and is about to resolve the key disagreement?",
+  q3a: "Remember: late-round speeches are about efficiency. If judges have already heard the SQUO three times, what's the most efficient approach?",
+  q3b: "Think about what it signals to judges when you reference another speaker's evidence. Does it show weakness or strategic awareness?",
+  q4a: "Read each example carefully. One moves to a bigger principle, one attacks a foundational assumption, and one changes what each side needs to prove.",
+  q4b: "Think about the scope of reframing. Does it only affect your argument, or does it change something bigger?",
+  q5a: "Think about the logical flow. What does a judge need to hear first before you can identify the deciding question? And what comes after?",
+  q5b: "Think about what builds trust with judges. If you misrepresent the other side, will judges believe your analysis?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3a: 'q3b',
+  q3b: 'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5a: 'q5b',
+  q5b: 'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

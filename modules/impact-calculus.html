@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impact Calculus — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Impact Calculus</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 6</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.5 · Congressional Debate</div>
+  <div class="mod-title">Impact Calculus</div>
+  <div class="mod-desc">How to humanize your impact, make judges feel the stakes, and use the comparative to prove your side wins.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: WHAT IS AN IMPACT? -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 6</div>
+    <div class="section-title">What Is an Impact?</div>
+    <div class="section-body">
+      <p>You've proven a problem exists (SQUO). You've shown the bill fixes it (Outcome). Now comes the question every judge is silently asking: <strong>"So what? Why should I care?"</strong></p>
+      <p>The Impact is your answer. It connects your argument to real human lives — not in the abstract, but in a way that makes judges feel the weight of the decision they're making. A good Outcome proves the bill works. A good Impact proves the bill <em>matters</em>.</p>
+      <p>Think of it this way: your SQUO and Outcome are the logical case. Your Impact is the emotional case. And in Congressional Debate, where judges are ranking speeches — not just arguments — the debater who makes judges <em>feel</em> something gets ranked higher than the debater who merely informs them.</p>
+      <p>An Impact is not just "this is good for the economy" or "this helps people." It answers specifically: <strong>HOW do people's lives change?</strong> What does their Tuesday morning look like in the world where this bill passes versus the world where it doesn't?</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the primary function of the Impact section in a block?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">To restate the Outcome in different words for emphasis</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">To introduce new evidence that strengthens the Status Quo</button>
+        <button class="option" onclick="mc('q1',this,'correct')">To show judges why the argument matters by connecting it to real human lives</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">To summarize the entire block for judges who may not have followed the link chain</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Humanizing Your Impact</button>
+  </div>
+
+  <!-- STEP 2: HUMANIZING YOUR IMPACT -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 6</div>
+    <div class="section-title">Humanizing Your Impact</div>
+    <div class="section-body">
+      <p>Statistics prove your argument is real. But the human connection is what makes judges remember it when they fill out their ballot. <strong>Data informs. Stories persuade.</strong></p>
+      <p>"13 million workers hold two jobs" is a strong statistic. But watch what happens when you humanize it: "Picture a single mother who drops her kids off at school, works an 8-hour shift at a grocery store, picks up her kids, feeds them dinner, puts them to bed, and then drives to her overnight shift at a warehouse. She does this five days a week, and she still can't afford rent."</p>
+      <p>Judges remember that mother. They don't remember "13 million." The statistic gives you credibility. The human story gives you the ballot.</p>
+      <p>The best impacts use both: <strong>lead with the human story, then anchor it with data.</strong> "That single mother isn't alone — 13 million Americans are living this reality." Now judges feel it AND believe it.</p>
+      <p>One important rule: <strong>your humanized impact must stem from your proven argument.</strong> You can't suddenly introduce a new storyline in the Impact that your SQUO and Outcome didn't set up. The human story must be a direct illustration of the problem and solution you already proved.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Abstract Impact (informative but forgettable)</div>
+      "Raising the minimum wage would improve the financial conditions of low-income Americans and contribute to better economic outcomes."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Humanized Impact (persuasive and memorable)</div>
+      "When low-income Americans no longer have to make the choice between being overworked and exhausted or underpaid and malnourished, it can be life-saving. A single mother working two jobs can finally be home for dinner. A father who hasn't had a day off in three years can take his kid to a baseball game."
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which approach to Impact is most effective in Congressional Debate?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2a',this,'wrong')">Only use statistics — judges respect data more than stories</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">Only use human stories — statistics make speeches sound academic</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">Lead with the human story, then anchor it with data — judges feel it AND believe it</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">Avoid both — just repeat your Outcome and trust judges to see why it matters</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Your humanized impact can introduce a completely new storyline that your SQUO and Outcome did not set up.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Stacking Multiple Impacts</button>
+  </div>
+
+  <!-- STEP 3: MULTIPLE IMPACTS -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 6</div>
+    <div class="section-title">Multiple Impacts from One Argument</div>
+    <div class="section-body">
+      <p>A common question: "Can I have more than one impact?" The answer is yes — <strong>as long as every impact stems from the same core argument.</strong> You're not making new arguments in the Impact section. You're showing the full downstream effect of the one argument you already proved.</p>
+      <p>Think of it like dropping a stone in a pond. Your argument is the stone. The impacts are the ripples. Each ripple goes further out, but they all come from the same point of origin.</p>
+      <p>Here's how this works with the minimum wage overworking argument:</p>
+    </div>
+
+    <div class="components-row">
+      <div class="component-box squo">
+        <div class="component-icon">&#128176;</div>
+        <div class="component-name">Economic Impact</div>
+        <div class="component-desc">Workers earning a livable wage spend more in their local economies, creating a multiplier effect that boosts small businesses.</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">&#129657;</div>
+        <div class="component-name">Health Impact</div>
+        <div class="component-desc">Workers who aren't overworked have lower rates of depression, heart disease, and premature death.</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">&#128106;</div>
+        <div class="component-name">Quality of Life Impact</div>
+        <div class="component-desc">Parents who work one job instead of two can be present for their children, reducing the cycle of poverty and neglect.</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>All three impacts flow from the same argument: higher wages reduce overworking. The economic, health, and quality-of-life impacts are downstream consequences — ripples from the same stone. This is perfectly valid and makes your argument sound more comprehensive.</p>
+      <p>What you <strong>cannot</strong> do is introduce an impact that requires a completely different argument. If your block is about overworking, you can't suddenly impact on "this bill also reduces the trade deficit" — that's a separate argument needing its own SQUO and Outcome.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">A debater argues a criminal justice reform bill focused on reducing recidivism through job training. Sort each impact as "Valid" (flows from the argument) or "Invalid" (requires a different argument).</div>
+      <div class="drag-area">
+        <div class="drag-label">Potential impacts (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="valid" ondragstart="dragStart(event)">Formerly incarcerated people who find jobs are less likely to return to crime, making communities safer</div>
+          <div class="drag-chip" draggable="true" data-val="invalid" ondragstart="dragStart(event)">This bill also reforms police training, which reduces use-of-force incidents</div>
+          <div class="drag-chip" draggable="true" data-val="valid" ondragstart="dragStart(event)">Employed ex-offenders can support their families, breaking the intergenerational cycle of incarceration</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="valid" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Valid (flows from recidivism/job training argument)</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="valid" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Valid (flows from recidivism/job training argument)</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="invalid" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Invalid (requires a different argument)</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; The Comparative</button>
+  </div>
+
+  <!-- STEP 4: THE COMPARATIVE -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 6</div>
+    <div class="section-title">The Comparative</div>
+    <div class="section-body">
+      <p>Judges ultimately make one decision: <strong>is the world better with this bill or without it?</strong> The comparative is the rhetorical tool that forces them to make that choice explicitly.</p>
+      <p>A comparative frames your impact as a direct comparison between two worlds. Instead of just describing what happens if the bill passes, you show both possibilities side by side — making the right choice feel obvious.</p>
+      <p>The standard framework sounds like this: <strong>"In a world where we pass this bill, X happens. In a world where we don't, Y continues."</strong> This structure works because it mirrors the actual decision judges are making. They're not deciding if the bill is perfect — they're deciding if the bill's world is better than the status quo's world.</p>
+      <p>The comparative is especially powerful late in a round when multiple arguments are on the table. It cuts through the noise: "You've heard a lot of arguments today. But here's the fundamental choice: in one world, 13 million workers come home for dinner. In the other, they keep working two jobs until their health gives out. Which world do you want to vote for?"</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Impact Without Comparative</div>
+      "This bill will help workers live healthier lives and spend more time with their families."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Impact With Comparative</div>
+      "In a world where we pass this bill, a mother working two jobs can finally drop her overnight shift and be home when her kids wake up. In a world where we don't, she keeps choosing between rent and rest until her health collapses. That's the choice before this chamber."
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is the comparative so effective as a rhetorical tool in Congressional Debate?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">It allows you to introduce new arguments that opponents haven't heard</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">It mirrors the actual decision judges are making — choosing between two worlds — and makes the right choice feel clear</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">It's a required element in Block Format that judges will dock points for missing</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">It lets you repeat your Outcome twice, which reinforces memorability</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A comparative should only describe what happens if the bill passes — describing the status quo world is unnecessary.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; Terminalization</button>
+  </div>
+
+  <!-- STEP 5: TERMINALIZATION -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 6</div>
+    <div class="section-title">Terminalization</div>
+    <div class="section-body">
+      <p>Every impact chain ends somewhere. <strong>Terminalization</strong> is the practice of tracing your impact to its most fundamental endpoint — the deepest value at stake.</p>
+      <p>Some impacts terminalize stronger than others. Here's the hierarchy, from strongest to weakest:</p>
+      <p><strong>Lives and safety</strong> — "This saves lives" or "This prevents deaths" is the strongest terminal impact. If you can credibly trace your argument to saving even one life, you have an extremely powerful closer.</p>
+      <p><strong>Rights and dignity</strong> — "This restores fundamental human dignity" or "This protects constitutional rights" is nearly as powerful. Rights-based terminal impacts resonate because they appeal to principles judges deeply hold.</p>
+      <p><strong>Economic stability</strong> — "This prevents families from falling into poverty" or "This protects the financial security of millions." Economic terminal impacts are strong when connected to real families.</p>
+      <p><strong>Efficiency and systems</strong> — "This makes government more efficient" or "This reduces waste." These are the weakest terminal impacts because they're abstract and don't connect to human experience.</p>
+      <p>The key insight: <strong>"This saves lives" is always stronger than "This improves efficiency."</strong> If you can trace your impact chain to lives, safety, or fundamental rights, do it. Don't stop at the economic level if you can go deeper.</p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">Rank these terminal impacts from strongest (most persuasive) to weakest (least persuasive).</div>
+      <div class="drag-area">
+        <div class="drag-label">Terminal impacts (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="efficiency" ondragstart="dragStart(event)">This bill reduces government administrative overhead by 12%</div>
+          <div class="drag-chip" draggable="true" data-val="lives" ondragstart="dragStart(event)">This bill prevents 1,400 premature deaths annually</div>
+          <div class="drag-chip" draggable="true" data-val="economic" ondragstart="dragStart(event)">This bill lifts 3 million families above the poverty line</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="lives" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Strongest</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="economic" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Middle</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="efficiency" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Weakest</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue &rarr; Impact in Practice</button>
+  </div>
+
+  <!-- STEP 6: IMPACT IN PRACTICE -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 6</div>
+    <div class="section-title">Impact in Practice</div>
+    <div class="section-body">
+      <p>Let's build a complete Impact section from scratch. We'll use a <strong>criminal justice reform bill</strong> that eliminates mandatory minimum sentences for nonviolent drug offenses.</p>
+      <p>Our argument throughout the block has been: mandatory minimums force nonviolent offenders into years of incarceration, destroying their families and communities, and the bill's elimination of these minimums allows judges to sentence proportionally.</p>
+      <p>Here's how we construct the Impact step by step:</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Step 1: Start with the Human Story</div>
+      <div class="callout-text">"Imagine a 22-year-old caught with a small amount of marijuana. Under current law, a judge who believes probation is appropriate is forced by mandatory minimums to sentence them to five years in federal prison. That person loses their job, their apartment, their relationship. Their child grows up visiting a parent behind glass."</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Step 2: Anchor with Data</div>
+      <div class="callout-text">"That story isn't hypothetical. The Bureau of Justice Statistics reports that 46% of federal inmates are serving time for drug offenses, and the average mandatory minimum sentence is 5 to 10 years. 2.7 million children in America have an incarcerated parent."</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Step 3: Use the Comparative</div>
+      <div class="callout-text">"In a world where we pass this bill, judges regain the ability to sentence proportionally. That 22-year-old gets probation and community service — they keep their job, they raise their child, they contribute to society. In a world where we don't, they join the 46% of federal inmates serving years for nonviolent offenses while their family falls apart."</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Step 4: Terminalize</div>
+      <div class="callout-text">"When we talk about mandatory minimums, we're not talking about policy — we're talking about whether 2.7 million children get to grow up with a parent. We're talking about whether justice means proportional accountability or automatic destruction of families. If you believe that a punishment should fit the crime, make sure you say it with your vote."</div>
+    </div>
+
+    <div class="section-body">
+      <p>Notice the structure: human story &rarr; data anchor &rarr; comparative &rarr; terminalization. The Impact doesn't introduce a new argument — it takes the proven argument (mandatory minimums destroy lives) and makes judges <em>feel</em> the weight of it. By the time you reach the terminalization, the choice feels obvious.</p>
+    </div>
+
+    <div class="quiz" id="q6a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">In the criminal justice Impact above, what is the terminal value the debater traces the argument to?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6a',this,'wrong')">Government efficiency — the bill reduces the cost of incarceration</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">Economic growth — freed inmates can rejoin the workforce</button>
+        <button class="option" onclick="mc('q6a',this,'correct')">Family preservation and fundamental justice — children growing up with parents, and punishment fitting the crime</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">Crime reduction — fewer people in prison means less criminal activity</button>
+      </div>
+      <div class="feedback" id="q6a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q6b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">The four steps of a strong Impact section are: human story, data anchor, comparative, and terminalization.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q6b',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q6b',this,false)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q6b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've mastered Impact Calculus — from humanizing your argument and stacking downstream effects, to using the comparative and terminalizing to the deepest value at stake. Your blocks will never sound the same again.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128165;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Impact Master</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'impact-calculus';
+var TOTAL_STEPS = 6;
+
+var CORRECT_MSGS = {
+  q1:  "The Impact bridges logic and emotion. It takes your proven argument and makes judges feel why it matters to real people.",
+  q2a: "The best debaters combine both. The story makes judges care; the data makes them confident they're right to care.",
+  q2b: "Your Impact must flow from your proven SQUO and Outcome. Introducing a new storyline breaks the link chain.",
+  q3:  "Community safety and breaking the incarceration cycle both flow from reducing recidivism. Police training reform is a separate argument entirely.",
+  q4a: "The comparative works because it's structurally identical to the decision judges are making — pass or don't pass.",
+  q4b: "The power of the comparative comes from the contrast. Showing BOTH worlds makes the better choice feel obvious.",
+  q5:  "Saving lives is the most powerful terminal impact. Economic stability is strong. Efficiency is the weakest because it doesn't connect to human experience.",
+  q6a: "The debater traces all the way down to families staying together and justice being proportional — fundamental human values.",
+  q6b: "These four steps give you a complete framework: make judges feel it, prove it's real, show the choice, and terminalize to the deepest value."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what the SQUO and Outcome already do. What's left for the Impact to accomplish that those sections don't?",
+  q2a: "Think about what each approach does best. Which combination gives you both credibility and emotional resonance?",
+  q2b: "Think about the link chain. If your Impact introduces something your SQUO and Outcome didn't prove, what happens to your argument's coherence?",
+  q3:  "Ask yourself: does this impact flow directly from reducing recidivism through job training, or does it require a completely different argument?",
+  q4a: "Think about the specific structure of the comparative. What makes it match the decision judges are actually making?",
+  q4b: "Think about what makes a comparison powerful. Can you compare if you only show one side?",
+  q5:  "Ask yourself: which of these impacts would make a judge feel the most urgency? Which connects most directly to human experience?",
+  q6a: "Look at the terminalization step again. What fundamental values does the debater invoke at the very end?",
+  q6b: "Review the four callout boxes in the practice walkthrough. What are the four steps labeled?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5',
+  q6a: 'q6b',
+  q6b: 'next6'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

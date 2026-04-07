@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tournament Day Execution — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Tournament Day Execution</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 4</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 4 · Module 4.8 · Congressional Debate</div>
+  <div class="mod-title">Tournament Day Execution</div>
+  <div class="mod-desc">From the night before to the final round — routines, mindset, and adaptations that produce peak performance.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 4</div>
+    <div class="section-title">The Night Before</div>
+    <div class="section-body">
+      <p>Tournament day performance is determined long before the first gavel. <strong>The night before is your final preparation window</strong> — and how you use it separates the prepared from the panicked.</p>
+      <p>Here's the championship-level night-before routine:</p>
+      <p><strong>Read every bill on the docket.</strong> Not skim — actually read. For each bill, identify the core issue it addresses and note what section or provision is the most debatable. This takes 30-45 minutes for a typical docket of 6-8 bills.</p>
+      <p><strong>For each bill, identify your angle.</strong> Which side would you argue? What's your primary argument? Write 1-2 sentences for each bill: "Aff: This bill's grant program for community colleges fills a documented skills gap. Neg: The funding mechanism diverts from existing Pell Grants."</p>
+      <p><strong>Do preliminary research on your top 3 bills.</strong> Not deep dives — just enough to have 2-3 arguments per side with at least one evidence card each. Focus on the bills you're most likely to speak on.</p>
+      <p><strong>Organize your prep document.</strong> Make sure everything is printed, tabbed, or digitally organized so you can find any argument in under 10 seconds during the round.</p>
+      <p><strong>Then stop.</strong> Don't prep past 10pm. The returns diminish sharply after a few hours, and sleep is more valuable than one more evidence card. A well-rested debater with decent prep will outperform an exhausted debater with perfect prep every time.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Sleep Rule</div>
+      <div class="callout-text">Your brain consolidates learning during sleep. The arguments you prepped at 8pm will be sharper at 7am if you slept well. The arguments you crammed at 1am will be fuzzy and unreliable. Set a hard stop time and trust it.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the most important principle for the night-before routine?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Stay up as late as needed to prepare every bill completely</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Only prepare one bill deeply and ignore the rest</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Cover all bills at a strategic level, focus research on top priorities, and stop early enough to get proper sleep</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Skip preparation entirely and rely on improvisation for maximum authenticity</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Morning Routine</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 4</div>
+    <div class="section-title">Morning Routine</div>
+    <div class="section-body">
+      <p>Tournament morning is not the time to learn new material. It's the time to <strong>activate what you already know</strong> and put yourself in the best physical and mental state to perform.</p>
+      <p><strong>Arrive early.</strong> Give yourself at least 30 minutes before the first round. Rushing in at the last minute creates anxiety that lingers into your first speech. Early arrival lets you settle, review, and breathe.</p>
+      <p><strong>Review your top arguments.</strong> Flip through your prep document for 15-20 minutes. Don't read word-for-word — just remind yourself of your key angles, evidence, and the structure of each block. You're warming up your memory, not learning.</p>
+      <p><strong>Organize your materials.</strong> Make sure your prep document is ready: bills in order, evidence cards accessible, pen and notepad for in-round notes. Physical organization reduces mental clutter.</p>
+      <p><strong>Eat something.</strong> Your brain needs fuel. A round of Congress is 2+ hours of sustained focus. If you skip breakfast, your concentration will fade by the third cycle — exactly when late-round speaking opportunities arise. Don't let nutrition sabotage your performance.</p>
+      <p><strong>Don't cram.</strong> If you see a teammate researching frantically at 7:45am, don't join them. Last-minute cramming creates the illusion of preparation but actually increases anxiety and displaces the material you already know. Trust your prep from the night before.</p>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Tournament morning is the ideal time to research new arguments and evidence you didn't prepare the night before.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2a',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2a',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is arriving early to a tournament important for competitive performance?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2b',this,'wrong')">It gives you time to scope out the judges and plan accordingly</button>
+        <button class="option" onclick="mc('q2b',this,'correct')">It allows you to settle in, review your prep, and reduce anxiety that would otherwise carry into your first speech</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">Early arrivals get better seating positions in the chamber</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">It shows judges that you're serious about the competition</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Between Rounds</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 4</div>
+    <div class="section-title">Between Rounds</div>
+    <div class="section-body">
+      <p>The breaks between rounds are where <strong>adaptive debaters separate from static ones.</strong> Static debaters do the same thing every round regardless of results. Adaptive debaters use breaks to recalibrate.</p>
+      <p><strong>Read ballots if available.</strong> Some tournaments post preliminary results between rounds. If you can see your rankings or comments, use them. What worked? What didn't? One piece of actionable feedback between rounds can change your entire trajectory for the rest of the day.</p>
+      <p><strong>Assess what happened.</strong> Did your primary argument land? Was it covered by someone else? Did the judges seem to respond to your delivery style, or did you notice them looking away? Be honest with yourself — self-awareness between rounds is a competitive advantage.</p>
+      <p><strong>Adjust your strategy.</strong> If your best aff argument was covered in Round 1, switch to your backup for Round 2. If judges seemed disengaged during your SQUO, cut it shorter and spend more time on your impact. If you spoke early in Round 1 and got middling ranks, try speaking later in Round 2 to demonstrate late-round skills.</p>
+      <p><strong>Talk to teammates.</strong> Compare notes. What are judges rewarding in other chambers? What arguments are working? What bill seems to generate the best debate? Information from teammates who were in different chambers gives you intelligence you can't get on your own.</p>
+      <p><strong>Reset mentally.</strong> A bad round is one round. Don't carry frustration or disappointment into the next chamber. Take a walk, get water, and treat the next round as a fresh start. Judges in Round 2 don't know (or care) what happened in Round 1.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Put these between-rounds activities in the most productive order.</div>
+      <div class="drag-area">
+        <div class="drag-label">Activities (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="step3" ondragstart="dragStart(event)">Adjust strategy for the next round based on what you learned</div>
+          <div class="drag-chip" draggable="true" data-val="step1" ondragstart="dragStart(event)">Read available ballots and assess what worked</div>
+          <div class="drag-chip" draggable="true" data-val="step4" ondragstart="dragStart(event)">Reset mentally and prepare to enter the next round fresh</div>
+          <div class="drag-chip" draggable="true" data-val="step2" ondragstart="dragStart(event)">Talk to teammates about what judges are rewarding</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="step1" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">First</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="step2" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Second</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="step3" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Third</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="step4" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Fourth</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; The Finals Mindset</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 4</div>
+    <div class="section-title">The Finals Mindset</div>
+    <div class="section-body">
+      <p>If you've made it to finals — or any elimination round — the dynamics change. Everyone in the room has good arguments. Everyone has evidence. Everyone can structure a speech. <strong>The differentiator is no longer preparation — it's execution.</strong></p>
+      <p>Three principles for peak performance in high-stakes rounds:</p>
+      <p><strong>1. Delivery becomes the tiebreaker.</strong> In finals, argument quality is roughly equal across the top speakers. What separates 1st from 5th is often delivery: pacing, energy variation, eye contact, the pause before a key point. All the Chamber Presence and Personality skills you've learned become decisive here.</p>
+      <p><strong>2. Presence compounds.</strong> In a finals round, every competitor is watching. Every judge is attentive. Your behavior between speeches — the notes you take, the CX questions you ask, the composure you maintain — is being observed more closely than in any prelim round. The debaters who command the room all round, not just during their speech, are the ones who walk away with trophies.</p>
+      <p><strong>3. Trust your prep and be yourself at the highest level.</strong> Finals is not the time to try something new. It's the time to execute what you've practiced at the highest level of quality you can manage. Stay calm. Trust that the weeks of preparation have equipped you. Don't try to be someone you're not — be the most prepared, most confident, most intentional version of yourself.</p>
+      <p>The paradox of finals: the debaters who perform best are the ones who <strong>stop trying to impress</strong> and start simply executing with clarity, conviction, and composure. Anxiety comes from trying to be perfect. Confidence comes from trusting your preparation.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Trust Principle</div>
+      <div class="callout-text">Before a finals round, tell yourself: "I've already done the work. My arguments are solid. My evidence is strong. My delivery has been practiced. There's nothing left to prepare — only to execute." Then walk into that chamber like you belong there. Because you do.</div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">In a finals round where all competitors have strong arguments, what most commonly determines the winner?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">Whoever has the most evidence cards</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">Whoever speaks first to claim the best argument</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">Execution — delivery quality, chamber presence, adaptation, and composure under pressure</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">Whoever argues the more popular side of the bill</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Finals rounds are the best time to try a completely new argument style or technique to surprise the judges.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now have the complete tournament day playbook — from the night-before routine through morning preparation, between-round adaptation, and the finals mindset. Execute with confidence.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Tournament Day Warrior</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'tournament-day';
+var TOTAL_STEPS = 4;
+
+var CORRECT_MSGS = {
+  q1:  "Strategic coverage of all bills, focused research on priorities, and a hard stop for sleep. Preparation has diminishing returns — rest has compounding ones.",
+  q2a: "Morning is for activating what you already know, not learning new material. Cramming displaces prepared material and increases anxiety.",
+  q2b: "Early arrival creates mental space. The calm that comes from being settled and organized carries directly into your first speech.",
+  q3:  "The sequence matters: assess first, gather intelligence second, adjust strategy third, and reset mentally last before entering the next round.",
+  q4a: "In finals, arguments are roughly equal. Execution — delivery, presence, adaptation, composure — becomes the decisive factor.",
+  q4b: "Finals is the time to execute what you've practiced, not experiment. Trust your preparation and deliver at your highest level."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about the tradeoff between more preparation and adequate rest. At what point does staying up later hurt more than it helps?",
+  q2a: "Think about what happens when you try to learn something new under time pressure. Does it integrate well with what you already prepared?",
+  q2b: "Think about what rushing in at the last minute does to your mental state. How does that anxiety affect your first speech?",
+  q3:  "Think about logical order. What do you need to know before you can adjust your strategy? What should you do right before entering the next round?",
+  q4a: "When everyone has strong arguments, what separates the top speaker from the middle of the pack? It's not more evidence.",
+  q4b: "Think about risk. Is a high-stakes round the right place to try something you haven't practiced?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding Gaps & Generating Arguments — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Finding Gaps</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.7 · Congressional Debate</div>
+  <div class="mod-title">Finding Gaps & Generating Arguments</div>
+  <div class="mod-desc">How to identify strengths and weaknesses in a debate, predict gaps, and create arguments that fill them.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: WHAT IS A GAP? -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">What Is a Gap?</div>
+    <div class="section-body">
+      <p>A gap is an argument or angle that <strong>hasn't been covered yet in the round.</strong> It's the missing piece of the debate — the thing judges are waiting to hear that no one has said.</p>
+      <p>Judges reward speakers who add something NEW to the debate. If three speakers have all argued the same economic angle on aff, the judge doesn't need a fourth version of that argument. They want to hear something different — maybe the humanitarian angle, or the constitutional question, or a completely different mechanism within the bill.</p>
+      <p>Here's why gaps matter strategically: <strong>the speaker who fills a gap gets sole ownership of that argument.</strong> No one else has made it, so the judge associates it entirely with you. That's how you stand out in a chamber of 15+ speakers — not by saying the same thing louder, but by saying the thing no one else has said.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Gap Principle</div>
+      <div class="callout-text">In a round where 12 speakers each make economic arguments, the speaker who makes the one humanitarian argument owns 100% of that lane. In the judge's mind, that speaker contributed something irreplaceable. That's the power of finding gaps.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Three aff speakers have all argued that a climate bill will create green jobs. You're preparing to speak aff. What's the strongest strategic move?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Make the green jobs argument again but with better evidence than the previous speakers</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Switch to neg since the aff arguments are getting repetitive</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Find a different aff angle — like public health benefits of reduced emissions — that no one has covered yet</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Wait for a different bill where you can be the first speaker</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → Predicting Gaps During Prep</button>
+  </div>
+
+  <!-- STEP 2: PREDICTING GAPS DURING PREP -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Predicting Gaps During Prep</div>
+    <div class="section-body">
+      <p>Gap-finding starts <strong>before the round even begins.</strong> During prep, your job isn't just to write one good speech — it's to map out the entire argument landscape so you can predict what others will say and find the spaces they'll leave empty.</p>
+      <p>Here's the process: <strong>brainstorm both sides fully.</strong> List every argument you can think of for aff and neg. Now ask yourself: which of these are the obvious arguments? The ones that require the least research and sound the most intuitive? Those will be covered first — probably in the first cycle.</p>
+      <p>The arguments that require deeper research, more creative thinking, or a less obvious connection to the bill? Those are your gaps. <strong>Prep the non-obvious argument.</strong> While everyone else is writing the easy economic argument, you should be building the block that tackles the constitutional angle, the implementation question, or the second-order effect that nobody else will think of.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example: Education Funding Bill</div>
+      "OBVIOUS ARGUMENTS (everyone will make these): 'More funding = better schools' on aff, 'Too expensive' on neg. GAP ARGUMENTS (prep these): 'Funding without accountability measures has historically failed — see Kansas City experiment' on neg, or 'This bill's Title I provision specifically targets rural districts that current formulas skip' on aff. The gap arguments are harder to find but far more valuable in the round."
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">During prep, you should focus all your time on writing the strongest possible version of the most obvious argument.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2a',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2a',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When brainstorming during prep, why should you list the "obvious" arguments for both sides?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2b',this,'wrong')">So you can memorize them and deliver them faster than other speakers</button>
+        <button class="option" onclick="mc('q2b',this,'correct')">So you can predict what others will cover and deliberately prep the arguments they won't</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">So you can refute them during questioning periods</button>
+        <button class="option" onclick="mc('q2b',this,'wrong')">So you can choose the most obvious argument and present it with the best evidence</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → Reading the Room</button>
+  </div>
+
+  <!-- STEP 3: READING THE ROOM -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Reading the Room</div>
+    <div class="section-body">
+      <p>Prep gets you ready. But the real gap-finding happens <strong>live, during the round.</strong> The best debaters are constantly tracking what's been said, what hasn't, and where the opening is.</p>
+      <p>Here's a practical system: <strong>keep a running list on your flow.</strong> Draw two columns — one for arguments that have been made, one for angles that are still open. Every time a speaker finishes, update both columns. By the time it's your turn to speak, you should know exactly what the judges have heard and what they haven't.</p>
+      <p>Pay special attention to the <strong>quality</strong> of what's been covered, not just the topic. If someone made a weak economic argument with no evidence, that angle might still be a gap worth filling — but only if you can do it significantly better. If someone made a strong economic argument, that lane is closed. Move on.</p>
+      <p>The most common mistake? Debaters write their speech in the first 10 minutes and then stop listening. They deliver a speech that was already made by someone else two speakers ago. <strong>Never stop updating your speech based on what's happening in the round.</strong></p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Flow Tracking Template</div>
+      <div class="callout-text">AFF COVERED: [economic growth - Speaker 2, strong], [jobs created - Speaker 4, decent]. AFF OPEN: [public health angle], [civil rights angle], [implementation specifics]. NEG COVERED: [cost concerns - Speaker 3, weak evidence]. NEG OPEN: [unintended consequences], [state vs. federal question], [historical precedent of failure].</div>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">You wrote a speech about the economic benefits of a bill during prep. During the round, two speakers already made strong economic arguments on aff. What should you do?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Deliver your prepped speech anyway — your evidence is better</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Give up on speaking on this bill entirely</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Adapt your speech to cover a different angle that hasn't been addressed yet</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Deliver the speech but acknowledge that others have already made the argument</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Generating Arguments from Gaps</button>
+  </div>
+
+  <!-- STEP 4: GENERATING ARGUMENTS FROM GAPS -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Generating Arguments from Gaps</div>
+    <div class="section-body">
+      <p>Finding a gap is step one. Step two is <strong>building a full argument to fill it</strong> — often in real time, during the round. This is where the Block Format becomes your best friend.</p>
+      <p>Once you identify a gap, build a block for it using the structure you already know: <strong>SQUO → Outcome → Impact.</strong> The Status Quo establishes the problem that no one has talked about yet. The Outcome shows how the bill addresses it. The Impact shows why it matters.</p>
+      <p>The best late-round speeches are built IN the round, targeting exactly what judges haven't heard yet. Here's a practical approach:</p>
+      <p><strong>1. Identify the gap</strong> — what angle is missing from the debate?</p>
+      <p><strong>2. Write a one-sentence SQUO</strong> — what's the current problem related to this angle? Even without a specific card, you can use common knowledge or logical reasoning.</p>
+      <p><strong>3. Connect it to the bill's mechanism</strong> — how does the bill specifically address this problem? Reference a section if you can.</p>
+      <p><strong>4. Impact it out</strong> — why does this matter for real people? This is where your speech becomes memorable.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Building a Block from a Gap (Immigration Bill)</div>
+      "GAP IDENTIFIED: Everyone has argued economics — no one has discussed family reunification. BLOCK BUILT IN-ROUND: SQUO — 'Currently, the average wait time for family-based immigration visas exceeds 20 years. Families are separated for decades.' OUTCOME — 'Section 3 of this bill doubles the number of family-based visas issued annually, cutting wait times in half.' IMPACT — 'For the 4 million families currently waiting, this bill means children will actually grow up knowing their parents.'"
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Put the steps for generating an argument from a gap in the correct order.</div>
+      <div class="drag-area">
+        <div class="drag-label">Steps (drag these):</div>
+        <div class="drag-source" id="drag-source-4a">
+          <div class="drag-chip" draggable="true" data-val="step3" ondragstart="dragStart(event)">Connect the gap to the bill's specific mechanism</div>
+          <div class="drag-chip" draggable="true" data-val="step1" ondragstart="dragStart(event)">Identify the angle that's missing from the debate</div>
+          <div class="drag-chip" draggable="true" data-val="step4" ondragstart="dragStart(event)">Impact it out — show why it matters for real people</div>
+          <div class="drag-chip" draggable="true" data-val="step2" ondragstart="dragStart(event)">Establish the current problem related to this angle (SQUO)</div>
+        </div>
+        <div class="drag-targets" id="q4a-targets">
+          <div class="drag-target" data-correct="step1" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Step 1</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="step2" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Step 2</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="step3" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Step 3</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="step4" ondragover="dragOver(event)" ondrop="drop(event,'q4a')"><span class="drag-target-label">Step 4</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">You can only fill a gap if you have a pre-researched evidence card for that specific argument.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → The Gap Mindset</button>
+  </div>
+
+  <!-- STEP 5: THE GAP MINDSET -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">The Gap Mindset</div>
+    <div class="section-body">
+      <p>The debaters who consistently rank highest aren't the ones with the most prep. They're not the ones with the thickest evidence binders or the most polished delivery. <strong>They're the ones who listen to the round and position their speech to fill the biggest hole.</strong></p>
+      <p>This is the gap mindset, and it's the ultimate strategic skill in Congress. It requires three things:</p>
+      <p><strong>1. Active listening.</strong> You can't find gaps if you're writing your speech instead of listening. The round IS your prep. Every speech another person gives is information about where the gap is.</p>
+      <p><strong>2. Flexibility.</strong> You have to be willing to abandon your prepped speech if the round demands something different. The debater who clings to their prep even when it's been covered will always lose to the debater who adapts.</p>
+      <p><strong>3. Confidence in your ability to build on the fly.</strong> This is a skill you develop with practice. The first time you build a speech in-round, it will feel uncomfortable. By the tenth time, it will feel like a superpower — because you'll be delivering exactly what judges want to hear, every single time.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Championship Pattern</div>
+      <div class="callout-text">Watch national finals rounds closely. The speakers who finish 1st almost never give the "obvious" speech. They find the angle nobody else thought of, they build it clearly using block format, and they deliver it with conviction. The gap mindset is what separates national finalists from everyone else in the chamber.</div>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the MOST important skill for consistently ranking high in Congressional Debate rounds?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5a',this,'wrong')">Having the most evidence cards prepared before the tournament</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">Speaking with the most polished and rehearsed delivery</button>
+        <button class="option" onclick="mc('q5a',this,'correct')">Listening to the round and positioning your speech to fill the biggest gap</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">Being the first person to speak on every bill</button>
+      </div>
+      <div class="feedback" id="q5a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q5b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If you spent 3 hours prepping a speech on the economic angle, you should always deliver it — even if two other speakers already covered economics well.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q5b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">🏆</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand how to find gaps, predict them during prep, read the room in real time, and generate arguments on the fly. This is the strategic skill that separates national finalists from the rest of the chamber.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">🔍</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Gap Finder</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'finding-gaps';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Finding a new angle gives you sole ownership of that argument. Judges reward novelty far more than a slightly better version of what they've already heard.",
+  q2a: "The obvious argument will be covered by others. Your prep time is best spent on the non-obvious angles that will still be gaps when it's your turn to speak.",
+  q2b: "Mapping the obvious arguments lets you see what terrain will be taken — so you can deliberately prepare for the open spaces.",
+  q3:  "Adaptability is the hallmark of a championship debater. Your prepped speech is a starting point, not a commitment. Adjust to what the round needs.",
+  q4a: "Identify the gap, establish the SQUO, connect to the bill, then impact it. This is block format applied in real time.",
+  q4b: "Common knowledge, logical reasoning, and analytical thinking can power a strong gap-filling argument even without a specific evidence card.",
+  q5a: "The gap mindset is the single most important strategic skill in Congress. Everything else — evidence, delivery, prep — serves this core ability.",
+  q5b: "Prep time doesn't change the fact that judges want to hear something new. Delivering a covered argument wastes your speaking opportunity no matter how long you prepped it."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what judges reward. If they've already heard the economic argument three times, what would make YOUR speech stand out?",
+  q2a: "If the obvious argument will be covered by multiple other speakers, is it really the best use of your prep time?",
+  q2b: "The goal of listing obvious arguments isn't to make them yourself. Think about what information that list gives you strategically.",
+  q3:  "Remember: judges reward speakers who add something NEW to the debate. What does that mean for your prepped speech when the topic is already covered?",
+  q4a: "Think about the logical order. You can't build a SQUO until you know what gap you're filling, and you can't impact until you've connected to the bill.",
+  q4b: "Think about what you can use when evidence isn't available. Can logical reasoning and common knowledge support an argument?",
+  q5a: "Think about what actually differentiates the top-ranked speakers in a round. Is it what they brought to the round, or what they did with the round?",
+  q5b: "Sunk cost fallacy applies to debate prep too. If the round has moved past your argument, what should you do?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5a: 'q5b',
+  q5b: 'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

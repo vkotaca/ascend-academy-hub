@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turning Research Into a Case — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Turning Research Into a Case</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 3 · Module 3.2 · Congressional Debate</div>
+  <div class="mod-title">Turning Research Into a Case</div>
+  <div class="mod-desc">From raw notes to a polished block. Proving outcome, finding past precedent, and stress-testing your argument.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: FROM NOTES TO BLOCKS -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">From Notes to Blocks</div>
+    <div class="section-body">
+      <p>You've done your research. You have a stack of evidence cards — SQUO cards, Outcome cards, Impact cards — each labeled with source, date, and block assignment. Now comes the crucial transition: <strong>turning that raw material into a structured argument.</strong></p>
+      <p>Think of your evidence cards as building materials. A pile of bricks isn't a house. You need a blueprint. That blueprint is your block structure: SQUO, Outcome, Impact — in that order, each flowing logically into the next.</p>
+      <p>Start by laying out all your cards for one argument. Group them by block:</p>
+      <p><strong>SQUO pile:</strong> Which cards prove the current problem? Pick the 1-2 strongest. You don't need five statistics saying the same thing — you need one devastating fact and one supporting detail.</p>
+      <p><strong>Outcome pile:</strong> Which cards prove the bill's mechanism works? This is where most debaters are weakest. If you don't have strong Outcome evidence, go back and research more before building the block.</p>
+      <p><strong>Impact pile:</strong> Which cards show why the outcome matters? Choose the ones that connect to real human lives, not abstract economic projections.</p>
+      <p>Once you've selected your strongest cards for each block, you have the skeleton of your argument. The next step is writing taglines that connect them.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Example: Mapping Evidence for a Climate Bill</div>
+      <div class="callout-text">Bill: Invests $50 billion in renewable energy infrastructure. SQUO cards: U.S. CO2 emissions data, fossil fuel dependency statistics, climate damage cost projections. Best pick: "The EPA reports the U.S. emits 5.2 billion metric tons of CO2 annually, 25% from electricity generation." Outcome cards: Studies on renewable energy job creation, grid reliability after renewable transitions. Best pick: "A 2024 Department of Energy report found that states investing in renewable infrastructure reduced grid emissions by 40% within five years." Impact cards: Health effects of air pollution, climate migration projections. Best pick: "The American Lung Association estimates fossil fuel pollution causes 100,000 premature deaths annually in the U.S."</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When selecting evidence cards for a block, what is the best approach?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Include every piece of evidence you found to show judges you did thorough research</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Only use one card total — judges prefer simplicity over depth</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Pick the 1-2 strongest cards per block section, choosing quality and specificity over quantity</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Use only SQUO cards since proving the problem is the most important part</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Writing Your Taglines</button>
+  </div>
+
+  <!-- STEP 2: WRITING YOUR TAGLINES -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Writing Your Taglines</div>
+    <div class="section-body">
+      <p>A tagline is the one-sentence thesis that opens each block of your speech. It tells the judge exactly what you're about to prove before you prove it. <strong>Write your taglines FIRST</strong> — before you write the rest of the block.</p>
+      <p>Why? Because the tagline forces clarity. If you can't summarize your argument in one sentence, you don't understand your argument well enough to deliver it. The tagline is your north star — everything in the block must support it.</p>
+      <p>A strong tagline has three qualities:</p>
+      <p><strong>1. It makes a claim.</strong> Not a question, not a topic announcement — a claim. "The current minimum wage forces millions into poverty" is a claim. "I'm going to talk about the minimum wage" is not.</p>
+      <p><strong>2. It's specific.</strong> "This bill helps people" is vague. "This bill lifts 3.7 million workers above the poverty line" is specific. Specificity signals to judges that you have evidence to back it up.</p>
+      <p><strong>3. It previews the mechanism.</strong> The best taglines hint at HOW your point works. "By eliminating mandatory minimums, this bill restores judicial discretion and reduces recidivism" tells judges the claim AND the mechanism in one sentence.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Weak Tagline</div>
+      "The status quo has problems with education that this bill addresses."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Strong Tagline</div>
+      "Right now, 53% of American students attend schools that can't afford updated textbooks — this bill's $30 billion in Title I funding closes that gap within three years."
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of the following is the strongest tagline for a SQUO block about healthcare?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2a',this,'wrong')">"Healthcare in America is a topic we need to discuss."</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">"There are some problems with our healthcare system."</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">"27 million Americans lack any form of health insurance, forcing them to choose between medical debt and untreated illness."</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">"I believe healthcare is a human right and we should fix it."</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">You should write the body of your block first and then create a tagline that summarizes what you wrote.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Proving the Outcome</button>
+  </div>
+
+  <!-- STEP 3: PROVING THE OUTCOME -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Proving the Outcome</div>
+    <div class="section-body">
+      <p>The Outcome block is where most cases live or die. SQUO is usually straightforward — the problem is well-documented. Impact flows naturally from a proven outcome. But the Outcome itself — proving the bill's mechanism actually works — is <strong>the hardest part of case construction.</strong></p>
+      <p>The most common mistake: proving the problem exists but never proving the solution works. "Millions lack healthcare" is a SQUO fact, not an Outcome argument. The Outcome must show that THIS BILL'S specific mechanism will produce the desired result.</p>
+      <p>The strongest way to prove an outcome is <strong>past precedent.</strong> Has this mechanism been tried before? In another state? In another country? What happened?</p>
+      <p>For example, if a bill proposes a carbon tax, your best Outcome evidence is what happened in British Columbia when they implemented a carbon tax in 2008. Did emissions go down? By how much? What were the side effects? Real-world precedent is the gold standard of Outcome proof because it shows the mechanism working in practice, not just in theory.</p>
+      <p>If direct precedent doesn't exist, use analogous evidence — a similar mechanism in a related context. If no country has tried your exact policy, find the closest parallel and explain why the results would transfer.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Past Precedent: The Power Move</div>
+      <div class="callout-text">Bill: Universal background checks for firearm purchases. Outcome proof using precedent: "Connecticut implemented universal background checks in 1995. A 2015 Johns Hopkins study found that Connecticut's firearm homicide rate dropped 40% in the decade following implementation, while states without such laws saw no comparable decline." This is devastating evidence because it's not theoretical — it already happened, it was studied by a credible institution, and the results are specific and measurable.</div>
+    </div>
+
+    <div class="quiz" id="q3a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the strongest type of evidence for proving an Outcome block?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3a',this,'wrong')">Expert opinions predicting what will happen if the bill passes</button>
+        <button class="option" onclick="mc('q3a',this,'wrong')">Logical reasoning about why the mechanism should work in theory</button>
+        <button class="option" onclick="mc('q3a',this,'correct')">Past precedent — real-world examples of the same or similar mechanism producing measurable results</button>
+        <button class="option" onclick="mc('q3a',this,'wrong')">Public opinion polls showing that voters support the bill's approach</button>
+      </div>
+      <div class="feedback" id="q3a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q3b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If you can prove that a serious problem exists in the status quo, you have automatically proven that the bill will fix it.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q3b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q3b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q3b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Stress-Testing</button>
+  </div>
+
+  <!-- STEP 4: STRESS-TESTING -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Stress-Testing Your Argument</div>
+    <div class="section-body">
+      <p>Before you step into the chamber, you need to break your own argument. <strong>Play devil's advocate.</strong> If you can poke holes in your own case, an opponent definitely will — and it's better to find the weaknesses now than on the floor.</p>
+      <p>Stress-testing means asking yourself three questions about every block:</p>
+      <p><strong>1. "What would the other side say?"</strong> If you're running an aff argument on a minimum wage bill, a neg debater might argue that small businesses will cut jobs. Do you have evidence that addresses this? If not, you have a gap.</p>
+      <p><strong>2. "Is my link chain airtight?"</strong> Does your SQUO logically lead to your Outcome? Does your Outcome logically lead to your Impact? If there's a gap — if you're claiming a result without proving the mechanism that produces it — your opponent will exploit it.</p>
+      <p><strong>3. "Is my evidence the strongest available?"</strong> If you're citing a 2018 study and a 2024 study exists on the same topic, you're vulnerable. Opponents can dismiss outdated evidence. Always check for newer, better sources.</p>
+      <p>The best debaters don't just find weaknesses — they fix them. If your argument has a vulnerability, either strengthen it with additional evidence or build a preemptive response into your speech. Acknowledging and addressing a counterargument before your opponent raises it is one of the most powerful rhetorical moves in debate.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Stress-Test in Action: Foreign Policy Bill</div>
+      <div class="callout-text">Your argument: A bill increasing foreign aid to Sub-Saharan Africa will reduce regional instability. Devil's advocate test: "Opponents will say foreign aid often gets captured by corrupt governments and never reaches the intended recipients." Fix: Research USAID accountability mechanisms and find evidence of successful aid programs with anti-corruption safeguards. Build it into your block: "And before the opposition claims this aid will be wasted, the bill specifically mandates third-party auditing — a mechanism that USAID's 2023 Inspector General report found reduces aid misallocation by 60%."</div>
+    </div>
+
+    <div class="quiz" id="q4">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">A debater is building an affirmative case for a bill that bans single-use plastics. Match each stress-test question to the weakness it would reveal.</div>
+      <div class="drag-area">
+        <div class="drag-label">Weaknesses (drag these):</div>
+        <div class="drag-source" id="drag-source-4">
+          <div class="drag-chip" draggable="true" data-val="otherside" ondragstart="dragStart(event)">The plastics industry will argue that bans increase costs for low-income consumers</div>
+          <div class="drag-chip" draggable="true" data-val="linkchain" ondragstart="dragStart(event)">The SQUO proves plastic pollution exists but the Outcome never shows that a ban reduces pollution</div>
+          <div class="drag-chip" draggable="true" data-val="evidence" ondragstart="dragStart(event)">The cited study on ocean plastic is from 2016 and newer data tells a different story</div>
+        </div>
+        <div class="drag-targets" id="q4-targets">
+          <div class="drag-target" data-correct="otherside" ondragover="dragOver(event)" ondrop="drop(event,'q4')"><span class="drag-target-label">"What would the other side say?"</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="linkchain" ondragover="dragOver(event)" ondrop="drop(event,'q4')"><span class="drag-target-label">"Is my link chain airtight?"</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="evidence" ondragover="dragOver(event)" ondrop="drop(event,'q4')"><span class="drag-target-label">"Is my evidence the strongest available?"</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q4-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; The Finished Product</button>
+  </div>
+
+  <!-- STEP 5: THE FINISHED PRODUCT -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">The Finished Product</div>
+    <div class="section-body">
+      <p>Let's walk through the entire process from bill to finished block, using a <strong>bill that expands Pell Grants to cover vocational and technical training programs.</strong></p>
+      <p><strong>Step 1 — Read the bill:</strong> The bill expands Pell Grant eligibility to students in accredited vocational programs (welding, nursing, IT certification). Currently, Pell Grants only cover traditional 4-year and 2-year degree programs.</p>
+      <p><strong>Step 2 — Research using mechanism keywords:</strong> Search "Pell Grant vocational training outcomes," "short-term credential employment rates," and "skills gap manufacturing workforce." These mechanism searches find evidence that generic "education funding" searches would miss.</p>
+      <p><strong>Step 3 — Organize cards:</strong></p>
+    </div>
+
+    <div class="components-row">
+      <div class="component-box squo">
+        <div class="component-icon">&#128196;</div>
+        <div class="component-name">SQUO Card</div>
+        <div class="component-desc">Georgetown CEW, 2023: 70% of jobs in growing industries require post-secondary credentials, but only 30% of Pell recipients can use grants for vocational programs that lead to those jobs.</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">&#128196;</div>
+        <div class="component-name">Outcome Card</div>
+        <div class="component-desc">Dept. of Education pilot study, 2024: States that extended financial aid to short-term credential programs saw a 45% increase in program enrollment and 78% job placement within 6 months of completion.</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">&#128196;</div>
+        <div class="component-name">Impact Card</div>
+        <div class="component-desc">Brookings Institution, 2023: Workers with vocational credentials earn on average $15,000 more annually than those with only a high school diploma, with lower student debt than 4-year degree holders.</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p><strong>Step 4 — Write taglines:</strong> SQUO tagline: "The current Pell Grant system locks 7 million vocational students out of the financial aid they need to enter the workforce." Outcome tagline: "Expanding eligibility works — pilot programs show 78% job placement within six months." Impact tagline: "This bill gives working-class Americans a path to the middle class without crushing student debt."</p>
+      <p><strong>Step 5 — Stress-test:</strong> Devil's advocate: "Opponents will argue this dilutes Pell Grant funding for traditional students." Fix: The bill includes an additional $5 billion appropriation specifically for vocational expansion — it doesn't redirect existing funds. Build this preemptive rebuttal into the Outcome block.</p>
+      <p>The result: a complete, evidence-backed, stress-tested block ready for delivery. This is what turns raw research into a championship-level case.</p>
+    </div>
+
+    <div class="quiz" id="q5a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">In the Pell Grant example, what makes the Outcome evidence particularly strong?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5a',this,'wrong')">It uses emotional language that will resonate with judges</button>
+        <button class="option" onclick="mc('q5a',this,'correct')">It cites a real pilot program with specific, measurable results — 45% enrollment increase and 78% job placement</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">It comes from a well-known think tank that judges will recognize</button>
+        <button class="option" onclick="mc('q5a',this,'wrong')">It proves the problem exists in the status quo with clear data</button>
+      </div>
+      <div class="feedback" id="q5a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q5b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">The five steps from bill to finished block are: read the bill, research using mechanism keywords, organize evidence cards, write taglines, and stress-test.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5b',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5b',this,false)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q5b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've learned how to transform raw research into a polished case — from mapping evidence to blocks, writing sharp taglines, proving outcomes with precedent, stress-testing for weaknesses, and assembling the finished product. Your cases will be tighter, stronger, and harder to beat.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128221;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Case Builder</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'turning-research-case';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Quality over quantity. One devastating statistic beats five mediocre ones. Pick the strongest cards for each block section.",
+  q2a: "That tagline makes a specific claim with a number, identifies the affected population, and describes the real-world consequence. That's what a strong tagline does.",
+  q2b: "Write taglines first. They force you to clarify your argument before you build the block. If you can't write a clear tagline, you don't understand your argument yet.",
+  q3a: "Past precedent is the gold standard because it shows the mechanism working in the real world, not just in theory. It's the hardest evidence for opponents to dismiss.",
+  q3b: "Proving the problem exists is SQUO work. The Outcome must separately prove that the bill's specific mechanism will actually fix it. These are two different burdens.",
+  q4:  "Each stress-test question targets a different type of weakness: opposition arguments, logical gaps in your link chain, and outdated or weak evidence.",
+  q5a: "Specific, measurable results from a real program are the strongest Outcome proof. It's past precedent with numbers — exactly what judges want to see.",
+  q5b: "That's the complete pipeline. Each step builds on the previous one, turning raw research into a competition-ready block."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about time constraints in a 3-minute speech. Can you fit every piece of evidence? What serves judges better — hearing 8 statistics or hearing 2 strong ones with clear explanation?",
+  q2a: "Look for the tagline that makes a specific, evidence-backed claim rather than a vague topic announcement or personal belief statement.",
+  q2b: "Think about the purpose of the tagline. Is it a summary of what you already wrote, or is it the guiding thesis that shapes what you write?",
+  q3a: "Think about what's hardest for an opponent to dismiss. Predictions can be wrong, logic can be challenged, polls don't prove effectiveness. What's left?",
+  q3b: "Think about the link chain. Does proving 'the problem is bad' automatically prove 'this specific bill fixes it'? What's missing between those two claims?",
+  q4:  "Read each weakness carefully. One is about what opponents will argue, one is about a gap between your SQUO and Outcome, and one is about the age of your source.",
+  q5a: "Look at what the Outcome evidence actually contains. Is it emotional language, a source name, a proof of the problem, or specific measurable results from a real program?",
+  q5b: "Review the five bolded steps in the walkthrough. Do they match the sequence described in this statement?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3a: 'q3b',
+  q3b: 'next3',
+  q4:  'next4',
+  q5a: 'q5b',
+  q5b: 'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

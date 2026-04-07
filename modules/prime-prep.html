@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime-Level Prep — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Prime-Level Prep</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 3 · Module 3.3 · Congressional Debate</div>
+  <div class="mod-title">Prime-Level Prep</div>
+  <div class="mod-desc">What championship-level preparation actually looks like. The habits and frameworks that produce consistently high ranks.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">What Separates Good Prep from Great Prep</div>
+    <div class="section-body">
+      <p>Every competitive debater prepares. They read the bills, jot down some arguments, maybe find a piece of evidence or two. That's good prep. But <strong>championship debaters do something fundamentally different</strong> — they prepare with intentionality, not just effort.</p>
+      <p>Great prep isn't more hours. It's more intentional hours. The debater who spends 45 focused minutes identifying the 2-3 strongest arguments per side, predicting what opponents will run, and building complete blocks will consistently outperform the debater who spends 3 hours casually browsing articles.</p>
+      <p>Here's what separates the two approaches. Good prep asks: "What can I say about this bill?" Great prep asks: <strong>"What are the 2-3 arguments that will actually win rounds on this bill, and what will my opponents say against them?"</strong></p>
+      <p>Championship debaters don't just research both sides — they identify the strongest arguments per side AND predict what opponents will run. They prepare responses to those opposing arguments before they ever step into the round. This means when an opponent makes a point, the championship debater isn't surprised — they're ready.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Intentionality Test</div>
+      <div class="callout-text">Before your next tournament, time yourself. If you spend more than 50% of your prep time reading and less than 50% writing arguments and blocks, your ratio is off. Reading is input. Writing is output. Championships are won on output.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the key difference between good preparation and championship-level preparation?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Championship debaters spend more total hours preparing</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Championship debaters focus on identifying the strongest arguments and predicting opponents' responses</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Championship debaters memorize more evidence cards than other competitors</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Championship debaters only prepare one side of the bill</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; The Prep Document</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">The Prep Document</div>
+    <div class="section-body">
+      <p>Championship debaters don't show up to tournaments with scattered notes on loose paper. They have a <strong>structured prep document</strong> — a single, organized resource that lets them find any argument, any evidence card, any refutation within seconds.</p>
+      <p>For each bill on the docket, your prep document should have four sections:</p>
+      <p><strong>1. Affirmation Arguments</strong> — Your 2-3 strongest aff arguments, each with a complete SQUO-Outcome-Impact block. Lead with your best.</p>
+      <p><strong>2. Negation Arguments</strong> — Your 2-3 strongest neg arguments, structured the same way. Even if you prefer one side, you need both ready.</p>
+      <p><strong>3. Key Evidence Cards</strong> — The specific statistics, quotes, and citations that support your arguments. Each card should be tagged so you know which argument it supports.</p>
+      <p><strong>4. Potential Refutations</strong> — For each of your arguments, note the most likely counter-argument and your response. This is your insurance policy when opponents challenge you.</p>
+      <p>The goal is simple: <strong>under the pressure of a live round, you should be able to find anything you need in under 10 seconds.</strong> If you're flipping through pages looking for a statistic while someone else is speaking, your prep document has failed you.</p>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A good prep document only needs affirmation and negation arguments — evidence cards and refutations can be handled on the fly during the round.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Depth over Breadth</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Depth over Breadth</div>
+    <div class="section-body">
+      <p>One of the biggest mistakes debaters make is preparing 5-6 shallow arguments per side when they should be preparing <strong>1-2 deep ones.</strong> This is consistent with the Block Format philosophy you've already learned — depth beats breadth every time.</p>
+      <p>A shallow argument sounds like: "This bill will help the economy." No specific mechanism, no evidence, no impact quantification. A judge has heard this a thousand times and it won't stand out.</p>
+      <p>A deep argument sounds like: "This bill's tax credit provision specifically targets manufacturing firms with under 500 employees, which according to the National Bureau of Economic Research accounts for 47% of new job creation. By reducing their effective tax rate by 3 points, the CBO projects 140,000 new jobs over 5 years — and that's conservative compared to what we saw after similar credits in 2015."</p>
+      <p>See the difference? The deep argument has a <strong>specific mechanism</strong> (tax credit for small manufacturers), <strong>specific evidence</strong> (NBER data, CBO projection), and a <strong>specific impact</strong> (140,000 jobs). It's nearly impossible to refute with a vague counter-argument.</p>
+      <p>Each argument in your prep should have a complete block: Status Quo problem, Outcome explanation, and Impact quantification — all backed by evidence cards. If you can't fill all three sections, the argument isn't ready yet.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Depth Check</div>
+      <div class="callout-text">For each argument you've prepped, ask: "Could an opponent refute this with a single sentence?" If yes, it's not deep enough. Add specificity until a one-sentence refutation would sound absurd.</div>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is preparing 1-2 deep arguments more effective than preparing 5-6 shallow arguments?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Because judges only listen to the first two arguments in a speech</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Because shallow arguments are against the rules in Congressional Debate</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Because deep arguments with specific mechanisms, evidence, and impacts are much harder to refute and more memorable to judges</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Because you only have time to deliver one argument per speech anyway</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Preparing for Adaptation</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Preparing for Adaptation</div>
+    <div class="section-body">
+      <p>Here's an uncomfortable truth: <strong>your prep is a starting point, not a script.</strong> No matter how good your preparation is, the round will force you to adapt. Someone will cover your best argument. The debate will shift in a direction you didn't predict. A speaker before you will make a point that changes the landscape entirely.</p>
+      <p>Championship debaters prepare for this. They don't just have a Plan A — they have backup angles ready for when their primary argument gets covered. This means preparing at least <strong>one alternative approach per side</strong> that attacks the bill from a completely different angle.</p>
+      <p>For example, if your primary aff argument is economic (the bill creates jobs), your backup might be moral (the bill addresses a fundamental inequity). If your primary neg argument attacks the bill's mechanism (it won't work), your backup might attack the premise (the problem it claims to solve doesn't actually exist).</p>
+      <p>Adaptation also means knowing your material well enough to <strong>cut sections on the fly.</strong> If a previous speaker already established the Status Quo, you should be able to skip yours and jump straight to the Outcome without your speech falling apart. This requires understanding your argument deeply, not just memorizing a sequence of paragraphs.</p>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If your primary argument gets covered by another speaker, the best strategy is to deliver it anyway since your version is likely stronger.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4a',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4a',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the best way to prepare a backup argument?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4b',this,'wrong')">Prepare a weaker version of the same argument</button>
+        <button class="option" onclick="mc('q4b',this,'correct')">Prepare an alternative approach that attacks the bill from a completely different angle</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Wait until the round starts and improvise</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Prepare only one side so you can go deeper on it</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; The Weekly Routine</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">The Weekly Routine</div>
+    <div class="section-body">
+      <p>Championship debaters don't cram the night before a tournament. They have a <strong>weekly rhythm</strong> that builds preparation gradually and consistently. Here's what it looks like:</p>
+      <p><strong>Monday-Tuesday: Read the bills.</strong> Go through every bill on the docket. For each one, identify the core issue, note your initial reaction, and flag which ones you want to prioritize. Don't start researching yet — just understand the landscape.</p>
+      <p><strong>Wednesday: Research.</strong> Deep dive into your priority bills. Find evidence, read expert analysis, look at both sides. This is your input day — consume information strategically.</p>
+      <p><strong>Thursday: Write blocks.</strong> Turn your research into structured arguments. Build complete SQUO-Outcome-Impact blocks with evidence cards. This is your output day — transform information into ammunition.</p>
+      <p><strong>Friday: Practice delivery.</strong> Read your blocks aloud. Time them. Identify which sections feel clunky and rewrite them. Practice adapting — try delivering your argument without the SQUO section, or with a different opening. Get comfortable with flexibility.</p>
+      <p><strong>Saturday (Tournament Day):</strong> Trust your preparation. Review your prep document in the morning, but don't try to learn new material. You're executing, not cramming.</p>
+      <p>The key insight: <strong>consistency beats cramming every time.</strong> Four focused hours spread across a week produce better results than eight panicked hours the night before. Your brain needs time to process, connect, and internalize arguments.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Compound Effect</div>
+      <div class="callout-text">If you follow this routine for 10 tournament cycles, you'll have 10 weeks of structured practice. The debater who crammed the night before each tournament has 10 isolated panic sessions. Over a season, the gap becomes enormous.</div>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each day of the championship prep week to the correct activity.</div>
+      <div class="drag-area">
+        <div class="drag-label">Activities (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="research" ondragstart="dragStart(event)">Deep dive research on priority bills</div>
+          <div class="drag-chip" draggable="true" data-val="read" ondragstart="dragStart(event)">Read all bills and identify priorities</div>
+          <div class="drag-chip" draggable="true" data-val="practice" ondragstart="dragStart(event)">Practice delivery and adaptation</div>
+          <div class="drag-chip" draggable="true" data-val="write" ondragstart="dragStart(event)">Write structured argument blocks</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="read" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Mon-Tue</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="research" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Wednesday</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="write" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Thursday</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="practice" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Friday</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've learned the preparation framework used by championship debaters — intentional prep, structured documents, deep arguments, adaptation planning, and a consistent weekly routine. Now build the habits.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Championship Prep Master</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'prime-prep';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Intentionality is everything. Championship debaters don't out-work their opponents — they out-think them by identifying the strongest arguments and anticipating opposition.",
+  q2:  "All four sections work together. Evidence cards give your arguments teeth, and pre-written refutations keep you prepared when opponents push back.",
+  q3:  "Depth beats breadth. A single well-built argument with specific mechanisms and evidence is worth more than five vague talking points.",
+  q4a: "Repeating a covered argument tells judges you weren't listening. Switching to a backup angle shows adaptability — one of the most valued skills in Congress.",
+  q4b: "Your backup should come from a different direction entirely. If your primary is economic, your backup should be moral, social, or structural.",
+  q5:  "The weekly rhythm spreads preparation across the week, giving your brain time to process and connect ideas instead of cramming everything in one session."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about quality vs. quantity. Is it about how many hours you put in, or how you use those hours?",
+  q2:  "Think about what happens in a live round when an opponent challenges your argument. Can you really build a strong refutation on the fly under pressure?",
+  q3:  "Consider what makes an argument memorable and hard to refute. Is it the number of points, or the specificity and evidence behind each one?",
+  q4a: "Judges have already heard that argument. Repeating it — even a stronger version — tells them you weren't listening to the debate.",
+  q4b: "A backup argument needs to be truly different from your primary, not just a variation of the same approach.",
+  q5:  "Think about the logical sequence. What needs to happen before you can research? What needs to happen before you can write blocks?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chamber Presence &amp; Walk-Ups — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Chamber Presence &amp; Walk-Ups</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 4 · Module 4.4 · Congressional Debate</div>
+  <div class="mod-title">Chamber Presence &amp; Walk-Ups</div>
+  <div class="mod-desc">How to carry yourself before, between, and after speeches. Walk-ups, stereotypes to avoid, and commanding the room.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Presence Is Always On</div>
+    <div class="section-body">
+      <p>Here's something most debaters don't realize: <strong>judges are evaluating you the entire round, not just during your speech.</strong> From the moment you walk into the chamber to the moment the session ends, your behavior is contributing to the impression judges form of you.</p>
+      <p>How you sit matters. Slouching in your chair, scrolling on your phone, or looking bored while others speak tells judges you don't take the competition seriously. And if you don't take it seriously, why should they rank you highly?</p>
+      <p>How you listen matters. Judges look around the room during speeches. They notice who's taking notes, who's nodding at strong points, and who's checked out. The debaters who look engaged between speeches consistently rank higher — even when their speech quality is similar to disengaged competitors.</p>
+      <p>Think of it this way: your speech is 3 minutes. The round is 2 hours. That means <strong>97% of your time in the chamber is spent NOT speaking.</strong> If you're only "on" for that 3%, you're wasting the other 97% of your ranking opportunity.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Always-On Mindset</div>
+      <div class="callout-text">Before your next round, put your phone away completely. Not face-down on the desk — in your bag. Take a notepad out instead. That single physical action changes your posture, your focus, and how judges perceive you for the entire round.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Judges only evaluate your performance during the 3 minutes you're at the podium delivering your speech.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q1',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q1',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; The Walk-Up</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">The Walk-Up</div>
+    <div class="section-body">
+      <p>The 10 seconds from your seat to the podium are some of the most important seconds in your entire round. The <strong>walk-up</strong> sets the tone for your speech before you say a single word.</p>
+      <p>A strong walk-up has four elements:</p>
+      <p><strong>1. Stand with purpose.</strong> Don't fumble with papers or hesitate. When you're recognized, close your notebook, stand up smoothly, and head to the podium. Every movement should communicate confidence.</p>
+      <p><strong>2. Walk with controlled pace.</strong> Not too fast (looks nervous), not too slow (looks tentative). A measured, even pace tells the room you're calm and in control.</p>
+      <p><strong>3. Brief eye contact with judges.</strong> As you approach the podium, make brief eye contact with 1-2 judges. This establishes a connection before your speech begins and signals that you're speaking TO them, not AT a room.</p>
+      <p><strong>4. The pause.</strong> This is the most powerful part. When you reach the podium, don't start immediately. Place your notes down, look up, take one breath, and THEN begin. That 2-second pause creates anticipation and commands attention. It says: "I'm ready, and what I'm about to say matters."</p>
+      <p>A weak walk-up — shuffling to the podium with your head down, fumbling with papers, starting mid-sentence — costs you credibility before your argument even begins. First impressions are formed in seconds, and the walk-up is your first impression.</p>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the most impactful part of a strong walk-up?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2',this,'wrong')">Walking as quickly as possible to show eagerness</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">Reading your opening lines while walking to save time</button>
+        <button class="option" onclick="mc('q2',this,'correct')">Pausing at the podium before beginning to create anticipation and command attention</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">Shaking hands with nearby competitors on your way up</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Between Speeches</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Between Speeches</div>
+    <div class="section-body">
+      <p>The time between speeches is where chamber presence is won or lost. <strong>Engaged competitors rank higher</strong> — this is one of the most consistent patterns in Congressional Debate judging.</p>
+      <p>Here's what engaged presence looks like:</p>
+      <p><strong>Take notes on other speakers.</strong> Not just for show — genuinely listen and jot down key arguments, evidence, and potential weaknesses. These notes will help you reference other speakers in your own speech ("As Speaker 4 established...") and ask sharp CX questions.</p>
+      <p><strong>Nod when good points are made.</strong> Subtle acknowledgment shows intellectual engagement. You don't need to be dramatic — a simple nod or brief note-taking motion tells judges you're processing the debate.</p>
+      <p><strong>Ask questions during CX.</strong> Even if you've already spoken, asking a question during someone else's cross-examination shows you're still in the debate. Make it count — ask something specific that demonstrates you were listening to the speech.</p>
+      <p><strong>React to the debate.</strong> If a speaker makes a particularly strong point, it's okay to show a genuine reaction. A slight eyebrow raise, a quick note, a thoughtful nod — these signal to judges that you're evaluating the debate at a high level.</p>
+      <p>The debaters who rank highest are not the ones who give the best isolated speech — they're the ones who seem engaged with the <strong>entire round.</strong></p>
+    </div>
+
+    <div class="quiz" id="q3a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which behavior between speeches is most likely to improve your ranking?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3a',this,'wrong')">Reviewing your own speech notes to prepare for next time</button>
+        <button class="option" onclick="mc('q3a',this,'correct')">Taking notes on other speakers and asking specific questions during CX</button>
+        <button class="option" onclick="mc('q3a',this,'wrong')">Quietly rehearsing your speech under your breath</button>
+        <button class="option" onclick="mc('q3a',this,'wrong')">Making eye contact with the judge constantly to show you're paying attention</button>
+      </div>
+      <div class="feedback" id="q3a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q3b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Asking a CX question after you've already given your speech is pointless because it won't affect your ranking.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q3b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q3b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q3b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; Stereotypes to Avoid</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">Stereotypes to Avoid</div>
+    <div class="section-body">
+      <p>Judges have seen thousands of competitors. Over time, they've developed pattern recognition for <strong>behavioral archetypes that correlate with lower rankings.</strong> Avoid these at all costs:</p>
+      <p><strong>The "Checked Out" Competitor.</strong> Phone on the desk, barely looking up during speeches, only engaged during their own speech. This person might give a solid 3-minute speech, but judges can't rank them highly when they clearly don't care about the other 117 minutes of the round.</p>
+      <p><strong>The "Too Cool" Debater.</strong> Doesn't clap after speeches, doesn't acknowledge good points, acts like the competition is beneath them. This attitude reads as arrogance, and judges don't reward arrogance — they reward competitors who elevate the debate for everyone.</p>
+      <p><strong>The "Nervous Fidgeter."</strong> Tapping pens, bouncing legs, playing with hair, shifting constantly in their seat. These behaviors are distracting and signal anxiety. While nerves are normal, visible fidgeting tells judges you're not comfortable in the chamber.</p>
+      <p><strong>The "Whisperer."</strong> Constantly leaning over to talk to neighbors during speeches. Even if you're discussing strategy, it looks disrespectful to the speaker and signals to judges that you're not listening.</p>
+      <p>The fix for all of these is the same: <strong>be present.</strong> Sit up, put the phone away, listen actively, take notes, and treat every speaker — including your competitors — with respect.</p>
+    </div>
+
+    <div class="quiz" id="q4">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each negative behavior to the stereotype judges associate with it.</div>
+      <div class="drag-area">
+        <div class="drag-label">Behaviors (drag these):</div>
+        <div class="drag-source" id="drag-source-4">
+          <div class="drag-chip" draggable="true" data-val="nervous" ondragstart="dragStart(event)">Constantly tapping a pen and bouncing leg during speeches</div>
+          <div class="drag-chip" draggable="true" data-val="checked" ondragstart="dragStart(event)">Scrolling on phone and only looking up for own speech</div>
+          <div class="drag-chip" draggable="true" data-val="cool" ondragstart="dragStart(event)">Never clapping and acting like the competition is beneath them</div>
+        </div>
+        <div class="drag-targets" id="q4-targets">
+          <div class="drag-target" data-correct="checked" ondragover="dragOver(event)" ondrop="drop(event,'q4')"><span class="drag-target-label">The "Checked Out" Competitor</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="cool" ondragover="dragOver(event)" ondrop="drop(event,'q4')"><span class="drag-target-label">The "Too Cool" Debater</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="nervous" ondragover="dragOver(event)" ondrop="drop(event,'q4')"><span class="drag-target-label">The "Nervous Fidgeter"</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q4-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; Commanding the Room</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">Commanding the Room</div>
+    <div class="section-body">
+      <p>Chamber presence isn't just about avoiding bad habits — it's about <strong>projecting the kind of confidence and engagement that makes judges notice you.</strong> The debaters who rank highest are the ones who seem like they belong at the top, long before they ever stand up to speak.</p>
+      <p>Commanding the room is built on consistency. It's not one gesture or one moment — it's the accumulation of dozens of small signals throughout the round:</p>
+      <p><strong>Your posture in your seat</strong> — upright, attentive, leaning slightly forward during speeches. This communicates intellectual engagement even from across the room.</p>
+      <p><strong>Your note-taking</strong> — visible, purposeful, and connected to what's being said. Judges notice when someone writes something down right after a key point is made.</p>
+      <p><strong>Your reactions</strong> — a thoughtful nod, a brief note after hearing strong evidence, a slight head tilt when processing a complex argument. These micro-reactions tell judges you're thinking critically about every speech.</p>
+      <p><strong>Your composure</strong> — calm under pressure, unbothered when an opponent challenges your argument, gracious when another speaker makes a good point. Composure signals maturity and experience.</p>
+      <p>The goal isn't to perform engagement — it's to genuinely BE engaged. When you care about the debate, when you're truly listening and thinking, the right behaviors follow naturally. Chamber presence is the external reflection of internal investment.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Presence Audit</div>
+      <div class="callout-text">At your next tournament, ask a teammate to observe you during a round — not your speech, but everything else. When do you check your phone? When do you stop taking notes? When do you slouch? The gaps between engaged and disengaged are your biggest ranking opportunities.</div>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the foundation of commanding the room in a Congressional Debate chamber?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5',this,'wrong')">Having the loudest and most dramatic speaking style</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Making sure judges see you taking notes at all times</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Being the first speaker on every bill to establish dominance</button>
+        <button class="option" onclick="mc('q5',this,'correct')">Consistently projecting genuine engagement, composure, and intellectual investment throughout the entire round</button>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand that presence is always on — from the walk-up to the final gavel. Master these habits and you'll rank higher even before you open your mouth.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#128142;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Chamber Commander</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'chamber-presence';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "Judges evaluate you for the entire round. Your behavior during the other 97% of the session directly affects your ranking.",
+  q2:  "The pause is the most powerful element. Those 2 seconds of silence create anticipation and tell judges you're confident and in control.",
+  q3a: "Active engagement — taking notes and asking CX questions — shows judges you're invested in the entire debate, not just your own speech.",
+  q3b: "CX questions after your speech absolutely affect your ranking. They demonstrate continued engagement and intellectual sharpness.",
+  q4:  "Judges recognize these patterns instantly because they've seen them thousands of times. Avoiding these stereotypes is one of the easiest ways to improve your ranking.",
+  q5:  "Commanding the room is about consistent, genuine engagement — not performance. When you truly invest in the debate, the right behaviors follow naturally."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about how much time you spend NOT speaking in a 2-hour round. Are judges really ignoring you for all of that time?",
+  q2:  "Think about what creates the strongest impression in those first seconds. What communicates confidence and control?",
+  q3a: "Which behavior shows the judge you're engaged with the DEBATE, not just your own preparation?",
+  q3b: "Think about what a CX question signals to judges. Does it show engagement or wasted effort?",
+  q4:  "Match the specific behavior to the pattern it fits. Phone scrolling, acting superior, and physical fidgeting each map to a distinct archetype.",
+  q5:  "Commanding the room isn't about volume or dominance. What's the underlying quality that ties all the positive presence behaviors together?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3a: 'q3b',
+  q3b: 'next3',
+  q4:  'next4',
+  q5:  'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

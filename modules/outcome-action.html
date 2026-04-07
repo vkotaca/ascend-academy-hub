@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crafting Your Outcome & Action — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo"><img src="../Pictures/compressed_image.jpg" alt="Ascend Academy" class="topbar-logo-img">Ascend <span>Academy</span> · Outcome &amp; Action</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 5</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.4 · Congressional Debate</div>
+  <div class="mod-title">Crafting Your Outcome &amp; Action</div>
+  <div class="mod-desc">The pivot from problem to solution — referencing legislation, proving the mechanism, making the link chain airtight.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: ACTION VS. OUTCOME -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 5</div>
+    <div class="section-title">Action vs. Outcome</div>
+    <div class="section-body">
+      <p>The Outcome section of your block actually contains two distinct parts, and confusing them is one of the most common mistakes in Congressional Debate.</p>
+      <p><strong>The Action</strong> is a 1-2 sentence factual reference to what the bill does. It is not arguable. It is not your opinion. It is simply what the legislation mandates, funds, or prohibits. Think of it as the mechanical explanation: "Section 1 of this legislation does X. Section 2 does Y."</p>
+      <p><strong>The Outcome</strong> is YOUR argument — the new reality the bill creates because of that action. This IS arguable. This is where opponents will attack you. The Outcome answers: "Because the bill does X, the world changes in this specific way."</p>
+      <p>The Action is context. The Outcome is the argument. Judges need the Action to understand what's happening. They evaluate the Outcome to decide if the bill is worth passing.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Action (factual, not arguable)</div>
+      "Section 1 of this legislation raises the federal minimum wage from $7.25 to $15 per hour over a five-year phase-in period."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Outcome (your argument, arguable)</div>
+      "When you double the wages of 13 million workers, most will no longer need a second job. That means millions of Americans can work one job, come home for dinner, and actually be present for their families."
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">Classify each statement as either an Action or an Outcome.</div>
+      <div class="drag-area">
+        <div class="drag-label">Statements (drag these):</div>
+        <div class="drag-source" id="drag-source-1">
+          <div class="drag-chip" draggable="true" data-val="action" ondragstart="dragStart(event)">Section 2 allocates $500 million for community-based mental health centers</div>
+          <div class="drag-chip" draggable="true" data-val="outcome" ondragstart="dragStart(event)">This means patients discharged from emergency rooms will have somewhere to go — reducing the revolving door of crisis care</div>
+        </div>
+        <div class="drag-targets" id="q1-targets">
+          <div class="drag-target" data-correct="action" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">Action</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="outcome" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">Outcome</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue &rarr; Referencing the Legislation</button>
+  </div>
+
+  <!-- STEP 2: REFERENCING THE LEGISLATION -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 5</div>
+    <div class="section-title">Referencing the Legislation</div>
+    <div class="section-body">
+      <p>One of the fastest ways to gain credibility in a Congressional Debate round is to <strong>show judges you've actually read the bill.</strong> Many debaters talk about the topic without ever referencing the specific legislation — and judges notice.</p>
+      <p>When you read a bill, look for: the <strong>section numbers</strong> (Section 1, Section 2, etc.), the <strong>specific mechanisms</strong> (what does each section mandate, fund, or prohibit?), and the <strong>implementation details</strong> (timelines, dollar amounts, agencies involved).</p>
+      <p>The standard phrasing is direct: <strong>"Section 1 of this legislation mandates..."</strong> or <strong>"Under Section 2, the bill allocates..."</strong> You don't need to read the legal text verbatim — you're summarizing the mechanism in plain language.</p>
+      <p>Why does this matter? Because debates are about specific legislation, not abstract policy. A debater who says "this bill raises the minimum wage" sounds like they read a headline. A debater who says "Section 1 phases in a $15 federal minimum over five years, starting at $9.50 in year one" sounds like they did the work.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Pro Tip</div>
+      <div class="callout-text">During prep, write out the Action for each section of the bill on your flow sheet before the round starts. That way, you can reference specific sections naturally during your speech without fumbling through the legislation text.</div>
+    </div>
+
+    <div class="quiz" id="q2a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of these Action statements would most impress a judge that the debater has actually read the bill?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q2a',this,'wrong')">This bill would help reform the criminal justice system in several important ways</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">The legislation before us addresses sentencing for nonviolent offenders</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">Section 3 of this legislation retroactively reduces mandatory minimums for nonviolent drug offenses by 25%, affecting approximately 19,000 currently incarcerated individuals</button>
+        <button class="option" onclick="mc('q2a',this,'wrong')">Experts say that this bill could change how we approach criminal justice in America</button>
+      </div>
+      <div class="feedback" id="q2a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q2b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">When stating your Action, you should read the bill's legal text word-for-word to demonstrate credibility.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2b',this,false)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2b',this,true)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q2b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue &rarr; Proving the Mechanism</button>
+  </div>
+
+  <!-- STEP 3: PROVING THE MECHANISM -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 5</div>
+    <div class="section-title">Proving the Mechanism</div>
+    <div class="section-body">
+      <p>This is the most critical and most often botched part of the Outcome: <strong>proving that the bill's action actually leads to the result you claim.</strong> This is what we call the link chain.</p>
+      <p>Your Outcome must logically follow from your Action. If the bill raises the minimum wage (Action), and you claim it reduces overworking (Outcome), you must show HOW higher wages lead to fewer hours worked. The link is: higher wages &rarr; workers can afford rent on one salary &rarr; workers drop their second job &rarr; overworking decreases.</p>
+      <p>Without this link, you're just asserting. "The bill raises wages, therefore overworking goes down" is a claim. "The Census Bureau shows 13 million workers hold two jobs solely to afford rent — when wages double, the financial pressure to hold two jobs disappears" is a proven mechanism.</p>
+      <p><strong>Evidence belongs here too.</strong> Your Outcome should include at least one card that proves the mechanism works — either through data, expert analysis, or real-world precedent. If a city already raised its minimum wage and saw overworking decline, that's your strongest proof.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Weak Link (assertion without proof)</div>
+      "Raising the minimum wage will reduce poverty because higher wages mean more money."
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Strong Link (proven mechanism)</div>
+      "A Walden University study found that workers averaging 11+ hours daily are 2.5 times more likely to develop depression. When wages double, most workers can afford to drop their second job — and the University of Washington found that after Seattle's $15 minimum wage, average hours worked per person declined by 9%, meaning workers earned more while working less."
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A debater argues: "Section 1 mandates universal pre-K. Therefore, the achievement gap will close." What's missing from this Outcome?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">The debater forgot to include a tagline before the Outcome</button>
+        <button class="option" onclick="mc('q3',this,'correct')">There's no link chain showing HOW universal pre-K leads to closing the achievement gap — the mechanism is unproven</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">The debater should have referenced Section 2 as well</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">The achievement gap is not a valid outcome for an education bill</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue &rarr; The Outcome Is Your Argument</button>
+  </div>
+
+  <!-- STEP 4: THE OUTCOME IS YOUR ARGUMENT -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 5</div>
+    <div class="section-title">The Outcome Is Your Argument</div>
+    <div class="section-body">
+      <p>Here's the conceptual breakthrough that changes how you think about Congressional Debate: <strong>Congress ultimately comes down to a battle of outcomes.</strong> Which world is better — the world where the bill passes, or the world where the status quo continues?</p>
+      <p>Your SQUO proves the current world has a problem. Your Action explains how the bill works. But your <strong>Outcome is the argument itself</strong> — it's the new reality you're asking judges to choose.</p>
+      <p>This means your Outcome must be two things simultaneously:</p>
+      <p><strong>Specific enough to defend.</strong> "This bill makes things better" is indefensible because it's too vague. "This bill reduces the number of Americans working two jobs by giving them a livable wage" is specific — and therefore defensible. You can point to evidence, cite data, and prove it step by step.</p>
+      <p><strong>Broad enough to matter.</strong> "This bill saves one person $47 a week" is too narrow for judges to care about. Your Outcome should connect to a meaningful scale — millions of workers, systemic change, national impact. The sweet spot is a specific mechanism that affects a large population.</p>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which Outcome statement best hits the balance of "specific enough to defend, broad enough to matter"?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">This bill will generally improve the lives of American workers</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">This bill will save a family in Ohio $2,300 per year in childcare costs</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">This bill allows 13 million overworked Americans to drop their second job by doubling their hourly wage to a livable standard</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">This bill addresses several important economic issues that affect the working class</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">In Congressional Debate, the round ultimately comes down to which side's Outcome presents a better world for Americans.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,false)">&#10007; False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue &rarr; The Airtight Link Chain</button>
+  </div>
+
+  <!-- STEP 5: AIRTIGHT LINK CHAIN -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 5</div>
+    <div class="section-title">Building an Airtight Link Chain</div>
+    <div class="section-body">
+      <p>Let's put it all together. The entire Block Format is one link chain: <strong>SQUO proves problem &rarr; Action explains mechanism &rarr; Outcome proves solution.</strong> If any link is weak, the whole argument collapses.</p>
+      <p>Here's a complete walkthrough with a minimum wage bill:</p>
+    </div>
+
+    <div class="components-row">
+      <div class="component-box squo">
+        <div class="component-icon">&#128301;</div>
+        <div class="component-name">SQUO</div>
+        <div class="component-desc"><strong>Problem:</strong> Workers are being overworked. 13 million minimum wage workers hold two jobs just to afford rent. This isn't a lifestyle choice — it's survival economics.</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">&#9889;</div>
+        <div class="component-name">Action + Outcome</div>
+        <div class="component-desc"><strong>Action:</strong> Section 1 raises the minimum wage to $15/hr. <strong>Outcome:</strong> When wages double, workers can afford rent on one salary — and 13 million Americans can drop their second job.</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">&#128165;</div>
+        <div class="component-name">Impact</div>
+        <div class="component-desc">Workers who are no longer overworked are healthier, present for their families, and less likely to die prematurely. 1,400 premature deaths prevented annually in NYC alone.</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>Notice how each link connects to the next. The SQUO doesn't talk about minimum wage broadly — it proves overworking. The Action doesn't just say "the bill raises wages" — it names the section and the amount. The Outcome doesn't just say "things get better" — it traces the exact mechanism from higher wages to fewer jobs to less overworking.</p>
+      <p><strong>The test:</strong> Can an opponent break any one link? If your SQUO is proven with strong data, opponents must first disprove the problem. If your Action accurately references the bill, it's not arguable. If your Outcome is backed by evidence showing the mechanism works, opponents must provide counter-evidence. That's an airtight chain.</p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag &amp; Drop</div>
+      <div class="quiz-q">A debater argues a criminal justice reform bill. Put the link chain in the correct order from foundation to conclusion.</div>
+      <div class="drag-area">
+        <div class="drag-label">Link chain pieces (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="action" ondragstart="dragStart(event)">Section 2 funds re-entry job training programs in federal prisons</div>
+          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">76% of released prisoners are re-arrested within 5 years, primarily due to unemployment after release</div>
+          <div class="drag-chip" draggable="true" data-val="outcome" ondragstart="dragStart(event)">Inmates who complete job training are 3x more likely to find employment and 40% less likely to reoffend</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="squo" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Step 1: SQUO (Problem)</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="action" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Step 2: Action (Mechanism)</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="outcome" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Step 3: Outcome (Solution)</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">&#127942;</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand the difference between Action and Outcome, how to reference legislation like a pro, how to prove your mechanism with evidence, and how to build a link chain that opponents can't easily break.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">&#9889;</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Link Chain Architect</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">&#8592; Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'outcome-action';
+var TOTAL_STEPS = 5;
+
+var CORRECT_MSGS = {
+  q1:  "The Action is what the bill does (factual). The Outcome is what that action creates (your argument). Judges need both.",
+  q2a: "Specificity signals preparation. Referencing section numbers, dollar amounts, and affected populations shows judges you've done the work.",
+  q2b: "You should summarize the mechanism in plain language. Reading legal text verbatim makes your speech harder to follow and wastes time.",
+  q3:  "Without showing HOW pre-K closes the gap (through what mechanism, backed by what evidence), the Outcome is just an assertion.",
+  q4a: "This Outcome names a specific mechanism (doubling wages), a specific result (dropping second jobs), and a meaningful scale (13 million workers).",
+  q4b: "Congressional Debate is fundamentally about competing visions of the world. Your Outcome is the world you're asking judges to choose.",
+  q5:  "The chain flows logically: the problem (recidivism from unemployment) is addressed by the mechanism (job training) which produces the solution (employment and reduced reoffending)."
+};
+
+var WRONG_MSGS = {
+  q1:  "Ask yourself: which statement is a factual description of what the bill does, and which is an argument about what that action creates?",
+  q2a: "Think about which statement shows the most evidence that the debater actually sat down and read the specific bill language.",
+  q2b: "Consider what's more effective for judges: hearing dense legal language or a clear summary that shows you understand the mechanism.",
+  q3:  "Think about what a judge is left wondering after hearing this Outcome. Is the 'how' explained?",
+  q4a: "Look for the statement that has a clear mechanism AND affects enough people for judges to care about the result.",
+  q4b: "Think about what judges are ultimately weighing when they decide whether to vote for or against a bill.",
+  q5:  "Think about the logical flow: which piece identifies the current problem, which explains what the bill does, and which shows the result?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2a: 'q2b',
+  q2b: 'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>
