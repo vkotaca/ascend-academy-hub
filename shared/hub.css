@@ -131,7 +131,7 @@ nav {
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--red);
+  color: rgba(255,255,255,0.85);
   font-weight: 600;
   margin-bottom: 16px;
 }
@@ -147,7 +147,7 @@ nav {
 }
 
 .hero-title em {
-  color: var(--red);
+  color: var(--white);
   font-style: normal;
 }
 
