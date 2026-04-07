@@ -99,6 +99,22 @@ nav {
   padding: 72px 48px 56px;
   position: relative;
   overflow: hidden;
+  background-image: url('../Pictures/students.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.82);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero::before {
@@ -108,6 +124,7 @@ nav {
   width: 400px; height: 100%;
   background: linear-gradient(135deg, transparent 40%, rgba(200,16,46,0.15));
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-eyebrow {
