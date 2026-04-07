@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading & Analyzing Legislation — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Ascend <span>Academy</span> · Reading Legislation</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 8</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 1 · Module 1.4 · Congressional Debate</div>
+  <div class="mod-title">Reading & Analyzing Legislation</div>
+  <div class="mod-desc">How to break down a bill, understand what it actually does, and identify the real debate underneath the legal language.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 8</div>
+    <div class="section-title">Why Reading the Bill Matters</div>
+    <div class="section-body">
+      <p>Most debaters skim the bill, Google the topic, and start writing arguments. This is a mistake. <strong>The bill IS the debate.</strong> Every argument you make must connect to what the legislation actually does — not just what the topic is about in general.</p>
+      <p>Judges notice when debaters reference specific sections of a bill. It signals preparation, specificity, and understanding. Debaters who argue about "minimum wage" in the abstract lose to debaters who say "Section 1 of this legislation raises the federal minimum wage to $15 per hour over a 5-year phase-in."</p>
+      <p>Reading the bill also reveals the <strong>real debate</strong> — the specific mechanism the bill uses, which is often where affirmative and negative sides actually disagree. Two people can agree that a problem exists and still disagree about whether this particular bill solves it.</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why do judges reward speakers who reference specific sections of the bill?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">It proves you did your research, which judges weigh as a separate scoring category</button>
+        <button class="option" onclick="mc('q1',this,'correct')">It signals preparation, specificity, and a real understanding of what the legislation does</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">It distinguishes your speech from opponents who are arguing about the same section</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Bill references take up less time than explaining the mechanism in your own words</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → Anatomy of a Bill</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 8</div>
+    <div class="section-title">Anatomy of a Bill</div>
+    <div class="section-body">
+      <p>Every bill on your docket follows a predictable structure. Once you know the pattern, you can break down any piece of legislation quickly:</p>
+      <p><strong>Title:</strong> The formal name, sometimes with an acronym. "A Bill to Raise the Federal Minimum Wage Act."</p>
+      <p><strong>Whereas clauses (Resolutions only):</strong> These explain the reasoning behind the resolution — why it's being proposed. They often contain useful context for your speeches.</p>
+      <p><strong>Sections:</strong> The numbered parts of the bill that specify exactly what it does. Section 1 might raise the wage. Section 2 might create an enforcement mechanism. Section 3 might set a timeline.</p>
+      <p><strong>Enactment / Implementation:</strong> When the bill takes effect and who's responsible for carrying it out. This matters for arguments about feasibility and timeline.</p>
+      <p><strong>Funding clause:</strong> How it's paid for. Many bills include "funding shall come from existing appropriations" — which is vague and arguable.</p>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each part of a bill to its function.</div>
+      <div class="drag-area">
+        <div class="drag-label">Functions (drag these):</div>
+        <div class="drag-source" id="drag-source-2">
+          <div class="drag-chip" draggable="true" data-val="sections" ondragstart="dragStart(event)">Numbered parts specifying exactly what the bill does</div>
+          <div class="drag-chip" draggable="true" data-val="whereas" ondragstart="dragStart(event)">Explains the reasoning behind why the legislation is proposed</div>
+          <div class="drag-chip" draggable="true" data-val="funding" ondragstart="dragStart(event)">How the bill's implementation will be paid for</div>
+        </div>
+        <div class="drag-targets" id="q2-targets">
+          <div class="drag-target" data-correct="sections" ondragover="dragOver(event)" ondrop="drop(event,'q2')"><span class="drag-target-label">Sections</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="whereas" ondragover="dragOver(event)" ondrop="drop(event,'q2')"><span class="drag-target-label">Whereas Clauses</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="funding" ondragover="dragOver(event)" ondrop="drop(event,'q2')"><span class="drag-target-label">Funding Clause</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The 5 Questions</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 8</div>
+    <div class="section-title">The 5 Questions to Ask Every Bill</div>
+    <div class="section-body">
+      <p>After reading the bill, run it through these five questions. They'll give you everything you need to start building arguments:</p>
+      <p><strong>1. What problem is this trying to solve?</strong> Every bill exists because someone believes something is wrong with the status quo. Identify that problem — it's the foundation of affirmative arguments.</p>
+      <p><strong>2. What mechanism does the bill use to solve it?</strong> This is the "action" in Block Format terms. Does it regulate? Fund? Ban? Create a new agency? The mechanism matters because it's where most debates actually happen.</p>
+      <p><strong>3. Who is affected?</strong> Identify the stakeholders — workers, businesses, states, specific demographics. Arguments become stronger when you can name who wins and who loses.</p>
+      <p><strong>4. What could go wrong?</strong> This is the seed of negative argumentation. Does the mechanism have unintended consequences? Is it too expensive? Does it create perverse incentives?</p>
+      <p><strong>5. Has anything like this been tried before?</strong> Precedent is powerful. If a similar policy worked (or failed) somewhere, that's evidence you can use.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Ascend Standard</div>
+      <div class="callout-text">Ascend debaters don't just read a bill — they interrogate it. Every Ascend prep session starts with these five questions before anyone opens a browser. The questions give your research direction. Without them, you're Googling blindly and hoping to find something useful.</div>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of the five questions is most directly useful for generating negative arguments?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">What problem is this trying to solve?</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">What mechanism does the bill use to solve it?</button>
+        <button class="option" onclick="mc('q3',this,'correct')">What could go wrong?</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Has anything like this been tried before?</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Bills vs. Resolutions</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 8</div>
+    <div class="section-title">Bills vs. Resolutions</div>
+    <div class="section-body">
+      <p>Your docket will contain two types of legislation: <strong>bills</strong> and <strong>resolutions.</strong> The distinction matters for how you argue.</p>
+      <p><strong>Bills</strong> propose specific, enforceable actions. "A Bill to Raise the Federal Minimum Wage to $15." Bills have sections, mechanisms, timelines, and funding clauses. Arguments about bills focus on <strong>whether the specific mechanism works</strong> — feasibility, effectiveness, unintended consequences.</p>
+      <p><strong>Resolutions</strong> express a position or principle. "A Resolution to Condemn Human Rights Violations in [Country]." Resolutions don't create enforceable law — they send a message. Arguments about resolutions focus on <strong>whether the principle is correct and whether expressing it is productive.</strong></p>
+      <p>The biggest mistake debaters make: arguing a resolution like it's a bill. If a resolution says "condemn," the debate is about whether condemning is right and useful — not about specific enforcement mechanisms that don't exist in the text.</p>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Resolutions create enforceable law just like bills do.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4a',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4a',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When debating a resolution, what should arguments focus on?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4b',this,'wrong')">The enforcement mechanisms and funding clauses</button>
+        <button class="option" onclick="mc('q4b',this,'correct')">Whether the principle is correct and whether expressing it is productive</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">The specific timeline for implementation</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Which government agency would be responsible</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → Finding the Real Debate</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 8</div>
+    <div class="section-title">Finding the "Real Debate"</div>
+    <div class="section-body">
+      <p>Every piece of legislation has a surface-level debate and a <strong>real debate underneath.</strong> The surface is obvious — "should we raise the minimum wage?" The real debate is more specific — "will a $15 minimum wage cause job losses that outweigh the benefits to low-wage workers?"</p>
+      <p>Finding the real debate means identifying <strong>where the affirmative and negative actually disagree.</strong> Often, both sides agree on the problem (workers are struggling) but disagree about the solution (does this specific bill help or hurt?).</p>
+      <p>The debater who identifies and speaks to the real debate sounds smarter, more prepared, and more relevant than the debater who argues in generalities. This is why reading the bill's specific mechanism matters — <strong>the mechanism is where the real debate lives.</strong></p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A bill proposes a carbon tax. The surface debate is "should we fight climate change?" What might the real debate be?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5',this,'wrong')">Whether climate change is real</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Whether Congress has the authority to pass environmental legislation</button>
+        <button class="option" onclick="mc('q5',this,'correct')">Whether this specific tax mechanism will reduce emissions without causing unacceptable economic harm</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Whether the bill's sponsor is credible</button>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → Reading Between the Lines</button>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 8</div>
+    <div class="section-title">Reading Between the Lines</div>
+    <div class="section-body">
+      <p>Many bills contain strategic ambiguities — language that sounds clear but leaves room for interpretation. Recognizing these gives you powerful material for speeches:</p>
+      <p><strong>Vague funding clauses:</strong> "Funding shall come from existing appropriations" means the bill doesn't actually have dedicated funding. This is a common negative argument — the bill sounds good but may not be financially viable.</p>
+      <p><strong>Broad definitions:</strong> If a bill regulates "social media platforms" without defining which ones, that ambiguity is debatable. Does it apply to YouTube? Reddit? Messaging apps?</p>
+      <p><strong>Sunset clauses:</strong> Some bills expire after a set period. This can be affirmative ammunition ("if it doesn't work, it automatically ends") or negative ammunition ("it's too short to make a real difference").</p>
+      <p><strong>Missing enforcement:</strong> A bill might mandate something without specifying penalties for non-compliance. No teeth means no real change.</p>
+    </div>
+
+    <div class="quiz" id="q6a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A bill says "funding shall come from existing appropriations." What does this typically mean?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6a',this,'wrong')">The government has already set aside money specifically for this bill</button>
+        <button class="option" onclick="mc('q6a',this,'correct')">The bill doesn't have dedicated funding and may need to pull from other programs</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">A new tax will be created to pay for the bill's implementation</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">The bill is budget-neutral and costs nothing to implement</button>
+      </div>
+      <div class="feedback" id="q6a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q6b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A bill that mandates companies to do something but doesn't specify penalties for non-compliance can still be considered effective.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q6b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q6b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q6b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → From Bill to Argument</button>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="section hidden" id="step7">
+    <div class="section-eyebrow">Lesson 7 of 8</div>
+    <div class="section-title">From Bill to Argument</div>
+    <div class="section-body">
+      <p>Now you know how to read a bill — here's how that reading becomes an argument. The process maps directly to Block Format:</p>
+      <p><strong>The problem you identified (Question 1) → becomes your Status Quo.</strong> "The current world has this specific problem that this bill is designed to address."</p>
+      <p><strong>The mechanism you identified (Question 2) → becomes your Action.</strong> "Section 1 of this bill does X, and Section 2 does Y."</p>
+      <p><strong>The effect of that mechanism → becomes your Outcome.</strong> "Because of that action, the world changes in this specific way."</p>
+      <p><strong>The stakeholders you identified (Question 3) → become your Impact.</strong> "This change matters because it affects these specific people in these specific ways."</p>
+      <p>Everything you need for a strong speech starts in the text of the bill. The research you do afterward fills in evidence, but the argument structure comes from the legislation itself.</p>
+    </div>
+
+    <div class="quiz" id="q7">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each bill-reading question to the Block Format component it feeds.</div>
+      <div class="drag-area">
+        <div class="drag-label">Bill Questions (drag these):</div>
+        <div class="drag-source" id="drag-source-7">
+          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">What problem is this bill trying to solve?</div>
+          <div class="drag-chip" draggable="true" data-val="action" ondragstart="dragStart(event)">What mechanism does the bill use?</div>
+          <div class="drag-chip" draggable="true" data-val="impact" ondragstart="dragStart(event)">Who is affected and how?</div>
+        </div>
+        <div class="drag-targets" id="q7-targets">
+          <div class="drag-target" data-correct="squo" ondragover="dragOver(event)" ondrop="drop(event,'q7')"><span class="drag-target-label">Status Quo</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="action" ondragover="dragOver(event)" ondrop="drop(event,'q7')"><span class="drag-target-label">Action / Outcome</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="impact" ondragover="dragOver(event)" ondrop="drop(event,'q7')"><span class="drag-target-label">Impact</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q7-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next7" onclick="advance(7)">Continue → Practice: Breaking Down a Bill</button>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="section hidden" id="step8">
+    <div class="section-eyebrow">Lesson 8 of 8</div>
+    <div class="section-title">Practice: Breaking Down a Real Bill</div>
+    <div class="section-body">
+      <p>Let's apply everything with a sample bill:</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Sample Legislation</div>
+      <div class="callout-text">A Bill to Ban the Sale of Assault Weapons. Section 1: The sale of semi-automatic assault weapons, as defined by the 1994 Federal Assault Weapons Ban, shall be prohibited. Section 2: Current owners may retain their weapons but may not sell or transfer them. Section 3: The Bureau of Alcohol, Tobacco, Firearms and Explosives shall enforce this act. Section 4: Funding shall come from existing appropriations. Section 5: This act shall take effect 180 days after passage.</div>
+    </div>
+
+    <div class="section-body">
+      <p>Running it through the 5 questions: The <strong>problem</strong> is gun violence involving assault weapons. The <strong>mechanism</strong> is a sales ban (not a confiscation). <strong>Affected parties</strong> include gun owners, dealers, and communities experiencing gun violence. <strong>What could go wrong</strong>: Second Amendment challenges, black market, vague definitions. <strong>Precedent</strong>: The 1994 ban existed for 10 years — and there's research on whether it worked.</p>
+    </div>
+
+    <div class="quiz" id="q8a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Based on this bill, which argument would be WEAKEST for the negative side?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q8a',this,'wrong')">The funding clause is vague and enforcement may be underfunded</button>
+        <button class="option" onclick="mc('q8a',this,'wrong')">A sales ban won't address the millions of assault weapons already in circulation</button>
+        <button class="option" onclick="mc('q8a',this,'correct')">This bill will confiscate weapons from current owners</button>
+        <button class="option" onclick="mc('q8a',this,'wrong')">The 1994 ban had limited measurable impact on gun violence</button>
+      </div>
+      <div class="feedback" id="q8a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q8b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Section 2 of this bill explicitly allows current owners to keep their weapons, which means a "government confiscation" argument would misrepresent what the bill does.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q8b',this,true)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q8b',this,false)">✗ False</button>
+      </div>
+      <div class="feedback" id="q8b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module 🏅</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">📄</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now know how to read any piece of legislation, identify the real debate, and turn a bill's text into the foundation of a strong argument. This skill will make every other module easier.</div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var MODULE_ID = 'reading-legislation';
+var TOTAL_STEPS = 8;
+
+var CORRECT_MSGS = {
+  q1:  "Specificity wins. Referencing the actual bill text separates prepared debaters from those who just Googled the topic.",
+  q2:  "Each part serves a distinct purpose — knowing the structure helps you break down any bill quickly.",
+  q3:  "Question 4 is your negative argument generator — it surfaces unintended consequences and flaws in the mechanism.",
+  q4a: "Resolutions express positions — they don't create enforceable law. The debate is about the principle, not the mechanism.",
+  q4b: "Resolution debates are about whether the position is right and productive, not about enforcement specifics.",
+  q5:  "The real debate lives in the mechanism — whether this specific tax will work, not whether climate change matters.",
+  q6a: "'Existing appropriations' is deliberately vague — the bill may need to take money from other programs.",
+  q6b: "Without enforcement teeth, mandates are just suggestions. That's a real vulnerability in any bill.",
+  q7:  "The bill-reading questions map directly to Block Format — reading well means arguing well.",
+  q8a: "Section 2 explicitly says current owners can keep their weapons. An argument about confiscation contradicts the bill's text.",
+  q8b: "Reading the actual text prevents you from making arguments that the bill doesn't support — and exposes opponents who do."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what specificity signals to judges about a debater's preparation level.",
+  q2:  "Read each description carefully — one is about actions, one is about reasons, one is about money.",
+  q3:  "Think about which question focuses specifically on potential problems and failures.",
+  q4a: "Think about the word 'condemn' — does condemning something create a new law?",
+  q4b: "Think about what a resolution actually does vs. what a bill does.",
+  q5:  "Think about where aff and neg actually disagree — is it about whether the problem exists?",
+  q6a: "Think about what 'existing' means — was money already allocated for this specific bill?",
+  q6b: "Think about what happens if a company simply ignores a mandate with no penalties.",
+  q7:  "Think about what each question reveals and which part of a speech it would feed into.",
+  q8a: "Read Section 2 carefully — does the bill actually do what this argument claims?",
+  q8b: "Check Section 2 again — what does it say current owners may do?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5',
+  q6a: 'q6b',
+  q6b: 'next6',
+  q7:  'next7',
+  q8a: 'q8b',
+  q8b: 'next8'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

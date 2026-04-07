@@ -1,0 +1,321 @@
+/*  Ascend Academy — Hub Logic
+    State management, module registry, card rendering, overlay, progress.
+*/
+
+// --- MODULE REGISTRY ---
+// 24 modules across 4 units. Add file: 'modules/<id>.html' when module is built.
+var MODULES = [
+  // ── UNIT 1: Foundations of Congressional Debate (5 modules) ──
+  { id: 'what-is-congress',     unit: 1, num: '1.1', title: 'What Is Congressional Debate?',     icon: '\u{1F3DB}\uFE0F', duration: '15 min', activities: 3, badge: null,
+    desc: 'How the event works, what judges look for, and why it\u2019s the most strategic event in speech & debate.',
+    file: 'modules/what-is-congress.html',
+    lessons: [
+      { icon: '\uD83C\uDFDB\uFE0F', text: 'The event at a glance \u2014 competing against 20 people at once' },
+      { icon: '\uD83D\uDD04', text: 'How a round works \u2014 docket, speeches, cross-examination' },
+      { icon: '\uD83C\uDFAF', text: 'The three pillars: argumentation, delivery, strategy' },
+      { icon: '\uD83D\uDC53', text: 'What judges actually look for \u2014 experienced vs. lay' },
+      { icon: '\u23F1\uFE0F', text: 'Speeches & speaking time \u2014 3 minutes, 30 seconds CX' },
+      { icon: '\u2728', text: 'Why Congress is different from other debate events' },
+      { icon: '\uD83C\uDFC6', text: 'Tournament structure \u2014 prelims, elims, nationals' },
+      { icon: '\uD83D\uDE80', text: 'The Ascend approach \u2014 one deep argument beats three shallow ones' }
+    ] },
+  { id: 'how-chamber-works',    unit: 1, num: '1.2', title: 'How the Chamber Works',              icon: '\u2696\uFE0F', duration: '20 min', activities: 4, badge: null,
+    desc: 'Precedence, recency, presiding officers, motions, and how rounds actually run from start to finish.',
+    file: 'modules/how-chamber-works.html',
+    lessons: [
+      { icon: '\uD83D\uDCCB', text: 'The docket \u2014 what you debate and in what order' },
+      { icon: '\uD83D\uDD22', text: 'Precedence & recency \u2014 who gets to speak' },
+      { icon: '\uD83D\uDD28', text: 'The Presiding Officer \u2014 running the chamber' },
+      { icon: '\uD83D\uDD04', text: 'Cycles of debate \u2014 how rounds evolve' },
+      { icon: '\u270B', text: 'Motions \u2014 Previous Question, Lay on the Table, Recess' },
+      { icon: '\uD83D\uDDF3\uFE0F', text: 'Voting on legislation \u2014 what it means (and doesn\u2019t)' },
+      { icon: '\u2753', text: 'Questioning (CX) \u2014 strategy for questioners and speakers' },
+      { icon: '\uD83C\uDFAC', text: 'A round from start to finish \u2014 full walkthrough' }
+    ] },
+  { id: 'becoming-po',          unit: 1, num: '1.3', title: 'Becoming a Presiding Officer',       icon: '\uD83D\uDD28', duration: '22 min', activities: 5, badge: 'presiding-officer',
+    desc: 'How to get elected, run your procedure speech, handle motions, and be a judge\u2019s best friend.',
+    file: 'modules/becoming-po.html',
+    lessons: [
+      { icon: '\uD83C\uDFC6', text: 'Why preside \u2014 the competitive advantage most students miss' },
+      { icon: '\uD83D\uDDF3\uFE0F', text: 'Getting elected \u2014 winning the PO election' },
+      { icon: '\uD83C\uDFA4', text: 'The procedure speech \u2014 what to say and how to say it' },
+      { icon: '\uD83D\uDCCB', text: 'Running the docket \u2014 elections, sponsors, authorship' },
+      { icon: '\uD83D\uDCDD', text: 'The PO sheet \u2014 tracking precedence and recency' },
+      { icon: '\u270B', text: 'Handling motions \u2014 seconds, votes, execution' },
+      { icon: '\u2764\uFE0F', text: 'Being a judge\u2019s best friend \u2014 what earns top PO scores' },
+      { icon: '\u26A0\uFE0F', text: 'Common mistakes & tips \u2014 what to avoid' }
+    ] },
+  { id: 'reading-legislation',  unit: 1, num: '1.4', title: 'Reading & Analyzing Legislation',    icon: '\uD83D\uDCC4', duration: '15 min', activities: 3, badge: null,
+    desc: 'How to break down a bill, understand what it actually does, and identify the real debate underneath.',
+    file: 'modules/reading-legislation.html',
+    lessons: [
+      { icon: '\uD83D\uDCDA', text: 'Why reading the bill matters \u2014 the bill IS the debate' },
+      { icon: '\uD83D\uDD2C', text: 'Anatomy of a bill \u2014 title, sections, funding, enactment' },
+      { icon: '\u2753', text: 'The 5 questions to ask every bill' },
+      { icon: '\uD83D\uDCDC', text: 'Bills vs. resolutions \u2014 different legislation, different arguments' },
+      { icon: '\uD83C\uDFAF', text: 'Finding the real debate underneath the surface' },
+      { icon: '\uD83D\uDD0D', text: 'Reading between the lines \u2014 vague funding, missing enforcement' },
+      { icon: '\uD83E\uDDF1', text: 'From bill to argument \u2014 mapping to Block Format' },
+      { icon: '\uD83D\uDCDD', text: 'Practice: breaking down a real bill' }
+    ] },
+  { id: 'standing-out-early',   unit: 1, num: '1.5', title: 'Standing Out in Early Rounds',       icon: '\u2B50', duration: '18 min', activities: 4, badge: null,
+    desc: 'Prep strategy, framing, sponsorships, and the attention habits that separate good debaters from great ones in prelims.',
+    file: 'modules/standing-out-early.html',
+    lessons: [
+      { icon: '\u2B50', text: 'What standing out actually means \u2014 being the speaker judges remember' },
+      { icon: '\uD83D\uDD0D', text: 'Researching to be noticed \u2014 finding the angle others miss' },
+      { icon: '\uD83D\uDDBC\uFE0F', text: 'The power of framing \u2014 defining the debate before anyone else' },
+      { icon: '\uD83D\uDC42', text: 'Paying attention in round \u2014 the #1 differentiator' },
+      { icon: '\uD83D\uDCE3', text: 'The sponsorship advantage \u2014 why most debaters are wrong to avoid it' },
+      { icon: '\u2705', text: 'The sponsorship checklist \u2014 structure for a strong first speech' },
+      { icon: '\uD83D\uDEE0\uFE0F', text: 'Constructive vs. canned \u2014 speeches that live in the round' },
+      { icon: '\uD83E\uDDE0', text: 'The early-round mindset \u2014 every interaction is a scoring opportunity' }
+    ] },
+
+  // ── UNIT 2: Building Championship Arguments (8 modules) ──
+  { id: 'block-format',         unit: 2, num: '2.1', title: 'The Block Format',                   icon: '\uD83E\uDDF1', duration: '25 min', activities: 6, badge: 'block-master',
+    desc: 'Ascend\u2019s signature argument structure. The same format that has won 5 TOCs and countless national championships.',
+    file: 'modules/block-format.html',
+    lessons: [
+      { icon: '\uD83D\uDCD6', text: 'Why argument formats matter \u2014 efficiency, clarity, depth' },
+      { icon: '\uD83D\uDD04', text: 'From CWEI to Block Format \u2014 the origin story' },
+      { icon: '\uD83E\uDDF1', text: 'The 3 components: Status Quo, Outcome, Impact' },
+      { icon: '\u270D\uFE0F', text: 'Status Quo deep dive \u2014 context + problem' },
+      { icon: '\u26A1',       text: 'Outcome & Action \u2014 the legislative mechanism' },
+      { icon: '\uD83D\uDCA5', text: 'Impact \u2014 humanizing and connecting to judges' },
+      { icon: '\uD83C\uDFAC', text: 'Analyze a championship speech (Tyler Luu 2023 Nationals)' },
+      { icon: '\uD83D\uDCDD', text: 'Pre-Requisites \u2014 framing before your argument' }
+    ]
+  },
+  { id: 'squo-deep-dive',       unit: 2, num: '2.2', title: 'The Status Quo Deep Dive',           icon: '\uD83D\uDD2D', duration: '20 min', activities: 4, badge: null,
+    desc: 'How to construct a SQUO that provides context, proves a problem, and doubles as preemptive refutation.' },
+  { id: 'outcome-action',       unit: 2, num: '2.3', title: 'Crafting Your Outcome & Action',     icon: '\u26A1',       duration: '20 min', activities: 4, badge: null,
+    desc: 'The pivot from problem to solution \u2014 referencing legislation, proving the mechanism, making the link chain airtight.' },
+  { id: 'impact-calculus',      unit: 2, num: '2.4', title: 'Impact Calculus',                     icon: '\uD83D\uDCA5', duration: '22 min', activities: 5, badge: null,
+    desc: 'Judge roleplay, the comparative, terminalization. How to humanize your impact and make judges feel the stakes.' },
+  { id: 'win-conditions',       unit: 2, num: '2.5', title: 'Win Conditions & The Comparative',   icon: '\uD83C\uDFAF', duration: '18 min', activities: 4, badge: null,
+    desc: 'What actually wins rounds. The comparative framework, offense vs. defense, believability, and picking your side.' },
+  { id: 'finding-gaps',         unit: 2, num: '2.6', title: 'Finding Gaps & Generating Arguments', icon: '\uD83D\uDCA1', duration: '20 min', activities: 5, badge: null,
+    desc: 'How to identify strengths and weaknesses in a debate, predict gaps, and create arguments that fill them.' },
+  { id: 'refutation',           unit: 2, num: '2.7', title: 'Refutation & Defense-Offense',       icon: '\uD83D\uDEE1\uFE0F', duration: '18 min', activities: 4, badge: null,
+    desc: 'Ascend\u2019s defense-offense format: how to refute, turn, and weigh while building your own case in the same speech.' },
+  { id: 'block-format-late',    unit: 2, num: '2.8', title: 'Block Format in Late Rounds',        icon: '\uD83C\uDFC6', duration: '22 min', activities: 5, badge: null,
+    desc: 'How the block format evolves as the round progresses \u2014 identifying clash, cutting content, and controlling the narrative.' },
+
+  // ── UNIT 3: Research & Case Preparation (5 modules) ──
+  { id: 'how-to-research',      unit: 3, num: '3.1', title: 'How to Research',                    icon: '\uD83D\uDD0D', duration: '20 min', activities: 4, badge: 'researcher',
+    desc: 'From reading the bill to building a case \u2014 the systematic approach that finds evidence others miss.' },
+  { id: 'turning-research-case', unit: 3, num: '3.2', title: 'Turning Research Into a Case',      icon: '\uD83D\uDCDD', duration: '20 min', activities: 4, badge: null,
+    desc: 'From raw notes to a polished block. Proving outcome, finding past precedent, and stress-testing your argument.' },
+  { id: 'prime-prep',           unit: 3, num: '3.3', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
+    desc: 'What championship-level preparation actually looks like. The habits and frameworks that produce consistently high ranks.' },
+  { id: 'aff-neg-strategy',     unit: 3, num: '3.4', title: 'Aff vs. Neg Strategy',              icon: '\u2694\uFE0F', duration: '18 min', activities: 4, badge: null,
+    desc: 'How to prepare both sides of any legislation \u2014 anticipating opposition arguments before you\u2019re in the room.' },
+  { id: 'evidence-citing',      unit: 3, num: '3.5', title: 'Evidence & Citing Sources',          icon: '\uD83D\uDCCA', duration: '15 min', activities: 3, badge: null,
+    desc: 'What makes evidence credible, how to cite it in round, and how to attack weak evidence from opponents.' },
+
+  // ── UNIT 4: Performance, Presence & Strategy (6 modules) ──
+  { id: 'voice-delivery',       unit: 4, num: '4.1', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 4, badge: 'presence',
+    desc: 'Finding your voice, base tone, fluctuation, speed, and passion \u2014 how to sound like yourself, not a debate robot.' },
+  { id: 'movement-physicality', unit: 4, num: '4.2', title: 'Movement & Physicality',             icon: '\uD83E\uDDD1\u200D\uD83C\uDFA4', duration: '18 min', activities: 4, badge: null,
+    desc: 'Speaking stance, the speaker diamond, hand motions, and facial expressions \u2014 what judges see before they hear you.' },
+  { id: 'chamber-presence',     unit: 4, num: '4.3', title: 'Chamber Presence & Walk-Ups',        icon: '\u2728',       duration: '18 min', activities: 4, badge: null,
+    desc: 'How to carry yourself before, between, and after speeches. Walk-ups, stereotypes to avoid, and commanding the room.' },
+  { id: 'personality-energy',   unit: 4, num: '4.4', title: 'Personality & Stage Energy',         icon: '\uD83D\uDD25', duration: '15 min', activities: 3, badge: null,
+    desc: 'Developing your persona, visual indicators, energy management, and the traits judges reward in close rounds.' },
+  { id: 'ballot-watch',         unit: 4, num: '4.5', title: 'Reading the Ballot',                 icon: '\uD83D\uDCCB', duration: '18 min', activities: 4, badge: null,
+    desc: 'What judges actually write down, what they reward, and how to improve even from bare ballots.' },
+  { id: 'cx-strategy',          unit: 4, num: '4.6', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'strategist',
+    desc: 'How to ask questions that expose weaknesses, how to handle hostile questioning, and how to use CX to set up your next speech.' },
+  { id: 'tournament-day',       unit: 4, num: '4.7', title: 'Tournament Day Execution',           icon: '\uD83D\uDDD3\uFE0F', duration: '15 min', activities: 3, badge: null,
+    desc: 'From the night before to the final round \u2014 the routines, mindset, and adaptations that produce peak performance.' }
+];
+
+var UNITS = [
+  { num: 1, title: 'Foundations of Congressional Debate' },
+  { num: 2, title: 'Building Championship Arguments' },
+  { num: 3, title: 'Research & Case Preparation' },
+  { num: 4, title: 'Performance, Presence & Strategy' }
+];
+
+var BADGES = [
+  { id: 'first-step',        emoji: '\uD83D\uDE80', name: 'First Step' },
+  { id: 'block-master',      emoji: '\uD83E\uDDF1', name: 'Block Master' },
+  { id: 'researcher',        emoji: '\uD83D\uDD0D', name: 'Researcher' },
+  { id: 'presence',          emoji: '\uD83C\uDFA4', name: 'Presence' },
+  { id: 'strategist',        emoji: '\u265F\uFE0F', name: 'Strategist' },
+  { id: 'presiding-officer', emoji: '\u2696\uFE0F', name: 'PO Expert' },
+  { id: 'congress-scholar',  emoji: '\uD83C\uDFDB\uFE0F', name: 'Congress Scholar' }
+];
+
+// --- STATE ---
+var STATE_KEY = 'ascend_learn_state';
+var state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"completed":[],"badges":[]}');
+
+function saveState() {
+  localStorage.setItem(STATE_KEY, JSON.stringify(state));
+}
+
+// --- RENDER ---
+function renderBadgeShelf() {
+  var shelf = document.getElementById('badgeShelf');
+  shelf.innerHTML = BADGES.map(function (b) {
+    var earned = state.badges.includes(b.id);
+    return '<div class="badge-item">' +
+      '<div class="badge-circle ' + (earned ? 'earned' : 'locked-badge') + '" id="badge-' + b.id + '">' + b.emoji + '</div>' +
+      '<div class="badge-name">' + b.name + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderModuleCards() {
+  UNITS.forEach(function (unit) {
+    var container = document.getElementById('unit-' + unit.num + '-grid');
+    if (!container) return;
+    var unitModules = MODULES.filter(function (m) { return m.unit === unit.num; });
+
+    // Update unit count
+    var countEl = document.getElementById('unit-' + unit.num + '-count');
+    if (countEl) countEl.textContent = unitModules.length + ' modules';
+
+    container.innerHTML = unitModules.map(function (mod) {
+      var completed = state.completed.includes(mod.id);
+      var statusClass = completed ? 'status-completed' : 'status-available';
+      var statusText = completed ? 'Completed \u2713' : 'Available';
+      var cardClass = 'module-card' + (completed ? ' completed' : '') + (mod.file ? ' active' : '');
+      return '<div class="' + cardClass + '" onclick="openModule(\'' + mod.id + '\')" id="card-' + mod.id + '">' +
+        '<div class="module-top">' +
+          '<div class="module-icon">' + mod.icon + '</div>' +
+          '<span class="module-status ' + statusClass + '" id="status-' + mod.id + '">' + statusText + '</span>' +
+        '</div>' +
+        '<div class="module-num">Module ' + mod.num + '</div>' +
+        '<div class="module-title">' + mod.title + '</div>' +
+        '<div class="module-desc">' + mod.desc + '</div>' +
+        '<div class="module-meta">' +
+          '<span>\u23F1 ' + mod.duration + '</span>' +
+          '<span>\u2726 ' + mod.activities + ' activities</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  });
+}
+
+function updateProgress() {
+  var total = MODULES.length;
+  var done = state.completed.length;
+  var pct = Math.round((done / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = done + ' of ' + total + ' modules';
+  document.getElementById('badgeCountLabel').textContent = state.badges.length + ' badge' + (state.badges.length !== 1 ? 's' : '') + ' earned';
+}
+
+// --- BADGES ---
+function awardBadge(id) {
+  if (!state.badges.includes(id)) {
+    state.badges.push(id);
+    saveState();
+    renderBadgeShelf();
+    updateProgress();
+    showBadgeToast(id);
+  }
+}
+
+function showBadgeToast(id) {
+  var badge = BADGES.find(function (b) { return b.id === id; });
+  var label = badge ? badge.emoji + ' ' + badge.name : id;
+  var toast = document.createElement('div');
+  toast.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:16px 24px;border-radius:12px;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,0.3);animation:slideUp 0.3s ease;';
+  toast.innerHTML = '\uD83C\uDFC5 Badge Earned: ' + label;
+  document.body.appendChild(toast);
+  setTimeout(function () { toast.remove(); }, 3500);
+}
+
+// --- MODULE OVERLAY ---
+function openModule(id) {
+  var mod = MODULES.find(function (m) { return m.id === id; });
+  if (!mod) return;
+
+  var panel = document.getElementById('panelContent');
+
+  if (!mod.file) {
+    // Unbuilt module — coming soon
+    panel.innerHTML =
+      '<div class="panel-hero">' +
+        '<div class="panel-eyebrow">Coming Soon</div>' +
+        '<div class="panel-title">' + mod.title + '</div>' +
+        '<div class="panel-desc">' + mod.desc + '</div>' +
+      '</div>' +
+      '<div class="panel-body">' +
+        '<p style="color:#666;font-size:14px;">This module is in development. Check back soon \u2014 we\u2019re building the full Ascend curriculum here.</p>' +
+      '</div>';
+    document.getElementById('moduleOverlay').classList.add('open');
+    return;
+  }
+
+  // Built module — show lesson list + launch
+  var lessonsHtml = mod.lessons ? mod.lessons.map(function (l, i) {
+    return '<li><div class="lesson-num">' + (i + 1) + '</div><span class="lesson-icon">' + l.icon + '</span><span>' + l.text + '</span></li>';
+  }).join('') : '';
+
+  panel.innerHTML =
+    '<div class="panel-hero">' +
+      '<div class="panel-eyebrow">Unit ' + mod.unit + ' \u00B7 Module ' + mod.num + '</div>' +
+      '<div class="panel-title">' + mod.title + '</div>' +
+      '<div class="panel-desc">' + mod.desc + '</div>' +
+      '<div class="panel-meta-row">' +
+        '<span>\u23F1 ' + mod.duration + '</span>' +
+        '<span>\u2726 ' + (mod.lessons ? mod.lessons.length : mod.activities) + ' lessons</span>' +
+        (mod.badge ? '<span>\uD83C\uDFC5 Earn a badge</span>' : '') +
+      '</div>' +
+    '</div>' +
+    '<div class="panel-body">' +
+      (lessonsHtml ? '<div class="panel-section-title">What You\u2019ll Learn</div><ul class="panel-lesson-list">' + lessonsHtml + '</ul>' : '') +
+      '<button class="panel-cta" onclick="launchModule(\'' + mod.id + '\')">Start Module \u2192</button>' +
+    '</div>';
+
+  document.getElementById('moduleOverlay').classList.add('open');
+}
+
+function launchModule(id) {
+  closeModule();
+  var mod = MODULES.find(function (m) { return m.id === id; });
+  if (!mod || !mod.file) return;
+
+  window.open(mod.file, '_blank');
+
+  // Listen for completion
+  function handler(e) {
+    if (e.data === id + '-complete') {
+      if (!state.completed.includes(id)) {
+        state.completed.push(id);
+        saveState();
+      }
+      // Award first-step on first completion
+      if (state.completed.length === 1) awardBadge('first-step');
+      // Award module-specific badge
+      if (mod.badge) awardBadge(mod.badge);
+      // Check congress-scholar (all modules done)
+      if (state.completed.length === MODULES.length) awardBadge('congress-scholar');
+      renderModuleCards();
+      updateProgress();
+      window.removeEventListener('message', handler);
+    }
+  }
+  window.addEventListener('message', handler);
+}
+
+function closeModule() {
+  document.getElementById('moduleOverlay').classList.remove('open');
+}
+
+// --- INIT ---
+document.addEventListener('DOMContentLoaded', function () {
+  renderBadgeShelf();
+  renderModuleCards();
+  updateProgress();
+
+  // Close overlay on backdrop click
+  document.getElementById('moduleOverlay').addEventListener('click', function (e) {
+    if (e.target === this) closeModule();
+  });
+});

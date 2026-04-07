@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Congressional Debate? — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Ascend <span>Academy</span> · What Is Congress?</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 8</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 1 · Module 1.1 · Congressional Debate</div>
+  <div class="mod-title">What Is Congressional Debate?</div>
+  <div class="mod-desc">How the event works, what judges look for, and why Congressional Debate is the most strategic event in high school speech & debate.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 8</div>
+    <div class="section-title">The Event at a Glance</div>
+    <div class="section-body">
+      <p>Congressional Debate simulates the United States Congress. Students act as legislators — drafting, debating, and voting on bills and resolutions in a chamber of 12–24 competitors.</p>
+      <p>Unlike other debate events where you face a single opponent, in Congress <strong>you compete against everyone in the room simultaneously.</strong> A panel of judges ranks every speaker from 1 (best) to the total number of speakers, based on the quality of each 3-minute speech and the questions asked during cross-examination.</p>
+      <p>The event rewards three things above all else: <strong>argumentation</strong> (is your argument logically airtight?), <strong>delivery</strong> (can you hold a room's attention for 3 minutes?), and <strong>strategy</strong> (do you know when to speak, what to say, and how to adapt?).</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Think of It This Way</div>
+      <div class="callout-text">Imagine a room with 20 people, 3 judges, and a 2-hour clock. Everyone wants to speak. The judges will rank every person who speaks — and they're doing it from memory. Your job: be so clear, so compelling, and so strategic that when judges fill out their ballot, your name is at the top.</div>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">In Congressional Debate, how are competitors evaluated?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Each speech receives a numerical score (1-10) and the highest total wins</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Judges rank all speakers in the chamber from best to worst</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Judges decide which side won the debate, then rank speakers within that side higher</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Competitors are scored individually on delivery, content, and strategy using a rubric</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → How a Round Works</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 8</div>
+    <div class="section-title">How a Round Works</div>
+    <div class="section-body">
+      <p>A round of Congress revolves around a <strong>docket</strong> — a list of bills and resolutions the chamber will debate. Students vote on the order of the docket before debate begins.</p>
+      <p>For each piece of legislation, a <strong>sponsor</strong> (authorship) delivers the first affirmative speech, followed by alternating affirmative and negative speeches. Each speech is 3 minutes, followed by 30 seconds of cross-examination from another student.</p>
+      <p>After several speeches on a bill, the chamber votes to move to the next item on the docket. A <strong>Presiding Officer</strong> (PO) — a student elected at the start of the round — manages the entire proceeding: recognizing speakers, tracking precedence, and handling motions.</p>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">In Congressional Debate, speakers alternate between affirmative and negative sides on each bill.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2',this,true)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2',this,false)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The Three Pillars</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 8</div>
+    <div class="section-title">The Three Pillars: Argumentation, Delivery, Strategy</div>
+    <div class="section-body">
+      <p>Congress rewards a unique combination of skills that no other event tests in the same way:</p>
+      <p><strong>Argumentation</strong> — Can you construct a logically airtight case? Do your claims have evidence, warrants, and impacts? This is the substance of what you say.</p>
+      <p><strong>Delivery</strong> — Can you hold a room's attention? Are you conversational, passionate, and dynamic? Judges score not just what you say but how you say it.</p>
+      <p><strong>Strategy</strong> — Do you know when to speak, which side to argue, and how to adapt your speech based on what's been said? The best debaters read the room and position themselves to fill gaps.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each skill to the correct description.</div>
+      <div class="drag-area">
+        <div class="drag-label">Skills (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="arg" ondragstart="dragStart(event)">Building logically airtight cases with evidence and warrants</div>
+          <div class="drag-chip" draggable="true" data-val="del" ondragstart="dragStart(event)">Holding the room's attention through vocal variety and presence</div>
+          <div class="drag-chip" draggable="true" data-val="str" ondragstart="dragStart(event)">Knowing when to speak, which side to pick, and how to adapt</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="arg" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Argumentation</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="del" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Delivery</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="str" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Strategy</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → What Judges Look For</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 8</div>
+    <div class="section-title">What Judges Actually Look For</div>
+    <div class="section-body">
+      <p>Judges in Congress fall into two categories: <strong>experienced judges</strong> (coaches, former debaters) and <strong>lay judges</strong> (parents, community members). Understanding both is critical.</p>
+      <p><strong>Experienced judges</strong> evaluate the logical quality of your argument, the strength of your evidence, and how well you engage with the debate. They want to see clash — direct engagement with what the other side has said.</p>
+      <p><strong>Lay judges</strong> reward speakers they can understand and connect with emotionally. They care about clarity, confidence, and whether your argument "makes sense" in plain language. Many lay judges can't articulate exactly why they ranked you where they did — but they consistently reward <strong>clear warranting, humanized impacts, and engaging delivery.</strong></p>
+      <p>The best debaters don't choose between these audiences — they build speeches that satisfy both.</p>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the most important thing to remember about lay judges?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">They don't matter as much as experienced judges in final rankings</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">They only care about delivery and don't follow arguments</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">They reward clarity, confidence, and arguments that make sense in plain language</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">You should use simpler arguments when you know the judge is a parent</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Experienced judges primarily want to see "clash" — direct engagement with what the opposing side has argued.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,true)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,false)">✗ False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → Speeches & Speaking Time</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 8</div>
+    <div class="section-title">Speeches & Speaking Time</div>
+    <div class="section-body">
+      <p>Every speech in Congress is <strong>3 minutes long.</strong> That's it. You don't get more time for being good, and you don't get less for being new. The constraint is the same for everyone — which means <strong>how you use those 3 minutes is everything.</strong></p>
+      <p>After each speech, a member of the opposing side may ask one question during a <strong>30-second cross-examination (CX) period.</strong> CX is optional but strategically valuable — asking a sharp question shows judges you're engaged, and it can expose weaknesses in the speaker's argument.</p>
+      <p>In a typical preliminary round, you'll give <strong>1-2 speeches</strong> and ask <strong>1-3 questions.</strong> In elimination rounds with smaller chambers, you may speak more. Every interaction is a scoring opportunity — judges rank you on the totality of your participation.</p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is cross-examination strategically valuable even though it's optional?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5',this,'wrong')">It gives you a chance to preview your own argument to the room before your speech</button>
+        <button class="option" onclick="mc('q5',this,'correct')">It shows judges you're engaged and can expose weaknesses in the speaker's argument</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">It counts toward your precedence, helping you get recognized for speeches later</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">It forces the speaker to defend under pressure, which usually lowers their ranking</button>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → Why Congress Is Different</button>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 8</div>
+    <div class="section-title">Why Congress Is Different from Other Events</div>
+    <div class="section-body">
+      <p>If you've done (or heard of) Public Forum, Lincoln-Douglas, or Policy debate, Congress will feel different in several important ways:</p>
+      <p><strong>No direct opponent.</strong> In PF or LD, you face one team or person. In Congress, you compete against 12-24 people simultaneously. Your "opponent" is everyone who isn't you.</p>
+
+    <div class="example-quote">
+      <div class="eq-label">What This Means in Practice</div>
+      In PF, a mediocre debater who faces a weaker opponent can still win. In Congress, a mediocre debater who faces 20 strong competitors will end up ranked 15th regardless. There's nowhere to hide — every round demands your best.
+    </div>
+
+    <div class="section-body">
+      <p><strong>Speeches are independent.</strong> You don't have to respond to a specific person's case. You choose what to argue, when to argue it, and how much to engage with previous speakers. This creates enormous strategic freedom — and the debaters who use that freedom wisely are the ones who win.</p>
+      <p><strong>Delivery matters more.</strong> In technical debate events, judges can tolerate fast or flat delivery because they're evaluating arguments on paper. In Congress, <strong>judges are ranking you against 20 other people from memory.</strong> If you're forgettable, you lose — no matter how good your argument is.</p>
+      <p><strong>The round evolves.</strong> A speech that would have been great in the first cycle might be irrelevant by the third. Congress rewards debaters who pay attention, adapt, and contribute something new.</p>
+    </div>
+
+    <div class="quiz" id="q6a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why does delivery matter more in Congress than in other debate events?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6a',this,'wrong')">Congress judges are less experienced and can't follow complex arguments</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">Congress speeches are longer, so judges get bored more easily</button>
+        <button class="option" onclick="mc('q6a',this,'correct')">Judges rank you against 20+ speakers from memory, so being memorable is essential</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">NSDA rules require judges to weight delivery at 50% of the score</button>
+      </div>
+      <div class="feedback" id="q6a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q6b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">In Congress, you must directly respond to the previous speaker's argument in your speech.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q6b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q6b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q6b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Tournament Structure</button>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="section hidden" id="step7">
+    <div class="section-eyebrow">Lesson 7 of 8</div>
+    <div class="section-title">Tournament Structure</div>
+    <div class="section-body">
+      <p>A typical Congress tournament has <strong>preliminary rounds</strong> (prelims) and <strong>elimination rounds</strong> (elims). Here's how advancement works:</p>
+      <p><strong>Prelims (2-3 rounds):</strong> You're placed in a chamber of ~20 students. Judges rank you in each round. Your rankings are combined across rounds to determine who advances. At most tournaments, the top 30-50% of competitors advance to elimination rounds.</p>
+      <p><strong>Elims (semifinals, finals):</strong> Chambers get smaller and competition gets tighter. In finals, you may be in a chamber of 12-16 of the best competitors at the tournament. The top 6 speakers receive trophies or bids to national tournaments.</p>
+      <p><strong>National qualifiers:</strong> The biggest stages in Congress are the <strong>NSDA National Tournament</strong>, the <strong>Tournament of Champions (TOC)</strong>, and major invitational tournaments. Ascend debaters have won 5 TOCs and multiple NSDA National titles using the techniques you'll learn in this curriculum.</p>
+    </div>
+
+    <div class="quiz" id="q7">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">How do students advance from preliminary rounds to elimination rounds?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q7',this,'wrong')">By winning a head-to-head debate against another student</button>
+        <button class="option" onclick="mc('q7',this,'correct')">By accumulating the best combined rankings across all prelim rounds</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">By receiving a perfect score from at least one judge</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">By being voted through by other competitors in the chamber</button>
+      </div>
+      <div class="feedback" id="q7-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next7" onclick="advance(7)">Continue → The Ascend Approach</button>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="section hidden" id="step8">
+    <div class="section-eyebrow">Lesson 8 of 8</div>
+    <div class="section-title">The Ascend Approach</div>
+    <div class="section-body">
+      <p>This curriculum teaches you Ascend Academy's approach to Congressional Debate — the same system that has produced <strong>5 TOC champions, multiple NSDA finalists, and hundreds of bid-earning performances.</strong></p>
+      <p>The philosophy is simple: <strong>one deep argument beats three shallow ones.</strong> That's the core of Block Format, which you'll learn in Unit 2. But before you build arguments, you need to understand the foundation — how the chamber works, how to read legislation, and how to position yourself strategically.</p>
+    </div>
+
+    <div class="coach-callout">
+      <img class="coach-avatar" src="../shared/quest.jpg" alt="Quest Sandel">
+      <div class="coach-body">
+        <div class="coach-name">Quest Sandel</div>
+        <div class="coach-role">Ascend Academy Founder</div>
+        <div class="coach-quote">"When we started Ascend, the conventional wisdom was that you needed 2-3 arguments per speech. We flipped it — prove one thing deeply, make judges feel it, and you'll outscore the person who gestured at three ideas without landing any of them. Rohit Jhawar won NSDA Nationals with this approach. Five TOC wins later, nothing has changed."</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>The modules ahead will take you from the foundations to championship-level technique. Each module builds on the last.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">What's Ahead</div>
+      <div class="callout-text">Unit 1 teaches you the rules and foundations. Unit 2 teaches you how to build championship arguments. Unit 3 teaches you how to research. Unit 4 teaches you how to perform. By the end, you'll have the same toolkit that has won national titles.</div>
+    </div>
+
+    <div class="quiz" id="q8a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the core philosophy behind Ascend's approach to Congressional Debate?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q8a',this,'wrong')">Cover multiple arguments in every speech to give judges more reasons to rank you highly</button>
+        <button class="option" onclick="mc('q8a',this,'wrong')">Focus primarily on delivery since judges rank from memory and content fades</button>
+        <button class="option" onclick="mc('q8a',this,'correct')">One deep argument beats three shallow ones</button>
+        <button class="option" onclick="mc('q8a',this,'wrong')">Adapt to the round above all else — preparation matters less than in-round flexibility</button>
+      </div>
+      <div class="feedback" id="q8a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q8b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Congressional Debate rewards specialists — you should master either argumentation, delivery, or strategy, but not all three.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q8b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q8b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q8b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module 🏅</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">🏛️</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand what Congressional Debate is, how rounds work, what judges look for, and what makes this event uniquely strategic. Time to learn how the chamber actually runs.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">🚀</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">First Step</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var MODULE_ID = 'what-is-congress';
+var TOTAL_STEPS = 8;
+
+var CORRECT_MSGS = {
+  q1:  "Congress uses a ranking system — judges evaluate every speaker in the chamber relative to each other.",
+  q2:  "Speeches alternate sides so judges hear both perspectives on every piece of legislation.",
+  q3:  "These three pillars work together — the best debaters excel at all three simultaneously.",
+  q4a: "Lay judges aren't less capable — they just reward what they can easily follow and connect with emotionally.",
+  q4b: "Clash — directly engaging with the other side — is one of the most important things experienced judges reward.",
+  q5:  "CX is a scoring opportunity that shows engagement and strategic thinking, even in just 30 seconds.",
+  q6a: "When judges rank 20+ speakers from memory, the ones who were clear, dynamic, and memorable rise to the top.",
+  q6b: "You have strategic freedom to choose what to argue. Engaging with previous speakers is smart, but not required.",
+  q7:  "Your combined rankings across all prelim rounds determine whether you advance to elimination rounds.",
+  q8a: "That's the foundation of Block Format — depth over breadth, one argument explored fully.",
+  q8b: "The best debaters excel at all three pillars. Congress rewards the complete package, not just one skill."
+};
+
+var WRONG_MSGS = {
+  q1:  "Congress isn't one-on-one. Think about how judges evaluate a room full of 20 speakers.",
+  q2:  "Think about how a legislative debate would work — you'd want to hear from both sides, right?",
+  q3:  "Re-read each description carefully — one is about content, one is about how you sound, one is about when and what you choose to do.",
+  q4a: "Lay judges absolutely matter. Think about what they can most easily evaluate in a room of 20 speakers.",
+  q4b: "Think about what separates a speech that exists in a vacuum from one that engages with the debate.",
+  q5:  "CX isn't about time or rules — it's about what it signals to the judges watching you.",
+  q6a: "Think about the unique challenge judges face in Congress vs. other events.",
+  q6b: "Consider the strategic freedom Congress gives you compared to other debate events.",
+  q7:  "Congress advancement is based on cumulative performance, not any single moment.",
+  q8a: "Think about the difference between breadth and depth in argumentation.",
+  q8b: "Think back to the three pillars — does Congress reward someone who's great at one thing or someone who's well-rounded?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5',
+  q6a: 'q6b',
+  q6b: 'next6',
+  q7:  'next7',
+  q8a: 'q8b',
+  q8b: 'next8'
+
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

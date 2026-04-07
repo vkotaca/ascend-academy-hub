@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Block Format — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Ascend <span>Academy</span> · Block Format</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 8</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 2 · Module 2.1 · Congressional Debate</div>
+  <div class="mod-title">The Block Format</div>
+  <div class="mod-desc">Ascend's signature argument structure — the system behind 5 TOC wins and countless national championships. By the end, you'll know how to build an airtight one-argument block from scratch.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1: WHY FORMATS MATTER -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 8</div>
+    <div class="section-title">Why Argument Formats Matter</div>
+    <div class="section-body">
+      <p>In competitive debate, <strong>how you structure your argument is just as important as what you argue.</strong> A great argument badly organized loses to a mediocre argument clearly presented.</p>
+      <p>Formats give you three things: <strong>efficiency in prep</strong> (you always know exactly what to write), <strong>a shared language between debater and judge</strong> (so judges can follow and score your argument), and <strong>depth</strong> — the ability to explore a single idea fully instead of skimming across three shallow ones.</p>
+      <p>Most debaters are taught the CWEI structure: Claim, Warrant, Evidence, Impact — and then told to make 2-3 arguments in one speech. Block Format flips this: <strong>one argument, explored deeply</strong>. That's the entire philosophy.</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">According to Ascend's philosophy, what is the primary advantage of the Block Format over CWEI?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">It allows you to cover more arguments in a single speech</button>
+        <button class="option" onclick="mc('q1',this,'correct')">It allows you to explore a single argument with much greater depth</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">It's easier to memorize because it has fewer components</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">It was invented before CWEI and is therefore more established</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → The Origin Story</button>
+  </div>
+
+  <!-- STEP 2: ORIGIN -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 8</div>
+    <div class="section-title">The Origin of Block Format</div>
+    <div class="section-body">
+      <p>In 2019, Quest Sandel was still teaching the CWEI 2-3 argument style — but felt limited. He and Rohit Jhawar wanted something that would allow a debater to <strong>thoroughly prove a single idea</strong> rather than gesture at three weak ones.</p>
+      <p>Inspiration came from Greg Seabrooks, a top debater who won Senate in 2017 by proving one idea and impacting out of it. Quest systematized this into what we now call Block Format. Rohit Jhawar won the NSDA Championship using it that same year.</p>
+      <p>Over six years of use and refinement, Block Format users have won <strong>5 TOCs, the majority of major invitationals, and state championships across Congress-oriented states.</strong></p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Core Insight</div>
+      <div class="callout-text">"It is easier for judges to understand a single link chain of A → B → C instead of three of them. When you try to run three arguments, you give each argument less time, less depth, and less persuasive force. Judges remember one powerful idea far longer than three weak ones."</div>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Block Format was created to help debaters run more arguments per speech.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The 3 Components</button>
+  </div>
+
+  <!-- STEP 3: THREE COMPONENTS -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 8</div>
+    <div class="section-title">The 3 Components of Block Format</div>
+    <div class="section-body">
+      <p>Every block — regardless of bill or side — has exactly three main components. Think of them as three acts in a story your judges need to follow.</p>
+    </div>
+
+    <div class="components-row">
+      <div class="component-box squo">
+        <div class="component-icon">🔭</div>
+        <div class="component-name">Status Quo</div>
+        <div class="component-desc">What's the current situation? Establish the problem that makes this legislation necessary.</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">⚡</div>
+        <div class="component-name">Outcome</div>
+        <div class="component-desc">What does the bill do? And what new world does that action create?</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">💥</div>
+        <div class="component-name">Impact</div>
+        <div class="component-desc">Why should judges care? Humanize and connect to real lives.</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>The three components are designed to form a <strong>single, unbroken link chain</strong>: the Status Quo proves there's a problem, the Outcome proves the bill solves it, the Impact proves why that solution matters.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each definition to the correct Block Format component.</div>
+      <div class="drag-area">
+        <div class="drag-label">Definitions (drag these):</div>
+        <div class="drag-source" id="drag-source-3">
+          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">Establishes the current problem that needs solving</div>
+          <div class="drag-chip" draggable="true" data-val="outcome" ondragstart="dragStart(event)">Explains what the bill does and what new reality it creates</div>
+          <div class="drag-chip" draggable="true" data-val="impact" ondragstart="dragStart(event)">Connects to real human lives and explains why judges should care</div>
+        </div>
+        <div class="drag-targets" id="q3-targets">
+          <div class="drag-target" data-correct="squo" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Status Quo</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="outcome" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Outcome</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="impact" ondragover="dragOver(event)" ondrop="drop(event,'q3')"><span class="drag-target-label">Impact</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Status Quo Deep Dive</button>
+  </div>
+
+  <!-- STEP 4: STATUS QUO -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 8</div>
+    <div class="section-title">The Status Quo</div>
+    <div class="section-body">
+      <p>The Status Quo answers one question: <strong>"What is the current state of the world as it relates to your argument?"</strong> This isn't about the bill's topic broadly — it's the specific slice of reality that your argument is trying to change.</p>
+      <p>A strong SQUO does two things simultaneously: it <strong>provides judges with the necessary context</strong> to understand your argument, and it <strong>establishes that a problem exists</strong> — so that when you present your Outcome, judges already feel the urgency.</p>
+      <p>Crucially: <strong>the SQUO is unique to your argument, not just the topic.</strong> Two debaters can argue the same bill with completely different SQUOs because they're proving different things. And a great SQUO can also function as preemptive refutation — if you prove the problem clearly, opponents have to prove you're wrong about the problem before they can win the Outcome battle.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example SQUO (Minimum Wage Bill)</div>
+      "Workers, who are the backbones of companies, are being squeezed for profit. Ben Zipperer, EPI, Feb 7 2019: workers paid the federal minimum wage of $7.25 are, after adjusting for inflation, paid 29% less than their counterparts 50 years ago — despite the economy's capacity to deliver higher wages having doubled."
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of the following best describes the purpose of the Status Quo?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">To explain exactly what the bill's specific sections will legally do</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">To summarize every argument that will be made in the round</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">To establish a problem in the current world that makes the bill's action necessary</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">To preview your impact so judges know what you're arguing for</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A strong Status Quo block should cover the topic broadly — every possible problem related to the legislation.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → Outcome & Action</button>
+  </div>
+
+  <!-- STEP 5: OUTCOME -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 8</div>
+    <div class="section-title">The Outcome (& Action)</div>
+    <div class="section-body">
+      <p>The Outcome is <strong>your argument</strong> — it's where you prove what this legislation actually does to change the world. It has two parts bundled together:</p>
+      <p><strong>The Action</strong> is a 1-2 sentence factual summary of what the bill does, referencing the specific sections. "Section 1 of this legislation does... and Section 2 does..." This is not arguable — it's purely context. Judges need to understand the mechanism before they can evaluate the outcome.</p>
+      <p><strong>The Outcome itself</strong> is the argument: what does that action create? Congress ultimately comes down to a battle of outcomes — which world (the bill's world vs. the status quo world) is better for Americans?</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example Action + Outcome (Minimum Wage)</div>
+      "Pass this bill to decrease overworking. Sec. 1 raises the minimum wage to $15/hr. The Census Bureau, June 2019: more than 13 million minimum wage workers have to work more than one permanent job just to afford rent. A Walden University study found those working 11+ hours daily are 2.5x more likely to develop depression. 13 million Americans are risking their health working two jobs — but when you double their wages, most workers will only need one job."
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Sort these two elements into the correct categories within the Outcome block.</div>
+      <div class="drag-area">
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="action" ondragstart="dragStart(event)">A one-sentence reference to what Section 1 of the bill legally does</div>
+          <div class="drag-chip" draggable="true" data-val="outcome" ondragstart="dragStart(event)">The new reality or world created because of the bill's mechanism</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="action" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Action</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="outcome" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Outcome</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → The Impact</button>
+  </div>
+
+  <!-- STEP 6: IMPACT -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 8</div>
+    <div class="section-title">The Impact</div>
+    <div class="section-body">
+      <p>The Impact answers the final question judges always have: <strong>"So what? Why should I care?"</strong> It's your job to make the stakes real, human, and emotionally resonant — not just statistically impressive.</p>
+      <p>Three keys to a great Impact:</p>
+      <p><strong>1. Humanize it.</strong> Connect your argument down to life, health, safety, or quality of life. Abstract policy outcomes don't win rounds — real people do.</p>
+      <p><strong>2. Connect to your judges.</strong> Show how the average American is affected. If your judges can see themselves or their families in your impact, they'll remember it when they write their ballot.</p>
+      <p><strong>3. Multiple impacts are fine</strong> — as long as they all stem from the same argument. You're not making a new argument; you're showing the full downstream consequences of the one you've already proven.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example Impact (Minimum Wage)</div>
+      "Ultimately, when low-income Americans no longer have to make the choice between being overworked and exhausted or underpaid and malnourished, it can be life saving. The American Journal of Public Health, March 2016: a $15 minimum wage would have prevented 1,400 annual premature deaths in New York City alone. If you recognize the stories suffered in that statistic, make sure you say it with your vote."
+    </div>
+
+    <div class="quiz" id="q6a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A debater's Impact says: "This bill would reduce GDP by 0.3% over the next decade." What's the biggest weakness of this impact?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6a',this,'wrong')">The impact uses evidence, which makes it seem like the debater is reading rather than speaking</button>
+        <button class="option" onclick="mc('q6a',this,'correct')">The impact is abstract and doesn't connect to human lives or make judges care on a personal level</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">GDP is an invalid metric to use in Congressional Debate rounds</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">The impact is too short — it should be at least three sentences long</button>
+      </div>
+      <div class="feedback" id="q6a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q6b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">It's acceptable to include multiple impacts in one block, as long as they all flow from the same argument.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q6b',this,true)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q6b',this,false)">✗ False</button>
+      </div>
+      <div class="feedback" id="q6b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Analyzing a Championship Speech</button>
+  </div>
+
+  <!-- STEP 7: CHAMPIONSHIP ANALYSIS -->
+  <div class="section hidden" id="step7">
+    <div class="section-eyebrow">Lesson 7 of 8</div>
+    <div class="section-title">Analyzing a Championship Speech</div>
+    <div class="section-body">
+      <p>Let's see Block Format in action. In 2023, Tyler Luu competed in the National Finals on a bill about Qualified Immunity. Here's a breakdown of how his speech maps to the Block Format structure:</p>
+    </div>
+
+    <div class="components-row">
+      <div class="component-box squo">
+        <div class="component-icon">🔭</div>
+        <div class="component-name">His Status Quo</div>
+        <div class="component-desc">De-escalation training barely required in any states + fatal police interactions frequently involve unarmed suspects</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">⚡</div>
+        <div class="component-name">His Outcome</div>
+        <div class="component-desc">Action: Remove qualified immunity. Outcome: This forces departments to implement de-escalation training to reduce liability</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">💥</div>
+        <div class="component-name">His Impact</div>
+        <div class="component-desc">Safer outcomes for both law enforcement and community members — fewer fatal interactions, more accountability</div>
+      </div>
+    </div>
+
+    <div class="quiz" id="q7">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">In Tyler Luu's speech, why is the Status Quo focused on the *lack of de-escalation training* rather than on qualified immunity itself?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q7',this,'wrong')">Because qualified immunity is too complex to explain as a Status Quo</button>
+        <button class="option" onclick="mc('q7',this,'correct')">Because the SQUO is unique to his argument — he's proving that a specific problem exists that his Outcome (removing QI → training) directly solves</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Because de-escalation training is a more widely understood topic for judges</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Because you're not allowed to mention the bill's name in the Status Quo section</button>
+      </div>
+      <div class="feedback" id="q7-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next7" onclick="advance(7)">Continue → Pre-Requisites</button>
+  </div>
+
+  <!-- STEP 8: PRE-REQS -->
+  <div class="section hidden" id="step8">
+    <div class="section-eyebrow">Lesson 8 of 8</div>
+    <div class="section-title">The Pre-Requisite</div>
+    <div class="section-body">
+      <p>Before you dive into your block, the best debaters open with a <strong>Pre-Requisite</strong> — a brief framing statement that orients judges to the round and sets up why your argument answers the key question in the debate.</p>
+      <p>A Pre-Req typically does three things: clears up assumptions from earlier speeches, summarizes the state of the debate, and provides an overview of why your argument answers the most important issue in the round.</p>
+      <p>It's not a long section — 2-4 sentences. But it separates debaters who are just "giving a speech" from debaters who are <strong>actively controlling the narrative of the round.</strong></p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example Pre-Req (Carbon Tax bill)</div>
+      "This debate has begun with the sponsor and the rest of my side saying that a Carbon Tax is needed now, while Sen. [X] leading the negation has pointed out that this tax could severely hurt Americans financially. I believe that if my side can prove to you that a Carbon Tax can be implemented without severely hurting Americans, we should pass this legislation. Let's examine how we already have systems in place that will ensure that."
+    </div>
+
+    <div class="quiz" id="q8a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When should a Pre-Req be delivered in your speech?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q8a',this,'wrong')">At the very end of your speech, after your Impact</button>
+        <button class="option" onclick="mc('q8a',this,'wrong')">In the middle of your speech, between Status Quo and Outcome</button>
+        <button class="option" onclick="mc('q8a',this,'correct')">Right after your introduction, before you begin your block</button>
+        <button class="option" onclick="mc('q8a',this,'wrong')">Only in later cycles — Pre-Reqs are not used in the first cycle</button>
+      </div>
+      <div class="feedback" id="q8a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q8b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A Pre-Req should summarize the debate as it has happened, not just preview what you're about to argue.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q8b',this,true)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q8b',this,false)">✗ False</button>
+      </div>
+      <div class="feedback" id="q8b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module 🏅</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">🏆</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You've mastered the Block Format — the same argument structure behind 5 TOC wins. You now know how to build a Status Quo, Outcome, and Impact that form a single, airtight link chain.</div>
+      <div class="completion-badge">
+        <div class="completion-badge-icon">🧱</div>
+        <div class="completion-badge-text">
+          <div class="completion-badge-label">Badge Earned</div>
+          <div class="completion-badge-name">Block Master</div>
+        </div>
+      </div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Module config + shared engine -->
+<script>
+var MODULE_ID = 'block-format';
+var TOTAL_STEPS = 8;
+
+var CORRECT_MSGS = {
+  q1:  "Depth is the whole point of Block Format — one argument explored fully beats three shallow ones every time.",
+  q2:  "Block Format was created to do the opposite — go deeper on one argument rather than spreading across many.",
+  q3:  "Each component plays a distinct role in the link chain that makes the block format so persuasive.",
+  q4a: "The SQUO isn't about the topic broadly — it's proving the specific problem your argument solves.",
+  q4b: "A great SQUO is laser-focused on the precise problem your argument is addressing — not everything wrong with the world.",
+  q5:  "The Action is context; the Outcome is your argument. Judges need both to evaluate your case.",
+  q6a: "Great impacts make judges feel something. Statistics help, but the human connection is what wins.",
+  q6b: "You can stack impacts as long as they all stem from the same core argument — you're showing the full downstream effect.",
+  q7:  "This is the 'unique to argument, not topic' principle in action. He's building the specific problem his specific mechanism solves.",
+  q8a: "The Pre-Req comes right after your intro so judges immediately know how your speech fits into the round's story.",
+  q8b: "A great Pre-Req summarizes what's already happened and then says why your argument answers the key question that's emerged."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what makes Block Format different from CWEI — it's not about quantity, it's about something else entirely.",
+  q2:  "Re-read the origin story. Quest and Rohit felt limited by the multi-argument approach for a specific reason.",
+  q3:  "Look at each component's definition again and think about what role it plays in the story you're telling.",
+  q4a: "Think about what the SQUO needs to establish before the Outcome can land effectively.",
+  q4b: "Remember: the SQUO is 'unique to argument, not topic.' What does that mean for how broad it should be?",
+  q5:  "Think about which part is factual context vs. which part is your actual argument.",
+  q6a: "What's missing when you just cite a statistic without connecting it to a real human experience?",
+  q6b: "Re-read the rule about multiple impacts — what's the key condition?",
+  q7:  "Think about why the SQUO is 'unique to argument' — what does Tyler's argument need to prove first?",
+  q8a: "Think about the function of a Pre-Req — it orients judges to the round before you make your case.",
+  q8b: "A Pre-Req isn't just a preview — it actively engages with what's already happened in the round."
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5',
+  q6a: 'q6b',
+  q6b: 'next6',
+  q7:  'next7',
+  q8a: 'q8b',
+  q8b: 'next8'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

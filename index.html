@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascend Academy — Learn</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/hub.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">A</div>
+    <div class="nav-logo-text">
+      <span>Ascend Academy</span>
+      <span>Learning Platform</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <div class="nav-badge-count">
+      <span>🏅</span>
+      <span id="badgeCountLabel">0 badges earned</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">learn.ascendacademy.org</div>
+  <h1 class="hero-title">Master the art of<br><em>competitive debate.</em></h1>
+  <p class="hero-sub">Self-paced modules built from Ascend's championship curriculum. Learn the same techniques that have won national titles.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">24</div>
+      <div class="hero-stat-label">Modules</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">Events</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">TOC Wins</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Free</div>
+      <div class="hero-stat-label">Always</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BANNER -->
+<div class="progress-banner">
+  <div class="progress-label">Your Progress</div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+  </div>
+  <div class="progress-pct" id="progressPct">0 of 24 modules</div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- BADGE SHELF -->
+  <div class="badge-section">
+    <div class="badge-section-title">🏅 Your Badges</div>
+    <div class="badge-shelf" id="badgeShelf"></div>
+  </div>
+
+  <!-- EVENT TABS -->
+  <div class="event-tabs">
+    <button class="event-tab active" onclick="void(0)">Congressional Debate</button>
+    <button class="event-tab locked" onclick="void(0)">Public Forum <span class="coming-soon">Coming Soon</span></button>
+    <button class="event-tab locked" onclick="void(0)">Extemp <span class="coming-soon">Coming Soon</span></button>
+  </div>
+
+  <!-- CONGRESSIONAL DEBATE TRACK -->
+  <div id="event-congress">
+
+    <!-- UNIT 1 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 1</div>
+        <div class="unit-title">Foundations of Congressional Debate</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-1-count">5 modules</div>
+      </div>
+      <div class="module-grid" id="unit-1-grid"></div>
+    </div>
+
+    <!-- UNIT 2 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 2</div>
+        <div class="unit-title">Building Championship Arguments</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-2-count">8 modules</div>
+      </div>
+      <div class="module-grid" id="unit-2-grid"></div>
+    </div>
+
+    <!-- UNIT 3 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 3</div>
+        <div class="unit-title">Research & Case Preparation</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-3-count">5 modules</div>
+      </div>
+      <div class="module-grid" id="unit-3-grid"></div>
+    </div>
+
+    <!-- UNIT 4 -->
+    <div class="unit">
+      <div class="unit-header">
+        <div class="unit-number">Unit 4</div>
+        <div class="unit-title">Performance, Presence & Strategy</div>
+        <div class="unit-line"></div>
+        <div class="unit-count" id="unit-4-count">6 modules</div>
+      </div>
+      <div class="module-grid" id="unit-4-grid"></div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div style="display:flex; gap: 20px; flex-wrap: wrap;">
+      <div class="coming-soon-section" style="flex:1; min-width:260px;">
+        <div class="coming-soon-icon">🎙️</div>
+        <div class="coming-soon-title">Public Forum</div>
+        <div class="coming-soon-sub">Coming soon — partners, cases, and flow strategy</div>
+      </div>
+      <div class="coming-soon-section" style="flex:1; min-width:260px;">
+        <div class="coming-soon-icon">📰</div>
+        <div class="coming-soon-title">Extemporaneous Speaking</div>
+        <div class="coming-soon-sub">Coming soon — prep room, structure, and delivery</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ascend <span>Academy</span></div>
+  <p>&copy; 2026 Ascend Speech & Debate &middot; ascendacademy.org</p>
+</footer>
+
+<!-- MODULE OVERLAY -->
+<div class="module-overlay" id="moduleOverlay">
+  <div class="module-panel" id="modulePanel">
+    <button class="panel-close" onclick="closeModule()">&#10005;</button>
+    <div id="panelContent"></div>
+  </div>
+</div>
+
+<script src="shared/hub.js"></script>
+</body>
+</html>

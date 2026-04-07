@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standing Out in Early Rounds — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Ascend <span>Academy</span> · Standing Out Early</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 8</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 1 · Module 1.5 · Congressional Debate</div>
+  <div class="mod-title">Standing Out in Early Rounds</div>
+  <div class="mod-desc">Prep strategy, framing, sponsorships, and the attention habits that separate good debaters from great ones in prelims.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 8</div>
+    <div class="section-title">What "Standing Out" Actually Means</div>
+    <div class="section-body">
+      <p>In early rounds — Cycles 1 through 3 — most speeches sound the same. Debaters read their pre-written cases, hit the obvious talking points, and sit down. Judges hear the same arguments from multiple speakers and struggle to differentiate.</p>
+      <p><strong>Standing out means being the speaker judges remember when they fill out their ballot.</strong> It doesn't require having the "best" argument or the loudest voice. It requires doing something the other 20 speakers in the room aren't doing.</p>
+      <p>Three things make you memorable in early rounds: <strong>how you prep</strong> (researching angles others miss), <strong>how you frame</strong> (orienting judges to why your argument is the one that matters), and <strong>how you pay attention</strong> (referencing what's actually happening in the round instead of reading a canned speech).</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the primary way to "stand out" in early rounds?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Using stronger evidence and more citations than other speakers</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Having the most polished delivery and vocal variety in the chamber</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Doing something the other 20 speakers aren't — unique prep, strong framing, real engagement with the round</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Speaking early in the cycle before the debate gets crowded with arguments</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → Researching to Be Noticed</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 8</div>
+    <div class="section-title">Researching to Be Noticed</div>
+    <div class="section-body">
+      <p>Most debaters research the obvious angle on a bill — the one that shows up on the first page of Google. The minimum wage bill? Everyone preps "it helps low-wage workers" on aff and "it kills small businesses" on neg.</p>
+      <p><strong>"Stand out" prep means understanding why the legislation exists</strong> — not just what it does. What triggered this bill? Was there a specific event, report, or failure that made this legislation necessary? When you understand the origin, you can build arguments that feel contextual and insightful rather than generic.</p>
+      <p>For example: instead of "the minimum wage hasn't kept up with inflation" (everyone says this), you could research the specific Congressional Research Service report that inspired the bill and reference it. Now you sound like someone who actually reads legislation, not just topic summaries.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Ascend Standard</div>
+      <div class="callout-text">If you can find your argument's main claim on the first page of a Google search for the bill topic, so can every other debater in the room. Go deeper. Find the angle that makes judges think "I haven't heard that today."</div>
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If your argument's main claim appears on the first page of Google results for the topic, it's probably unique enough to stand out.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The Power of Framing</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 8</div>
+    <div class="section-title">The Power of Framing</div>
+    <div class="section-body">
+      <p>Framing is how you tell judges <strong>what the debate is really about</strong> — and why your argument answers the most important question. A well-framed speech doesn't just make an argument; it tells judges how to evaluate the entire round.</p>
+      <p>Good framing sounds like: "The central question in this debate is whether the economic costs of this bill outweigh its benefits to workers. I'm going to prove that the benefits aren't just theoretical — they're measurable, immediate, and life-changing."</p>
+      <p>Bad framing sounds like: "I stand in firm affirmation of this bill. My argument today is about workers." That's not framing — it's just a table of contents.</p>
+      <p><strong>Framing is especially powerful in early cycles</strong> because the debate hasn't been defined yet. The first debater to frame the round well often controls how judges evaluate every subsequent speech.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example Framing (Gun Reform Bill)</div>
+      "(Intro here)... The debate today will come down to whether this legislation can reduce gun violence without infringing on constitutional rights. I believe if the affirmative can prove that this bill targets the specific weapons used in mass shootings without affecting lawful gun owners, we should pass it. That's exactly what I'm going to prove."
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What makes framing especially powerful in early cycles?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Framing takes less prep time than building a full argument, so you can do it on any bill</button>
+        <button class="option" onclick="mc('q3',this,'correct')">The debate hasn't been defined yet, so the first debater to frame well controls how judges evaluate everything after</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Early-cycle judges are less experienced and respond more to framing than evidence</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">A strong frame makes it harder for the opposing side to get recognized by the PO</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Paying Attention in Round</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 8</div>
+    <div class="section-title">Paying Attention in Round</div>
+    <div class="section-body">
+      <p>The number one thing that separates debaters who place and debaters who don't: <strong>paying attention to what's actually happening in the round.</strong></p>
+      <p>Most debaters write their speech before the round and read it regardless of what anyone else says. But judges notice when a speaker references a previous argument: "My colleague on the negative mentioned that this bill would hurt small businesses — but they didn't account for the phase-in period in Section 3."</p>
+      <p>That single sentence does more for your ranking than 30 seconds of additional evidence. It shows you're <strong>listening, thinking, and contributing to the debate</strong> — not just delivering a canned performance.</p>
+      <p>Pay attention to both your side and the opposition. On your side: what has already been established well? Don't repeat it. On the opposition: what are their strongest arguments? Reference and address them.</p>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why does referencing a previous speaker's argument improve your ranking?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">It uses up the previous speaker's argument so no one else can use it</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">It shows judges you're listening, thinking, and contributing to the debate rather than reading a canned speech</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">NSDA rules award extra points for referencing other speakers</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">It makes your speech longer, which gives judges more content to evaluate</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If your side has already established a strong Status Quo, you should still spend 30 seconds of your speech repeating it for emphasis.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → The Sponsorship Advantage</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 8</div>
+    <div class="section-title">The Sponsorship Advantage</div>
+    <div class="section-body">
+      <p>Here's one of the most underused strategies in Congress: <strong>sponsoring a bill.</strong> Most debaters are scared to sponsor — they think it's harder, riskier, or less strategic than speaking later. They're wrong.</p>
+      <p>Sponsoring is actually one of the easiest speeches to give because <strong>you speak first, with no one to respond to, and you set the frame for the entire debate.</strong> You get to define the problem, present your solution, and establish the narrative before anyone else has a chance to speak.</p>
+      <p>Judges also tend to give sponsors a favorable view — you're showing initiative, leadership, and confidence. In a room where 20 debaters are fighting for the second or third speech, you walked up and claimed the first one.</p>
+      <p>A good sponsorship follows Block Format with a slight adjustment: spend a bit more time on the Status Quo (since you're establishing the entire context for the debate) and clearly reference what each section of the bill does.</p>
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is sponsoring a bill strategically advantageous?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q5',this,'wrong')">Sponsors automatically receive the highest ranking from judges</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Sponsors don't have to face cross-examination</button>
+        <button class="option" onclick="mc('q5',this,'correct')">You speak first with no one to respond to and get to set the frame for the entire debate</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Sponsors get extra time to deliver their speech</button>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → The Sponsorship Checklist</button>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 8</div>
+    <div class="section-title">The Sponsorship Checklist</div>
+    <div class="section-body">
+      <p>A strong sponsorship speech hits these elements in order:</p>
+      <p><strong>1. Introduction:</strong> Hook the room. Tell judges and competitors why this bill matters right now.</p>
+      <p><strong>2. Status Quo (expanded):</strong> Spend more time here than in a normal speech. You're establishing the problem for the entire debate. Give judges the context they need to evaluate every subsequent argument.</p>
+      <p><strong>3. Bill explanation:</strong> Walk through what each section does. "Section 1 of this legislation does X. Section 2 creates Y mechanism." This is the Action in Block Format — and it's especially important for sponsors because you're the first person explaining the bill.</p>
+      <p><strong>4. Outcome:</strong> What world does this bill create? This is your argument — the new reality.</p>
+      <p><strong>5. Impact:</strong> Why should judges care? Humanize it, connect it to real lives.</p>
+      <p><strong>6. Conclusion:</strong> Urge the chamber to affirm. Restate the core argument in one sentence.</p>
+    </div>
+
+    <div class="quiz" id="q6a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Put these sponsorship speech elements in the correct order.</div>
+      <div class="drag-area">
+        <div class="drag-label">Elements (drag these):</div>
+        <div class="drag-source" id="drag-source-6">
+          <div class="drag-chip" draggable="true" data-val="intro" ondragstart="dragStart(event)">Hook the room with why this bill matters now</div>
+          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">Establish the problem with expanded context</div>
+          <div class="drag-chip" draggable="true" data-val="bill" ondragstart="dragStart(event)">Walk through what each section of the bill does</div>
+          <div class="drag-chip" draggable="true" data-val="impact" ondragstart="dragStart(event)">Humanize why the new world matters</div>
+        </div>
+        <div class="drag-targets" id="q6a-targets">
+          <div class="drag-target" data-correct="intro" ondragover="dragOver(event)" ondrop="drop(event,'q6a')"><span class="drag-target-label">First</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="squo" ondragover="dragOver(event)" ondrop="drop(event,'q6a')"><span class="drag-target-label">Second</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="bill" ondragover="dragOver(event)" ondrop="drop(event,'q6a')"><span class="drag-target-label">Third</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="impact" ondragover="dragOver(event)" ondrop="drop(event,'q6a')"><span class="drag-target-label">Fourth</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q6a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q6b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">In a sponsorship speech, you should spend less time on the Status Quo than in a normal speech since you need to cover the whole bill.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q6b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q6b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q6b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Constructive vs. Canned</button>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="section hidden" id="step7">
+    <div class="section-eyebrow">Lesson 7 of 8</div>
+    <div class="section-title">Constructive vs. Canned</div>
+    <div class="section-body">
+      <p>In early cycles, your speech should be <strong>constructive</strong> — actively building your side's advocacy and advancing the debate. The opposite of constructive is <strong>canned</strong> — a pre-written speech that could have been delivered in any round on this topic.</p>
+      <p>A constructive speech acknowledges the round. Even in Cycle 1, you can say something like: "Before I begin, I want to acknowledge that the central tension in this debate will likely be [X vs. Y]. My argument addresses that head-on."</p>
+      <p>The key to effective early-round constructive speaking is <strong>simplicity and explanation.</strong> Your judges usually don't know much about the topic. Block Format is extremely effective early because it's easy to follow — one argument, clearly structured, deeply explained.</p>
+      <p>As Ascend teaches: <strong>cards do not eliminate the need for a warrant.</strong> Just because you have evidence doesn't mean you've explained why it matters. Over-explaining is always better than under-explaining in early rounds.</p>
+    </div>
+
+    <div class="quiz" id="q7">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the key difference between a "constructive" speech and a "canned" speech?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q7',this,'wrong')">Constructive speeches include refutation of the opposing side; canned speeches don't</button>
+        <button class="option" onclick="mc('q7',this,'correct')">Constructive speeches acknowledge and engage with the round; canned speeches could be delivered in any round on the topic</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Canned speeches are fully written in advance while constructive speeches are mostly improvised on the spot</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Constructive speeches use Block Format while canned speeches use the older CWEI structure</button>
+      </div>
+      <div class="feedback" id="q7-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next7" onclick="advance(7)">Continue → The Early-Round Mindset</button>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="section hidden" id="step8">
+    <div class="section-eyebrow">Lesson 8 of 8</div>
+    <div class="section-title">The Early-Round Mindset</div>
+    <div class="section-body">
+      <p>Here's the mindset that top Ascend debaters bring to prelims:</p>
+      <p><strong>You're not just giving a speech — you're building your side's case.</strong> Think about what your side needs, not just what you want to say. If the sponsor already established a strong SQUO, don't repeat it — build on it.</p>
+      <p><strong>Every interaction is a scoring opportunity.</strong> Your speech matters. Your CX questions matter. How you carry yourself between speeches matters. Judges are watching even when you're not at the podium.</p>
+      <p><strong>Don't save your best stuff for later rounds.</strong> You can't advance to elims if you don't place well in prelims. Treat every early round like it's the round that determines whether you break.</p>
+      <p><strong>Be the debater judges want to see again.</strong> If a judge walks away thinking "I hope that person makes it to the next round," you've done your job. That means being clear, confident, engaged, and — above all — memorable.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Quest Sandel, Ascend Academy</div>
+      <div class="callout-text">"I've watched hundreds of prelim rounds. The debaters who break almost always do the same three things: they research one angle nobody else prepped, they frame the debate before anyone else does, and they reference something another speaker actually said. That's it. None of that requires being the loudest or the most experienced person in the room."</div>
+    </div>
+
+    <div class="quiz" id="q8a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">It's smart to save your strongest arguments for elimination rounds and use weaker arguments in prelims.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q8a',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q8a',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q8a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q8b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What is the ultimate goal in early rounds?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q8b',this,'wrong')">Win the vote on every bill you argue</button>
+        <button class="option" onclick="mc('q8b',this,'wrong')">Speak as many times as possible to maximize scoring opportunities</button>
+        <button class="option" onclick="mc('q8b',this,'correct')">Be the debater judges remember and want to see in the next round</button>
+        <button class="option" onclick="mc('q8b',this,'wrong')">Avoid taking risks so you don't get ranked low</button>
+      </div>
+      <div class="feedback" id="q8b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module 🏅</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">⭐</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now know how to stand out in early rounds through strategic prep, strong framing, active listening, and the sponsorship advantage. Unit 1 is complete — on to building championship arguments.</div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var MODULE_ID = 'standing-out-early';
+var TOTAL_STEPS = 8;
+
+var CORRECT_MSGS = {
+  q1:  "Standing out isn't about volume or vocabulary — it's about doing what others aren't.",
+  q2:  "If it's that easy to find, everyone else found it too. Go deeper for a unique angle.",
+  q3:  "The first person to frame the debate well often controls how judges evaluate everything that follows.",
+  q4a: "Engagement with the round is the strongest signal you can send judges that you're thinking, not just reading.",
+  q4b: "Don't repeat what your side has already established well — use that time to add something new instead.",
+  q5:  "Sponsoring gives you first-mover advantage with no obligation to respond to anyone. It's pure offense.",
+  q6a: "The sponsorship follows Block Format but with expanded context-setting since you're the first to explain the bill.",
+  q6b: "It's the opposite — sponsors should spend MORE time on the SQUO because they're establishing the entire context for the debate.",
+  q7:  "Constructive speeches live in the round. Canned speeches exist in a vacuum. Judges can tell the difference instantly.",
+  q8a: "You can't advance to elims with weak prelim performances. Bring your best to every round.",
+  q8b: "Rankings come from judges remembering you favorably. Being memorable is the whole game in prelims."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what happens when 20 debaters all do the obvious thing. What makes one of them different?",
+  q2:  "Think about what '20 other debaters researching the same topic' means for your uniqueness.",
+  q3:  "Think about the timing — why is framing more powerful when the debate hasn't been defined yet?",
+  q4a: "Think about what referencing someone signals to the judges about your engagement level.",
+  q4b: "Think about efficiency — if it's already been said well, what's a better use of your 3 minutes?",
+  q5:  "Think about what sponsors get to do that later speakers don't.",
+  q6a: "Think about the natural flow of a speech — which elements set up which other elements?",
+  q6b: "Re-read the sponsorship checklist — does it say 'expanded' or 'abbreviated' for the Status Quo?",
+  q7:  "Think about what 'constructive' literally means — it constructs something connected to the round.",
+  q8a: "Think about the path to elimination rounds — which rounds determine whether you get there?",
+  q8b: "Think about what actually drives rankings — is it quantity or quality and memorability?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5',
+  q6a: 'q6b',
+  q6b: 'next6',
+  q7:  'next7',
+  q8a: 'q8b',
+  q8b: 'next8'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

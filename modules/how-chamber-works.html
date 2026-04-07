@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How the Chamber Works — Ascend Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/module.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Ascend <span>Academy</span> · How the Chamber Works</div>
+  <div class="progress-row">
+    <div class="top-progress-track">
+      <div class="top-progress-fill" id="topFill" style="width:0%"></div>
+    </div>
+    <div class="progress-steps" id="topSteps">0 / 8</div>
+  </div>
+</div>
+
+<div class="mod-hero">
+  <div class="mod-eyebrow">Unit 1 · Module 1.2 · Congressional Debate</div>
+  <div class="mod-title">How the Chamber Works</div>
+  <div class="mod-desc">Precedence, recency, the Presiding Officer, motions, and the full lifecycle of a round from the moment you walk in to the final gavel tap.</div>
+</div>
+
+<div class="content" id="moduleContent">
+
+  <!-- STEP 1 -->
+  <div class="section" id="step1">
+    <div class="section-eyebrow">Lesson 1 of 8</div>
+    <div class="section-title">The Docket</div>
+    <div class="section-body">
+      <p>Before any debate happens, the chamber needs to decide <strong>what to debate and in what order.</strong> The list of bills and resolutions available is called the <strong>docket.</strong></p>
+      <p>At most tournaments, the docket is released days or weeks in advance — giving you time to research every item. At the start of the round, the chamber votes on the <strong>docket order</strong>: which bill to debate first, second, third, and so on.</p>
+      <p>This vote matters more than most beginners realize. The first bill debated gets the most speeches and the most time — meaning more scoring opportunities. Savvy debaters push for docket orders that put their best-prepared bills early.</p>
+    </div>
+
+    <div class="quiz" id="q1">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why does the docket order matter strategically?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q1',this,'wrong')">Bills debated first tend to be easier, giving weaker debaters a chance to speak</button>
+        <button class="option" onclick="mc('q1',this,'correct')">Earlier bills get more speeches and more scoring opportunities</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">Judges give higher scores to speeches on the first bill because they're fresher</button>
+        <button class="option" onclick="mc('q1',this,'wrong')">The PO assigns speaking slots based on docket position, so earlier bills have priority speakers</button>
+      </div>
+      <div class="feedback" id="q1-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next1" onclick="advance(1)">Continue → Precedence & Recency</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section hidden" id="step2">
+    <div class="section-eyebrow">Lesson 2 of 8</div>
+    <div class="section-title">Precedence & Recency</div>
+    <div class="section-body">
+      <p>Two terms control who gets to speak in Congress: <strong>precedence</strong> and <strong>recency.</strong></p>
+      <p><strong>Precedence</strong> is how many times you've spoken (or asked questions) in the round. Someone who has spoken once has higher precedence than someone who has spoken twice — meaning the person who has spoken less gets priority.</p>
+      <p><strong>Recency</strong> is how recently you last spoke. If two people have the same precedence, the person who spoke least recently gets priority.</p>
+      <p>These rules exist to ensure everyone gets a chance to speak. But they also create a strategic constraint: <strong>the more you speak, the harder it becomes to speak again.</strong> This means your first speech needs to count — and timing when you stand for recognition is a real skill.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Example Scenario</div>
+      Three students stand for recognition. Alex has spoken once, Blake has spoken twice, Casey has spoken once but more recently than Alex. The PO should recognize Alex — lowest precedence (tied with Casey at 1 speech), but better recency (spoke less recently than Casey).
+    </div>
+
+    <div class="quiz" id="q2">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A student who has spoken twice will get priority over a student who has spoken once, because they've demonstrated more engagement.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q2',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q2',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q2-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next2" onclick="advance(2)">Continue → The Presiding Officer</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section hidden" id="step3">
+    <div class="section-eyebrow">Lesson 3 of 8</div>
+    <div class="section-title">The Presiding Officer (PO)</div>
+    <div class="section-body">
+      <p>The <strong>Presiding Officer</strong> is a student elected at the start of the round to run the chamber. Think of them as the Speaker of the House — they manage the entire proceeding.</p>
+      <p>The PO's responsibilities include: recognizing speakers (deciding who speaks next based on precedence/recency), keeping time, handling motions, managing docket transitions, and maintaining order.</p>
+      <p>Being PO is a separate competitive role — <strong>POs are scored by judges too.</strong> A great PO demonstrates leadership, procedural knowledge, and composure. Many tournaments give separate awards for the best Presiding Officer.</p>
+      <p>You'll learn exactly how to preside in Module 1.3. For now, just know that the PO is both a competitor and a facilitator — and the role is far more strategic than it looks.</p>
+    </div>
+
+    <div class="quiz" id="q3">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Which of the following is NOT a responsibility of the Presiding Officer?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Recognizing speakers based on precedence and recency</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Managing time for speeches and cross-examination</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Deciding which side of a bill wins the debate</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Running the docket election at the start of the round</button>
+      </div>
+      <div class="feedback" id="q3-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next3" onclick="advance(3)">Continue → Cycles of Debate</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section hidden" id="step4">
+    <div class="section-eyebrow">Lesson 4 of 8</div>
+    <div class="section-title">Cycles of Debate</div>
+    <div class="section-body">
+      <p>Debate on a bill happens in <strong>cycles.</strong> A cycle is one full rotation of speeches — typically one from each side. As cycles progress, the debate evolves:</p>
+      <p><strong>Cycle 1 (the opening):</strong> The sponsor delivers the authorship speech. The first negative responds. Initial arguments are laid out on both sides. This is where the debate's framework is established.</p>
+      <p><strong>Cycles 2-3 (the middle):</strong> Subsequent speakers build on, refute, or extend what's been said. Good debaters add new arguments or address weaknesses in their side's case. The debate gets deeper and more nuanced.</p>
+      <p><strong>Late cycles (the close):</strong> By now, most arguments have been made. The best late-round speakers don't repeat what's been said — they <strong>synthesize the debate, weigh arguments against each other, and explain why their side has won the key clash points.</strong></p>
+      <p>Understanding cycles is critical because <strong>the same argument delivered in Cycle 1 vs. Cycle 3 needs to sound completely different.</strong></p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The Cycle Rule</div>
+      <div class="callout-text">Early cycles reward construction — building your side's case from scratch. Late cycles reward synthesis — weighing what's been said, identifying who's winning, and explaining why. The debaters who treat every cycle the same get outranked by the ones who adapt.</div>
+    </div>
+
+    <div class="quiz" id="q4a">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What should the best late-cycle speakers focus on?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q4a',this,'wrong')">Introducing entirely new arguments that haven't been mentioned</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">Repeating the strongest argument from their side with better delivery</button>
+        <button class="option" onclick="mc('q4a',this,'correct')">Synthesizing the debate, weighing arguments, and explaining why their side has won key clash points</button>
+        <button class="option" onclick="mc('q4a',this,'wrong')">Speaking as quickly as possible to cover more ground in 3 minutes</button>
+      </div>
+      <div class="feedback" id="q4a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q4b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">A speech that works well in Cycle 1 can be delivered the same way in Cycle 3 without changes.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q4b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q4b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q4b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next4" onclick="advance(4)">Continue → Motions</button>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section hidden" id="step5">
+    <div class="section-eyebrow">Lesson 5 of 8</div>
+    <div class="section-title">Motions</div>
+    <div class="section-body">
+      <p>Motions are how the chamber makes procedural decisions. Any member can make a motion, and most require a <strong>second</strong> (another member agreeing) and a <strong>majority vote</strong> to pass.</p>
+      <p>The most common motions you'll encounter:</p>
+      <p><strong>Motion to the Previous Question:</strong> Ends debate on the current bill and triggers a vote on whether the bill passes or fails. This is the most common motion — it's how the chamber moves from one bill to the next.</p>
+      <p><strong>Motion to Lay on the Table:</strong> Temporarily sets aside the current bill to move on to the next one. The tabled bill can be revisited later if the chamber votes to bring it back.</p>
+      <p><strong>Motion to Recess:</strong> Gives the chamber a short break. Useful when debate is getting heated or when many competitors want time to prepare.</p>
+      <p>Understanding motions helps you control the pace of the round — experienced debaters use motions strategically to extend debate on bills they've prepared for or end debate when the other side has momentum.</p>
+    </div>
+
+    <div class="example-quote">
+      <div class="eq-label">Strategic Motion Use</div>
+      You prepped heavily for Bill 3 but it's fourth on the docket. After Bill 2 has had a few cycles, you move for the Previous Question — ending debate so the chamber moves to your best bill faster. That's not manipulation — it's strategy.
+    </div>
+
+    <div class="quiz" id="q5">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Match each motion to what it does.</div>
+      <div class="drag-area">
+        <div class="drag-label">Effects (drag these):</div>
+        <div class="drag-source" id="drag-source-5">
+          <div class="drag-chip" draggable="true" data-val="pq" ondragstart="dragStart(event)">Ends debate and triggers a vote on the bill</div>
+          <div class="drag-chip" draggable="true" data-val="table" ondragstart="dragStart(event)">Temporarily sets aside the bill to move on</div>
+          <div class="drag-chip" draggable="true" data-val="recess" ondragstart="dragStart(event)">Gives the chamber a short break</div>
+        </div>
+        <div class="drag-targets" id="q5-targets">
+          <div class="drag-target" data-correct="pq" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Previous Question</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="table" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Lay on the Table</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="recess" ondragover="dragOver(event)" ondrop="drop(event,'q5')"><span class="drag-target-label">Motion to Recess</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q5-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next5" onclick="advance(5)">Continue → Voting on Legislation</button>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="section hidden" id="step6">
+    <div class="section-eyebrow">Lesson 6 of 8</div>
+    <div class="section-title">Voting on Legislation</div>
+    <div class="section-body">
+      <p>After the chamber passes a Motion to the Previous Question, every member votes on whether the bill <strong>passes or fails.</strong> This is a simple majority vote — if more than half the chamber votes yes, the bill passes.</p>
+      <p>Here's what beginners often miss: <strong>your vote does not affect your ranking.</strong> Judges don't care which way you vote. Voting is a simulation of the legislative process, not a scoring event.</p>
+      <p>That said, there is a strategic dimension to voting. If you gave a strong affirmative speech and the bill fails, it doesn't hurt your score — but it can feel deflating. More importantly, voting behavior signals to the room whether you're paying attention and participating in the simulation seriously.</p>
+      <p>After the vote, the chamber moves to the next item on the docket and the cycle begins again with a new sponsor.</p>
+    </div>
+
+    <div class="quiz" id="q6a">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">If you give an affirmative speech but the bill fails, your ranking on that speech is negatively affected.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q6a',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q6a',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q6a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q6b" style="margin-top:20px">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">What happens after the chamber votes on a bill?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6b',this,'wrong')">The round ends and judges submit their rankings</button>
+        <button class="option" onclick="mc('q6b',this,'correct')">The chamber moves to the next item on the docket</button>
+        <button class="option" onclick="mc('q6b',this,'wrong')">The bill goes to a second round of debate</button>
+        <button class="option" onclick="mc('q6b',this,'wrong')">Students switch sides and debate the bill again</button>
+      </div>
+      <div class="feedback" id="q6b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Questioning (CX)</button>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="section hidden" id="step7">
+    <div class="section-eyebrow">Lesson 7 of 8</div>
+    <div class="section-title">Questioning (Cross-Examination)</div>
+    <div class="section-body">
+      <p>After each speech, the PO opens the floor for <strong>cross-examination (CX).</strong> A member from the opposing side may ask one question of the speaker, and the speaker has 30 seconds total to answer.</p>
+      <p>CX serves three strategic purposes:</p>
+      <p><strong>1. For the questioner:</strong> A sharp question demonstrates engagement, critical thinking, and the ability to identify weaknesses in an argument. Judges notice good questions — it's a low-risk way to add to your scoring profile.</p>
+      <p><strong>2. For the speaker:</strong> CX is an opportunity to clarify your argument, demonstrate composure under pressure, and reinforce your key points. A confident, concise answer can actually boost your ranking.</p>
+      <p><strong>3. For the room:</strong> CX creates clash and makes the debate more dynamic. The best CX exchanges set up future speeches — a questioner might expose a weakness that they (or a teammate) then address in a later speech.</p>
+    </div>
+
+    <div class="quiz" id="q7">
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why is asking a cross-examination question strategically valuable for the questioner?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q7',this,'wrong')">It gives the questioner extra speaking time that counts toward their ranking</button>
+        <button class="option" onclick="mc('q7',this,'correct')">It demonstrates engagement and critical thinking, adding to their scoring profile</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">A strong question directly lowers the speaker's ranking on the judges' ballot</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">It builds precedence, giving the questioner priority for their next speech</button>
+      </div>
+      <div class="feedback" id="q7-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next7" onclick="advance(7)">Continue → Putting It All Together</button>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="section hidden" id="step8">
+    <div class="section-eyebrow">Lesson 8 of 8</div>
+    <div class="section-title">A Round from Start to Finish</div>
+    <div class="section-body">
+      <p>Let's walk through a complete round to see how all the pieces fit together:</p>
+    </div>
+
+    <div class="components-row" style="grid-template-columns:1fr 1fr;">
+      <div class="component-box squo">
+        <div class="component-icon">🔨</div>
+        <div class="component-name">Phase 1: Setup</div>
+        <div class="component-desc">PO election → procedure speech → docket vote → chamber is ready</div>
+      </div>
+      <div class="component-box outcome">
+        <div class="component-icon">🗣️</div>
+        <div class="component-name">Phase 2: Debate</div>
+        <div class="component-desc">Sponsor → Neg → Aff → Neg (alternating, with CX after each speech)</div>
+      </div>
+      <div class="component-box impact">
+        <div class="component-icon">🗳️</div>
+        <div class="component-name">Phase 3: Vote</div>
+        <div class="component-desc">Motion to Previous Question → vote on bill → move to next on docket</div>
+      </div>
+      <div class="component-box" style="background:#f0f0f0;border:2px solid #999;">
+        <div class="component-icon">📋</div>
+        <div class="component-name">Phase 4: Wrap Up</div>
+        <div class="component-desc">Repeat Phases 2-3 for remaining bills → round ends → judges submit rankings</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <p>A typical round lasts <strong>2-3 hours</strong> and covers 2-4 bills. The first bill usually gets the most debate time. By the last bill, speeches are fewer and the round is winding down — which is why docket strategy matters.</p>
+    </div>
+
+    <div class="quiz" id="q8a">
+      <div class="quiz-type-badge dd">Drag & Drop</div>
+      <div class="quiz-q">Put these round events in the correct chronological order.</div>
+      <div class="drag-area">
+        <div class="drag-label">Events (drag these):</div>
+        <div class="drag-source" id="drag-source-8">
+          <div class="drag-chip" draggable="true" data-val="po" ondragstart="dragStart(event)">PO election and procedure speeches</div>
+          <div class="drag-chip" draggable="true" data-val="docket" ondragstart="dragStart(event)">Chamber votes on docket order</div>
+          <div class="drag-chip" draggable="true" data-val="sponsor" ondragstart="dragStart(event)">Sponsor delivers authorship speech</div>
+          <div class="drag-chip" draggable="true" data-val="vote" ondragstart="dragStart(event)">Motion to Previous Question and vote on bill</div>
+        </div>
+        <div class="drag-targets" id="q8a-targets">
+          <div class="drag-target" data-correct="po" ondragover="dragOver(event)" ondrop="drop(event,'q8a')"><span class="drag-target-label">First</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="docket" ondragover="dragOver(event)" ondrop="drop(event,'q8a')"><span class="drag-target-label">Second</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="sponsor" ondragover="dragOver(event)" ondrop="drop(event,'q8a')"><span class="drag-target-label">Third</span><span class="target-content"></span></div>
+          <div class="drag-target" data-correct="vote" ondragover="dragOver(event)" ondrop="drop(event,'q8a')"><span class="drag-target-label">Fourth</span><span class="target-content"></span></div>
+        </div>
+      </div>
+      <div class="feedback" id="q8a-fb"></div>
+    </div>
+
+    <div class="quiz hidden" id="q8b" style="margin-top:20px">
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">The Presiding Officer election happens after the first bill has been debated.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q8b',this,false)">✓ True</button>
+        <button class="tf-btn false-btn" onclick="tf('q8b',this,true)">✗ False</button>
+      </div>
+      <div class="feedback" id="q8b-fb"></div>
+    </div>
+
+    <button class="next-btn hidden" id="next8" onclick="showCompletion()">Complete Module 🏅</button>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="section hidden" id="completionSection">
+    <div class="completion">
+      <div class="completion-icon">⚖️</div>
+      <div class="completion-title">Module Complete!</div>
+      <div class="completion-sub">You now understand the full mechanics of a Congressional Debate round — from docket setting to the final gavel. Next up: how to run the chamber yourself as a Presiding Officer.</div>
+      <br>
+      <button class="back-btn" onclick="notifyComplete()">← Return to Learning Hub</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var MODULE_ID = 'how-chamber-works';
+var TOTAL_STEPS = 8;
+
+var CORRECT_MSGS = {
+  q1:  "Docket order directly affects how many scoring opportunities each bill provides.",
+  q2:  "It's the opposite — lower precedence (fewer speeches) gets priority. The system ensures everyone gets a turn.",
+  q3:  "The PO facilitates but never decides outcomes — that's the chamber's job through voting.",
+  q4a: "Late-cycle speakers add value by weighing and synthesizing, not by repeating or introducing disconnected points.",
+  q4b: "The debate evolves every cycle — a great debater adapts their speech to what's already been said.",
+  q5:  "Understanding motions gives you procedural control over the pace and flow of the round.",
+  q6a: "Your ranking is based on the quality of your speech, not the outcome of the vote.",
+  q6b: "The round continues through the docket — each bill gets its own debate cycle.",
+  q7:  "CX is a scoring opportunity that lets you demonstrate engagement with minimal time investment.",
+  q8a: "This is the standard sequence: PO election → docket → debate → vote → next bill.",
+  q8b: "The PO election is the very first thing — you can't run a chamber without someone in charge."
+};
+
+var WRONG_MSGS = {
+  q1:  "Think about what happens when a bill gets more time — how does that affect speakers?",
+  q2:  "Think about the purpose of precedence — it's designed to give everyone a fair chance.",
+  q3:  "Think about the PO's role — are they a judge, a facilitator, or something else?",
+  q4a: "Consider what's already been said by Cycle 3. What would be most valuable for judges to hear?",
+  q4b: "Think about how much the debate has changed between Cycles 1 and 3.",
+  q5:  "Read each motion's description carefully — they have very different procedural effects.",
+  q6a: "Think about what judges are actually evaluating — is it the outcome of the vote, or something else?",
+  q6b: "Think about what the docket is for — what happens after one bill is done?",
+  q7:  "CX isn't about restricting others — it's about what it adds to your own profile.",
+  q8a: "Think about what needs to happen before debate can start — what decisions come first?",
+  q8b: "Think about the sequence — can docket voting or debate happen without someone running the chamber?"
+};
+
+var UNLOCK_MAP = {
+  q1:  'next1',
+  q2:  'next2',
+  q3:  'next3',
+  q4a: 'q4b',
+  q4b: 'next4',
+  q5:  'next5',
+  q6a: 'q6b',
+  q6b: 'next6',
+  q7:  'next7',
+  q8a: 'q8b',
+  q8b: 'next8'
+};
+</script>
+<script src="../shared/module.js"></script>
+</body>
+</html>

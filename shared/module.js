@@ -1,0 +1,169 @@
+/*  Ascend Academy — Shared Module Quiz Engine
+    Used by all module HTML files. Provides:
+    - Multiple choice (mc)
+    - True/false (tf)
+    - Drag-and-drop (dragStart, dragOver, drop, checkDrag)
+    - Step progression (advance, showCompletion, notifyComplete)
+    - Top progress bar (updateTopProgress)
+
+    Each module must define:
+      MODULE_ID        — string, e.g. 'block-format'
+      TOTAL_STEPS      — number of lessons
+      CORRECT_MSGS     — { qId: 'msg', ... }
+      WRONG_MSGS       — { qId: 'msg', ... }
+      UNLOCK_MAP       — { qId: 'nextElementId', ... }
+*/
+
+let stepsCompleted = 0;
+let dragData = null;
+
+function updateTopProgress() {
+  const pct = (stepsCompleted / TOTAL_STEPS) * 100;
+  document.getElementById('topFill').style.width = pct + '%';
+  document.getElementById('topSteps').textContent = stepsCompleted + ' / ' + TOTAL_STEPS;
+}
+
+function advance(step) {
+  document.getElementById('next' + step).classList.add('hidden');
+  document.getElementById('step' + (step + 1)).classList.remove('hidden');
+  stepsCompleted = Math.max(stepsCompleted, step);
+  updateTopProgress();
+  setTimeout(function () {
+    document.getElementById('step' + (step + 1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function showCompletion() {
+  var lastNext = document.getElementById('next' + TOTAL_STEPS);
+  if (lastNext) lastNext.classList.add('hidden');
+  document.getElementById('completionSection').classList.remove('hidden');
+  stepsCompleted = TOTAL_STEPS;
+  updateTopProgress();
+  setTimeout(function () {
+    document.getElementById('completionSection').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+
+function notifyComplete() {
+  if (window.opener) {
+    window.opener.postMessage(MODULE_ID + '-complete', '*');
+  }
+  window.close();
+}
+
+// --- Multiple Choice ---
+function mc(qId, btn, result) {
+  var quiz = document.getElementById(qId);
+  var btns = quiz.querySelectorAll('.option');
+  btns.forEach(function (b) { b.disabled = true; });
+  var fb = document.getElementById(qId + '-fb');
+
+  if (result === 'correct') {
+    btn.classList.add('correct');
+    fb.className = 'feedback show correct-fb';
+    fb.textContent = '\u2713 Correct! ' + (CORRECT_MSGS[qId] || '');
+    unlockAfter(qId);
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'feedback show wrong-fb';
+    fb.textContent = '\u2717 Not quite. ' + (WRONG_MSGS[qId] || 'Try again.');
+    setTimeout(function () {
+      btns.forEach(function (b) { b.disabled = false; b.classList.remove('wrong'); });
+      fb.classList.remove('show');
+    }, 1800);
+  }
+}
+
+// --- True / False ---
+function tf(qId, btn, isCorrect) {
+  var quiz = document.getElementById(qId);
+  var btns = quiz.querySelectorAll('.tf-btn');
+  btns.forEach(function (b) { b.disabled = true; });
+  var fb = document.getElementById(qId + '-fb');
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    fb.className = 'feedback show correct-fb';
+    fb.textContent = '\u2713 Correct! ' + (CORRECT_MSGS[qId] || '');
+    unlockAfter(qId);
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'feedback show wrong-fb';
+    fb.textContent = '\u2717 Not quite. ' + (WRONG_MSGS[qId] || 'Try again.');
+    setTimeout(function () {
+      btns.forEach(function (b) { b.disabled = false; b.classList.remove('wrong'); });
+      fb.classList.remove('show');
+    }, 1800);
+  }
+}
+
+// --- Drag and Drop ---
+function dragStart(e) {
+  dragData = { val: e.target.dataset.val, text: e.target.textContent, el: e.target };
+  e.target.classList.add('dragging');
+}
+
+function dragOver(e) {
+  e.preventDefault();
+  e.currentTarget.classList.add('over');
+}
+
+function drop(e, qId) {
+  e.preventDefault();
+  var target = e.currentTarget;
+  target.classList.remove('over');
+  if (!dragData) return;
+
+  var contentEl = target.querySelector('.target-content');
+  contentEl.textContent = dragData.text;
+  target.classList.add('filled');
+  target.dataset.placed = dragData.val;
+  dragData.el.classList.remove('dragging');
+
+  var targets = document.querySelectorAll('#' + qId + '-targets .drag-target');
+  var allFilled = Array.from(targets).every(function (t) { return t.dataset.placed; });
+  if (allFilled) checkDrag(qId, targets);
+
+  dragData = null;
+}
+
+function checkDrag(qId, targets) {
+  var allCorrect = true;
+  targets.forEach(function (t) {
+    if (t.dataset.placed === t.dataset.correct) {
+      t.classList.add('correct-drop');
+    } else {
+      t.classList.add('wrong-drop');
+      allCorrect = false;
+    }
+  });
+
+  var fb = document.getElementById(qId + '-fb');
+  if (allCorrect) {
+    fb.className = 'feedback show correct-fb';
+    fb.textContent = '\u2713 Correct! ' + (CORRECT_MSGS[qId] || '');
+    unlockAfter(qId);
+  } else {
+    fb.className = 'feedback show wrong-fb';
+    fb.textContent = "\u2717 Some items are in the wrong place. Let's try again.";
+    setTimeout(function () {
+      targets.forEach(function (t) {
+        t.classList.remove('filled', 'correct-drop', 'wrong-drop');
+        t.dataset.placed = '';
+        t.querySelector('.target-content').textContent = '';
+      });
+      var sourceNum = qId.replace('q', '');
+      var source = document.getElementById('drag-source-' + sourceNum);
+      if (source) source.querySelectorAll('.drag-chip').forEach(function (c) { c.classList.remove('dragging'); });
+      fb.classList.remove('show');
+    }, 2000);
+  }
+}
+
+// --- Unlock chaining ---
+function unlockAfter(qId) {
+  var nextId = UNLOCK_MAP[qId];
+  if (nextId) {
+    document.getElementById(nextId).classList.remove('hidden');
+  }
+}
