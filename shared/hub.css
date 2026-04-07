@@ -127,54 +127,6 @@ nav {
   z-index: 2;
 }
 
-/* HERO BIRD */
-.hero-bird {
-  position: absolute;
-  width: 400px;
-  height: auto;
-  z-index: 3;
-  opacity: 0;
-  animation: birdFly 5s ease-in-out 1.5s forwards;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 16px rgba(200,16,46,0.3));
-}
-
-@keyframes birdFly {
-  0% {
-    top: 75%;
-    left: -12%;
-    opacity: 0;
-    transform: scale(0.5) rotate(-5deg);
-  }
-  12% {
-    opacity: 0.6;
-  }
-  35% {
-    top: 30%;
-    left: 35%;
-    transform: scale(1.2) rotate(2deg);
-    opacity: 0.55;
-  }
-  55% {
-    top: 18%;
-    left: 55%;
-    transform: scale(1) rotate(-2deg);
-    opacity: 0.5;
-  }
-  80% {
-    top: 8%;
-    left: 80%;
-    transform: scale(0.8) rotate(3deg);
-    opacity: 0.35;
-  }
-  100% {
-    top: 2%;
-    left: 112%;
-    transform: scale(0.5) rotate(5deg);
-    opacity: 0;
-  }
-}
-
 .hero-eyebrow {
   font-size: 11px;
   letter-spacing: 0.15em;
