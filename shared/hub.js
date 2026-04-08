@@ -89,7 +89,7 @@ var MODULES = [
     file: 'modules/block-format.html',
     lessons: [
       { icon: '\uD83D\uDCD6', text: 'Why argument formats matter \u2014 efficiency, clarity, depth' },
-      { icon: '\uD83D\uDD04', text: 'The origin of Block Format \u2014 from Greg Seabrooks to 5 TOC wins' },
+      { icon: '\uD83D\uDD04', text: 'The origin of Block Format \u2014 how one idea became 5 TOC wins' },
       { icon: '\uD83E\uDDF1', text: 'The 3 components: Status Quo, Outcome, Impact' },
       { icon: '\u270D\uFE0F', text: 'The Status Quo \u2014 proving a specific problem exists in the current world' },
       { icon: '\u26A1',       text: 'Outcome & Action \u2014 the legislative mechanism' },
