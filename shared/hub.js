@@ -6,7 +6,7 @@
 // 24 modules across 4 units. Add file: 'modules/<id>.html' when module is built.
 var MODULES = [
   // ── UNIT 1: Foundations of Congressional Debate (5 modules) ──
-  { id: 'what-is-congress',     unit: 1, num: '1.1', title: 'What Is Congressional Debate?',     icon: '\u{1F3DB}\uFE0F', duration: '15 min', activities: 3, badge: null,
+  { id: 'what-is-congress',     unit: 1, num: '1.1', title: 'What Is Congressional Debate?',     icon: '\u{1F3DB}\uFE0F', duration: '25 min', activities: 3, badge: null,
     desc: 'How the event works, what judges look for, and why it\u2019s the most strategic event in speech & debate.',
     file: 'modules/what-is-congress.html',
     lessons: [
@@ -32,7 +32,7 @@ var MODULES = [
       { icon: '\u2753', text: 'Questioning (CX) \u2014 strategy for questioners and speakers' },
       { icon: '\uD83C\uDFAC', text: 'A round from start to finish \u2014 full walkthrough' }
     ] },
-  { id: 'becoming-po',          unit: 1, num: '1.3', title: 'Becoming a Presiding Officer',       icon: '\uD83D\uDD28', duration: '22 min', activities: 5, badge: 'presiding-officer',
+  { id: 'becoming-po',          unit: 1, num: '1.3', title: 'Becoming a Presiding Officer',       icon: '\uD83D\uDD28', duration: '30 min', activities: 5, badge: 'presiding-officer',
     desc: 'How to get elected, run your procedure speech, handle motions, and be a judge\u2019s best friend.',
     file: 'modules/becoming-po.html',
     lessons: [
@@ -45,16 +45,16 @@ var MODULES = [
       { icon: '\u2764\uFE0F', text: 'Being a judge\u2019s best friend \u2014 what earns top PO scores' },
       { icon: '\u26A0\uFE0F', text: 'Common mistakes & tips \u2014 what to avoid' }
     ] },
-  { id: 'reading-legislation',  unit: 1, num: '1.4', title: 'Reading & Analyzing Legislation',    icon: '\uD83D\uDCC4', duration: '15 min', activities: 3, badge: null,
+  { id: 'reading-legislation',  unit: 1, num: '1.4', title: 'Reading & Analyzing Legislation',    icon: '\uD83D\uDCC4', duration: '20 min', activities: 3, badge: null,
     desc: 'How to break down a bill, understand what it actually does, and identify the real debate underneath.',
     file: 'modules/reading-legislation.html',
     lessons: [
       { icon: '\uD83D\uDCDA', text: 'Why reading the bill matters \u2014 the bill IS the debate' },
-      { icon: '\uD83D\uDD2C', text: 'Anatomy of a bill \u2014 title, sections, funding, enactment' },
+      { icon: '\uD83D\uDD2C', text: 'Anatomy of a bill \u2014 title, sections, enactment' },
       { icon: '\u2753', text: 'The 5 questions to ask every bill' },
       { icon: '\uD83D\uDCDC', text: 'Bills vs. resolutions \u2014 different legislation, different arguments' },
       { icon: '\uD83C\uDFAF', text: 'Finding the real debate underneath the surface' },
-      { icon: '\uD83D\uDD0D', text: 'Reading between the lines \u2014 vague funding, missing enforcement' },
+      { icon: '\uD83D\uDD0D', text: 'Reading between the lines \u2014 immediate implementation, missing enforcement' },
       { icon: '\uD83E\uDDF1', text: 'From bill to argument \u2014 mapping to Block Format' },
       { icon: '\uD83D\uDCDD', text: 'Practice: breaking down a real bill' }
     ] },
