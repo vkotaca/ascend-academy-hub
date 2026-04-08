@@ -71,6 +71,9 @@ var MODULES = [
       { icon: '\uD83D\uDEE0\uFE0F', text: 'Constructive vs. canned \u2014 speeches that live in the round' },
       { icon: '\uD83E\uDDE0', text: 'The early-round mindset \u2014 every interaction is a scoring opportunity' }
     ] },
+  { id: 'unit-1-exam',          unit: 1, num: '1.6', title: 'Unit 1 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-1-complete', exam: true,
+    desc: 'Test your knowledge of Congressional Debate foundations \u2014 15 questions covering how the event works, chamber procedure, presiding, legislation, and strategy.',
+    file: 'modules/unit-1-exam.html' },
 
   // ── UNIT 2: Building Championship Arguments (9 modules) ──
   { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: null,
@@ -182,6 +185,9 @@ var MODULES = [
       { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI) \u2014 playing offense by turning the negation\u2019s strongest argument' },
       { icon: '\u2696\uFE0F', text: 'Final crystallization \u2014 telling judges why the affirmation wins the debate' }
     ] },
+  { id: 'unit-2-exam',          unit: 2, num: '2.11', title: 'Unit 2 Exam',                       icon: '\uD83D\uDCDD', duration: '12 min', activities: 15, badge: 'unit-2-complete', exam: true,
+    desc: 'Test your knowledge of argument construction \u2014 15 questions on CWEI, Block Format, SQUO, Outcome, Impact, refutation, and late-round strategy.',
+    file: 'modules/unit-2-exam.html' },
 
   // ── UNIT 3: Research & Case Preparation (5 modules) ──
   { id: 'how-to-research',      unit: 3, num: '3.1', title: 'How to Research',                    icon: '\uD83D\uDD0D', duration: '20 min', activities: 5, badge: 'researcher',
@@ -233,6 +239,9 @@ var MODULES = [
       { icon: '\u2694\uFE0F', text: 'Using evidence strategically \u2014 one strong card beats three weak ones' },
       { icon: '\uD83D\uDD2C', text: 'Attacking weak evidence \u2014 outdated, biased, cherry-picked' }
     ] },
+  { id: 'unit-3-exam',          unit: 3, num: '3.6', title: 'Unit 3 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-3-complete', exam: true,
+    desc: 'Test your research skills \u2014 15 questions on how to research, building cases, prep habits, aff vs. neg strategy, and evidence quality.',
+    file: 'modules/unit-3-exam.html' },
 
   // ── UNIT 4: Performance, Presence & Strategy (8 modules) ──
   { id: 'rhetoric-intros',      unit: 4, num: '4.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: null,
@@ -313,7 +322,10 @@ var MODULES = [
       { icon: '\u2600\uFE0F', text: 'Morning routine \u2014 arrive early, review, trust your prep' },
       { icon: '\uD83D\uDD04', text: 'Between rounds \u2014 read ballots, assess what worked, adapt for the next round' },
       { icon: '\uD83C\uDFC6', text: 'The finals mindset \u2014 execution over preparation at the top level' }
-    ] }
+    ] },
+  { id: 'unit-4-exam',          unit: 4, num: '4.9', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-4-complete', exam: true,
+    desc: 'Test your performance skills \u2014 15 questions on rhetoric, delivery, movement, presence, personality, ballots, CX, and tournament execution.',
+    file: 'modules/unit-4-exam.html' }
 ];
 
 var UNITS = [
@@ -371,15 +383,16 @@ function renderModuleCards() {
     container.innerHTML = unitModules.map(function (mod) {
       var completed = state.completed.includes(mod.id);
       var isBuilt = !!mod.file;
-      var statusClass = completed ? 'status-completed' : (isBuilt ? 'status-available' : 'status-locked');
-      var statusText = completed ? 'Completed \u2713' : (isBuilt ? 'Available' : 'Coming Soon');
-      var cardClass = 'module-card' + (completed ? ' completed' : '') + (isBuilt ? ' active' : ' locked');
+      var isExam = !!mod.exam;
+      var statusClass = completed ? 'status-completed' : (isExam ? 'status-exam' : (isBuilt ? 'status-available' : 'status-locked'));
+      var statusText = completed ? 'Completed \u2713' : (isExam ? 'Exam' : (isBuilt ? 'Available' : 'Coming Soon'));
+      var cardClass = 'module-card' + (completed ? ' completed' : '') + (isExam ? ' exam' : '') + (isBuilt ? ' active' : ' locked');
       return '<div class="' + cardClass + '"' + (isBuilt ? ' onclick="openModule(\'' + mod.id + '\')"' : '') + ' id="card-' + mod.id + '">' +
         '<div class="module-top">' +
           '<div class="module-icon">' + mod.icon + '</div>' +
           '<span class="module-status ' + statusClass + '" id="status-' + mod.id + '">' + statusText + '</span>' +
         '</div>' +
-        '<div class="module-num">Module ' + mod.num + '</div>' +
+        '<div class="module-num">' + (isExam ? 'Exam' : 'Module ' + mod.num) + '</div>' +
         '<div class="module-title">' + mod.title + '</div>' +
         '<div class="module-desc">' + mod.desc + '</div>' +
         '<div class="module-meta">' +

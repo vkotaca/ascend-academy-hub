@@ -246,6 +246,31 @@ nav {
   padding: 56px 48px;
 }
 
+/* EXAM CARDS */
+.module-card.exam {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, #fffdf5, #fff9e6);
+}
+
+.module-card.exam::before {
+  background: var(--gold);
+  opacity: 1;
+}
+
+.module-card.exam:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.2);
+}
+
+.module-card.exam .module-icon {
+  background: rgba(212,175,55,0.15);
+}
+
+.status-exam {
+  background: rgba(212,175,55,0.15);
+  color: #b8960f;
+}
+
 /* EVENT TABS */
 .event-tabs {
   display: flex;
