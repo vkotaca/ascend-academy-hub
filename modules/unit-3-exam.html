@@ -15,21 +15,21 @@
     <div class="top-progress-track">
       <div class="top-progress-fill" id="topFill" style="width:0%"></div>
     </div>
-    <div class="progress-steps" id="topSteps">0 / 15</div>
+    <div class="progress-steps" id="topSteps">0 / 10</div>
   </div>
 </div>
 
 <div class="mod-hero">
   <div class="mod-eyebrow">Unit 3 · Exam · Congressional Debate</div>
   <div class="mod-title">Unit 3 Exam &mdash; Mid &amp; Late Round Strategy</div>
-  <div class="mod-desc">15 questions covering Modules 3.1&ndash;3.5. Prove you understand win conditions, finding gaps, refutation, late-round strategy, and championship-level speeches.</div>
+  <div class="mod-desc">10 questions covering Modules 3.1&ndash;3.5. Prove you understand win conditions, finding gaps, refutation, late-round strategy, and championship-level speeches.</div>
 </div>
 
 <div class="content" id="moduleContent">
 
   <!-- Q1 — Module 3.1: Win Conditions — Offense vs Defense -->
   <div class="section" id="step1">
-    <div class="section-eyebrow">Question 1 of 15</div>
+    <div class="section-eyebrow">Question 1 of 10</div>
     <div class="section-title">Offense vs. Defense</div>
     <div class="section-body"><p>This exam covers all of Unit 3. Answer each question to advance.</p></div>
     <div class="quiz" id="q1">
@@ -48,7 +48,7 @@
 
   <!-- Q2 — Module 3.1: The Comparative Framework -->
   <div class="section hidden" id="step2">
-    <div class="section-eyebrow">Question 2 of 15</div>
+    <div class="section-eyebrow">Question 2 of 10</div>
     <div class="section-title">The Comparative Framework</div>
     <div class="quiz" id="q2">
       <div class="quiz-type-badge mc">Multiple Choice</div>
@@ -64,99 +64,103 @@
     <button class="next-btn hidden" id="next2" onclick="advance(2)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q3 — Module 3.1: Believability -->
+  <!-- Q3 — Module 3.2: Finding Gaps -->
   <div class="section hidden" id="step3">
-    <div class="section-eyebrow">Question 3 of 15</div>
-    <div class="section-title">Believability & Win Conditions</div>
+    <div class="section-eyebrow">Question 3 of 10</div>
+    <div class="section-title">Identifying Argument Gaps</div>
     <div class="quiz" id="q3">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">A modest, well-evidenced claim is generally more persuasive to judges than an extreme claim — even if the extreme claim would theoretically be a bigger impact. Believability is a core win condition.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q3',this,true)">&check; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q3',this,false)">&cross; False</button>
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">After the first cycle, three aff speakers all argued that a bill helps the economy. No one has mentioned the bill's effect on civil liberties. A strategic neg speaker recognizes this as a "gap." Why is exploiting this gap powerful?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q3',this,'wrong')">Because judges automatically rank you higher for mentioning new topics</button>
+        <button class="option" onclick="mc('q3',this,'correct')">Because the affirmation has no prepared defense on civil liberties — the gap means your argument enters the debate uncontested</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Because civil liberties is always a stronger argument than economics</button>
+        <button class="option" onclick="mc('q3',this,'wrong')">Because the PO will give you more speaking time for introducing a new angle</button>
       </div>
       <div class="feedback" id="q3-fb"></div>
     </div>
     <button class="next-btn hidden" id="next3" onclick="advance(3)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q4 — Module 3.2: Finding Gaps -->
+  <!-- Q4 — Module 3.3: Refutation Strategy -->
   <div class="section hidden" id="step4">
-    <div class="section-eyebrow">Question 4 of 15</div>
-    <div class="section-title">Identifying Argument Gaps</div>
+    <div class="section-eyebrow">Question 4 of 10</div>
+    <div class="section-title">Refutation Strategy</div>
     <div class="quiz" id="q4">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">After the first cycle, three aff speakers all argued that a bill helps the economy. No one has mentioned the bill's effect on civil liberties. A strategic neg speaker recognizes this as a "gap." Why is exploiting this gap powerful?</div>
+      <div class="quiz-q">A debater starts their speech by spending 30 seconds directly refuting the previous speaker's strongest point before moving into their own argument. What is the strategic purpose of this approach?</div>
       <div class="options">
-        <button class="option" onclick="mc('q4',this,'wrong')">Because judges automatically rank you higher for mentioning new topics</button>
-        <button class="option" onclick="mc('q4',this,'correct')">Because the affirmation has no prepared defense on civil liberties — the gap means your argument enters the debate uncontested</button>
-        <button class="option" onclick="mc('q4',this,'wrong')">Because civil liberties is always a stronger argument than economics</button>
-        <button class="option" onclick="mc('q4',this,'wrong')">Because the PO will give you more speaking time for introducing a new angle</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">It's required by parliamentary procedure to address the previous speaker</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">It fills time when you don't have enough material for a full speech</button>
+        <button class="option" onclick="mc('q4',this,'correct')">It removes the opposing argument as a competing consideration before presenting your own — clearing the path for your block to land with full force</button>
+        <button class="option" onclick="mc('q4',this,'wrong')">It shows the judges you were listening, which is the only thing refutation accomplishes</button>
       </div>
       <div class="feedback" id="q4-fb"></div>
     </div>
     <button class="next-btn hidden" id="next4" onclick="advance(4)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q5 — Module 3.2: Reading the Room -->
+  <!-- Q5 — Module 3.3: When to Cut Content -->
   <div class="section hidden" id="step5">
-    <div class="section-eyebrow">Question 5 of 15</div>
-    <div class="section-title">Reading the Room</div>
+    <div class="section-eyebrow">Question 5 of 10</div>
+    <div class="section-title">Cutting Content for Refutation</div>
     <div class="quiz" id="q5">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">You're in the second cycle and notice that every neg speaker has attacked the bill's cost, but no one has challenged whether the bill actually achieves its stated goal. What should you do?</div>
+      <div class="quiz-q">You have a fully prepared block, but a previous speaker made a devastating argument that you need to refute. You only have 3 minutes. What's the best approach?</div>
       <div class="options">
-        <button class="option" onclick="mc('q5',this,'wrong')">Run another cost argument with different numbers to pile on</button>
-        <button class="option" onclick="mc('q5',this,'wrong')">Switch to affirmation since the neg seems to be winning already</button>
-        <button class="option" onclick="mc('q5',this,'correct')">Run a neg argument attacking the bill's effectiveness — this untouched gap gives you an uncontested front</button>
-        <button class="option" onclick="mc('q5',this,'wrong')">Wait until the final cycle to bring up something new for maximum surprise</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Skip refutation entirely and deliver your full block — never sacrifice your prepared material</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Spend 2 minutes on refutation and rush through your block in 1 minute</button>
+        <button class="option" onclick="mc('q5',this,'correct')">Strategically cut a section of your block to make room for targeted refutation — keeping your strongest content while also neutralizing the threat</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Abandon your block completely and give a pure refutation speech</button>
       </div>
       <div class="feedback" id="q5-fb"></div>
     </div>
     <button class="next-btn hidden" id="next5" onclick="advance(5)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q6 — Module 3.2: Predicting Gaps in Prep -->
+  <!-- Q6 — Module 3.4: Late Rounds Are Different -->
   <div class="section hidden" id="step6">
-    <div class="section-eyebrow">Question 6 of 15</div>
-    <div class="section-title">Predicting Gaps During Prep</div>
+    <div class="section-eyebrow">Question 6 of 10</div>
+    <div class="section-title">Late-Round Strategy</div>
     <div class="quiz" id="q6">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">During prep, you should not only prepare the obvious arguments — you should also identify which arguments most debaters will overlook and prepare those, because they're more likely to enter the debate uncontested.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q6',this,true)">&check; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q6',this,false)">&cross; False</button>
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">Why do late-round speeches need to be structured differently from first-cycle speeches?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6',this,'wrong')">Because judges get tired and need simpler arguments</button>
+        <button class="option" onclick="mc('q6',this,'correct')">Because the debate has evolved — judges want speakers who engage with what's been said, identify the core clash, and frame the round's narrative rather than introducing isolated new arguments</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">Because late-round speeches have stricter time limits</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">Because you've already used all your good arguments in earlier speeches</button>
       </div>
       <div class="feedback" id="q6-fb"></div>
     </div>
     <button class="next-btn hidden" id="next6" onclick="advance(6)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q7 — Module 3.3: Prerequisite Block Purpose -->
+  <!-- Q7 — Module 3.4: Crystallization -->
   <div class="section hidden" id="step7">
-    <div class="section-eyebrow">Question 7 of 15</div>
-    <div class="section-title">Refutation Strategy</div>
+    <div class="section-eyebrow">Question 7 of 10</div>
+    <div class="section-title">Late-Round Crystallization</div>
     <div class="quiz" id="q7">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">A debater starts their speech by spending 30 seconds directly refuting the previous speaker's strongest point before moving into their own argument. What is the strategic purpose of this approach?</div>
+      <div class="quiz-q">In the final cycle of debate on a bill, a speaker gives a "crystallization" speech. What makes this different from a normal speech?</div>
       <div class="options">
-        <button class="option" onclick="mc('q7',this,'wrong')">It's required by parliamentary procedure to address the previous speaker</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">It fills time when you don't have enough material for a full speech</button>
-        <button class="option" onclick="mc('q7',this,'correct')">It removes the opposing argument as a competing consideration before presenting your own — clearing the path for your block to land with full force</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">It shows the judges you were listening, which is the only thing refutation accomplishes</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">It introduces the strongest new argument that no one has thought of yet</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">It summarizes every single argument made in the round without adding analysis</button>
+        <button class="option" onclick="mc('q7',this,'correct')">It distills the entire debate into the key clash points and explains why your side has won those clashes — it's about framing the round's narrative, not introducing new material</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">It's a speech where you predict how the vote will go and tell the chamber to vote your way</button>
       </div>
       <div class="feedback" id="q7-fb"></div>
     </div>
     <button class="next-btn hidden" id="next7" onclick="advance(7)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q8 — Module 3.3: On-Case vs Off-Case -->
+  <!-- Q8 — Module 3.4: Controlling the Narrative -->
   <div class="section hidden" id="step8">
-    <div class="section-eyebrow">Question 8 of 15</div>
-    <div class="section-title">On-Case vs. Off-Case Refutation</div>
+    <div class="section-eyebrow">Question 8 of 10</div>
+    <div class="section-title">Controlling the Narrative</div>
     <div class="quiz" id="q8">
       <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">On-case refutation attacks the internal logic of your opponent's argument (their warrant, evidence, or link chain), while off-case refutation introduces an entirely new argument on a different aspect of the bill that the opponent didn't address.</div>
+      <div class="quiz-q">In late rounds, the most powerful move is to reframe the debate on your terms — defining what the core clash is, rather than responding to the frame the other side has set.</div>
       <div class="tf-row">
         <button class="tf-btn true-btn" onclick="tf('q8',this,true)">&check; True</button>
         <button class="tf-btn false-btn" onclick="tf('q8',this,false)">&cross; False</button>
@@ -166,128 +170,40 @@
     <button class="next-btn hidden" id="next8" onclick="advance(8)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q9 — Module 3.3: When to Cut Content -->
+  <!-- Q9 — Module 3.5: Championship-Level Structure -->
   <div class="section hidden" id="step9">
-    <div class="section-eyebrow">Question 9 of 15</div>
-    <div class="section-title">Cutting Content for Refutation</div>
+    <div class="section-eyebrow">Question 9 of 10</div>
+    <div class="section-title">Championship-Level Structure</div>
     <div class="quiz" id="q9">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">You have a fully prepared block, but a previous speaker made a devastating argument that you need to refute. You only have 3 minutes. What's the best approach?</div>
+      <div class="quiz-q">What separates a championship-level speech from a merely good one?</div>
       <div class="options">
-        <button class="option" onclick="mc('q9',this,'wrong')">Skip refutation entirely and deliver your full block — never sacrifice your prepared material</button>
-        <button class="option" onclick="mc('q9',this,'wrong')">Spend 2 minutes on refutation and rush through your block in 1 minute</button>
-        <button class="option" onclick="mc('q9',this,'correct')">Strategically cut a section of your block to make room for targeted refutation — keeping your strongest content while also neutralizing the threat</button>
-        <button class="option" onclick="mc('q9',this,'wrong')">Abandon your block completely and give a pure refutation speech</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Championship speakers use more evidence cards than anyone else</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Championship speakers always speak first to set the tone</button>
+        <button class="option" onclick="mc('q9',this,'correct')">Championship speakers seamlessly weave refutation, their own block, and impact comparison into a single cohesive narrative — making the argument feel inevitable rather than assembled from parts</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Championship speakers memorize their speeches word-for-word to ensure perfect delivery</button>
       </div>
       <div class="feedback" id="q9-fb"></div>
     </div>
     <button class="next-btn hidden" id="next9" onclick="advance(9)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q10 — Module 3.4: Late Rounds Are Different -->
+  <!-- Q10 — Module 3.5: Turning the Opposition -->
   <div class="section hidden" id="step10">
-    <div class="section-eyebrow">Question 10 of 15</div>
-    <div class="section-title">Late-Round Strategy</div>
-    <div class="quiz" id="q10">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Why do late-round speeches need to be structured differently from first-cycle speeches?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q10',this,'wrong')">Because judges get tired and need simpler arguments</button>
-        <button class="option" onclick="mc('q10',this,'correct')">Because the debate has evolved — judges want speakers who engage with what's been said, identify the core clash, and frame the round's narrative rather than introducing isolated new arguments</button>
-        <button class="option" onclick="mc('q10',this,'wrong')">Because late-round speeches have stricter time limits</button>
-        <button class="option" onclick="mc('q10',this,'wrong')">Because you've already used all your good arguments in earlier speeches</button>
-      </div>
-      <div class="feedback" id="q10-fb"></div>
-    </div>
-    <button class="next-btn hidden" id="next10" onclick="advance(10)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q11 — Module 3.4: Crystallization -->
-  <div class="section hidden" id="step11">
-    <div class="section-eyebrow">Question 11 of 15</div>
-    <div class="section-title">Late-Round Crystallization</div>
-    <div class="quiz" id="q11">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">In the final cycle of debate on a bill, a speaker gives a "crystallization" speech. What makes this different from a normal speech?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q11',this,'wrong')">It introduces the strongest new argument that no one has thought of yet</button>
-        <button class="option" onclick="mc('q11',this,'wrong')">It summarizes every single argument made in the round without adding analysis</button>
-        <button class="option" onclick="mc('q11',this,'correct')">It distills the entire debate into the key clash points and explains why your side has won those clashes — it's about framing the round's narrative, not introducing new material</button>
-        <button class="option" onclick="mc('q11',this,'wrong')">It's a speech where you predict how the vote will go and tell the chamber to vote your way</button>
-      </div>
-      <div class="feedback" id="q11-fb"></div>
-    </div>
-    <button class="next-btn hidden" id="next11" onclick="advance(11)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q12 — Module 3.4: Controlling the Narrative -->
-  <div class="section hidden" id="step12">
-    <div class="section-eyebrow">Question 12 of 15</div>
-    <div class="section-title">Controlling the Narrative</div>
-    <div class="quiz" id="q12">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">In late rounds, the most powerful move is to reframe the debate on your terms — defining what the core clash is, rather than responding to the frame the other side has set.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q12',this,true)">&check; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q12',this,false)">&cross; False</button>
-      </div>
-      <div class="feedback" id="q12-fb"></div>
-    </div>
-    <button class="next-btn hidden" id="next12" onclick="advance(12)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q13 — Module 3.5: Championship-Level Structure -->
-  <div class="section hidden" id="step13">
-    <div class="section-eyebrow">Question 13 of 15</div>
-    <div class="section-title">Championship-Level Structure</div>
-    <div class="quiz" id="q13">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">What separates a championship-level speech from a merely good one?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q13',this,'wrong')">Championship speakers use more evidence cards than anyone else</button>
-        <button class="option" onclick="mc('q13',this,'wrong')">Championship speakers always speak first to set the tone</button>
-        <button class="option" onclick="mc('q13',this,'correct')">Championship speakers seamlessly weave refutation, their own block, and impact comparison into a single cohesive narrative — making the argument feel inevitable rather than assembled from parts</button>
-        <button class="option" onclick="mc('q13',this,'wrong')">Championship speakers memorize their speeches word-for-word to ensure perfect delivery</button>
-      </div>
-      <div class="feedback" id="q13-fb"></div>
-    </div>
-    <button class="next-btn hidden" id="next13" onclick="advance(13)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q14 — Module 3.5: Learning from Real Speeches -->
-  <div class="section hidden" id="step14">
-    <div class="section-eyebrow">Question 14 of 15</div>
-    <div class="section-title">Learning from Championship Speeches</div>
-    <div class="quiz" id="q14">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">When watching championship speeches to improve, what should you focus on most?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q14',this,'wrong')">Memorizing their exact phrases so you can reuse them in your speeches</button>
-        <button class="option" onclick="mc('q14',this,'wrong')">Counting how many pieces of evidence they cite to match their quantity</button>
-        <button class="option" onclick="mc('q14',this,'correct')">Studying their structural choices — how they sequence refutation, blocks, and impacts, and how they adapt to the flow of the debate</button>
-        <button class="option" onclick="mc('q14',this,'wrong')">Only watching speakers who agree with your political views</button>
-      </div>
-      <div class="feedback" id="q14-fb"></div>
-    </div>
-    <button class="next-btn hidden" id="next14" onclick="advance(14)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q15 — Module 3.5: Turning the Opposition -->
-  <div class="section hidden" id="step15">
-    <div class="section-eyebrow">Question 15 of 15</div>
+    <div class="section-eyebrow">Question 10 of 10</div>
     <div class="section-title">Turning the Opposition's Argument</div>
-    <div class="quiz" id="q15">
+    <div class="quiz" id="q10">
       <div class="quiz-type-badge mc">Multiple Choice</div>
       <div class="quiz-q">A championship-level technique is "turning" the opposition's argument — taking their strongest point and showing it actually supports your side. Which example best demonstrates a turn?</div>
       <div class="options">
-        <button class="option" onclick="mc('q15',this,'wrong')">The neg says the bill costs too much. You respond by saying cost doesn't matter.</button>
-        <button class="option" onclick="mc('q15',this,'wrong')">The neg says the bill hurts small businesses. You respond with a different argument about education.</button>
-        <button class="option" onclick="mc('q15',this,'correct')">The neg says the bill increases government spending. You respond by showing that the spending actually saves money long-term by preventing a more expensive crisis — their own concern about cost is a reason to vote aff.</button>
-        <button class="option" onclick="mc('q15',this,'wrong')">The neg says the bill is unconstitutional. You respond by reading a longer piece of evidence about a different topic.</button>
+        <button class="option" onclick="mc('q10',this,'wrong')">The neg says the bill costs too much. You respond by saying cost doesn't matter.</button>
+        <button class="option" onclick="mc('q10',this,'wrong')">The neg says the bill hurts small businesses. You respond with a different argument about education.</button>
+        <button class="option" onclick="mc('q10',this,'correct')">The neg says the bill increases government spending. You respond by showing that the spending actually saves money long-term by preventing a more expensive crisis — their own concern about cost is a reason to vote aff.</button>
+        <button class="option" onclick="mc('q10',this,'wrong')">The neg says the bill is unconstitutional. You respond by reading a longer piece of evidence about a different topic.</button>
       </div>
-      <div class="feedback" id="q15-fb"></div>
+      <div class="feedback" id="q10-fb"></div>
     </div>
-    <button class="next-btn hidden" id="next15" onclick="showCompletion()">Complete Exam</button>
+    <button class="next-btn hidden" id="next10" onclick="showCompletion()">Complete Exam</button>
   </div>
 
   <!-- COMPLETION -->
@@ -314,42 +230,32 @@
 <!-- Module config + shared engine -->
 <script>
 var MODULE_ID = 'unit-3-exam';
-var TOTAL_STEPS = 15;
+var TOTAL_STEPS = 10;
 
 var CORRECT_MSGS = {
   q1:  "Offense gives you an independent reason to vote your way. Defense only weakens the other side — it doesn't give judges a reason to vote for you.",
   q2:  "The comparative gives judges a decision framework. Instead of evaluating arguments in isolation, they weigh net benefits against net harms across two worlds.",
-  q3:  "Believability is a real win condition. Judges discount extreme claims, even when the theoretical impact is huge. Modest, well-supported claims carry more weight.",
-  q4:  "Gaps are undefended territory. When no one on the other side has addressed an issue, your argument on that issue enters the debate with zero resistance.",
-  q5:  "Finding an untouched angle gives you an uncontested front. Running another cost argument adds diminishing returns — a new effectiveness attack opens fresh ground.",
-  q6:  "Preparing the non-obvious argument is one of the highest-value prep activities. Arguments nobody else runs are arguments nobody is ready to refute.",
-  q7:  "The prerequisite block clears competing arguments first, so your own argument lands without interference. It's strategic sequencing.",
-  q8:  "On-case attacks their internal logic. Off-case opens an entirely new front. Both are powerful, but they work differently.",
-  q9:  "Strategic cutting is a championship skill. Keep your strongest content, cut the weakest section, and use that time for targeted refutation. Judges reward adaptation.",
-  q10: "Late rounds reward engagement with the debate, not isolated new arguments. Judges want you to name the clash, take sides, and frame the decision.",
-  q11: "Crystallization distills the debate into the key clash points and frames the narrative. It's the most strategic speech in the round.",
-  q12: "Controlling the narrative is the most powerful late-round move. The speaker who defines the clash controls how judges evaluate every argument in the round.",
-  q13: "Championship speakers make structure invisible. Refutation flows into their block, which flows into impact comparison — it all feels like one cohesive narrative.",
-  q14: "Studying structural choices — sequencing, adaptation, and flow — teaches you transferable skills. Memorizing phrases only gives you someone else's words.",
-  q15: "A turn takes the opponent's own argument and flips it into a reason to vote your way. It's the most devastating form of refutation because it uses their logic against them."
+  q3:  "Gaps are undefended territory. When no one on the other side has addressed an issue, your argument on that issue enters the debate with zero resistance.",
+  q4:  "The prerequisite block clears competing arguments first, so your own argument lands without interference. It's strategic sequencing.",
+  q5:  "Strategic cutting is a championship skill. Keep your strongest content, cut the weakest section, and use that time for targeted refutation. Judges reward adaptation.",
+  q6:  "Late rounds reward engagement with the debate, not isolated new arguments. Judges want you to name the clash, take sides, and frame the decision.",
+  q7:  "Crystallization distills the debate into the key clash points and frames the narrative. It's the most strategic speech in the round.",
+  q8:  "Controlling the narrative is the most powerful late-round move. The speaker who defines the clash controls how judges evaluate every argument in the round.",
+  q9:  "Championship speakers make structure invisible. Refutation flows into their block, which flows into impact comparison — it all feels like one cohesive narrative.",
+  q10: "A turn takes the opponent's own argument and flips it into a reason to vote your way. It's the most devastating form of refutation because it uses their logic against them."
 };
 
 var WRONG_MSGS = {
   q1:  "Ask yourself: does the argument give an independent reason to vote a certain way, or does it just weaken the other side?",
   q2:  "Think about what makes it easier for judges to decide. Is it individual arguments in isolation, or a clear framework comparing two possible futures?",
-  q3:  "Think about what judges actually believe. Do they give more weight to extreme claims or to well-supported, realistic claims?",
-  q4:  "Think about what happens when you introduce an argument that nobody on the other side has addressed. What advantage does that give you?",
-  q5:  "Think about what adds more strategic value: the fourth argument on the same angle, or the first argument on a new angle?",
-  q6:  "Think about what happens in round when you run an argument that nobody else prepared for. How does the other side respond?",
-  q7:  "Think about the strategic sequence. Why address someone else's argument before presenting your own?",
-  q8:  "Think about the difference between attacking what someone already said versus introducing something they never addressed.",
-  q9:  "Think about time management under pressure. What gives you the best combination of offense and defense in 3 minutes?",
-  q10: "Think about what judges are looking for by the third or fourth cycle. Is it more of the same, or engagement with the debate?",
-  q11: "Crystallization isn't about new material or simple summary. What is its unique purpose in the final cycle?",
-  q12: "Think about who controls the debate. Is it the speaker who responds to others' framing, or the speaker who defines the framing themselves?",
-  q13: "Think about what separates a speech that feels like a checklist of components from one that feels like a single, flowing narrative.",
-  q14: "Think about what transfers to your own debating. Is it specific phrases, or the strategic decisions behind how a speech is structured?",
-  q15: "Think about what a 'turn' does. It doesn't just refute — it takes the opponent's argument and shows it actually proves your point."
+  q3:  "Think about what happens when you introduce an argument that nobody on the other side has addressed. What advantage does that give you?",
+  q4:  "Think about the strategic sequence. Why address someone else's argument before presenting your own?",
+  q5:  "Think about time management under pressure. What gives you the best combination of offense and defense in 3 minutes?",
+  q6:  "Think about what judges are looking for by the third or fourth cycle. Is it more of the same, or engagement with the debate?",
+  q7:  "Crystallization isn't about new material or simple summary. What is its unique purpose in the final cycle?",
+  q8:  "Think about who controls the debate. Is it the speaker who responds to others' framing, or the speaker who defines the framing themselves?",
+  q9:  "Think about what separates a speech that feels like a checklist of components from one that feels like a single, flowing narrative.",
+  q10: "Think about what a 'turn' does. It doesn't just refute — it takes the opponent's argument and shows it actually proves your point."
 };
 
 var UNLOCK_MAP = {
@@ -362,12 +268,7 @@ var UNLOCK_MAP = {
   q7:  'next7',
   q8:  'next8',
   q9:  'next9',
-  q10: 'next10',
-  q11: 'next11',
-  q12: 'next12',
-  q13: 'next13',
-  q14: 'next14',
-  q15: 'next15'
+  q10: 'next10'
 };
 </script>
 <script src="../shared/module.js"></script>

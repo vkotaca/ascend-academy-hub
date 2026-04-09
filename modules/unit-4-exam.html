@@ -15,24 +15,24 @@
     <div class="top-progress-track">
       <div class="top-progress-fill" id="topFill" style="width:0%"></div>
     </div>
-    <div class="progress-steps" id="topSteps">0 / 15</div>
+    <div class="progress-steps" id="topSteps">0 / 10</div>
   </div>
 </div>
 
 <div class="mod-hero">
   <div class="mod-eyebrow">Unit 4 · Exam · Congressional Debate</div>
   <div class="mod-title">Unit 4 Exam &mdash; Research &amp; Case Preparation</div>
-  <div class="mod-desc">15 questions covering Modules 4.1&ndash;4.5. Prove you can research, build cases, prep strategically, argue both sides, and cite evidence.</div>
+  <div class="mod-desc">10 questions covering Modules 4.1&ndash;4.5. Prove you can research, build cases, prep strategically, argue both sides, and cite evidence.</div>
 </div>
 
 <div class="content" id="moduleContent">
 
-  <!-- Q1: 3.1 — Start with the Bill -->
+  <!-- Q1: 4.1 — Start with the Bill -->
   <div class="section" id="step1">
-    <div class="section-eyebrow">Question 1 of 15</div>
+    <div class="section-eyebrow">Question 1 of 10</div>
     <div class="section-title">Starting Your Research</div>
     <div class="section-body">
-      <p>This exam covers all of Unit 3. Answer each question to advance.</p>
+      <p>This exam covers all of Unit 4. Answer each question to advance.</p>
     </div>
 
     <div class="quiz" id="q1">
@@ -50,9 +50,9 @@
     <button class="next-btn hidden" id="next1" onclick="advance(1)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q2: 3.1 — Keyword Strategy -->
+  <!-- Q2: 4.1 — Keyword Strategy -->
   <div class="section hidden" id="step2">
-    <div class="section-eyebrow">Question 2 of 15</div>
+    <div class="section-eyebrow">Question 2 of 10</div>
     <div class="section-title">Keyword Strategy</div>
 
     <div class="quiz" id="q2">
@@ -70,9 +70,9 @@
     <button class="next-btn hidden" id="next2" onclick="advance(2)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q3: 3.1 — Source Hierarchy -->
+  <!-- Q3: 4.1 — Source Hierarchy -->
   <div class="section hidden" id="step3">
-    <div class="section-eyebrow">Question 3 of 15</div>
+    <div class="section-eyebrow">Question 3 of 10</div>
     <div class="section-title">Source Hierarchy</div>
 
     <div class="quiz" id="q3">
@@ -97,9 +97,9 @@
     <button class="next-btn hidden" id="next3" onclick="advance(3)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q4: 3.2 — Mapping Research to SQUO/Outcome/Impact -->
+  <!-- Q4: 4.2 — Mapping Research to SQUO/Outcome/Impact -->
   <div class="section hidden" id="step4">
-    <div class="section-eyebrow">Question 4 of 15</div>
+    <div class="section-eyebrow">Question 4 of 10</div>
     <div class="section-title">Mapping Research to Arguments</div>
 
     <div class="quiz" id="q4">
@@ -117,19 +117,17 @@
     <button class="next-btn hidden" id="next4" onclick="advance(4)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q5: 3.2 — Writing Taglines -->
+  <!-- Q5: 4.2 — Stress-Testing Arguments -->
   <div class="section hidden" id="step5">
-    <div class="section-eyebrow">Question 5 of 15</div>
-    <div class="section-title">Writing Taglines</div>
+    <div class="section-eyebrow">Question 5 of 10</div>
+    <div class="section-title">Stress-Testing Arguments</div>
 
     <div class="quiz" id="q5">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">A tagline is most effective when it does which of the following?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q5',this,'wrong')">Summarizes the entire argument in as much detail as possible</button>
-        <button class="option" onclick="mc('q5',this,'correct')">States the argument's conclusion in one clear, memorable sentence that a judge can write down</button>
-        <button class="option" onclick="mc('q5',this,'wrong')">Uses the most complex vocabulary possible to demonstrate expertise</button>
-        <button class="option" onclick="mc('q5',this,'wrong')">Includes the full citation so judges know your source immediately</button>
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Stress-testing your argument means asking "How would the other side attack this?" before you ever deliver it in a round.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q5',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q5',this,false)">&#10007; False</button>
       </div>
       <div class="feedback" id="q5-fb"></div>
     </div>
@@ -137,17 +135,19 @@
     <button class="next-btn hidden" id="next5" onclick="advance(5)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q6: 3.2 — Stress-Testing Arguments -->
+  <!-- Q6: 4.3 — Depth Over Breadth -->
   <div class="section hidden" id="step6">
-    <div class="section-eyebrow">Question 6 of 15</div>
-    <div class="section-title">Stress-Testing Arguments</div>
+    <div class="section-eyebrow">Question 6 of 10</div>
+    <div class="section-title">Depth Over Breadth</div>
 
     <div class="quiz" id="q6">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">Stress-testing your argument means asking "How would the other side attack this?" before you ever deliver it in a round.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q6',this,true)">&#10003; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q6',this,false)">&#10007; False</button>
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">When preparing for a session, which approach produces stronger speeches?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q6',this,'wrong')">Prepare a shallow overview of 10 arguments so you always have something to say</button>
+        <button class="option" onclick="mc('q6',this,'correct')">Prepare fewer arguments in greater depth, each with layered evidence and preemptive refutation</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">Memorize as many statistics as possible and deploy them regardless of fit</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">Copy arguments from online debate forums and practice reading them aloud</button>
       </div>
       <div class="feedback" id="q6-fb"></div>
     </div>
@@ -155,19 +155,19 @@
     <button class="next-btn hidden" id="next6" onclick="advance(6)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q7: 3.3 — Depth Over Breadth -->
+  <!-- Q7: 4.4 — Always Prep Both Sides -->
   <div class="section hidden" id="step7">
-    <div class="section-eyebrow">Question 7 of 15</div>
-    <div class="section-title">Depth Over Breadth</div>
+    <div class="section-eyebrow">Question 7 of 10</div>
+    <div class="section-title">Prepping Both Sides</div>
 
     <div class="quiz" id="q7">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">When preparing for a session, which approach produces stronger speeches?</div>
+      <div class="quiz-q">Why is it critical to prep both affirmation and negation for every bill?</div>
       <div class="options">
-        <button class="option" onclick="mc('q7',this,'wrong')">Prepare a shallow overview of 10 arguments so you always have something to say</button>
-        <button class="option" onclick="mc('q7',this,'correct')">Prepare fewer arguments in greater depth, each with layered evidence and preemptive refutation</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">Memorize as many statistics as possible and deploy them regardless of fit</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">Copy arguments from online debate forums and practice reading them aloud</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Because judges assign you a random side before each speech</button>
+        <button class="option" onclick="mc('q7',this,'correct')">Because speaking order determines what's available — if your preferred side is taken, you need the other side ready</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Because you must deliver both an aff and neg speech on every bill</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Because tournaments award bonus points for speaking on both sides</button>
       </div>
       <div class="feedback" id="q7-fb"></div>
     </div>
@@ -175,19 +175,17 @@
     <button class="next-btn hidden" id="next7" onclick="advance(7)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q8: 3.3 — Prep Document Structure -->
+  <!-- Q8: 4.4 — Preemptive Refutation -->
   <div class="section hidden" id="step8">
-    <div class="section-eyebrow">Question 8 of 15</div>
-    <div class="section-title">Prep Document Structure</div>
+    <div class="section-eyebrow">Question 8 of 10</div>
+    <div class="section-title">Preemptive Refutation</div>
 
     <div class="quiz" id="q8">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">A well-organized prep document should make it possible to:</div>
-      <div class="options">
-        <button class="option" onclick="mc('q8',this,'wrong')">Read your entire speech word-for-word during the round</button>
-        <button class="option" onclick="mc('q8',this,'wrong')">Impress the judge by showing how many pages of notes you brought</button>
-        <button class="option" onclick="mc('q8',this,'correct')">Quickly locate any argument, evidence card, or refutation block during a live round</button>
-        <button class="option" onclick="mc('q8',this,'wrong')">Replace the need for any actual understanding of the bill</button>
+      <div class="quiz-type-badge tf">True / False</div>
+      <div class="quiz-q">Preemptive refutation means addressing the strongest opposing argument within your own speech before anyone on the other side brings it up.</div>
+      <div class="tf-row">
+        <button class="tf-btn true-btn" onclick="tf('q8',this,true)">&#10003; True</button>
+        <button class="tf-btn false-btn" onclick="tf('q8',this,false)">&#10007; False</button>
       </div>
       <div class="feedback" id="q8-fb"></div>
     </div>
@@ -195,17 +193,19 @@
     <button class="next-btn hidden" id="next8" onclick="advance(8)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q9: 3.3 — Weekly Routine Consistency -->
+  <!-- Q9: 4.5 — Source Credibility Hierarchy -->
   <div class="section hidden" id="step9">
-    <div class="section-eyebrow">Question 9 of 15</div>
-    <div class="section-title">Weekly Routine</div>
+    <div class="section-eyebrow">Question 9 of 10</div>
+    <div class="section-title">Source Credibility</div>
 
     <div class="quiz" id="q9">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">Cramming all your prep into the night before a tournament is just as effective as spreading it across the week in consistent sessions.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q9',this,false)">&#10003; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q9',this,true)">&#10007; False</button>
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">An opponent cites "a recent study" but never names the source, journal, or year. How should you respond?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q9',this,'wrong')">Ignore it — judges won't notice the missing citation</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Accept it as valid because they said "study"</button>
+        <button class="option" onclick="mc('q9',this,'correct')">Challenge the evidence in CX or your speech — unattributed evidence carries no weight</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Report it to the presiding officer as a rules violation</button>
       </div>
       <div class="feedback" id="q9-fb"></div>
     </div>
@@ -213,122 +213,24 @@
     <button class="next-btn hidden" id="next9" onclick="advance(9)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q10: 3.4 — Always Prep Both Sides -->
+  <!-- Q10: 4.5 — Attacking Weak Evidence -->
   <div class="section hidden" id="step10">
-    <div class="section-eyebrow">Question 10 of 15</div>
-    <div class="section-title">Prepping Both Sides</div>
+    <div class="section-eyebrow">Question 10 of 10</div>
+    <div class="section-title">Attacking Weak Evidence</div>
 
     <div class="quiz" id="q10">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Why is it critical to prep both affirmation and negation for every bill?</div>
+      <div class="quiz-q">Your opponent cites a ten-year-old opinion editorial to support their economic argument. What is the strongest line of attack?</div>
       <div class="options">
-        <button class="option" onclick="mc('q10',this,'wrong')">Because judges assign you a random side before each speech</button>
-        <button class="option" onclick="mc('q10',this,'correct')">Because speaking order determines what's available — if your preferred side is taken, you need the other side ready</button>
-        <button class="option" onclick="mc('q10',this,'wrong')">Because you must deliver both an aff and neg speech on every bill</button>
-        <button class="option" onclick="mc('q10',this,'wrong')">Because tournaments award bonus points for speaking on both sides</button>
+        <button class="option" onclick="mc('q10',this,'wrong')">Argue that editorials are illegal to cite in Congressional Debate</button>
+        <button class="option" onclick="mc('q10',this,'correct')">Point out that an op-ed is opinion, not evidence — and a decade-old one fails to reflect current economic conditions</button>
+        <button class="option" onclick="mc('q10',this,'wrong')">Ignore it and focus entirely on your own arguments</button>
+        <button class="option" onclick="mc('q10',this,'wrong')">Claim that your sources are simply better without explaining why</button>
       </div>
       <div class="feedback" id="q10-fb"></div>
     </div>
 
-    <button class="next-btn hidden" id="next10" onclick="advance(10)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q11: 3.4 — Affirmation Causal Chain -->
-  <div class="section hidden" id="step11">
-    <div class="section-eyebrow">Question 11 of 15</div>
-    <div class="section-title">Affirmation Causal Chain</div>
-
-    <div class="quiz" id="q11">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">The core structure of an affirmation argument is a causal chain. What is the correct order?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q11',this,'wrong')">Impact &rarr; Outcome &rarr; SQUO</button>
-        <button class="option" onclick="mc('q11',this,'wrong')">Outcome &rarr; Impact &rarr; SQUO</button>
-        <button class="option" onclick="mc('q11',this,'correct')">SQUO (problem) &rarr; Outcome (bill fixes it) &rarr; Impact (why it matters)</button>
-        <button class="option" onclick="mc('q11',this,'wrong')">SQUO (problem) &rarr; Impact (why it matters) &rarr; Outcome (bill fixes it)</button>
-      </div>
-      <div class="feedback" id="q11-fb"></div>
-    </div>
-
-    <button class="next-btn hidden" id="next11" onclick="advance(11)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q12: 3.4 — Preemptive Refutation -->
-  <div class="section hidden" id="step12">
-    <div class="section-eyebrow">Question 12 of 15</div>
-    <div class="section-title">Preemptive Refutation</div>
-
-    <div class="quiz" id="q12">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">Preemptive refutation means addressing the strongest opposing argument within your own speech before anyone on the other side brings it up.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q12',this,true)">&#10003; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q12',this,false)">&#10007; False</button>
-      </div>
-      <div class="feedback" id="q12-fb"></div>
-    </div>
-
-    <button class="next-btn hidden" id="next12" onclick="advance(12)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q13: 3.5 — Source Credibility Hierarchy -->
-  <div class="section hidden" id="step13">
-    <div class="section-eyebrow">Question 13 of 15</div>
-    <div class="section-title">Source Credibility</div>
-
-    <div class="quiz" id="q13">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">An opponent cites "a recent study" but never names the source, journal, or year. How should you respond?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q13',this,'wrong')">Ignore it — judges won't notice the missing citation</button>
-        <button class="option" onclick="mc('q13',this,'wrong')">Accept it as valid because they said "study"</button>
-        <button class="option" onclick="mc('q13',this,'correct')">Challenge the evidence in CX or your speech — unattributed evidence carries no weight</button>
-        <button class="option" onclick="mc('q13',this,'wrong')">Report it to the presiding officer as a rules violation</button>
-      </div>
-      <div class="feedback" id="q13-fb"></div>
-    </div>
-
-    <button class="next-btn hidden" id="next13" onclick="advance(13)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q14: 3.5 — Standard Citation Format -->
-  <div class="section hidden" id="step14">
-    <div class="section-eyebrow">Question 14 of 15</div>
-    <div class="section-title">Citation Format</div>
-
-    <div class="quiz" id="q14">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Which citation delivered during a speech gives judges the most confidence in your evidence?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q14',this,'wrong')">"Studies show that this policy works."</button>
-        <button class="option" onclick="mc('q14',this,'wrong')">"I read online that crime dropped after this law passed."</button>
-        <button class="option" onclick="mc('q14',this,'correct')">"According to a 2024 RAND Corporation analysis of sentencing reform in twelve states..."</button>
-        <button class="option" onclick="mc('q14',this,'wrong')">"Everyone agrees this is a good idea."</button>
-      </div>
-      <div class="feedback" id="q14-fb"></div>
-    </div>
-
-    <button class="next-btn hidden" id="next14" onclick="advance(14)">Next Question &rarr;</button>
-  </div>
-
-  <!-- Q15: 3.5 — Attacking Weak Evidence -->
-  <div class="section hidden" id="step15">
-    <div class="section-eyebrow">Question 15 of 15</div>
-    <div class="section-title">Attacking Weak Evidence</div>
-
-    <div class="quiz" id="q15">
-      <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Your opponent cites a ten-year-old opinion editorial to support their economic argument. What is the strongest line of attack?</div>
-      <div class="options">
-        <button class="option" onclick="mc('q15',this,'wrong')">Argue that editorials are illegal to cite in Congressional Debate</button>
-        <button class="option" onclick="mc('q15',this,'correct')">Point out that an op-ed is opinion, not evidence — and a decade-old one fails to reflect current economic conditions</button>
-        <button class="option" onclick="mc('q15',this,'wrong')">Ignore it and focus entirely on your own arguments</button>
-        <button class="option" onclick="mc('q15',this,'wrong')">Claim that your sources are simply better without explaining why</button>
-      </div>
-      <div class="feedback" id="q15-fb"></div>
-    </div>
-
-    <button class="next-btn hidden" id="next15" onclick="showCompletion()">Complete Exam</button>
+    <button class="next-btn hidden" id="next10" onclick="showCompletion()">Complete Exam</button>
   </div>
 
   <!-- COMPLETION -->
@@ -355,24 +257,19 @@
 <!-- Module config + shared engine -->
 <script>
 var MODULE_ID = 'unit-4-exam';
-var TOTAL_STEPS = 15;
+var TOTAL_STEPS = 10;
 
 var CORRECT_MSGS = {
   q1:  "Always start with the bill itself. Its specific provisions are your research roadmap.",
   q2:  "Search the mechanism, not the topic. Mechanism-based keywords produce specific, unique evidence.",
   q3:  "Think tanks, academic journals, and congressional research agencies (CRS/CBO) are top-tier sources. Most news outlets (CNN, Reuters, etc.) are low quality. Ask: would a member of Congress use this source?",
   q4:  "A statistic about the current problem is textbook SQUO evidence — it establishes the baseline your argument builds from.",
-  q5:  "A great tagline is one clear sentence a judge can write down. That sentence becomes your argument's anchor on the ballot.",
-  q6:  "Exactly. Stress-testing means anticipating attacks before you're in the round, so you can build in preemptive answers.",
-  q7:  "Depth beats breadth. A few well-developed arguments with layered evidence will always outperform a pile of shallow ones.",
-  q8:  "Your prep doc is a navigation tool for live rounds. If you can't find what you need in seconds, the structure isn't working.",
-  q9:  "Consistent weekly prep builds long-term retention and deeper understanding. Cramming creates surface-level knowledge that cracks under pressure.",
-  q10: "In Congress, speaking order determines what's available. If your preferred side is taken by the time you're recognized, you need the other side ready to go.",
-  q11: "The aff causal chain flows from problem to solution to significance: SQUO, Outcome, Impact.",
-  q12: "Preemptive refutation is one of the strongest moves in Congress — it shows you understand the debate at a higher level.",
-  q13: "Unattributed evidence is just an assertion. Challenging it in CX or your speech exposes a critical weakness.",
-  q14: "Source name, year, and scope — that's what gives judges confidence. The more specific the citation, the more credible you sound.",
-  q15: "Two attacks in one: the source type is weak (opinion, not research) and the data is outdated. That combination destroys the evidence's credibility."
+  q5:  "Exactly. Stress-testing means anticipating attacks before you're in the round, so you can build in preemptive answers.",
+  q6:  "Depth beats breadth. A few well-developed arguments with layered evidence will always outperform a pile of shallow ones.",
+  q7:  "In Congress, speaking order determines what's available. If your preferred side is taken by the time you're recognized, you need the other side ready to go.",
+  q8:  "Preemptive refutation is one of the strongest moves in Congress — it shows you understand the debate at a higher level.",
+  q9:  "Unattributed evidence is just an assertion. Challenging it in CX or your speech exposes a critical weakness.",
+  q10: "Two attacks in one: the source type is weak (opinion, not research) and the data is outdated. That combination destroys the evidence's credibility."
 };
 
 var WRONG_MSGS = {
@@ -380,17 +277,12 @@ var WRONG_MSGS = {
   q2:  "Remember: the keyword strategy targets how the bill works, not what the topic is about. Which word describes the specific way a policy produces results?",
   q3:  "Think about which source has been vetted by experts, which is a respected analysis, and which is just one person's opinion.",
   q4:  "This evidence describes the current state of the world — a problem that exists right now. Which argument component establishes the baseline?",
-  q5:  "Think about what a judge actually writes down. Is it a paragraph of detail, or a single clear sentence that captures the point?",
-  q6:  "Think about what stress-testing means. Is it testing yourself, or testing your argument against the best opposing attacks?",
-  q7:  "Think about what wins rounds. Is it having 10 shallow points, or 3 deep arguments with real evidence and answers to refutation?",
-  q8:  "Think about the purpose of a prep document in a live round. You have seconds to find what you need. What structure supports that?",
-  q9:  "Think about how memory and understanding work. Does cramming the night before produce the same depth as consistent practice across a week?",
-  q10: "Think about how Congressional Debate actually works. Can you always choose your preferred side, or does the flow of debate constrain your options?",
-  q11: "Think about the logical flow: you need to establish what's wrong before explaining how to fix it, and then why the fix matters.",
-  q12: "Think about what preemptive means — doing something before it's needed. How does that apply to refutation?",
-  q13: "Think about what happens if you let vague evidence slide. Does it help your position, or does it let weak arguments stand unchallenged?",
-  q14: "Think about what makes a citation credible. Which option gives the judge a specific, verifiable source they can trust?",
-  q15: "Think about the two weaknesses in that evidence: the type of source and the age of the data. Which answer attacks both?"
+  q5:  "Think about what stress-testing means. Is it testing yourself, or testing your argument against the best opposing attacks?",
+  q6:  "Think about what wins rounds. Is it having 10 shallow points, or 3 deep arguments with real evidence and answers to refutation?",
+  q7:  "Think about how Congressional Debate actually works. Can you always choose your preferred side, or does the flow of debate constrain your options?",
+  q8:  "Think about what preemptive means — doing something before it's needed. How does that apply to refutation?",
+  q9:  "Think about what happens if you let vague evidence slide. Does it help your position, or does it let weak arguments stand unchallenged?",
+  q10: "Think about the two weaknesses in that evidence: the type of source and the age of the data. Which answer attacks both?"
 };
 
 var UNLOCK_MAP = {
@@ -403,12 +295,7 @@ var UNLOCK_MAP = {
   q7:  'next7',
   q8:  'next8',
   q9:  'next9',
-  q10: 'next10',
-  q11: 'next11',
-  q12: 'next12',
-  q13: 'next13',
-  q14: 'next14',
-  q15: 'next15'
+  q10: 'next10'
 };
 </script>
 <script src="../shared/module.js"></script>
