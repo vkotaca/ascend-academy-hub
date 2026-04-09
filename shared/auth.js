@@ -36,6 +36,8 @@ function initAuth() {
 
   sb.auth.onAuthStateChange(function(event, session) {
     if (event === 'SIGNED_IN' && session) {
+      // Skip if handleEmailLogin already set currentUser (avoids duplicate/stale update)
+      if (currentUser && currentUser.id === session.user.id) return;
       currentUser = session.user;
       checkProfileAndUpdateUI();
     } else if (event === 'SIGNED_OUT') {
