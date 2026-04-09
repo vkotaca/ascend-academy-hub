@@ -53,6 +53,8 @@ function initAuth() {
       var progressLabel = document.querySelector('.progress-label');
       if (progressLabel) progressLabel.textContent = 'Your Progress';
       localStorage.removeItem('ascend_user_first');
+      var homePromo = document.getElementById('homePromoHeader');
+      if (homePromo) homePromo.textContent = 'Ready to take the next step?';
     }
   });
 }
@@ -104,6 +106,9 @@ function updateNavForUser(profile) {
   if (progressLabel) progressLabel.textContent = name + "'s Progress";
   // Store name for module pages
   localStorage.setItem('ascend_user_first', name);
+  // Personalize homepage promo header
+  var homePromo = document.getElementById('homePromoHeader');
+  if (homePromo) homePromo.textContent = name + ', are you ready to take the next step?';
 }
 
 // ─── AUTH MODAL ───
