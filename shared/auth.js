@@ -1,28 +1,39 @@
 /*  Ascend Academy — Auth System
     Supabase auth, registration forms, progress sync.
+    Flow: Form first → then choose Google or email/password.
 */
 
 var SUPABASE_URL = 'https://jbiqzdavkwioxhtwchiy.supabase.co';
 var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiaXF6ZGF2a3dpb3hodHdjaGl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDEwMTUsImV4cCI6MjA5MDk3NzAxNX0.se1MOm_Rl8KOi_0lRN3JDrcv9eNqpWDrfOdHDgKVM_E';
 
-var sb; // Supabase client
+var sb;
 var currentUser = null;
 
 // ─── INIT ───
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // Check for existing session
   sb.auth.getSession().then(function(res) {
     if (res.data.session) {
       currentUser = res.data.session.user;
-      checkProfileAndUpdateUI();
+      // Check if we have pending profile data from a Google signup
+      var pending = localStorage.getItem('ascend_pending_profile');
+      if (pending) {
+        var profileData = JSON.parse(pending);
+        profileData.id = currentUser.id;
+        profileData.email = currentUser.email || profileData.email;
+        sb.from('hub_profiles').upsert(profileData, { onConflict: 'id' }).then(function() {
+          localStorage.removeItem('ascend_pending_profile');
+          checkProfileAndUpdateUI();
+        });
+      } else {
+        checkProfileAndUpdateUI();
+      }
     } else {
       updateNavForGuest();
     }
   });
 
-  // Listen for auth changes (Google OAuth redirect, etc.)
   sb.auth.onAuthStateChange(function(event, session) {
     if (event === 'SIGNED_IN' && session) {
       currentUser = session.user;
@@ -30,7 +41,6 @@ function initAuth() {
     } else if (event === 'SIGNED_OUT') {
       currentUser = null;
       updateNavForGuest();
-      // Clear local state
       state.completed = [];
       state.badges = [];
       saveState();
@@ -45,11 +55,10 @@ function initAuth() {
 function checkProfileAndUpdateUI() {
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).single().then(function(res) {
     if (res.data) {
-      // Profile exists — hydrate state
       updateNavForUser(res.data);
       hydrateFromSupabase();
     } else {
-      // New user (e.g., Google login) — show profile form
+      // Google user with no profile yet — show profile form
       showProfileForm();
     }
   });
@@ -128,8 +137,7 @@ function switchAuthTab(btn, tab) {
 function getSignInForm() {
   return '<div class="auth-form">' +
     '<button class="auth-google-btn" onclick="handleGoogleLogin()">' +
-      '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>' +
-      'Continue with Google' +
+      googleSVG() + 'Continue with Google' +
     '</button>' +
     '<div class="auth-divider"><span>or</span></div>' +
     '<input type="email" id="authEmail" class="auth-input" placeholder="Email address" required>' +
@@ -137,6 +145,10 @@ function getSignInForm() {
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-submit-btn" onclick="handleEmailLogin()">Sign In</button>' +
   '</div>';
+}
+
+function googleSVG() {
+  return '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
 }
 
 // ─── ROLE SELECTION ───
@@ -160,7 +172,7 @@ function getRoleSelection() {
   '</div>';
 }
 
-// ─── STATE DROPDOWN OPTIONS ───
+// ─── DROPDOWNS ───
 var US_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming','Outside U.S.'];
 var GRADES = ['12th','11th','10th','9th','8th','7th','6th','5th','4th','Other'];
 
@@ -175,7 +187,7 @@ function gradeOptions() {
   }).join('');
 }
 
-// ─── REGISTRATION FORMS ───
+// ─── REGISTRATION FORMS (form first, auth method last) ───
 function showRoleForm(role) {
   var content = document.getElementById('authTabContent');
   if (role === 'student') content.innerHTML = getStudentForm();
@@ -186,17 +198,11 @@ function showRoleForm(role) {
 function getStudentForm() {
   return '<div class="auth-form auth-reg-form">' +
     '<div class="auth-form-title">Student Registration</div>' +
-    '<button class="auth-google-btn" onclick="handleGoogleSignup(\'student\')">' +
-      '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>' +
-      'Sign up with Google' +
-    '</button>' +
-    '<div class="auth-divider"><span>or create with email</span></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regFirst" class="auth-input" placeholder="First name *" required>' +
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password *" required>' +
     '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number">' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
@@ -228,8 +234,12 @@ function getStudentForm() {
     '</div>' +
     '<button class="auth-link-btn" onclick="document.getElementById(\'parent2Section\').classList.toggle(\'hidden\')">+ Add second parent/guardian</button>' +
     '<label class="auth-checkbox"><input type="checkbox" id="regCamps"> I\'m interested in learning more about Ascend\'s summer camps</label>' +
+    '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
-    '<button class="auth-submit-btn" onclick="handleStudentSignup()">Create Account</button>' +
+    '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'student\')">' + googleSVG() + ' Sign up with Google</button>' +
+    '<div style="text-align:center;font-size:12px;color:#999;margin:12px 0;">or</div>' +
+    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password (min 6 characters) *">' +
+    '<button class="auth-submit-btn" onclick="handleStudentSignup()">Create Account with Email</button>' +
     '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[1],\'signup\')">← Back to role selection</button>' +
   '</div>';
 }
@@ -237,17 +247,11 @@ function getStudentForm() {
 function getParentForm() {
   return '<div class="auth-form auth-reg-form">' +
     '<div class="auth-form-title">Parent / Guardian Registration</div>' +
-    '<button class="auth-google-btn" onclick="handleGoogleSignup(\'parent\')">' +
-      '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>' +
-      'Sign up with Google' +
-    '</button>' +
-    '<div class="auth-divider"><span>or create with email</span></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regFirst" class="auth-input" placeholder="First name *" required>' +
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password *" required>' +
     '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number">' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school">' +
@@ -255,8 +259,12 @@ function getParentForm() {
     '</div>' +
     '<select id="regStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
     '<label class="auth-checkbox"><input type="checkbox" id="regCamps"> I\'m interested in learning more about Ascend\'s summer camps</label>' +
+    '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
-    '<button class="auth-submit-btn" onclick="handleParentSignup()">Create Account</button>' +
+    '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'parent\')">' + googleSVG() + ' Sign up with Google</button>' +
+    '<div style="text-align:center;font-size:12px;color:#999;margin:12px 0;">or</div>' +
+    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password (min 6 characters) *">' +
+    '<button class="auth-submit-btn" onclick="handleParentSignup()">Create Account with Email</button>' +
     '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[1],\'signup\')">← Back to role selection</button>' +
   '</div>';
 }
@@ -264,30 +272,28 @@ function getParentForm() {
 function getEducatorForm() {
   return '<div class="auth-form auth-reg-form">' +
     '<div class="auth-form-title">Educator Registration</div>' +
-    '<button class="auth-google-btn" onclick="handleGoogleSignup(\'educator\')">' +
-      '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>' +
-      'Sign up with Google' +
-    '</button>' +
-    '<div class="auth-divider"><span>or create with email</span></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regFirst" class="auth-input" placeholder="First name *" required>' +
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password *" required>' +
     '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number">' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
     '<label class="auth-checkbox"><input type="checkbox" id="regSupport"> I\'m interested in exploring ways Ascend can support my team</label>' +
+    '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
-    '<button class="auth-submit-btn" onclick="handleEducatorSignup()">Create Account</button>' +
+    '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'educator\')">' + googleSVG() + ' Sign up with Google</button>' +
+    '<div style="text-align:center;font-size:12px;color:#999;margin:12px 0;">or</div>' +
+    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password (min 6 characters) *">' +
+    '<button class="auth-submit-btn" onclick="handleEducatorSignup()">Create Account with Email</button>' +
     '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[1],\'signup\')">← Back to role selection</button>' +
   '</div>';
 }
 
-// ─── PROFILE FORM (for Google users who need to complete profile) ───
+// ─── PROFILE FORM (for Google users redirected back without pending data) ───
 function showProfileForm() {
   var overlay = document.getElementById('authOverlay');
   if (!overlay) {
@@ -314,15 +320,84 @@ function validateEmail(email) {
 
 function showAuthError(msg) {
   var el = document.getElementById('authError');
-  if (el) {
-    el.textContent = msg;
-    el.classList.remove('hidden');
-  }
+  if (el) { el.textContent = msg; el.classList.remove('hidden'); }
 }
 
 function clearAuthError() {
   var el = document.getElementById('authError');
   if (el) el.classList.add('hidden');
+}
+
+// ─── COLLECT FORM DATA ───
+function collectStudentData() {
+  var first = document.getElementById('regFirst').value.trim();
+  var last = document.getElementById('regLast').value.trim();
+  var email = document.getElementById('regEmail').value.trim();
+
+  if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+
+  var p1email = document.getElementById('regP1Email').value.trim();
+  if (p1email && !validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian 1.'); return null; }
+  var p2email = document.getElementById('regP2Email') ? document.getElementById('regP2Email').value.trim() : '';
+  if (p2email && !validateEmail(p2email)) { showAuthError('Please enter a valid email for Parent/Guardian 2.'); return null; }
+
+  return {
+    role: 'student',
+    first_name: first, last_name: last, email: email,
+    phone: document.getElementById('regPhone').value.trim(),
+    school: document.getElementById('regSchool').value.trim(),
+    state: document.getElementById('regState').value,
+    grade: document.getElementById('regGrade').value,
+    is_team_leader: document.getElementById('regLeader').checked,
+    parent1_first: document.getElementById('regP1First').value.trim(),
+    parent1_last: document.getElementById('regP1Last').value.trim(),
+    parent1_email: p1email,
+    parent1_phone: document.getElementById('regP1Phone').value.trim(),
+    parent2_first: document.getElementById('regP2First') ? document.getElementById('regP2First').value.trim() : null,
+    parent2_last: document.getElementById('regP2Last') ? document.getElementById('regP2Last').value.trim() : null,
+    parent2_email: p2email || null,
+    parent2_phone: document.getElementById('regP2Phone') ? document.getElementById('regP2Phone').value.trim() : null,
+    interested_camps: document.getElementById('regCamps').checked
+  };
+}
+
+function collectParentData() {
+  var first = document.getElementById('regFirst').value.trim();
+  var last = document.getElementById('regLast').value.trim();
+  var email = document.getElementById('regEmail').value.trim();
+
+  if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+
+  return {
+    role: 'parent',
+    first_name: first, last_name: last, email: email,
+    phone: document.getElementById('regPhone').value.trim(),
+    school: document.getElementById('regSchool').value.trim(),
+    state: document.getElementById('regState').value,
+    student_grade: document.getElementById('regStudentGrade').value,
+    student_school: document.getElementById('regSchool').value.trim(),
+    interested_camps: document.getElementById('regCamps').checked
+  };
+}
+
+function collectEducatorData() {
+  var first = document.getElementById('regFirst').value.trim();
+  var last = document.getElementById('regLast').value.trim();
+  var email = document.getElementById('regEmail').value.trim();
+
+  if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+
+  return {
+    role: 'educator',
+    first_name: first, last_name: last, email: email,
+    phone: document.getElementById('regPhone').value.trim(),
+    school: document.getElementById('regSchool').value.trim(),
+    state: document.getElementById('regState').value,
+    interested_ascend_support: document.getElementById('regSupport').checked
+  };
 }
 
 // ─── AUTH HANDLERS ───
@@ -333,9 +408,18 @@ function handleGoogleLogin() {
   });
 }
 
-function handleGoogleSignup(role) {
-  // Store intended role in localStorage so we can use it after redirect
-  localStorage.setItem('ascend_pending_role', role);
+function handleRoleGoogleSignup(role) {
+  clearAuthError();
+  var data = null;
+  if (role === 'student') data = collectStudentData();
+  else if (role === 'parent') data = collectParentData();
+  else if (role === 'educator') data = collectEducatorData();
+
+  if (!data) return; // validation failed
+
+  // Store profile data — will be saved after Google redirect
+  localStorage.setItem('ascend_pending_profile', JSON.stringify(data));
+
   sb.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo: window.location.origin + window.location.pathname }
@@ -358,45 +442,16 @@ function handleEmailLogin() {
 
 function handleStudentSignup() {
   clearAuthError();
-  var first = document.getElementById('regFirst').value.trim();
-  var last = document.getElementById('regLast').value.trim();
-  var email = document.getElementById('regEmail').value.trim();
+  var data = collectStudentData();
+  if (!data) return;
+
   var password = document.getElementById('regPassword').value;
+  if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
-  if (!first || !last || !email || !password) { showAuthError('Please fill in all required fields (*).'); return; }
-  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return; }
-  if (password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
-
-  // Validate parent emails if provided
-  var p1email = document.getElementById('regP1Email').value.trim();
-  if (p1email && !validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian 1.'); return; }
-  var p2email = document.getElementById('regP2Email') ? document.getElementById('regP2Email').value.trim() : '';
-  if (p2email && !validateEmail(p2email)) { showAuthError('Please enter a valid email for Parent/Guardian 2.'); return; }
-
-  sb.auth.signUp({ email: email, password: password }).then(function(res) {
+  sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
-    // Save profile
-    return sb.from('hub_profiles').insert({
-      id: res.data.user.id,
-      role: 'student',
-      first_name: first,
-      last_name: last,
-      email: email,
-      phone: document.getElementById('regPhone').value.trim(),
-      school: document.getElementById('regSchool').value.trim(),
-      state: document.getElementById('regState').value,
-      grade: document.getElementById('regGrade').value,
-      is_team_leader: document.getElementById('regLeader').checked,
-      parent1_first: document.getElementById('regP1First').value.trim(),
-      parent1_last: document.getElementById('regP1Last').value.trim(),
-      parent1_email: p1email,
-      parent1_phone: document.getElementById('regP1Phone').value.trim(),
-      parent2_first: document.getElementById('regP2First') ? document.getElementById('regP2First').value.trim() : null,
-      parent2_last: document.getElementById('regP2Last') ? document.getElementById('regP2Last').value.trim() : null,
-      parent2_email: p2email || null,
-      parent2_phone: document.getElementById('regP2Phone') ? document.getElementById('regP2Phone').value.trim() : null,
-      interested_camps: document.getElementById('regCamps').checked
-    });
+    data.id = res.data.user.id;
+    return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res && res.error) { showAuthError(res.error.message); return; }
     closeAuthModal();
@@ -405,30 +460,16 @@ function handleStudentSignup() {
 
 function handleParentSignup() {
   clearAuthError();
-  var first = document.getElementById('regFirst').value.trim();
-  var last = document.getElementById('regLast').value.trim();
-  var email = document.getElementById('regEmail').value.trim();
+  var data = collectParentData();
+  if (!data) return;
+
   var password = document.getElementById('regPassword').value;
+  if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
-  if (!first || !last || !email || !password) { showAuthError('Please fill in all required fields (*).'); return; }
-  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return; }
-  if (password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
-
-  sb.auth.signUp({ email: email, password: password }).then(function(res) {
+  sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
-    return sb.from('hub_profiles').insert({
-      id: res.data.user.id,
-      role: 'parent',
-      first_name: first,
-      last_name: last,
-      email: email,
-      phone: document.getElementById('regPhone').value.trim(),
-      school: document.getElementById('regSchool').value.trim(),
-      state: document.getElementById('regState').value,
-      student_grade: document.getElementById('regStudentGrade').value,
-      student_school: document.getElementById('regSchool').value.trim(),
-      interested_camps: document.getElementById('regCamps').checked
-    });
+    data.id = res.data.user.id;
+    return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res && res.error) { showAuthError(res.error.message); return; }
     closeAuthModal();
@@ -437,28 +478,16 @@ function handleParentSignup() {
 
 function handleEducatorSignup() {
   clearAuthError();
-  var first = document.getElementById('regFirst').value.trim();
-  var last = document.getElementById('regLast').value.trim();
-  var email = document.getElementById('regEmail').value.trim();
+  var data = collectEducatorData();
+  if (!data) return;
+
   var password = document.getElementById('regPassword').value;
+  if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
-  if (!first || !last || !email || !password) { showAuthError('Please fill in all required fields (*).'); return; }
-  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return; }
-  if (password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
-
-  sb.auth.signUp({ email: email, password: password }).then(function(res) {
+  sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
-    return sb.from('hub_profiles').insert({
-      id: res.data.user.id,
-      role: 'educator',
-      first_name: first,
-      last_name: last,
-      email: email,
-      phone: document.getElementById('regPhone').value.trim(),
-      school: document.getElementById('regSchool').value.trim(),
-      state: document.getElementById('regState').value,
-      interested_ascend_support: document.getElementById('regSupport').checked
-    });
+    data.id = res.data.user.id;
+    return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res && res.error) { showAuthError(res.error.message); return; }
     closeAuthModal();
@@ -477,14 +506,11 @@ function hydrateFromSupabase() {
     sb.from('hub_progress').select('module_id').eq('user_id', currentUser.id),
     sb.from('hub_badges').select('badge_id').eq('user_id', currentUser.id)
   ]).then(function(results) {
-    var progressRes = results[0];
-    var badgesRes = results[1];
-
-    if (progressRes.data) {
-      state.completed = progressRes.data.map(function(r) { return r.module_id; });
+    if (results[0].data) {
+      state.completed = results[0].data.map(function(r) { return r.module_id; });
     }
-    if (badgesRes.data) {
-      state.badges = badgesRes.data.map(function(r) { return r.badge_id; });
+    if (results[1].data) {
+      state.badges = results[1].data.map(function(r) { return r.badge_id; });
     }
     saveState();
     renderModuleCards();
