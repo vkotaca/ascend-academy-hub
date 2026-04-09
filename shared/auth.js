@@ -163,6 +163,7 @@ function getSignInForm() {
     '<input type="password" id="authPassword" class="auth-input" placeholder="Password" required>' +
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-submit-btn" onclick="handleEmailLogin()">Sign In</button>' +
+    '<button class="auth-link-btn" style="width:100%;text-align:center;margin-top:8px;" onclick="showForgotPassword()">Forgot password?</button>' +
   '</div>';
 }
 
@@ -442,6 +443,40 @@ function handleRoleGoogleSignup(role) {
   sb.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo: window.location.origin + window.location.pathname }
+  });
+}
+
+function showForgotPassword() {
+  var content = document.getElementById('authTabContent');
+  content.innerHTML = '<div class="auth-form">' +
+    '<div class="auth-form-title">Reset Your Password</div>' +
+    '<p style="font-size:13px;color:#666;margin-bottom:16px;text-align:center;">Enter your email and we\'ll send you a link to reset your password.</p>' +
+    '<input type="email" id="resetEmail" class="auth-input" placeholder="Email address" required>' +
+    '<div class="auth-error hidden" id="authError"></div>' +
+    '<div class="auth-success hidden" id="authSuccess"></div>' +
+    '<button class="auth-submit-btn" onclick="handleForgotPassword()">Send Reset Link</button>' +
+    '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[0],\'signin\')">← Back to Sign In</button>' +
+  '</div>';
+}
+
+function handleForgotPassword() {
+  clearAuthError();
+  var el = document.getElementById('authSuccess');
+  if (el) el.classList.add('hidden');
+
+  var email = document.getElementById('resetEmail').value.trim();
+  if (!email) { showAuthError('Please enter your email address.'); return; }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return; }
+
+  sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + window.location.pathname
+  }).then(function(res) {
+    if (res.error) { showAuthError(res.error.message); return; }
+    var el = document.getElementById('authSuccess');
+    if (el) {
+      el.textContent = 'Reset link sent! Check your email inbox.';
+      el.classList.remove('hidden');
+    }
   });
 }
 

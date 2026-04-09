@@ -195,6 +195,16 @@ select.auth-input {
   accent-color: #C8102E;
 }
 
+.auth-success {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #166534;
+  margin-bottom: 12px;
+}
+
 .auth-error {
   background: #fef2f2;
   border: 1px solid #fca5a5;
