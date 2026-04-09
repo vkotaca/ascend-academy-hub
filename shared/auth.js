@@ -52,6 +52,7 @@ function initAuth() {
       if (badgeTitle) badgeTitle.textContent = '🏅 Your Badges';
       var progressLabel = document.querySelector('.progress-label');
       if (progressLabel) progressLabel.textContent = 'Your Progress';
+      localStorage.removeItem('ascend_user_first');
     }
   });
 }
@@ -101,6 +102,8 @@ function updateNavForUser(profile) {
   if (badgeTitle) badgeTitle.textContent = '🏅 ' + name + "'s Badges";
   var progressLabel = document.querySelector('.progress-label');
   if (progressLabel) progressLabel.textContent = name + "'s Progress";
+  // Store name for module pages
+  localStorage.setItem('ascend_user_first', name);
 }
 
 // ─── AUTH MODAL ───
