@@ -132,8 +132,8 @@ var MODULES = [
       { icon: '\uD83C\uDFAF', text: 'Terminalization \u2014 lives, safety, rights, dignity' },
       { icon: '\uD83D\uDCDD', text: 'Impact in practice \u2014 full walkthrough' }
     ] },
-  { id: 'unit-2-exam',          unit: 2, num: '2.6', title: 'Unit 2 Exam',                        icon: '\uD83D\uDCDD', duration: '12 min', activities: 15, badge: 'unit-2-complete', exam: true,
-    desc: 'Test your knowledge of argument construction \u2014 15 questions on CWEI, Block Format, SQUO, Outcome, and Impact Calculus.',
+  { id: 'unit-2-exam',          unit: 2, num: '2.6', title: 'Unit 2 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-2-complete', exam: true,
+    desc: 'Test your knowledge of argument construction \u2014 10 questions on CWEI, Block Format, SQUO, Outcome, and Impact Calculus.',
     file: 'modules/unit-2-exam.html' },
 
   // ── UNIT 3: Advanced Strategy (6 modules) ──
