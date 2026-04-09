@@ -413,6 +413,7 @@ function awardBadge(id) {
   if (!state.badges.includes(id)) {
     state.badges.push(id);
     saveState();
+    if (typeof syncBadgeToSupabase === 'function') syncBadgeToSupabase(id);
     renderBadgeShelf();
     updateProgress();
     showBadgeToast(id);
@@ -485,6 +486,15 @@ function openModule(id) {
 }
 
 function launchModule(id) {
+  // Gate: require auth before launching
+  if (typeof requireAuth === 'function') {
+    requireAuth(function() { _doLaunchModule(id); });
+  } else {
+    _doLaunchModule(id);
+  }
+}
+
+function _doLaunchModule(id) {
   closeModule();
   var mod = MODULES.find(function (m) { return m.id === id; });
   if (!mod || !mod.file) return;
@@ -497,6 +507,7 @@ function launchModule(id) {
       if (!state.completed.includes(id)) {
         state.completed.push(id);
         saveState();
+        if (typeof syncCompletionToSupabase === 'function') syncCompletionToSupabase(id);
       }
       // Award first-step on first completion
       if (state.completed.length === 1) awardBadge('first-step');
@@ -525,6 +536,9 @@ document.addEventListener('DOMContentLoaded', function () {
   renderBadgeShelf();
   renderModuleCards();
   updateProgress();
+
+  // Init auth if available
+  if (typeof initAuth === 'function') initAuth();
 
   // Close overlay on backdrop click
   document.getElementById('moduleOverlay').addEventListener('click', function (e) {
