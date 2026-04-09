@@ -8,6 +8,7 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 
 var sb;
 var currentUser = null;
+var loginInProgress = false;
 
 // ─── INIT ───
 function initAuth() {
@@ -36,8 +37,8 @@ function initAuth() {
 
   sb.auth.onAuthStateChange(function(event, session) {
     if (event === 'SIGNED_IN' && session) {
-      // Skip if handleEmailLogin already set currentUser (avoids duplicate/stale update)
-      if (currentUser && currentUser.id === session.user.id) return;
+      // Skip if email login is handling this
+      if (loginInProgress) return;
       currentUser = session.user;
       checkProfileAndUpdateUI();
     } else if (event === 'SIGNED_OUT') {
@@ -548,12 +549,14 @@ function handleEmailLogin() {
   if (!email || !password) { showAuthError('Please enter email and password.'); return; }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return; }
 
+  loginInProgress = true;
   sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
-    if (res.error) { showAuthError(res.error.message); return; }
+    if (res.error) { loginInProgress = false; showAuthError(res.error.message); return; }
     currentUser = res.data.user;
     // Fetch profile FIRST, then update UI
     return sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle();
   }).then(function(profileRes) {
+    loginInProgress = false;
     if (!profileRes) return;
     if (profileRes.data) {
       localStorage.setItem('ascend_user_first', profileRes.data.first_name);
@@ -561,7 +564,6 @@ function handleEmailLogin() {
       updateNavForUser(profileRes.data);
       hydrateFromSupabase();
     } else {
-      // Fallback to email prefix only if no profile exists
       updateNavForUser({ id: currentUser.id, first_name: currentUser.email.split('@')[0] });
     }
     closeAuthModal();
