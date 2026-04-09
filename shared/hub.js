@@ -204,17 +204,7 @@ var MODULES = [
       { icon: '\uD83D\uDCDA', text: 'Building a source library \u2014 organizing evidence for quick access' },
       { icon: '\u26A1', text: 'Research efficiency \u2014 getting more done in less time' }
     ] },
-  { id: 'turning-research-case', unit: 4, num: '4.2', title: 'Turning Research Into a Case',      icon: '\uD83D\uDCDD', duration: '20 min', activities: 5, badge: null,
-    desc: 'From raw notes to a polished block. Writing taglines, proving outcome, and stress-testing your argument.',
-    file: 'modules/turning-research-case.html',
-    lessons: [
-      { icon: '\uD83D\uDCDD', text: 'From notes to blocks \u2014 mapping research to SQUO, Outcome, Impact' },
-      { icon: '\uD83C\uDFAF', text: 'Writing your taglines \u2014 one-sentence summaries for each block' },
-      { icon: '\uD83D\uDD17', text: 'Proving the outcome \u2014 the evidence-to-mechanism link' },
-      { icon: '\uD83E\uDD14', text: 'Stress-testing your argument \u2014 finding weaknesses before opponents do' },
-      { icon: '\u2728', text: 'The finished product \u2014 from functional block to competition-ready speech' }
-    ] },
-  { id: 'prime-prep',           unit: 4, num: '4.3', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
+  { id: 'prime-prep',           unit: 4, num: '4.2', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
     desc: 'What championship-level preparation actually looks like. The habits and frameworks that produce consistently high ranks.',
     file: 'modules/prime-prep.html',
     lessons: [
@@ -224,7 +214,7 @@ var MODULES = [
       { icon: '\uD83D\uDD04', text: 'Preparing for adaptation \u2014 backup angles and flexible blocks' },
       { icon: '\uD83D\uDCC5', text: 'The weekly routine \u2014 consistency beats cramming' }
     ] },
-  { id: 'aff-neg-strategy',     unit: 4, num: '4.4', title: 'Aff vs. Neg Strategy',              icon: '\u2694\uFE0F', duration: '18 min', activities: 5, badge: null,
+  { id: 'aff-neg-strategy',     unit: 4, num: '4.3', title: 'Aff vs. Neg Strategy',              icon: '\u2694\uFE0F', duration: '18 min', activities: 5, badge: null,
     desc: 'How to prepare both sides of any legislation \u2014 anticipating opposition arguments before you\u2019re in the room.',
     file: 'modules/aff-neg-strategy.html',
     lessons: [
@@ -234,7 +224,7 @@ var MODULES = [
       { icon: '\uD83D\uDEE1\uFE0F', text: 'Anticipating the opposition \u2014 preemptive refutation' },
       { icon: '\uD83E\uDDE0', text: 'Strategic side selection \u2014 choosing your side in round' }
     ] },
-  { id: 'evidence-citing',      unit: 4, num: '4.5', title: 'Evidence & Citing Sources',          icon: '\uD83D\uDCCA', duration: '15 min', activities: 4, badge: null,
+  { id: 'evidence-citing',      unit: 4, num: '4.4', title: 'Evidence & Citing Sources',          icon: '\uD83D\uDCCA', duration: '15 min', activities: 4, badge: null,
     desc: 'What makes evidence credible, how to cite it in round, and how to attack weak evidence from opponents.',
     file: 'modules/evidence-citing.html',
     lessons: [
@@ -243,7 +233,7 @@ var MODULES = [
       { icon: '\u2694\uFE0F', text: 'Using evidence strategically \u2014 one strong card beats three weak ones' },
       { icon: '\uD83D\uDD2C', text: 'Attacking weak evidence \u2014 outdated, biased, cherry-picked' }
     ] },
-  { id: 'unit-4-exam',          unit: 4, num: '4.6', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-4-complete', exam: true,
+  { id: 'unit-4-exam',          unit: 4, num: '4.5', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-4-complete', exam: true,
     desc: 'Test your research skills \u2014 10 questions on research strategy, source quality, case building, prep habits, and evidence.',
     file: 'modules/unit-4-exam.html' },
 
@@ -327,8 +317,8 @@ var MODULES = [
       { icon: '\uD83D\uDD04', text: 'Between rounds \u2014 read ballots, assess what worked, adapt for the next round' },
       { icon: '\uD83C\uDFC6', text: 'The finals mindset \u2014 execution over preparation at the top level' }
     ] },
-  { id: 'unit-5-exam',          unit: 5, num: '5.9', title: 'Unit 5 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-5-complete', exam: true,
-    desc: 'Test your performance skills \u2014 15 questions on rhetoric, delivery, movement, presence, personality, ballots, CX, and tournament execution.',
+  { id: 'unit-5-exam',          unit: 5, num: '5.9', title: 'Unit 5 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-5-complete', exam: true,
+    desc: 'Test your performance skills \u2014 10 questions on rhetoric, delivery, movement, presence, energy, ballots, CX, and tournament execution.',
     file: 'modules/unit-5-exam.html' }
 ];
 
