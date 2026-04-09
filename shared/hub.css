@@ -895,12 +895,14 @@ footer p {
 }
 
 @media (max-width: 768px) {
-  nav { padding: 0 16px; height: 56px; }
+  nav { padding: 0 12px; height: 52px; }
+  .nav-logo { gap: 8px; }
   .nav-logo-icon { width: 28px; height: 28px; }
-  .nav-logo-text span:first-child { font-size: 14px; }
-  .nav-logo-text span:last-child { font-size: 9px; }
-  .nav-badge-count { font-size: 11px; }
+  .nav-logo-text span:first-child { font-size: 13px; }
+  .nav-logo-text span:last-child { display: none; }
+  .nav-badge-count { display: none; }
   .nav-user-name { display: none; }
+  .nav-auth-btn { padding: 6px 14px; font-size: 12px; }
 
   .hero { padding: 48px 20px 40px; }
   .hero-title { font-size: clamp(32px, 8vw, 48px); min-height: 1.8em; }
