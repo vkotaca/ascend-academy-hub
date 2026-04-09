@@ -67,9 +67,9 @@ function checkProfileAndUpdateUI(retries) {
       updateNavForUser(res.data);
       hydrateFromSupabase();
       closeAuthModal();
-    } else if (retries < 2) {
-      // Session token may not be propagated yet — retry after a short delay
-      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1000);
+    } else if (retries < 5) {
+      // Session token may not be propagated yet — retry
+      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1500);
     } else {
       // No profile after retries — new user needs to complete profile
       showProfileForm();
@@ -328,12 +328,16 @@ function showProfileForm() {
     document.body.appendChild(overlay);
   }
   overlay.innerHTML = '<div class="auth-panel">' +
+    '<button class="auth-close" onclick="closeAuthModal()">&times;</button>' +
     '<div class="auth-header">' +
       '<img src="Pictures/compressed_image.jpg" alt="Ascend" class="auth-logo">' +
       '<div class="auth-title">Complete Your Profile</div>' +
       '<div class="auth-subtitle">Tell us a bit about yourself to get started</div>' +
     '</div>' +
     '<div id="authTabContent">' + getRoleSelection() + '</div>' +
+    '<div style="text-align:center;padding:0 32px 24px;">' +
+      '<button class="auth-back-btn" onclick="closeAuthModal()">Skip for now</button>' +
+    '</div>' +
   '</div>';
   overlay.classList.add('open');
 }
