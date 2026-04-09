@@ -60,13 +60,18 @@ function initAuth() {
 }
 
 // ─── PROFILE CHECK ───
-function checkProfileAndUpdateUI() {
-  sb.from('hub_profiles').select('*').eq('id', currentUser.id).single().then(function(res) {
+function checkProfileAndUpdateUI(retries) {
+  if (retries === undefined) retries = 0;
+  sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
     if (res.data) {
       updateNavForUser(res.data);
       hydrateFromSupabase();
+      closeAuthModal();
+    } else if (retries < 2) {
+      // Session token may not be propagated yet — retry after a short delay
+      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1000);
     } else {
-      // Google user with no profile yet — show profile form
+      // No profile after retries — new user needs to complete profile
       showProfileForm();
     }
   });
