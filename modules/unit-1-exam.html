@@ -52,12 +52,12 @@
     <div class="section-title">Cross-Examination Timing</div>
     <div class="quiz" id="q2">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">A speaker just finished their speech in a local tournament. CX is 2 minutes with up to 4 questioners. What does this format reward compared to a 1-minute / 2-questioner format?</div>
+      <div class="quiz-q">Why is asking a cross-examination question strategically valuable even if you only have 30 seconds?</div>
       <div class="options">
-        <button class="option" onclick="mc('q2',this,'wrong')">Longer CX always benefits the speaker who just gave their speech</button>
-        <button class="option" onclick="mc('q2',this,'wrong')">Both formats test the same skills since CX doesn't affect rankings</button>
-        <button class="option" onclick="mc('q2',this,'correct')">The longer format lets more students demonstrate engagement, but the speaker faces more scrutiny</button>
-        <button class="option" onclick="mc('q2',this,'wrong')">The shorter format is harder because you have less time to formulate questions</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">It gives you extra speaking time that counts as a second speech</button>
+        <button class="option" onclick="mc('q2',this,'correct')">It shows judges you're engaged and paying attention, which contributes to your overall ranking</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">It forces the PO to recognize you for the next speech</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">CX doesn't affect your ranking — it's just a formality</button>
       </div>
       <div class="feedback" id="q2-fb"></div>
     </div>
@@ -147,11 +147,11 @@
     <div class="section-title">PO Election Speeches</div>
     <div class="quiz" id="q7">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Two students are running for Presiding Officer. One focuses on their parliamentary knowledge and fairness philosophy. The other focuses on their debate accomplishments and personal charisma. Which approach better fits what a PO election speech should do?</div>
+      <div class="quiz-q">What is the difference between a PO election speech and a PO procedure speech?</div>
       <div class="options">
-        <button class="option" onclick="mc('q7',this,'wrong')">The accomplishments-focused speech — it proves they're a strong competitor</button>
-        <button class="option" onclick="mc('q7',this,'correct')">The procedure-focused speech — it shows they can actually run the chamber fairly and competently</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">Both are equally effective since the election is really a popularity contest</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">They're the same thing — you explain the rules to get elected</button>
+        <button class="option" onclick="mc('q7',this,'correct')">The election speech is your pitch to get votes (accomplishments, personality, priorities); the procedure speech comes after you're elected and covers the rules</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">The election speech covers rules and the procedure speech covers your qualifications</button>
         <button class="option" onclick="mc('q7',this,'wrong')">Neither — PO candidates shouldn't give speeches; they just raise their hand</button>
       </div>
       <div class="feedback" id="q7-fb"></div>
@@ -263,36 +263,36 @@
     <button class="next-btn hidden" id="next13" onclick="advance(13)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q14 — Module 1.5: Sponsorship Advantage -->
+  <!-- Q14 — Module 1.5: Paying Attention -->
   <div class="section hidden" id="step14">
     <div class="section-eyebrow">Question 14 of 15</div>
-    <div class="section-title">The Sponsorship Advantage</div>
+    <div class="section-title">Paying Attention in Round</div>
     <div class="quiz" id="q14">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Why does giving the sponsorship speech carry a built-in strategic advantage beyond just speaking first?</div>
+      <div class="quiz-q">You're about to give your speech and notice that a previous speaker on your side already covered your Status Quo almost word-for-word. What should you do?</div>
       <div class="options">
-        <button class="option" onclick="mc('q14',this,'wrong')">Sponsors automatically receive the highest ranking on that bill</button>
-        <button class="option" onclick="mc('q14',this,'wrong')">The PO must give the sponsor extra speaking time</button>
-        <button class="option" onclick="mc('q14',this,'correct')">Primacy bias — judges remember the first speaker on a bill more vividly, and the sponsor faces no prior arguments to refute</button>
-        <button class="option" onclick="mc('q14',this,'wrong')">Sponsors are exempt from cross-examination after their speech</button>
+        <button class="option" onclick="mc('q14',this,'wrong')">Deliver it anyway — your evidence cards might be different</button>
+        <button class="option" onclick="mc('q14',this,'correct')">Cut it and use the time for deeper refutation or a stronger prereq — judges reward new contributions, not repetition</button>
+        <button class="option" onclick="mc('q14',this,'wrong')">Acknowledge the previous speaker said it but repeat it for emphasis</button>
+        <button class="option" onclick="mc('q14',this,'wrong')">Switch to the other side entirely since your prep has been used</button>
       </div>
       <div class="feedback" id="q14-fb"></div>
     </div>
     <button class="next-btn hidden" id="next14" onclick="advance(14)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q15 — Module 1.5: Constructive vs Canned -->
+  <!-- Q15 — Module 1.5: Adaptive vs Canned -->
   <div class="section hidden" id="step15">
     <div class="section-eyebrow">Question 15 of 15</div>
-    <div class="section-title">Constructive vs. Canned Speeches</div>
+    <div class="section-title">Adaptive vs. Canned Speeches</div>
     <div class="quiz" id="q15">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Two students give speeches on the same bill. One reads a pre-written case word-for-word that doesn't reference anything said in the round. The other builds their speech around what previous speakers argued, adding new analysis. Which approach do experienced judges reward — and why?</div>
+      <div class="quiz-q">What makes a speech "adaptive" rather than "canned"?</div>
       <div class="options">
-        <button class="option" onclick="mc('q15',this,'wrong')">The pre-written speech, because it shows thorough preparation and research</button>
-        <button class="option" onclick="mc('q15',this,'correct')">The constructive speech, because it demonstrates real-time engagement with the debate — which is what separates Congress from a speech event</button>
-        <button class="option" onclick="mc('q15',this,'wrong')">Both are equally effective if delivered with strong vocal variety</button>
-        <button class="option" onclick="mc('q15',this,'wrong')">Neither — judges only care about the quality of evidence cited</button>
+        <button class="option" onclick="mc('q15',this,'wrong')">It uses stronger evidence and more citations than a typical speech</button>
+        <button class="option" onclick="mc('q15',this,'correct')">It engages with what's actually happening in the round — referencing previous speakers, filling gaps, and adding new analysis</button>
+        <button class="option" onclick="mc('q15',this,'wrong')">It's delivered without notes, proving the debater memorized their argument</button>
+        <button class="option" onclick="mc('q15',this,'wrong')">It switches sides mid-speech to address both aff and neg perspectives</button>
       </div>
       <div class="feedback" id="q15-fb"></div>
     </div>
@@ -325,38 +325,38 @@ var TOTAL_STEPS = 15;
 
 var CORRECT_MSGS = {
   q1:  "Rankings are individual. The vote on the bill is completely separate from how judges rank speakers.",
-  q2:  "Longer CX means more students can show engagement, but the speaker also faces tougher scrutiny. Both sides of the equation matter.",
+  q2:  "CX is a scoring opportunity — even 30 seconds of sharp questioning shows judges you're engaged and thinking critically about the debate.",
   q3:  "Argumentation is your content, delivery is how you present it, strategy is when and how you deploy both.",
   q4:  "Precedence ensures fairness — speakers with fewer speeches get recognized first so everyone has a chance.",
   q5:  "Despite its confusing name, Previous Question simply ends debate on the current bill and triggers the vote.",
   q6:  "Direct CX creates a genuine exchange. The questioner and speaker go back and forth, making it a real strategic moment.",
-  q7:  "A PO election speech should show you can run a fair, competent chamber — not that you're a great debater.",
+  q7:  "The election speech is your pitch — accomplishments, personality, priorities. The procedure speech comes after and covers the actual rules.",
   q8:  "The PO sheet is the tool that makes fair recognition possible — tracking precedence, recency, and side balance.",
   q9:  "Composure matters more than perfection. Acknowledge the mistake briefly, correct it, and move on confidently.",
   q10: "Bills create specific enforceable mechanisms. Resolutions express positions or urge action without binding legal force.",
   q11: "The strongest debaters identify the deeper philosophical or policy question underneath the bill's surface topic.",
   q12: "Congress assumes immediate implementation. Arguing about logistical timelines misses what the debate is actually testing.",
   q13: "Early speakers define the terms of debate. Later speakers are forced to respond to the framework already established.",
-  q14: "Primacy bias gives sponsors a memory advantage, and they face a clean slate — no prior arguments to address.",
-  q15: "Constructive speeches that engage with the live debate show real skill. Canned speeches ignore the room and judges notice."
+  q14: "Repeating what's been covered wastes your 3 minutes. Cut redundant content and use the time for what judges want to hear — something new.",
+  q15: "Adaptive speeches engage with the live debate — referencing others, filling gaps, adding new analysis. That's what separates Congress from a speech event."
 };
 
 var WRONG_MSGS = {
   q1:  "Think about what judges are actually ranking — is it the side, or the individual speaker?",
-  q2:  "Consider what changes when more questioners have access to the speaker. Who benefits, and who faces more pressure?",
+  q2:  "Think about what CX signals to judges — is it just a formality, or does it contribute to how they evaluate you?",
   q3:  "Read each description carefully — one is about content quality, one is about presentation, and one is about decision-making.",
   q4:  "Think about fairness. If one student has spoken twice and another hasn't spoken at all, who should get the next opportunity?",
   q5:  "Don't be fooled by the name. Think about what happens immediately after this motion passes — what action does the chamber take?",
   q6:  "Think about what 'direct' means in this context — does the questioner get a genuine back-and-forth, or is it one-sided?",
-  q7:  "Think about what the PO's actual job is during the round. Which speech better demonstrates readiness for that job?",
+  q7:  "Think about when each speech happens — one is before the vote, one is after you've won. What's the purpose of each?",
   q8:  "The PO's job is to manage the chamber fairly. What information would they need to do that?",
   q9:  "Think about what experienced POs do when something goes wrong. Does extensive apologizing help or hurt the chamber's flow?",
   q10: "Focus on the key words: 'enacted' vs 'resolved.' One creates binding law, the other doesn't.",
   q11: "Think about what separates a surface-level argument from a championship-level one. What layers does the stronger debater find?",
   q12: "Consider the purpose of the exercise. Does Congress test real-world logistics, or the merits of the policy itself?",
   q13: "Think about who controls the narrative. Once the first speakers define the debate, what position does that put later speakers in?",
-  q14: "Think about the psychological effect on judges. Who do they remember most on each bill, and why?",
-  q15: "Consider what Congressional Debate specifically rewards that a speech event doesn't. What skill does the constructive approach demonstrate?"
+  q14: "Think about what judges reward — speakers who repeat known information, or speakers who add something new?",
+  q15: "Think about what makes Congress different from a speech event — it's a live debate, not a performance. What does an adaptive speech demonstrate?"
 };
 
 var UNLOCK_MAP = {
