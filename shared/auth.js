@@ -485,6 +485,20 @@ function handleForgotPassword() {
   });
 }
 
+function showAccountCreated(firstName) {
+  var overlay = document.getElementById('authOverlay');
+  if (!overlay) return;
+  overlay.innerHTML = '<div class="auth-panel">' +
+    '<div style="text-align:center;padding:48px 32px;">' +
+      '<img src="Pictures/compressed_image.jpg" alt="Ascend" style="width:64px;margin-bottom:20px;">' +
+      '<div style="font-size:48px;margin-bottom:16px;">🎉</div>' +
+      '<div style="font-family:Playfair Display,serif;font-size:24px;font-weight:900;color:#111;margin-bottom:8px;">Account Created!</div>' +
+      '<div style="font-size:15px;color:#666;margin-bottom:28px;">Welcome to Ascend Academy' + (firstName ? ', ' + firstName : '') + '. You\'re ready to start learning.</div>' +
+      '<button class="auth-submit-btn" onclick="closeAuthModal()" style="max-width:280px;margin:0 auto;">Start Learning →</button>' +
+    '</div>' +
+  '</div>';
+}
+
 function handleEmailLogin() {
   clearAuthError();
   var email = document.getElementById('authEmail').value.trim();
@@ -514,7 +528,7 @@ function handleStudentSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
-    closeAuthModal();
+    showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {});
 }
@@ -534,7 +548,7 @@ function handleParentSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
-    closeAuthModal();
+    showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {});
 }
@@ -554,7 +568,7 @@ function handleEducatorSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
-    closeAuthModal();
+    showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {});
 }
