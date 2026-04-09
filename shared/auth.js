@@ -47,6 +47,11 @@ function initAuth() {
       renderModuleCards();
       renderBadgeShelf();
       updateProgress();
+      // Reset personalized text
+      var badgeTitle = document.querySelector('.badge-section-title');
+      if (badgeTitle) badgeTitle.textContent = '🏅 Your Badges';
+      var progressLabel = document.querySelector('.progress-label');
+      if (progressLabel) progressLabel.textContent = 'Your Progress';
     }
   });
 }
@@ -90,6 +95,12 @@ function updateNavForUser(profile) {
       '<span class="nav-user-name">' + name + '</span>' +
       '<button class="nav-auth-btn nav-logout" onclick="handleLogout()">Log Out</button>' +
     '</div>';
+
+  // Personalize UI
+  var badgeTitle = document.querySelector('.badge-section-title');
+  if (badgeTitle) badgeTitle.textContent = '🏅 ' + name + "'s Badges";
+  var progressLabel = document.querySelector('.progress-label');
+  if (progressLabel) progressLabel.textContent = name + "'s Progress";
 }
 
 // ─── AUTH MODAL ───
