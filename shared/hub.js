@@ -335,7 +335,7 @@ var MODULES = [
 var UNITS = [
   { num: 1, title: 'Foundations of Congressional Debate' },
   { num: 2, title: 'Building Arguments' },
-  { num: 3, title: 'Advanced Strategy' },
+  { num: 3, title: 'Mid & Late Round Strategy' },
   { num: 4, title: 'Research & Case Preparation' },
   { num: 5, title: 'Performance, Presence & Strategy' }
 ];

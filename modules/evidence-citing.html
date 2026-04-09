@@ -33,11 +33,20 @@
     <div class="section-title">What Makes Evidence Credible</div>
     <div class="section-body">
       <p>Not all evidence is created equal. In Congressional Debate, judges evaluate the <strong>quality of your sources</strong> just as much as the content of your arguments. Using weak evidence can actually hurt you more than using no evidence at all — because it signals that you don't know the difference.</p>
-      <p>Here's the credibility hierarchy, from strongest to weakest:</p>
-      <p><strong>Tier 1: Academic journals and government reports.</strong> Peer-reviewed research from institutions like the National Bureau of Economic Research, Congressional Budget Office, or major universities. These are the gold standard because they've been vetted by experts.</p>
-      <p><strong>Tier 2: Major think tanks and research organizations.</strong> Brookings Institution, RAND Corporation, Pew Research Center. These produce rigorous analysis, though they may have identifiable leanings.</p>
-      <p><strong>Tier 3: Major news outlets' reporting.</strong> The New York Times, Wall Street Journal, Reuters. Their investigative reporting is generally reliable, but distinguish between reporting and opinion sections.</p>
-      <p><strong>Tier 4: Opinion pieces and advocacy organizations.</strong> These have clear agendas. Not useless, but judges discount them heavily. If your best evidence comes from an advocacy group, your argument has a credibility problem.</p>
+      <p>Always ask yourself: <strong>"Would an actual member of Congress use this source?"</strong> Here's the hierarchy:</p>
+      <p><strong>High Quality:</strong></p>
+      <ul style="margin:8px 0 16px 20px;line-height:2;">
+        <li><strong>Think tanks</strong> — Brookings, Carnegie Endowment, Peterson Institute</li>
+        <li><strong>Academic institutions & journals</strong> — Harvard, Stanford + American Economic Review, Journal of Public Economics</li>
+        <li><strong>Congressional research agencies</strong> — CRS and CBO (nonpartisan, designed for Congress)</li>
+        <li><strong>Select news publications only</strong> — NYT, WSJ, Washington Post, LA Times, The Economist, Bloomberg</li>
+      </ul>
+      <p><strong>Low Quality (avoid):</strong></p>
+      <ul style="margin:8px 0 16px 20px;line-height:2;">
+        <li><strong>Most news outlets</strong> — ABC, AP, CBS, CNN, Fox, HuffPost, NBC, Newsweek, Reuters, Time</li>
+        <li><strong>Publicly created sources</strong> — Wikipedia, social media, Reddit</li>
+        <li><strong>Opinion pieces & advocacy organizations</strong> — clear agendas, judges discount heavily</li>
+      </ul>
       <p>Beyond source quality, two other factors matter: <strong>recency</strong> (2023 data beats 2015 data — conditions change) and <strong>specificity</strong> (exact numbers beat vague claims like "studies show").</p>
     </div>
 
@@ -52,10 +61,10 @@
       <div class="drag-area">
         <div class="drag-label">Sources (drag these):</div>
         <div class="drag-source" id="drag-source-1">
-          <div class="drag-chip" draggable="true" data-val="tier3" ondragstart="dragStart(event)">Reuters investigative report</div>
-          <div class="drag-chip" draggable="true" data-val="tier1" ondragstart="dragStart(event)">Congressional Budget Office analysis</div>
-          <div class="drag-chip" draggable="true" data-val="tier4" ondragstart="dragStart(event)">Blog post from an advocacy group</div>
-          <div class="drag-chip" draggable="true" data-val="tier2" ondragstart="dragStart(event)">Brookings Institution study</div>
+          <div class="drag-chip" draggable="true" data-val="tier4" ondragstart="dragStart(event)">CNN news article</div>
+          <div class="drag-chip" draggable="true" data-val="tier2" ondragstart="dragStart(event)">Congressional Budget Office analysis</div>
+          <div class="drag-chip" draggable="true" data-val="tier3" ondragstart="dragStart(event)">Wall Street Journal investigation</div>
+          <div class="drag-chip" draggable="true" data-val="tier1" ondragstart="dragStart(event)">Brookings Institution policy study</div>
         </div>
         <div class="drag-targets" id="q1-targets">
           <div class="drag-target" data-correct="tier1" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">Most Credible</span><span class="target-content"></span></div>
@@ -217,7 +226,7 @@ var MODULE_ID = 'evidence-citing';
 var TOTAL_STEPS = 4;
 
 var CORRECT_MSGS = {
-  q1:  "Government reports and academic journals sit at the top because they're nonpartisan and peer-reviewed. Advocacy groups sit at the bottom because they have built-in biases.",
+  q1:  "Think tanks and CBO/CRS analyses are the gold standard — they're what actual members of Congress use. Select news publications (NYT, WSJ) are acceptable but lower tier. Most news outlets (CNN, Reuters, etc.) are low quality for debate evidence.",
   q2a: "Organization name, date, and the key finding — woven naturally into your speech. That's all judges need to trust your evidence.",
   q2b: "Citations should flow naturally within your speech. Stopping to formally announce every citation wastes time and breaks your momentum.",
   q3:  "Quality over quantity. One authoritative source is more persuasive than a stack of weak ones. Judges respect restraint.",
