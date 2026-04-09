@@ -64,7 +64,7 @@ function initAuth() {
 function checkProfileAndUpdateUI(retries) {
   if (retries === undefined) retries = 0;
 
-  // Check localStorage cache first — if we've seen this user's profile before, use it
+  // Check localStorage cache first
   var cached = localStorage.getItem('ascend_profile_cache');
   if (cached) {
     try {
@@ -73,7 +73,7 @@ function checkProfileAndUpdateUI(retries) {
         updateNavForUser(cachedProfile);
         hydrateFromSupabase();
         closeAuthModal();
-        // Still refresh from DB in background
+        // Refresh from DB in background
         sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
           if (res.data) {
             localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
@@ -85,15 +85,24 @@ function checkProfileAndUpdateUI(retries) {
     } catch(e) {}
   }
 
+  // If user has Google metadata (name), use it as fallback while we fetch
+  var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
+  if (googleName && retries === 0) {
+    var fallbackProfile = { id: currentUser.id, first_name: googleName.split(' ')[0] };
+    updateNavForUser(fallbackProfile);
+    closeAuthModal();
+  }
+
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
     if (res.data) {
       localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
       updateNavForUser(res.data);
       hydrateFromSupabase();
       closeAuthModal();
-    } else if (retries < 5) {
-      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1500);
-    } else {
+    } else if (retries < 8) {
+      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 2000);
+    } else if (!localStorage.getItem('ascend_profile_cache')) {
+      // Only show profile form if we've NEVER seen a profile for this user
       showProfileForm();
     }
   });
