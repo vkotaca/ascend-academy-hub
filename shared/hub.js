@@ -204,15 +204,14 @@ var MODULES = [
       { icon: '\uD83D\uDCDA', text: 'Building a source library \u2014 organizing evidence for quick access' },
       { icon: '\u26A1', text: 'Research efficiency \u2014 getting more done in less time' }
     ] },
-  { id: 'prime-prep',           unit: 4, num: '4.2', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
+  { id: 'prime-prep',           unit: 4, num: '4.2', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '18 min', activities: 4, badge: null,
     desc: 'What championship-level preparation actually looks like. The habits and frameworks that produce consistently high ranks.',
     file: 'modules/prime-prep.html',
     lessons: [
       { icon: '\uD83D\uDC51', text: 'What separates good prep from great prep \u2014 intentional hours' },
-      { icon: '\uD83D\uDCC1', text: 'The prep document \u2014 structure for finding things under pressure' },
+      { icon: '\uD83D\uDCC1', text: 'The prep document \u2014 the 10-second rule for finding anything under pressure' },
       { icon: '\uD83D\uDD2C', text: 'Depth over breadth \u2014 1-2 deep arguments beat 5 shallow ones' },
-      { icon: '\uD83D\uDD04', text: 'Preparing for adaptation \u2014 backup angles and flexible blocks' },
-      { icon: '\uD83D\uDCC5', text: 'The weekly routine \u2014 consistency beats cramming' }
+      { icon: '\uD83D\uDD04', text: 'Preparing for adaptation \u2014 backup angles and flexible blocks' }
     ] },
   { id: 'aff-neg-strategy',     unit: 4, num: '4.3', title: 'Aff vs. Neg Strategy',              icon: '\u2694\uFE0F', duration: '18 min', activities: 5, badge: null,
     desc: 'How to prepare both sides of any legislation \u2014 anticipating opposition arguments before you\u2019re in the room.',
