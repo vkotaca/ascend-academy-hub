@@ -53,6 +53,7 @@ function initAuth() {
       var progressLabel = document.querySelector('.progress-label');
       if (progressLabel) progressLabel.textContent = 'Your Progress';
       localStorage.removeItem('ascend_user_first');
+      localStorage.removeItem('ascend_profile_cache');
       var homePromo = document.getElementById('homePromoHeader');
       if (homePromo) homePromo.textContent = 'Ready to take the next step?';
     }
@@ -62,16 +63,37 @@ function initAuth() {
 // ─── PROFILE CHECK ───
 function checkProfileAndUpdateUI(retries) {
   if (retries === undefined) retries = 0;
+
+  // Check localStorage cache first — if we've seen this user's profile before, use it
+  var cached = localStorage.getItem('ascend_profile_cache');
+  if (cached) {
+    try {
+      var cachedProfile = JSON.parse(cached);
+      if (cachedProfile.id === currentUser.id) {
+        updateNavForUser(cachedProfile);
+        hydrateFromSupabase();
+        closeAuthModal();
+        // Still refresh from DB in background
+        sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
+          if (res.data) {
+            localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
+            updateNavForUser(res.data);
+          }
+        });
+        return;
+      }
+    } catch(e) {}
+  }
+
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
     if (res.data) {
+      localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
       updateNavForUser(res.data);
       hydrateFromSupabase();
       closeAuthModal();
     } else if (retries < 5) {
-      // Session token may not be propagated yet — retry
       setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1500);
     } else {
-      // No profile after retries — new user needs to complete profile
       showProfileForm();
     }
   });
