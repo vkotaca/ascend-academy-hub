@@ -3,7 +3,7 @@
 */
 
 // --- MODULE REGISTRY ---
-// 24 modules across 4 units. Add file: 'modules/<id>.html' when module is built.
+// Modules across 5 units. Add file: 'modules/<id>.html' when module is built.
 var MODULES = [
   // ── UNIT 1: Foundations of Congressional Debate (5 modules) ──
   { id: 'what-is-congress',     unit: 1, num: '1.1', title: 'What Is Congressional Debate?',     icon: '\u{1F3DB}\uFE0F', duration: '25 min', activities: 3, badge: null,
@@ -75,7 +75,7 @@ var MODULES = [
     desc: 'Test your knowledge of Congressional Debate foundations \u2014 15 questions covering how the event works, chamber procedure, presiding, legislation, and strategy.',
     file: 'modules/unit-1-exam.html' },
 
-  // ── UNIT 2: Building Championship Arguments (9 modules) ──
+  // ── UNIT 2: Building Arguments (6 modules) ──
   { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: null,
     desc: 'Every argument has four parts: Claim, Warrant, Evidence, and Impact. Master CWEI and you\u2019ll have the foundation for everything that follows.',
     file: 'modules/anatomy-of-argument.html',
@@ -132,7 +132,12 @@ var MODULES = [
       { icon: '\uD83C\uDFAF', text: 'Terminalization \u2014 lives, safety, rights, dignity' },
       { icon: '\uD83D\uDCDD', text: 'Impact in practice \u2014 full walkthrough' }
     ] },
-  { id: 'win-conditions',       unit: 2, num: '2.6', title: 'Win Conditions & The Comparative',   icon: '\uD83C\uDFAF', duration: '18 min', activities: 5, badge: null,
+  { id: 'unit-2-exam',          unit: 2, num: '2.6', title: 'Unit 2 Exam',                        icon: '\uD83D\uDCDD', duration: '12 min', activities: 15, badge: 'unit-2-complete', exam: true,
+    desc: 'Test your knowledge of argument construction \u2014 15 questions on CWEI, Block Format, SQUO, Outcome, and Impact Calculus.',
+    file: 'modules/unit-2-exam.html' },
+
+  // ── UNIT 3: Advanced Strategy (6 modules) ──
+  { id: 'win-conditions',       unit: 3, num: '3.1', title: 'Win Conditions & The Comparative',   icon: '\uD83C\uDFAF', duration: '18 min', activities: 5, badge: null,
     desc: 'What actually wins rounds. The comparative framework, offense vs. defense, believability, and picking your side.',
     file: 'modules/win-conditions.html',
     lessons: [
@@ -142,7 +147,7 @@ var MODULES = [
       { icon: '\uD83E\uDD1D', text: 'Believability \u2014 modest claims beat outlandish ones' },
       { icon: '\uD83E\uDDE0', text: 'Picking your side \u2014 strategic side selection in round' }
     ] },
-  { id: 'finding-gaps',         unit: 2, num: '2.7', title: 'Finding Gaps & Generating Arguments', icon: '\uD83D\uDCA1', duration: '20 min', activities: 5, badge: null,
+  { id: 'finding-gaps',         unit: 3, num: '3.2', title: 'Finding Gaps & Generating Arguments', icon: '\uD83D\uDCA1', duration: '20 min', activities: 5, badge: null,
     desc: 'How to identify strengths and weaknesses in a debate, predict gaps, and create arguments that fill them.',
     file: 'modules/finding-gaps.html',
     lessons: [
@@ -152,7 +157,7 @@ var MODULES = [
       { icon: '\uD83E\uDDF1', text: 'Generating arguments from gaps \u2014 building blocks in-round' },
       { icon: '\uD83E\uDDE0', text: 'The gap mindset \u2014 listening is the ultimate strategic skill' }
     ] },
-  { id: 'refutation',           unit: 2, num: '2.8', title: 'Prerequisites & Refutation',         icon: '\uD83D\uDEE1\uFE0F', duration: '20 min', activities: 6, badge: null,
+  { id: 'refutation',           unit: 3, num: '3.3', title: 'Prerequisites & Refutation',         icon: '\uD83D\uDEE1\uFE0F', duration: '20 min', activities: 6, badge: null,
     desc: 'How to frame the debate before your argument, where to place refutation inside block format, and when to cut content and adapt.',
     file: 'modules/refutation.html',
     lessons: [
@@ -163,7 +168,7 @@ var MODULES = [
       { icon: '\u2702\uFE0F', text: 'Letting go \u2014 cutting content to make room for what judges want to hear' },
       { icon: '\uD83E\uDDE0', text: 'Know your debate \u2014 adapting to status quo debates vs. outcome debates' }
     ] },
-  { id: 'block-format-late',    unit: 2, num: '2.9', title: 'Block Format in Late Rounds',        icon: '\uD83C\uDFC6', duration: '22 min', activities: 5, badge: null,
+  { id: 'block-format-late',    unit: 3, num: '3.4', title: 'Block Format in Late Rounds',        icon: '\uD83C\uDFC6', duration: '22 min', activities: 5, badge: null,
     desc: 'How the block format evolves as the round progresses \u2014 identifying clash, cutting content, and controlling the narrative.',
     file: 'modules/block-format-late.html',
     lessons: [
@@ -173,8 +178,7 @@ var MODULES = [
       { icon: '\uD83D\uDDE3\uFE0F', text: 'Controlling the narrative \u2014 reframing the debate' },
       { icon: '\uD83D\uDC8E', text: 'The crystallization speech \u2014 summarize, compare, win' }
     ] },
-
-  { id: 'championship-speeches', unit: 2, num: '2.10', title: 'Championship Speeches: Watch & Learn', icon: '\uD83C\uDFA5', duration: '25 min', activities: 6, badge: null,
+  { id: 'championship-speeches', unit: 3, num: '3.5', title: 'Championship Speeches: Watch & Learn', icon: '\uD83C\uDFA5', duration: '25 min', activities: 6, badge: null,
     desc: 'Real competition speeches broken down lesson by lesson. See Block Format, prereqs, refutation, rhetoric, and CX in action at the national level.',
     file: 'modules/championship-speeches.html',
     lessons: [
@@ -185,12 +189,12 @@ var MODULES = [
       { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI) \u2014 playing offense by turning the negation\u2019s strongest argument' },
       { icon: '\u2696\uFE0F', text: 'Final crystallization \u2014 telling judges why the affirmation wins the debate' }
     ] },
-  { id: 'unit-2-exam',          unit: 2, num: '2.11', title: 'Unit 2 Exam',                       icon: '\uD83D\uDCDD', duration: '12 min', activities: 15, badge: 'unit-2-complete', exam: true,
-    desc: 'Test your knowledge of argument construction \u2014 15 questions on CWEI, Block Format, SQUO, Outcome, Impact, refutation, and late-round strategy.',
-    file: 'modules/unit-2-exam.html' },
+  { id: 'unit-3-exam',          unit: 3, num: '3.6', title: 'Unit 3 Exam',                        icon: '\uD83D\uDCDD', duration: '12 min', activities: 15, badge: 'unit-3-complete', exam: true,
+    desc: 'Test your advanced strategy skills \u2014 15 questions on win conditions, finding gaps, refutation, late-round block format, and championship speeches.',
+    file: 'modules/unit-3-exam.html' },
 
-  // ── UNIT 3: Research & Case Preparation (5 modules) ──
-  { id: 'how-to-research',      unit: 3, num: '3.1', title: 'How to Research',                    icon: '\uD83D\uDD0D', duration: '20 min', activities: 5, badge: 'researcher',
+  // ── UNIT 4: Research & Case Preparation (6 modules) ──
+  { id: 'how-to-research',      unit: 4, num: '4.1', title: 'How to Research',                    icon: '\uD83D\uDD0D', duration: '20 min', activities: 5, badge: 'researcher',
     desc: 'From reading the bill to building a case \u2014 the systematic approach that finds evidence others miss.',
     file: 'modules/how-to-research.html',
     lessons: [
@@ -200,7 +204,7 @@ var MODULES = [
       { icon: '\uD83D\uDCDA', text: 'Building a source library \u2014 organizing evidence for quick access' },
       { icon: '\u26A1', text: 'Research efficiency \u2014 getting more done in less time' }
     ] },
-  { id: 'turning-research-case', unit: 3, num: '3.2', title: 'Turning Research Into a Case',      icon: '\uD83D\uDCDD', duration: '20 min', activities: 5, badge: null,
+  { id: 'turning-research-case', unit: 4, num: '4.2', title: 'Turning Research Into a Case',      icon: '\uD83D\uDCDD', duration: '20 min', activities: 5, badge: null,
     desc: 'From raw notes to a polished block. Writing taglines, proving outcome, and stress-testing your argument.',
     file: 'modules/turning-research-case.html',
     lessons: [
@@ -210,7 +214,7 @@ var MODULES = [
       { icon: '\uD83E\uDD14', text: 'Stress-testing your argument \u2014 finding weaknesses before opponents do' },
       { icon: '\u2728', text: 'The finished product \u2014 from functional block to competition-ready speech' }
     ] },
-  { id: 'prime-prep',           unit: 3, num: '3.3', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
+  { id: 'prime-prep',           unit: 4, num: '4.3', title: 'Prime-Level Prep',                   icon: '\uD83D\uDC51', duration: '22 min', activities: 5, badge: null,
     desc: 'What championship-level preparation actually looks like. The habits and frameworks that produce consistently high ranks.',
     file: 'modules/prime-prep.html',
     lessons: [
@@ -220,7 +224,7 @@ var MODULES = [
       { icon: '\uD83D\uDD04', text: 'Preparing for adaptation \u2014 backup angles and flexible blocks' },
       { icon: '\uD83D\uDCC5', text: 'The weekly routine \u2014 consistency beats cramming' }
     ] },
-  { id: 'aff-neg-strategy',     unit: 3, num: '3.4', title: 'Aff vs. Neg Strategy',              icon: '\u2694\uFE0F', duration: '18 min', activities: 5, badge: null,
+  { id: 'aff-neg-strategy',     unit: 4, num: '4.4', title: 'Aff vs. Neg Strategy',              icon: '\u2694\uFE0F', duration: '18 min', activities: 5, badge: null,
     desc: 'How to prepare both sides of any legislation \u2014 anticipating opposition arguments before you\u2019re in the room.',
     file: 'modules/aff-neg-strategy.html',
     lessons: [
@@ -230,7 +234,7 @@ var MODULES = [
       { icon: '\uD83D\uDEE1\uFE0F', text: 'Anticipating the opposition \u2014 preemptive refutation' },
       { icon: '\uD83E\uDDE0', text: 'Strategic side selection \u2014 choosing your side in round' }
     ] },
-  { id: 'evidence-citing',      unit: 3, num: '3.5', title: 'Evidence & Citing Sources',          icon: '\uD83D\uDCCA', duration: '15 min', activities: 4, badge: null,
+  { id: 'evidence-citing',      unit: 4, num: '4.5', title: 'Evidence & Citing Sources',          icon: '\uD83D\uDCCA', duration: '15 min', activities: 4, badge: null,
     desc: 'What makes evidence credible, how to cite it in round, and how to attack weak evidence from opponents.',
     file: 'modules/evidence-citing.html',
     lessons: [
@@ -239,12 +243,12 @@ var MODULES = [
       { icon: '\u2694\uFE0F', text: 'Using evidence strategically \u2014 one strong card beats three weak ones' },
       { icon: '\uD83D\uDD2C', text: 'Attacking weak evidence \u2014 outdated, biased, cherry-picked' }
     ] },
-  { id: 'unit-3-exam',          unit: 3, num: '3.6', title: 'Unit 3 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-3-complete', exam: true,
+  { id: 'unit-4-exam',          unit: 4, num: '4.6', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-4-complete', exam: true,
     desc: 'Test your research skills \u2014 15 questions on how to research, building cases, prep habits, aff vs. neg strategy, and evidence quality.',
-    file: 'modules/unit-3-exam.html' },
+    file: 'modules/unit-4-exam.html' },
 
-  // ── UNIT 4: Performance, Presence & Strategy (8 modules) ──
-  { id: 'rhetoric-intros',      unit: 4, num: '4.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: null,
+  // ── UNIT 5: Performance, Presence & Strategy (9 modules) ──
+  { id: 'rhetoric-intros',      unit: 5, num: '5.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: null,
     desc: 'How to turn arguments into stories judges remember. Writing rhetoric within blocks, crafting intros, tying conclusions, and finding your voice on paper.',
     file: 'modules/rhetoric-intros.html',
     lessons: [
@@ -255,7 +259,7 @@ var MODULES = [
       { icon: '\uD83D\uDD17', text: 'Conclusions \u2014 tying back to your theme and stakeholders' },
       { icon: '\uD83D\uDD25', text: 'Finding your voice \u2014 quantity first, quality second; experiment then refine' }
     ] },
-  { id: 'voice-delivery',       unit: 4, num: '4.2', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 5, badge: 'presence',
+  { id: 'voice-delivery',       unit: 5, num: '5.2', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 5, badge: 'presence',
     desc: 'Finding your voice, base tone, fluctuation, speed, and passion \u2014 how to sound like yourself, not a debate robot.',
     file: 'modules/voice-delivery.html',
     lessons: [
@@ -265,7 +269,7 @@ var MODULES = [
       { icon: '\uD83D\uDD25', text: 'Passion and authenticity \u2014 care about what you\u2019re saying' },
       { icon: '\u26A0\uFE0F', text: 'Common delivery mistakes \u2014 and how to fix them' }
     ] },
-  { id: 'movement-physicality', unit: 4, num: '4.3', title: 'Movement & Physicality',             icon: '\uD83E\uDDD1\u200D\uD83C\uDFA4', duration: '18 min', activities: 5, badge: null,
+  { id: 'movement-physicality', unit: 5, num: '5.3', title: 'Movement & Physicality',             icon: '\uD83E\uDDD1\u200D\uD83C\uDFA4', duration: '18 min', activities: 5, badge: null,
     desc: 'Speaking stance, the speaker diamond, hand motions, and facial expressions \u2014 what judges see before they hear you.',
     file: 'modules/movement-physicality.html',
     lessons: [
@@ -275,7 +279,7 @@ var MODULES = [
       { icon: '\uD83D\uDC41\uFE0F', text: 'Eye contact and facial expressions \u2014 look at judges, not paper' },
       { icon: '\uD83D\uDEB6', text: 'The walk-up and walk-back \u2014 first and last impressions' }
     ] },
-  { id: 'chamber-presence',     unit: 4, num: '4.4', title: 'Chamber Presence & Walk-Ups',        icon: '\u2728',       duration: '18 min', activities: 5, badge: null,
+  { id: 'chamber-presence',     unit: 5, num: '5.4', title: 'Chamber Presence & Walk-Ups',        icon: '\u2728',       duration: '18 min', activities: 5, badge: null,
     desc: 'How to carry yourself before, between, and after speeches. Walk-ups, stereotypes to avoid, and commanding the room.',
     file: 'modules/chamber-presence.html',
     lessons: [
@@ -285,7 +289,7 @@ var MODULES = [
       { icon: '\u26A0\uFE0F', text: 'Stereotypes to avoid \u2014 checked out, too cool, nervous fidgeter' },
       { icon: '\u2728', text: 'Commanding the room \u2014 being someone judges notice all round' }
     ] },
-  { id: 'personality-energy',   unit: 4, num: '4.5', title: 'Personality & Stage Energy',         icon: '\uD83D\uDD25', duration: '15 min', activities: 4, badge: null,
+  { id: 'personality-energy',   unit: 5, num: '5.5', title: 'Personality & Stage Energy',         icon: '\uD83D\uDD25', duration: '15 min', activities: 4, badge: null,
     desc: 'Developing your persona, energy management, and the traits judges reward in close rounds.',
     file: 'modules/personality-energy.html',
     lessons: [
@@ -294,7 +298,7 @@ var MODULES = [
       { icon: '\uD83C\uDFC6', text: 'What judges reward in close rounds \u2014 the tiebreakers' },
       { icon: '\u2764\uFE0F', text: 'Being yourself \u2014 authenticity beats performance' }
     ] },
-  { id: 'ballot-watch',         unit: 4, num: '4.6', title: 'Reading the Ballot',                 icon: '\uD83D\uDCCB', duration: '18 min', activities: 5, badge: null,
+  { id: 'ballot-watch',         unit: 5, num: '5.6', title: 'Reading the Ballot',                 icon: '\uD83D\uDCCB', duration: '18 min', activities: 5, badge: null,
     desc: 'What judges actually write down, what they reward, and how to improve even from bare ballots.',
     file: 'modules/ballot-watch.html',
     lessons: [
@@ -304,7 +308,7 @@ var MODULES = [
       { icon: '\uD83D\uDCCA', text: 'Learning from bare ballots \u2014 patterns across rounds' },
       { icon: '\uD83D\uDD04', text: 'The improvement loop \u2014 one fix per tournament cycle' }
     ] },
-  { id: 'cx-strategy',          unit: 4, num: '4.7', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'strategist',
+  { id: 'cx-strategy',          unit: 5, num: '5.7', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'strategist',
     desc: 'How to ask questions that expose weaknesses, how to handle hostile questioning, and how to use CX to set up your next speech.',
     file: 'modules/cx-strategy.html',
     lessons: [
@@ -314,7 +318,7 @@ var MODULES = [
       { icon: '\uD83D\uDEE1\uFE0F', text: 'Handling hostile questions \u2014 calm, concise, pivot' },
       { icon: '\u23F1\uFE0F', text: 'The 30-second rule \u2014 one focused question, not three' }
     ] },
-  { id: 'tournament-day',       unit: 4, num: '4.8', title: 'Tournament Day Execution',           icon: '\uD83D\uDDD3\uFE0F', duration: '15 min', activities: 4, badge: null,
+  { id: 'tournament-day',       unit: 5, num: '5.8', title: 'Tournament Day Execution',           icon: '\uD83D\uDDD3\uFE0F', duration: '15 min', activities: 4, badge: null,
     desc: 'From the night before to the final round \u2014 the routines, mindset, and adaptations that produce peak performance.',
     file: 'modules/tournament-day.html',
     lessons: [
@@ -323,16 +327,17 @@ var MODULES = [
       { icon: '\uD83D\uDD04', text: 'Between rounds \u2014 read ballots, assess what worked, adapt for the next round' },
       { icon: '\uD83C\uDFC6', text: 'The finals mindset \u2014 execution over preparation at the top level' }
     ] },
-  { id: 'unit-4-exam',          unit: 4, num: '4.9', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-4-complete', exam: true,
+  { id: 'unit-5-exam',          unit: 5, num: '5.9', title: 'Unit 5 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-5-complete', exam: true,
     desc: 'Test your performance skills \u2014 15 questions on rhetoric, delivery, movement, presence, personality, ballots, CX, and tournament execution.',
-    file: 'modules/unit-4-exam.html' }
+    file: 'modules/unit-5-exam.html' }
 ];
 
 var UNITS = [
   { num: 1, title: 'Foundations of Congressional Debate' },
-  { num: 2, title: 'Building Championship Arguments' },
-  { num: 3, title: 'Research & Case Preparation' },
-  { num: 4, title: 'Performance, Presence & Strategy' }
+  { num: 2, title: 'Building Arguments' },
+  { num: 3, title: 'Advanced Strategy' },
+  { num: 4, title: 'Research & Case Preparation' },
+  { num: 5, title: 'Performance, Presence & Strategy' }
 ];
 
 var BADGES = [
@@ -344,8 +349,9 @@ var BADGES = [
   { id: 'strategist',        emoji: '\u265F\uFE0F', name: 'Strategist' },
   { id: 'unit-1-complete',   emoji: '\uD83C\uDFDB\uFE0F', name: 'Foundations' },
   { id: 'unit-2-complete',   emoji: '\u2694\uFE0F', name: 'Argument Architect' },
-  { id: 'unit-3-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine' },
-  { id: 'unit-4-complete',   emoji: '\uD83C\uDFAD', name: 'Performer' },
+  { id: 'unit-3-complete',   emoji: '\uD83C\uDFAF', name: 'Advanced Strategist' },
+  { id: 'unit-4-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine' },
+  { id: 'unit-5-complete',   emoji: '\uD83C\uDFAD', name: 'Performer' },
   { id: 'halfway',           emoji: '\uD83D\uDD25', name: 'Halfway There' },
   { id: 'congress-scholar',  emoji: '\uD83C\uDFC6', name: 'Congress Scholar' }
 ];
@@ -435,7 +441,7 @@ function showBadgeToast(id) {
 }
 
 function checkUnitBadges() {
-  var unitBadgeMap = { 1: 'unit-1-complete', 2: 'unit-2-complete', 3: 'unit-3-complete', 4: 'unit-4-complete' };
+  var unitBadgeMap = { 1: 'unit-1-complete', 2: 'unit-2-complete', 3: 'unit-3-complete', 4: 'unit-4-complete', 5: 'unit-5-complete' };
   UNITS.forEach(function (unit) {
     var unitModules = MODULES.filter(function (m) { return m.unit === unit.num; });
     var allDone = unitModules.every(function (m) { return state.completed.includes(m.id); });
