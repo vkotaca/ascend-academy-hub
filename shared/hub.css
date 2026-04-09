@@ -62,6 +62,7 @@ nav {
 }
 
 .nav-logo-text span:last-child {
+  display: block;
   font-size: 11px;
   color: var(--red);
   font-weight: 500;
