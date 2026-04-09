@@ -549,8 +549,19 @@ function handleEmailLogin() {
   sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
     currentUser = res.data.user;
+    // Clear stale name cache, fetch fresh from DB
+    localStorage.removeItem('ascend_user_first');
+    localStorage.removeItem('ascend_profile_cache');
     closeAuthModal();
-    checkProfileAndUpdateUI();
+    // Fetch profile directly and update nav
+    sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(profileRes) {
+      if (profileRes.data) {
+        localStorage.setItem('ascend_user_first', profileRes.data.first_name);
+        localStorage.setItem('ascend_profile_cache', JSON.stringify(profileRes.data));
+        updateNavForUser(profileRes.data);
+        hydrateFromSupabase();
+      }
+    });
   });
 }
 
