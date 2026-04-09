@@ -85,10 +85,12 @@ function checkProfileAndUpdateUI(retries) {
     } catch(e) {}
   }
 
-  // If user has Google metadata (name), use it as fallback while we fetch
-  var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
-  if (googleName && retries === 0) {
-    var fallbackProfile = { id: currentUser.id, first_name: googleName.split(' ')[0] };
+  // Immediately show something in nav while DB fetches
+  if (retries === 0) {
+    var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
+    var savedName = localStorage.getItem('ascend_user_first');
+    var displayName = googleName ? googleName.split(' ')[0] : (savedName || currentUser.email.split('@')[0]);
+    var fallbackProfile = { id: currentUser.id, first_name: displayName };
     updateNavForUser(fallbackProfile);
     closeAuthModal();
   }
