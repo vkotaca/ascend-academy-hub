@@ -537,4 +537,56 @@ body {
   margin-bottom: 8px;
 }
 
+/* Tap-to-place selected state (mobile) */
+.drag-chip.selected {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+  transform: scale(1.02);
+}
+
 .hidden { display: none; }
+
+/* ═══ MOBILE ═══ */
+@media (max-width: 768px) {
+  .topbar { padding: 0 16px; height: 48px; }
+  .topbar-logo { font-size: 13px; gap: 8px; }
+  .topbar-logo-img { height: 24px; }
+  .top-progress-track { width: 100px; }
+
+  .mod-hero { padding: 32px 20px 28px; }
+  .mod-title { font-size: clamp(24px, 6vw, 36px); }
+  .mod-desc { font-size: 13px; }
+
+  .content { padding: 0 16px; }
+  .section { padding: 24px 0; }
+  .section-title { font-size: 20px; }
+  .section-body { font-size: 14px; }
+  .section-body p { margin-bottom: 12px; }
+
+  .callout { padding: 16px; }
+  .callout-label { font-size: 11px; }
+  .callout-text { font-size: 13px; }
+
+  .example-quote { padding: 16px; font-size: 13px; }
+
+  .quiz { padding: 16px; }
+  .quiz-q { font-size: 14px; }
+  .option { font-size: 13px; padding: 12px 14px; }
+  .tf-btn { font-size: 13px; padding: 10px 20px; }
+
+  .drag-chip { font-size: 12px; padding: 8px 12px; }
+  .drag-target { font-size: 12px; padding: 10px 12px; }
+  .drag-target-label { font-size: 11px; }
+
+  .next-btn { font-size: 14px; padding: 14px 24px; }
+  .back-btn { font-size: 14px; padding: 12px 20px; }
+
+  .completion { padding: 32px 20px; }
+  .completion-icon { font-size: 48px; }
+  .completion-title { font-size: 22px; }
+  .completion-sub { font-size: 13px; }
+
+  .components-row { flex-direction: column; }
+  .component-box { min-width: auto; }
+}

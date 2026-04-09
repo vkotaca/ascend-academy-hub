@@ -895,9 +895,58 @@ footer p {
 }
 
 @media (max-width: 768px) {
-  nav, .hero, .main, footer, .promo-section { padding-left: 20px; padding-right: 20px; }
-  .hero-stats { gap: 24px; }
-  .module-grid { grid-template-columns: 1fr; }
+  nav { padding: 0 16px; height: 56px; }
+  .nav-logo-icon { width: 28px; height: 28px; }
+  .nav-logo-text span:first-child { font-size: 14px; }
+  .nav-logo-text span:last-child { font-size: 9px; }
+  .nav-badge-count { font-size: 11px; }
+  .nav-user-name { display: none; }
+
+  .hero { padding: 48px 20px 40px; }
+  .hero-title { font-size: clamp(32px, 8vw, 48px); min-height: 1.8em; }
+  .hero-sub { font-size: 14px; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 24px; }
+
+  .progress-banner { padding: 12px 20px; flex-wrap: wrap; gap: 12px; }
+
+  .main { padding: 32px 20px; }
+  .main-tabs { margin-bottom: 24px; }
+  .main-tab { padding: 10px 16px; font-size: 13px; }
+
+  .badge-section { padding: 20px; margin-bottom: 32px; }
+  .badge-section-title { font-size: 16px; }
+  .badge-item { width: 64px; }
+  .badge-circle { width: 48px; height: 48px; font-size: 20px; }
+  .badge-name { font-size: 9px; }
+
+  .event-tabs { margin-bottom: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .event-tab { padding: 10px 16px; font-size: 12px; white-space: nowrap; }
+
+  .unit { margin-bottom: 32px; }
+  .unit-header { flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .unit-title { font-size: 18px; }
+  .unit-line { display: none; }
+
+  .module-grid { grid-template-columns: 1fr; gap: 12px; }
+  .module-card { padding: 18px; }
+  .module-title { font-size: 15px; }
+  .module-desc { font-size: 12px; }
+
+  .module-panel { border-radius: 16px; }
+  .panel-hero { padding: 24px 20px 20px; border-radius: 16px 16px 0 0; }
+  .panel-title { font-size: 22px; }
+  .panel-desc { font-size: 13px; }
+  .panel-body { padding: 24px 20px; }
+  .panel-lesson-list li { font-size: 13px; gap: 10px; padding: 10px 0; }
+
+  .promo-section { padding: 0 20px 40px; }
+  .promo-header { font-size: 20px; }
   .promo-grid { grid-template-columns: 1fr; }
-  .panel-hero, .panel-body { padding: 28px 24px; }
+  .promo-content { min-height: 260px; padding: 24px; }
+  .promo-title { font-size: 20px; }
+
+  footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+
+  .data-grid { grid-template-columns: 1fr; }
 }

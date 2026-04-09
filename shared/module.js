@@ -97,7 +97,9 @@ function tf(qId, btn, isCorrect) {
   }
 }
 
-// --- Drag and Drop ---
+// --- Drag and Drop (desktop + mobile tap-to-place) ---
+var selectedChip = null;
+
 function dragStart(e) {
   dragData = { val: e.target.dataset.val, text: e.target.textContent, el: e.target };
   e.target.classList.add('dragging');
@@ -126,6 +128,46 @@ function drop(e, qId) {
 
   dragData = null;
 }
+
+// Mobile: tap chip to select, tap target to place
+function tapChip(el) {
+  // Deselect previous
+  document.querySelectorAll('.drag-chip.selected').forEach(function(c) { c.classList.remove('selected'); });
+  selectedChip = { val: el.dataset.val, text: el.textContent, el: el };
+  el.classList.add('selected');
+}
+
+function tapTarget(el, qId) {
+  if (!selectedChip) return;
+
+  var contentEl = el.querySelector('.target-content');
+  contentEl.textContent = selectedChip.text;
+  el.classList.add('filled');
+  el.dataset.placed = selectedChip.val;
+  selectedChip.el.classList.add('dragging');
+  selectedChip.el.classList.remove('selected');
+  selectedChip = null;
+
+  var targets = document.querySelectorAll('#' + qId + '-targets .drag-target');
+  var allFilled = Array.from(targets).every(function (t) { return t.dataset.placed; });
+  if (allFilled) checkDrag(qId, targets);
+}
+
+// Auto-attach tap handlers on touch devices
+document.addEventListener('DOMContentLoaded', function() {
+  if ('ontouchstart' in window) {
+    // Add tap handlers to all drag chips
+    document.querySelectorAll('.drag-chip').forEach(function(chip) {
+      chip.removeAttribute('draggable');
+      chip.addEventListener('click', function() { tapChip(this); });
+    });
+    // Add tap handlers to all drag targets
+    document.querySelectorAll('.drag-target').forEach(function(target) {
+      var qId = target.parentElement.id.replace('-targets', '');
+      target.addEventListener('click', function() { tapTarget(this, qId); });
+    });
+  }
+});
 
 function checkDrag(qId, targets) {
   var allCorrect = true;
