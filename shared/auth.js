@@ -87,9 +87,11 @@ function checkProfileAndUpdateUI(retries) {
 
   // Immediately show something in nav while DB fetches
   if (retries === 0) {
-    var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
     var savedName = localStorage.getItem('ascend_user_first');
-    var displayName = googleName ? googleName.split(' ')[0] : (savedName || currentUser.email.split('@')[0]);
+    var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
+    var cachedProfileName = null;
+    try { cachedProfileName = JSON.parse(localStorage.getItem('ascend_profile_cache') || '{}').first_name; } catch(e) {}
+    var displayName = savedName || cachedProfileName || (googleName ? googleName.split(' ')[0] : null) || currentUser.email.split('@')[0];
     var fallbackProfile = { id: currentUser.id, first_name: displayName };
     updateNavForUser(fallbackProfile);
     closeAuthModal();
