@@ -468,13 +468,15 @@ function handleStudentSignup() {
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
   sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
-    if (res.error) { showAuthError(res.error.message); return; }
-    data.id = res.data.user.id;
+    if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
+    currentUser = res.data.user;
+    data.id = currentUser.id;
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
-    if (res && res.error) { showAuthError(res.error.message); return; }
+    if (res.error) { showAuthError(res.error.message); return; }
     closeAuthModal();
-  });
+    checkProfileAndUpdateUI();
+  }).catch(function() {});
 }
 
 function handleParentSignup() {
@@ -486,13 +488,15 @@ function handleParentSignup() {
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
   sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
-    if (res.error) { showAuthError(res.error.message); return; }
-    data.id = res.data.user.id;
+    if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
+    currentUser = res.data.user;
+    data.id = currentUser.id;
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
-    if (res && res.error) { showAuthError(res.error.message); return; }
+    if (res.error) { showAuthError(res.error.message); return; }
     closeAuthModal();
-  });
+    checkProfileAndUpdateUI();
+  }).catch(function() {});
 }
 
 function handleEducatorSignup() {
@@ -504,13 +508,15 @@ function handleEducatorSignup() {
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
   sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
-    if (res.error) { showAuthError(res.error.message); return; }
-    data.id = res.data.user.id;
+    if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
+    currentUser = res.data.user;
+    data.id = currentUser.id;
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
-    if (res && res.error) { showAuthError(res.error.message); return; }
+    if (res.error) { showAuthError(res.error.message); return; }
     closeAuthModal();
-  });
+    checkProfileAndUpdateUI();
+  }).catch(function() {});
 }
 
 function handleLogout() {
