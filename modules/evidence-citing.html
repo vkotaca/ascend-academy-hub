@@ -50,9 +50,12 @@
       <p>Beyond source quality, two other factors matter: <strong>recency</strong> (2023 data beats 2015 data — conditions change) and <strong>specificity</strong> (exact numbers beat vague claims like "studies show").</p>
     </div>
 
-    <div class="callout">
-      <div class="callout-label">The Credibility Shortcut</div>
-      <div class="callout-text">When in doubt, start your research with the Congressional Budget Office (CBO) and Congressional Research Service (CRS). Both are nonpartisan, highly respected, and specifically analyze legislation — exactly what you need in Congress.</div>
+    <div style="display:flex;gap:20px;align-items:flex-start;background:#f9f9f9;border-radius:12px;padding:24px;margin:0 0 24px;">
+      <img src="../Pictures/Quest Sandel_View 1SA.jpeg" alt="Quest Sandel" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+      <div>
+        <div style="font-size:12px;color:#C8102E;font-weight:600;margin-bottom:6px;">The Credibility Shortcut</div>
+        <div style="font-size:14px;color:#444;line-height:1.6;">When in doubt, start your research with the Congressional Budget Office (CBO) and Congressional Research Service (CRS). Both are nonpartisan, highly respected, and specifically analyze legislation — exactly what you need in Congress.</div>
+      </div>
     </div>
 
     <div class="quiz" id="q1">
@@ -61,10 +64,10 @@
       <div class="drag-area">
         <div class="drag-label">Sources (drag these):</div>
         <div class="drag-source" id="drag-source-1">
-          <div class="drag-chip" draggable="true" data-val="tier4" ondragstart="dragStart(event)">CNN news article</div>
-          <div class="drag-chip" draggable="true" data-val="tier2" ondragstart="dragStart(event)">Congressional Budget Office analysis</div>
-          <div class="drag-chip" draggable="true" data-val="tier3" ondragstart="dragStart(event)">Wall Street Journal investigation</div>
+          <div class="drag-chip" draggable="true" data-val="tier4" ondragstart="dragStart(event)">A Reddit post with 500 upvotes</div>
           <div class="drag-chip" draggable="true" data-val="tier1" ondragstart="dragStart(event)">Brookings Institution policy study</div>
+          <div class="drag-chip" draggable="true" data-val="tier3" ondragstart="dragStart(event)">CNN news article reporting on a study</div>
+          <div class="drag-chip" draggable="true" data-val="tier2" ondragstart="dragStart(event)">Congressional Budget Office analysis</div>
         </div>
         <div class="drag-targets" id="q1-targets">
           <div class="drag-target" data-correct="tier1" ondragover="dragOver(event)" ondrop="drop(event,'q1')"><span class="drag-target-label">Most Credible</span><span class="target-content"></span></div>
@@ -99,7 +102,7 @@
       <div class="quiz-q">Which is the best way to cite evidence during a Congressional Debate speech?</div>
       <div class="options">
         <button class="option" onclick="mc('q2a',this,'wrong')">According to www.cbo.gov/report/59234, the federal deficit will increase by $1.4 trillion</button>
-        <button class="option" onclick="mc('q2a',this,'correct')">The Congressional Budget Office's 2024 analysis projects the federal deficit will increase by $1.4 trillion over the next decade</button>
+        <button class="option" onclick="mc('q2a',this,'correct')">The Congressional Budget Office's March 2024 analysis projects the federal deficit will increase by $1.4 trillion over the next decade</button>
         <button class="option" onclick="mc('q2a',this,'wrong')">Studies show the deficit will increase significantly</button>
         <button class="option" onclick="mc('q2a',this,'wrong')">I found a report online that says the deficit goes up by a lot</button>
       </div>
@@ -124,12 +127,39 @@
     <div class="section-eyebrow">Lesson 3 of 4</div>
     <div class="section-title">Using Evidence Strategically</div>
     <div class="section-body">
-      <p>Evidence is a tool, not a crutch. The most common mistake debaters make is treating evidence as a substitute for reasoning: they cite a statistic and act like the argument is made. <strong>Evidence supports your reasoning — it doesn't replace it.</strong></p>
-      <p>Here's the strategic approach:</p>
-      <p><strong>One strong card is better than three weak ones.</strong> If you have one study from the CBO and three from opinion blogs, use only the CBO study. Stacking weak evidence dilutes your credibility — judges notice when you're padding.</p>
-      <p><strong>Lead with your best evidence.</strong> Place your most powerful statistic or study early in your argument. First impressions matter, and judges are most attentive at the start of your speech. Don't save your best card for the end when attention has waned.</p>
-      <p><strong>Place statistics where they reinforce your warrant.</strong> A warrant is your reasoning — the "why" behind your argument. Statistics should land right after your warrant to prove it: "This bill's job training provision works because it targets industries with documented labor shortages. The Bureau of Labor Statistics reports 1.8 million unfilled positions in skilled trades as of 2024 — exactly the gap this program is designed to close."</p>
-      <p><strong>Never let evidence stand alone.</strong> Always explain what your evidence means for the debate. "The CBO says X" isn't enough. "The CBO says X, which means Y for this bill, because Z" — that's a complete evidentiary argument.</p>
+      <p>Evidence is a tool, not a crutch. <strong>Evidence supports your reasoning — it doesn't replace it.</strong> Here are the four rules:</p>
+    </div>
+
+    <!-- EVIDENCE STRATEGY RULES -->
+    <div style="margin:0 0 24px;">
+      <div style="background:#111;color:#fff;padding:18px 24px;border-radius:12px 12px 0 0;display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:#C8102E;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;">1</div>
+        <div>
+          <div style="font-weight:700;font-size:14px;">One strong card beats three weak ones</div>
+          <div style="font-size:12px;opacity:0.7;margin-top:4px;">One CBO study > three blog posts. Stacking weak evidence dilutes your credibility.</div>
+        </div>
+      </div>
+      <div style="background:#1a1a1a;color:#fff;padding:18px 24px;display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:#C8102E;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;">2</div>
+        <div>
+          <div style="font-weight:700;font-size:14px;">Lead with your best evidence</div>
+          <div style="font-size:12px;opacity:0.7;margin-top:4px;">Judges are most attentive at the start. Don't save your strongest card for the end.</div>
+        </div>
+      </div>
+      <div style="background:#222;color:#fff;padding:18px 24px;display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:#C8102E;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;">3</div>
+        <div>
+          <div style="font-weight:700;font-size:14px;">Place stats where they reinforce your warrant</div>
+          <div style="font-size:12px;opacity:0.7;margin-top:4px;"><em>"This targets industries with labor shortages. BLS reports 1.8M unfilled skilled positions — exactly the gap this program closes."</em></div>
+        </div>
+      </div>
+      <div style="background:#2a2a2a;color:#fff;padding:18px 24px;border-radius:0 0 12px 12px;display:flex;gap:14px;align-items:flex-start;">
+        <div style="background:#D4AF37;color:#111;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;">4</div>
+        <div>
+          <div style="font-weight:700;font-size:14px;color:#D4AF37;">Never let evidence stand alone</div>
+          <div style="font-size:12px;opacity:0.7;margin-top:4px;">"The CBO says X" isn't enough. "The CBO says X, <strong>which means Y for this bill, because Z</strong>" — that's complete.</div>
+        </div>
+      </div>
     </div>
 
     <div class="quiz" id="q3">
@@ -160,9 +190,12 @@
       <p><strong>4. Evidence that doesn't prove the claim.</strong> Sometimes evidence sounds relevant but doesn't actually support the argument being made. "Your study shows that people support this policy in polls, but public opinion doesn't prove the policy will be effective. Those are two different questions."</p>
     </div>
 
-    <div class="callout">
-      <div class="callout-label">The CX Evidence Trap</div>
-      <div class="callout-text">In CX, ask opponents about the date and source of their evidence. Many debaters cite vague "studies" without knowing the actual source. A simple "Can you tell me which study that's from?" often reveals that they don't know — and judges notice.</div>
+    <div style="display:flex;gap:20px;align-items:flex-start;background:#f9f9f9;border-radius:12px;padding:24px;margin:0 0 24px;">
+      <img src="../Pictures/Quest Sandel_View 1SA.jpeg" alt="Quest Sandel" style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+      <div>
+        <div style="font-size:12px;color:#C8102E;font-weight:600;margin-bottom:6px;">The CX Evidence Trap</div>
+        <div style="font-size:14px;color:#444;line-height:1.6;">In CX, ask opponents about the date and source of their evidence. Many debaters cite vague "studies" without knowing the actual source. A simple "Can you tell me which study that's from?" often reveals that they don't know — and judges notice.</div>
+      </div>
     </div>
 
     <div class="quiz" id="q4a">
