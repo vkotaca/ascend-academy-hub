@@ -214,6 +214,10 @@ select.auth-input {
   color: #b91c1c;
   margin-bottom: 12px;
 }
+.auth-error.hidden,
+.auth-success.hidden {
+  display: none;
+}
 
 .auth-submit-btn {
   width: 100%;
