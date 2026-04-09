@@ -548,7 +548,9 @@ function handleEmailLogin() {
 
   sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    currentUser = res.data.user;
     closeAuthModal();
+    checkProfileAndUpdateUI();
   });
 }
 
