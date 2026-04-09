@@ -189,8 +189,8 @@ var MODULES = [
       { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI) \u2014 playing offense by turning the negation\u2019s strongest argument' },
       { icon: '\u2696\uFE0F', text: 'Final crystallization \u2014 telling judges why the affirmation wins the debate' }
     ] },
-  { id: 'unit-3-exam',          unit: 3, num: '3.6', title: 'Unit 3 Exam',                        icon: '\uD83D\uDCDD', duration: '12 min', activities: 15, badge: 'unit-3-complete', exam: true,
-    desc: 'Test your advanced strategy skills \u2014 15 questions on win conditions, finding gaps, refutation, late-round block format, and championship speeches.',
+  { id: 'unit-3-exam',          unit: 3, num: '3.6', title: 'Unit 3 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-3-complete', exam: true,
+    desc: 'Test your mid and late round strategy \u2014 10 questions on win conditions, gaps, refutation, crystallization, and championship speeches.',
     file: 'modules/unit-3-exam.html' },
 
   // ── UNIT 4: Research & Case Preparation (6 modules) ──
@@ -243,8 +243,8 @@ var MODULES = [
       { icon: '\u2694\uFE0F', text: 'Using evidence strategically \u2014 one strong card beats three weak ones' },
       { icon: '\uD83D\uDD2C', text: 'Attacking weak evidence \u2014 outdated, biased, cherry-picked' }
     ] },
-  { id: 'unit-4-exam',          unit: 4, num: '4.6', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-4-complete', exam: true,
-    desc: 'Test your research skills \u2014 15 questions on how to research, building cases, prep habits, aff vs. neg strategy, and evidence quality.',
+  { id: 'unit-4-exam',          unit: 4, num: '4.6', title: 'Unit 4 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-4-complete', exam: true,
+    desc: 'Test your research skills \u2014 10 questions on research strategy, source quality, case building, prep habits, and evidence.',
     file: 'modules/unit-4-exam.html' },
 
   // ── UNIT 5: Performance, Presence & Strategy (9 modules) ──
