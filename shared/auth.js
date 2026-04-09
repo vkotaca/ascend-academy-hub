@@ -107,8 +107,8 @@ function checkProfileAndUpdateUI(retries) {
       closeAuthModal();
     } else if (retries < 8) {
       setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 2000);
-    } else if (!localStorage.getItem('ascend_profile_cache')) {
-      // Only show profile form if we've NEVER seen a profile for this user
+    } else if (!localStorage.getItem('ascend_profile_cache') && !localStorage.getItem('ascend_user_first') && !localStorage.getItem('ascend_learn_state')) {
+      // Only show profile form if zero evidence this user has ever used the platform
       showProfileForm();
     }
   });
