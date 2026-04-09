@@ -558,6 +558,9 @@ function handleStudentSignup() {
   var password = document.getElementById('regPassword').value;
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
+  // Cache name immediately so nav updates instantly after signup
+  localStorage.setItem('ascend_user_first', data.first_name);
+
   sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
     currentUser = res.data.user;
@@ -578,6 +581,8 @@ function handleParentSignup() {
   var password = document.getElementById('regPassword').value;
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
 
+  localStorage.setItem('ascend_user_first', data.first_name);
+
   sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
     currentUser = res.data.user;
@@ -597,6 +602,8 @@ function handleEducatorSignup() {
 
   var password = document.getElementById('regPassword').value;
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+
+  localStorage.setItem('ascend_user_first', data.first_name);
 
   sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
