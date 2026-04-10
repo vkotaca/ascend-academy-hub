@@ -66,64 +66,38 @@ function initAuth() {
 }
 
 // ─── PROFILE CHECK ───
-function checkProfileAndUpdateUI(retries) {
-  if (retries === undefined) retries = 0;
+function checkProfileAndUpdateUI() {
+  // Get name from the BEST available source (no DB query needed for name)
+  var name =
+    localStorage.getItem('ascend_user_first') ||
+    (currentUser.user_metadata && currentUser.user_metadata.first_name) ||
+    (currentUser.user_metadata && currentUser.user_metadata.full_name && currentUser.user_metadata.full_name.split(' ')[0]) ||
+    null;
 
-  // 1. Try localStorage cache (instant, no DB needed)
-  var cached = localStorage.getItem('ascend_profile_cache');
-  if (cached) {
-    try {
-      var cachedProfile = JSON.parse(cached);
-      if (cachedProfile.id === currentUser.id && cachedProfile.first_name) {
-        updateNavForUser(cachedProfile);
-        localStorage.setItem('ascend_user_first', cachedProfile.first_name);
-        hydrateFromSupabase();
-        closeAuthModal();
-        // Refresh from DB in background (silent, no UI flash)
-        sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
-          if (res.data) {
-            localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
-            localStorage.setItem('ascend_user_first', res.data.first_name);
-          }
-        });
-        return;
-      }
-    } catch(e) {}
-  }
-
-  // 2. Try ascend_user_first (set during signup form)
-  var savedName = localStorage.getItem('ascend_user_first');
-  if (savedName && retries === 0) {
-    updateNavForUser({ id: currentUser.id, first_name: savedName });
+  if (name) {
+    localStorage.setItem('ascend_user_first', name);
+    updateNavForUser({ id: currentUser.id, first_name: name });
     closeAuthModal();
-  }
-
-  // 3. Try Google metadata
-  var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
-  if (!savedName && googleName && retries === 0) {
-    updateNavForUser({ id: currentUser.id, first_name: googleName.split(' ')[0] });
-    localStorage.setItem('ascend_user_first', googleName.split(' ')[0]);
-    closeAuthModal();
-  }
-
-  // 4. No cached name at all — show "Account" (NEVER email prefix)
-  if (!savedName && !googleName && retries === 0) {
+  } else {
     updateNavForUser({ id: currentUser.id, first_name: 'Account' });
     closeAuthModal();
   }
 
-  // 5. Fetch from DB — getUser() already validated the token so this should always work
+  // Hydrate progress from DB (separate from name display)
+  hydrateFromSupabase();
+
+  // Background: fetch full profile for cache (updates name if different)
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
     if (res.data) {
       localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
       localStorage.setItem('ascend_user_first', res.data.first_name);
       updateNavForUser(res.data);
-      hydrateFromSupabase();
-      closeAuthModal();
-    } else if (retries < 3) {
-      // Retry a few times in case of network delay
-      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1000);
-    } else if (!localStorage.getItem('ascend_profile_cache') && !localStorage.getItem('ascend_user_first')) {
+      // Also update auth metadata if it's missing
+      if (!currentUser.user_metadata || !currentUser.user_metadata.first_name) {
+        sb.auth.updateUser({ data: { first_name: res.data.first_name } });
+      }
+    } else if (!name) {
+      // No profile AND no name anywhere — genuinely new user
       showProfileForm();
     }
   });
@@ -639,7 +613,7 @@ function handleStudentSignup() {
   // Cache name immediately so nav updates instantly after signup
   localStorage.setItem('ascend_user_first', data.first_name);
 
-  sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
+  sb.auth.signUp({ email: data.email, password: password, options: { data: { first_name: data.first_name } } }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
     currentUser = res.data.user;
     data.id = currentUser.id;
@@ -661,7 +635,7 @@ function handleParentSignup() {
 
   localStorage.setItem('ascend_user_first', data.first_name);
 
-  sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
+  sb.auth.signUp({ email: data.email, password: password, options: { data: { first_name: data.first_name } } }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
     currentUser = res.data.user;
     data.id = currentUser.id;
@@ -683,7 +657,7 @@ function handleEducatorSignup() {
 
   localStorage.setItem('ascend_user_first', data.first_name);
 
-  sb.auth.signUp({ email: data.email, password: password }).then(function(res) {
+  sb.auth.signUp({ email: data.email, password: password, options: { data: { first_name: data.first_name } } }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
     currentUser = res.data.user;
     data.id = currentUser.id;
