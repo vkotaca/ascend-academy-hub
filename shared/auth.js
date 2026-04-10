@@ -14,9 +14,11 @@ var loginInProgress = false;
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  sb.auth.getSession().then(function(res) {
-    if (res.data.session) {
-      currentUser = res.data.session.user;
+  // Use getUser() not getSession() — getUser() validates the token server-side
+  // and ensures the client is fully authenticated before we query the DB
+  sb.auth.getUser().then(function(res) {
+    if (res.data.user) {
+      currentUser = res.data.user;
       // Check if we have pending profile data from a Google signup
       var pending = localStorage.getItem('ascend_pending_profile');
       if (pending) {
@@ -110,7 +112,7 @@ function checkProfileAndUpdateUI(retries) {
     closeAuthModal();
   }
 
-  // 5. Always fetch from DB to get the real name
+  // 5. Fetch from DB — getUser() already validated the token so this should always work
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
     if (res.data) {
       localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
@@ -118,8 +120,9 @@ function checkProfileAndUpdateUI(retries) {
       updateNavForUser(res.data);
       hydrateFromSupabase();
       closeAuthModal();
-    } else if (retries < 8) {
-      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 2000);
+    } else if (retries < 3) {
+      // Retry a few times in case of network delay
+      setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 1000);
     } else if (!localStorage.getItem('ascend_profile_cache') && !localStorage.getItem('ascend_user_first')) {
       showProfileForm();
     }
@@ -607,10 +610,7 @@ function handleEmailLogin() {
   sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
     if (res.error) { loginInProgress = false; showAuthError(res.error.message); return; }
     currentUser = res.data.user;
-    // Wait a beat for the Supabase client to attach the session token
-    return new Promise(function(resolve) { setTimeout(resolve, 500); });
-  }).then(function() {
-    if (!currentUser) return;
+    // signInWithPassword returns a fully authenticated session, query immediately
     return sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle();
   }).then(function(profileRes) {
     loginInProgress = false;
