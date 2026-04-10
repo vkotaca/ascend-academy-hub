@@ -13,7 +13,6 @@ var loginInProgress = false;
 // ─── INIT ───
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  document.body.classList.add('auth-pending');
 
   // Refresh session to get latest user metadata, then init
   sb.auth.refreshSession().then(function() {
