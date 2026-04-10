@@ -266,7 +266,7 @@ function getStudentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number">' +
+    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number (e.g., 555-123-4567)" oninput="formatPhone(this)">' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
@@ -282,7 +282,7 @@ function getStudentForm() {
     '</div>' +
     '<div class="auth-row">' +
       '<input type="email" id="regP1Email" class="auth-input" placeholder="Email">' +
-      '<input type="tel" id="regP1Phone" class="auth-input" placeholder="Phone">' +
+      '<input type="tel" id="regP1Phone" class="auth-input" placeholder="Phone" oninput="formatPhone(this)">' +
     '</div>' +
     '<div id="parent2Section" class="hidden">' +
       '<div class="auth-section-label">Parent / Guardian 2</div>' +
@@ -292,7 +292,7 @@ function getStudentForm() {
       '</div>' +
       '<div class="auth-row">' +
         '<input type="email" id="regP2Email" class="auth-input" placeholder="Email">' +
-        '<input type="tel" id="regP2Phone" class="auth-input" placeholder="Phone">' +
+        '<input type="tel" id="regP2Phone" class="auth-input" placeholder="Phone" oninput="formatPhone(this)">' +
       '</div>' +
     '</div>' +
     '<button class="auth-link-btn" onclick="document.getElementById(\'parent2Section\').classList.toggle(\'hidden\')">+ Add second parent/guardian</button>' +
@@ -315,7 +315,7 @@ function getParentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number">' +
+    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number (e.g., 555-123-4567)" oninput="formatPhone(this)">' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
@@ -340,7 +340,7 @@ function getEducatorForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number">' +
+    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number (e.g., 555-123-4567)" oninput="formatPhone(this)">' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
@@ -385,6 +385,24 @@ function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function formatPhone(input) {
+  var digits = input.value.replace(/\D/g, '');
+  if (digits.length > 10) digits = digits.substring(0, 10);
+  if (digits.length >= 7) {
+    input.value = digits.substring(0,3) + '-' + digits.substring(3,6) + '-' + digits.substring(6);
+  } else if (digits.length >= 4) {
+    input.value = digits.substring(0,3) + '-' + digits.substring(3);
+  } else {
+    input.value = digits;
+  }
+}
+
+function validatePhone(phone) {
+  if (!phone) return true; // optional field
+  var digits = phone.replace(/\D/g, '');
+  return digits.length === 10;
+}
+
 function showAuthError(msg) {
   var el = document.getElementById('authError');
   if (el) { el.textContent = msg; el.classList.remove('hidden'); }
@@ -403,6 +421,8 @@ function collectStudentData() {
 
   if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+  var phone = document.getElementById('regPhone').value.trim();
+  if (phone && !validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   var p1email = document.getElementById('regP1Email').value.trim();
   if (p1email && !validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian 1.'); return null; }
@@ -436,6 +456,8 @@ function collectParentData() {
 
   if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+  var phone = document.getElementById('regPhone').value.trim();
+  if (phone && !validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   return {
     role: 'parent',
@@ -456,6 +478,8 @@ function collectEducatorData() {
 
   if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+  var phone = document.getElementById('regPhone').value.trim();
+  if (phone && !validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   return {
     role: 'educator',
