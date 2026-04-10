@@ -23,7 +23,18 @@ function getUserName() {
 
 function correctPrefix() {
   var name = getUserName();
-  return name ? '\u2713 Great job, ' + name + '! ' : '\u2713 Correct! ';
+  if (!name) return '\u2713 Correct! ';
+  var phrases = [
+    '\u2713 Great job, ' + name + '! ',
+    '\u2713 Nailed it, ' + name + '! ',
+    '\u2713 Exactly right, ' + name + '! ',
+    '\u2713 You got it, ' + name + '! ',
+    '\u2713 Nice work, ' + name + '! ',
+    '\u2713 Spot on, ' + name + '! ',
+    '\u2713 That\'s it, ' + name + '! ',
+    '\u2713 Well done, ' + name + '! '
+  ];
+  return phrases[Math.floor(Math.random() * phrases.length)];
 }
 
 function updateTopProgress() {
