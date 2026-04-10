@@ -116,6 +116,10 @@ function updateNavForGuest() {
 }
 
 function updateNavForUser(profile) {
+  // Close any open dropdown first
+  var oldDropdown = document.getElementById('userDropdown');
+  if (oldDropdown) oldDropdown.classList.add('hidden');
+
   var navRight = document.querySelector('.nav-right');
   var authArea = document.getElementById('navAuthArea');
   if (!authArea) {
@@ -174,6 +178,8 @@ function showAuthModal() {
 function closeAuthModal() {
   var overlay = document.getElementById('authOverlay');
   if (overlay) overlay.classList.remove('open');
+  var dd = document.getElementById('userDropdown');
+  if (dd) dd.classList.add('hidden');
 }
 
 function getSignInHTML() {
