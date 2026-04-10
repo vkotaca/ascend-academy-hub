@@ -246,7 +246,7 @@ function getRoleSelection() {
 }
 
 // ─── DROPDOWNS ───
-var US_STATES = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming','Outside U.S.'];
+var US_STATES = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','U.S. Virgin Islands','Utah','Vermont','Virginia','Washington','Washington, D.C.','West Virginia','Wisconsin','Wyoming','Outside U.S.'];
 var GRADES = ['12th','11th','10th','9th','8th','7th','6th','5th','4th','Other'];
 
 function stateOptions() {
@@ -276,23 +276,23 @@ function getStudentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
-      '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
+      '<input type="text" id="regSchool" class="auth-input" placeholder="School *">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
     '<div class="auth-row">' +
       '<select id="regGrade" class="auth-input">' + gradeOptions() + '</select>' +
-      '<label class="auth-checkbox"><input type="checkbox" id="regLeader"> Team leadership?</label>' +
+      '<label class="auth-checkbox"><input type="checkbox" id="regLeader"> Are you a member of your team\'s leadership?</label>' +
     '</div>' +
-    '<div class="auth-section-label">Parent / Guardian 1</div>' +
+    '<div class="auth-section-label">Parent / Guardian</div>' +
     '<div class="auth-row">' +
-      '<input type="text" id="regP1First" class="auth-input" placeholder="First name">' +
-      '<input type="text" id="regP1Last" class="auth-input" placeholder="Last name">' +
+      '<input type="text" id="regP1First" class="auth-input" placeholder="First name *">' +
+      '<input type="text" id="regP1Last" class="auth-input" placeholder="Last name *">' +
     '</div>' +
     '<div class="auth-row">' +
-      '<input type="email" id="regP1Email" class="auth-input" placeholder="Email">' +
-      '<input type="tel" id="regP1Phone" class="auth-input" placeholder="Phone" oninput="formatPhone(this)">' +
+      '<input type="email" id="regP1Email" class="auth-input" placeholder="Email *">' +
+      '<input type="tel" id="regP1Phone" class="auth-input" placeholder="Phone *" oninput="formatPhone(this)">' +
     '</div>' +
     '<div id="parent2Section" class="hidden">' +
       '<div class="auth-section-label">Parent / Guardian 2</div>' +
@@ -325,9 +325,9 @@ function getParentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
-      '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school">' +
+      '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school *">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
     '<select id="regStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
@@ -350,9 +350,9 @@ function getEducatorForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
-      '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
+      '<input type="text" id="regSchool" class="auth-input" placeholder="School *">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
     '<label class="auth-checkbox"><input type="checkbox" id="regSupport"> I\'m interested in exploring ways Ascend can support my team</label>' +
@@ -407,8 +407,8 @@ function formatPhone(input) {
   }
 }
 
-function validatePhone(phone) {
-  if (!phone) return true; // optional field
+function validatePhone(phone, optional) {
+  if (!phone) return optional ? true : false;
   var digits = phone.replace(/\D/g, '');
   return digits.length === 10;
 }
@@ -442,9 +442,9 @@ function collectStudentData() {
     showAuthError('Please fill in all required fields.'); return null;
   }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
-  if (!validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
-  if (!validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian 1.'); return null; }
-  if (!validatePhone(p1phone)) { showAuthError('Please enter a valid phone for Parent/Guardian 1.'); return null; }
+  if (!validatePhone(phone, false)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
+  if (!validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian.'); return null; }
+  if (!validatePhone(p1phone, false)) { showAuthError('Please enter a valid phone for Parent/Guardian.'); return null; }
 
   var p2email = document.getElementById('regP2Email') ? document.getElementById('regP2Email').value.trim() : '';
   if (p2email && !validateEmail(p2email)) { showAuthError('Please enter a valid email for Parent/Guardian 2.'); return null; }
@@ -482,7 +482,7 @@ function collectParentData() {
     showAuthError('Please fill in all required fields.'); return null;
   }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
-  if (!validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
+  if (!validatePhone(phone, false)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   return {
     role: 'parent',
@@ -508,7 +508,7 @@ function collectEducatorData() {
     showAuthError('Please fill in all required fields.'); return null;
   }
   if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
-  if (!validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
+  if (!validatePhone(phone, false)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   return {
     role: 'educator',
@@ -854,7 +854,7 @@ function getEditProfileHTML() {
         '<select id="editState" class="auth-input">' + stateOptions() + '</select>' +
       '</div>' +
       (p.role === 'student' ? '<select id="editGrade" class="auth-input">' + gradeOptions() + '</select>' +
-        '<label class="auth-checkbox"><input type="checkbox" id="editLeader"' + (p.is_team_leader ? ' checked' : '') + '> Team leadership?</label>' +
+        '<label class="auth-checkbox"><input type="checkbox" id="editLeader"' + (p.is_team_leader ? ' checked' : '') + '> Are you a member of your team\'s leadership?</label>' +
         '<div class="auth-section-label">Parent / Guardian 1</div>' +
         '<div class="auth-row">' +
           '<input type="text" id="editP1First" class="auth-input" placeholder="First name" value="' + (p.parent1_first || '') + '">' +

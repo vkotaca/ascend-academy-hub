@@ -1046,6 +1046,7 @@ body.dark-mode {
 }
 body.dark-mode nav { background: #111; border-bottom-color: var(--red); }
 body.dark-mode .hero { background-color: #0a0a0a; }
+body.dark-mode .hero-title, body.dark-mode .hero-title span { color: #ffffff !important; }
 body.dark-mode .module-card { background: #151515; border-color: #2a2a2a; }
 body.dark-mode .module-card:hover { border-color: var(--red); box-shadow: 0 8px 24px rgba(200,16,46,0.15); }
 body.dark-mode .module-card.completed { background: #0f1f14; border-color: #1a3d24; }
