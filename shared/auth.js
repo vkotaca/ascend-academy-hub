@@ -13,6 +13,7 @@ var loginInProgress = false;
 // ─── INIT ───
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  document.body.classList.add('auth-pending');
 
   // Refresh session to get latest user metadata, then init
   sb.auth.refreshSession().then(function() {
@@ -77,6 +78,8 @@ function checkProfileAndUpdateUI() {
   localStorage.setItem('ascend_user_first', name);
   updateNavForUser({ id: currentUser.id, first_name: name });
   closeAuthModal();
+  document.body.classList.remove('auth-pending');
+  document.body.classList.add('auth-ready');
 
   // Hydrate progress from DB (separate from name display)
   hydrateFromSupabase();
@@ -107,6 +110,8 @@ function updateNavForGuest() {
     navRight.appendChild(authArea);
   }
   authArea.innerHTML = '<button class="nav-auth-btn" onclick="showAuthModal()">Sign In</button>';
+  document.body.classList.remove('auth-pending');
+  document.body.classList.add('auth-ready');
 }
 
 function updateNavForUser(profile) {

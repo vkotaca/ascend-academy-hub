@@ -890,6 +890,22 @@ footer p {
 .panel-cta:hover { background: var(--red-dark); }
 
 /* TOAST */
+/* AUTH LOADING STATE */
+.auth-pending .progress-banner,
+.auth-pending .badge-section,
+.auth-pending #continueCard,
+.auth-pending #navAuthArea {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.auth-ready .progress-banner,
+.auth-ready .badge-section,
+.auth-ready #continueCard,
+.auth-ready #navAuthArea {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
