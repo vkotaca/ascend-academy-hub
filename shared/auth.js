@@ -126,8 +126,17 @@ function updateNavForUser(profile) {
   var name = profile.first_name || currentUser.email;
   authArea.innerHTML =
     '<div class="nav-user">' +
-      '<span class="nav-user-name">' + name + '</span>' +
-      '<button class="nav-auth-btn nav-logout" onclick="handleLogout()">Log Out</button>' +
+      '<div class="nav-user-menu-wrap">' +
+        '<span class="nav-user-name" onclick="toggleUserMenu()">' + name + ' ▾</span>' +
+        '<div class="nav-user-dropdown hidden" id="userDropdown">' +
+          '<button onclick="showSettingsModal(\'profile\')">Edit Profile</button>' +
+          '<button onclick="showSettingsModal(\'password\')">Change Password</button>' +
+          '<button onclick="showSettingsModal(\'reset\')">Reset Progress</button>' +
+          '<button onclick="toggleDarkModeFromMenu()">Dark Mode</button>' +
+          '<hr>' +
+          '<button onclick="handleLogout()">Log Out</button>' +
+        '</div>' +
+      '</div>' +
     '</div>';
 
   // Personalize UI (skip if fallback name)
@@ -718,6 +727,211 @@ function syncBadgeToSupabase(badgeId) {
     user_id: currentUser.id,
     badge_id: badgeId
   }, { onConflict: 'user_id,badge_id' });
+}
+
+// ─── USER DROPDOWN MENU ───
+function toggleUserMenu() {
+  var dd = document.getElementById('userDropdown');
+  if (dd) dd.classList.toggle('hidden');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('userDropdown');
+  if (dd && !dd.classList.contains('hidden') && !e.target.closest('.nav-user-menu-wrap')) {
+    dd.classList.add('hidden');
+  }
+});
+
+function toggleDarkModeFromMenu() {
+  document.body.classList.toggle('dark-mode');
+  var isDark = document.body.classList.contains('dark-mode');
+  localStorage.setItem('ascend_dark_mode', isDark);
+  var btn = document.querySelector('.dark-toggle');
+  if (btn) btn.innerHTML = isDark ? '☀️' : '🌙';
+  toggleUserMenu();
+}
+
+// ─── SETTINGS MODAL ───
+function showSettingsModal(tab) {
+  toggleUserMenu();
+  var overlay = document.getElementById('authOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'authOverlay';
+    overlay.className = 'auth-overlay';
+    overlay.onclick = function(e) { if (e.target === overlay) closeAuthModal(); };
+    document.body.appendChild(overlay);
+  }
+
+  if (tab === 'profile') overlay.innerHTML = getEditProfileHTML();
+  else if (tab === 'password') overlay.innerHTML = getChangePasswordHTML();
+  else if (tab === 'reset') overlay.innerHTML = getResetProgressHTML();
+
+  overlay.classList.add('open');
+}
+
+function getEditProfileHTML() {
+  // Fetch current profile to populate
+  var cached = localStorage.getItem('ascend_profile_cache');
+  var p = cached ? JSON.parse(cached) : {};
+
+  return '<div class="auth-panel">' +
+    '<button class="auth-close" onclick="closeAuthModal()">&times;</button>' +
+    '<div class="auth-header">' +
+      '<div class="auth-title">Edit Profile</div>' +
+      '<div class="auth-subtitle">Update your information</div>' +
+    '</div>' +
+    '<div class="auth-form" style="padding:24px 32px 32px;">' +
+      '<div class="auth-row">' +
+        '<input type="text" id="editFirst" class="auth-input" placeholder="First name" value="' + (p.first_name || '') + '">' +
+        '<input type="text" id="editLast" class="auth-input" placeholder="Last name" value="' + (p.last_name || '') + '">' +
+      '</div>' +
+      '<input type="tel" id="editPhone" class="auth-input" placeholder="Phone" value="' + (p.phone || '') + '">' +
+      '<div class="auth-row">' +
+        '<input type="text" id="editSchool" class="auth-input" placeholder="School" value="' + (p.school || '') + '">' +
+        '<select id="editState" class="auth-input">' + stateOptions() + '</select>' +
+      '</div>' +
+      (p.role === 'student' ? '<select id="editGrade" class="auth-input">' + gradeOptions() + '</select>' +
+        '<label class="auth-checkbox"><input type="checkbox" id="editLeader"' + (p.is_team_leader ? ' checked' : '') + '> Team leadership?</label>' +
+        '<div class="auth-section-label">Parent / Guardian 1</div>' +
+        '<div class="auth-row">' +
+          '<input type="text" id="editP1First" class="auth-input" placeholder="First name" value="' + (p.parent1_first || '') + '">' +
+          '<input type="text" id="editP1Last" class="auth-input" placeholder="Last name" value="' + (p.parent1_last || '') + '">' +
+        '</div>' +
+        '<div class="auth-row">' +
+          '<input type="email" id="editP1Email" class="auth-input" placeholder="Email" value="' + (p.parent1_email || '') + '">' +
+          '<input type="tel" id="editP1Phone" class="auth-input" placeholder="Phone" value="' + (p.parent1_phone || '') + '">' +
+        '</div>' +
+        '<label class="auth-checkbox"><input type="checkbox" id="editCamps"' + (p.interested_camps ? ' checked' : '') + '> Interested in Ascend summer camps</label>'
+      : '') +
+      (p.role === 'parent' ? '<select id="editStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
+        '<label class="auth-checkbox"><input type="checkbox" id="editCamps"' + (p.interested_camps ? ' checked' : '') + '> Interested in Ascend summer camps</label>'
+      : '') +
+      (p.role === 'educator' ? '<label class="auth-checkbox"><input type="checkbox" id="editSupport"' + (p.interested_ascend_support ? ' checked' : '') + '> Interested in Ascend team support</label>'
+      : '') +
+      '<div class="auth-error hidden" id="authError"></div>' +
+      '<div class="auth-success hidden" id="authSuccess"></div>' +
+      '<button class="auth-submit-btn" onclick="saveProfile()">Save Changes</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function saveProfile() {
+  clearAuthError();
+  var first = document.getElementById('editFirst').value.trim();
+  var last = document.getElementById('editLast').value.trim();
+  if (!first || !last) { showAuthError('Name is required.'); return; }
+
+  var updates = {
+    first_name: first,
+    last_name: last,
+    phone: document.getElementById('editPhone').value.trim(),
+    school: document.getElementById('editSchool').value.trim(),
+    state: document.getElementById('editState').value
+  };
+
+  // Student fields
+  if (document.getElementById('editGrade')) updates.grade = document.getElementById('editGrade').value;
+  if (document.getElementById('editLeader')) updates.is_team_leader = document.getElementById('editLeader').checked;
+  if (document.getElementById('editP1First')) {
+    updates.parent1_first = document.getElementById('editP1First').value.trim();
+    updates.parent1_last = document.getElementById('editP1Last').value.trim();
+    updates.parent1_email = document.getElementById('editP1Email').value.trim();
+    updates.parent1_phone = document.getElementById('editP1Phone').value.trim();
+  }
+  // Camp interest
+  if (document.getElementById('editCamps')) updates.interested_camps = document.getElementById('editCamps').checked;
+  // Parent student grade
+  if (document.getElementById('editStudentGrade')) updates.student_grade = document.getElementById('editStudentGrade').value;
+  // Educator support
+  if (document.getElementById('editSupport')) updates.interested_ascend_support = document.getElementById('editSupport').checked;
+
+  sb.from('hub_profiles').update(updates).eq('id', currentUser.id).then(function(res) {
+    if (res.error) { showAuthError(res.error.message); return; }
+    // Update caches
+    localStorage.setItem('ascend_user_first', first);
+    sb.auth.updateUser({ data: { first_name: first } });
+    var cached = localStorage.getItem('ascend_profile_cache');
+    if (cached) {
+      var profile = JSON.parse(cached);
+      Object.assign(profile, updates);
+      localStorage.setItem('ascend_profile_cache', JSON.stringify(profile));
+    }
+    updateNavForUser({ id: currentUser.id, first_name: first });
+    var el = document.getElementById('authSuccess');
+    if (el) { el.textContent = 'Profile updated!'; el.classList.remove('hidden'); }
+  });
+}
+
+function getChangePasswordHTML() {
+  return '<div class="auth-panel">' +
+    '<button class="auth-close" onclick="closeAuthModal()">&times;</button>' +
+    '<div class="auth-header">' +
+      '<div class="auth-title">Change Password</div>' +
+      '<div class="auth-subtitle">Enter your new password</div>' +
+    '</div>' +
+    '<div class="auth-form" style="padding:24px 32px 32px;">' +
+      '<input type="password" id="newPassword" class="auth-input" placeholder="New password (min 6 characters)">' +
+      '<input type="password" id="confirmPassword" class="auth-input" placeholder="Confirm new password">' +
+      '<div class="auth-error hidden" id="authError"></div>' +
+      '<div class="auth-success hidden" id="authSuccess"></div>' +
+      '<button class="auth-submit-btn" onclick="changePassword()">Update Password</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function changePassword() {
+  clearAuthError();
+  var pw = document.getElementById('newPassword').value;
+  var confirm = document.getElementById('confirmPassword').value;
+  if (!pw || pw.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+  if (pw !== confirm) { showAuthError('Passwords do not match.'); return; }
+
+  sb.auth.updateUser({ password: pw }).then(function(res) {
+    if (res.error) { showAuthError(res.error.message); return; }
+    var el = document.getElementById('authSuccess');
+    if (el) { el.textContent = 'Password updated!'; el.classList.remove('hidden'); }
+  });
+}
+
+function getResetProgressHTML() {
+  return '<div class="auth-panel">' +
+    '<button class="auth-close" onclick="closeAuthModal()">&times;</button>' +
+    '<div class="auth-header">' +
+      '<div class="auth-title">Reset Progress</div>' +
+      '<div class="auth-subtitle">This will erase all completed modules and badges</div>' +
+    '</div>' +
+    '<div class="auth-form" style="padding:24px 32px 32px; text-align:center;">' +
+      '<p style="font-size:14px;color:#666;margin-bottom:20px;">Are you sure? This action cannot be undone. All your completed modules and earned badges will be reset to zero.</p>' +
+      '<div class="auth-error hidden" id="authError"></div>' +
+      '<div class="auth-success hidden" id="authSuccess"></div>' +
+      '<button class="auth-submit-btn" style="background:#b91c1c;" onclick="resetProgress()">Yes, Reset Everything</button>' +
+      '<button class="auth-back-btn" onclick="closeAuthModal()">Cancel</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function resetProgress() {
+  Promise.all([
+    sb.from('hub_progress').delete().eq('user_id', currentUser.id),
+    sb.from('hub_badges').delete().eq('user_id', currentUser.id)
+  ]).then(function(results) {
+    if (results[0].error || results[1].error) {
+      showAuthError('Failed to reset. Try again.');
+      return;
+    }
+    state.completed = [];
+    state.badges = [];
+    saveState();
+    renderModuleCards();
+    renderBadgeShelf();
+    updateProgress();
+    if (typeof renderContinueCard === 'function') renderContinueCard();
+    if (typeof renderUnitProgressRings === 'function') renderUnitProgressRings();
+    var el = document.getElementById('authSuccess');
+    if (el) { el.textContent = 'Progress reset! Starting fresh.'; el.classList.remove('hidden'); }
+  });
 }
 
 // ─── MODULE GATE ───

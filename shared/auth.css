@@ -335,6 +335,61 @@ select.auth-input {
   color: #333;
 }
 
+/* ═══ USER DROPDOWN MENU ═══ */
+.nav-user-menu-wrap {
+  position: relative;
+}
+.nav-user-name {
+  cursor: pointer;
+  user-select: none;
+}
+.nav-user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #fff;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 200px;
+  z-index: 200;
+  overflow: hidden;
+}
+.nav-user-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s;
+}
+.nav-user-dropdown button:hover {
+  background: #f4f4f4;
+}
+.nav-user-dropdown hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 0;
+}
+
+body.dark-mode .nav-user-dropdown {
+  background: #1a1a1a;
+  border-color: #333;
+}
+body.dark-mode .nav-user-dropdown button {
+  color: #ccc;
+}
+body.dark-mode .nav-user-dropdown button:hover {
+  background: #222;
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 540px) {
   .auth-panel { max-width: 100%; border-radius: 16px; }
