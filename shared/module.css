@@ -551,7 +551,7 @@ body {
 @media (max-width: 768px) {
   .topbar { padding: 0 16px; height: 48px; }
   .topbar-logo { font-size: 13px; gap: 8px; }
-  .topbar-logo-img { height: 24px; }
+  .topbar-logo-img { height: 28px; }
   .top-progress-track { width: 100px; }
 
   .mod-hero { padding: 32px 20px 28px; }

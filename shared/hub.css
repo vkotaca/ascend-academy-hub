@@ -898,7 +898,7 @@ footer p {
 @media (max-width: 768px) {
   nav { padding: 0 12px; height: 52px; }
   .nav-logo { gap: 8px; }
-  .nav-logo-icon { width: 28px; height: 28px; }
+  .nav-logo-icon { width: 36px; height: 36px; }
   .nav-logo-text span:first-child { font-size: 13px; }
   .nav-logo-text span:last-child { display: none; }
   .nav-badge-count { display: none; }
@@ -906,7 +906,7 @@ footer p {
   .nav-auth-btn { padding: 6px 14px; font-size: 12px; }
 
   .hero { padding: 48px 20px 40px; }
-  .hero-title { font-size: clamp(32px, 8vw, 48px); min-height: 1.8em; }
+  .hero-title { font-size: clamp(32px, 8vw, 48px); min-height: 2.4em; }
   .hero-sub { font-size: 14px; }
   .hero-stats { gap: 20px; flex-wrap: wrap; }
   .hero-stat-num { font-size: 24px; }
