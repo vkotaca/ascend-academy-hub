@@ -1,0 +1,21 @@
+{
+  "name": "Ascend Academy Learning Platform",
+  "short_name": "Ascend Academy",
+  "description": "Master competitive debate with Ascend Academy's free learning platform.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#C8102E",
+  "icons": [
+    {
+      "src": "Pictures/compressed_image.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "Pictures/compressed_image.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -137,6 +137,7 @@ function updateNavForUser(profile) {
           '<button onclick="showSettingsModal(\'password\')">Change Password</button>' +
           '<button onclick="showSettingsModal(\'reset\')">Reset Progress</button>' +
           '<button onclick="toggleDarkModeFromMenu()">Dark Mode</button>' +
+          (('ontouchstart' in window) ? '<button onclick="showInstallInstructions()">Add to Home Screen</button>' : '') +
           '<hr>' +
           '<button onclick="handleLogout()">Log Out</button>' +
         '</div>' +
@@ -733,6 +734,60 @@ function syncBadgeToSupabase(badgeId) {
     user_id: currentUser.id,
     badge_id: badgeId
   }, { onConflict: 'user_id,badge_id' });
+}
+
+// ─── ADD TO HOME SCREEN ───
+var deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+});
+
+function showInstallInstructions() {
+  toggleUserMenu();
+
+  // Android: use native install prompt if available
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt = null;
+    return;
+  }
+
+  // iOS/fallback: show instructions modal
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  var overlay = document.getElementById('authOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'authOverlay';
+    overlay.className = 'auth-overlay';
+    overlay.onclick = function(e) { if (e.target === overlay) closeAuthModal(); };
+    document.body.appendChild(overlay);
+  }
+
+  var instructions = isIOS
+    ? '<p style="font-size:14px;color:#666;line-height:1.8;text-align:left;">' +
+        '<strong>1.</strong> Tap the <strong>Share</strong> button (the square with an arrow) at the bottom of Safari<br>' +
+        '<strong>2.</strong> Scroll down and tap <strong>"Add to Home Screen"</strong><br>' +
+        '<strong>3.</strong> Tap <strong>"Add"</strong> in the top right' +
+      '</p>'
+    : '<p style="font-size:14px;color:#666;line-height:1.8;text-align:left;">' +
+        '<strong>1.</strong> Tap the <strong>⋮ menu</strong> (three dots) in your browser<br>' +
+        '<strong>2.</strong> Tap <strong>"Add to Home Screen"</strong> or <strong>"Install App"</strong><br>' +
+        '<strong>3.</strong> Tap <strong>"Add"</strong> to confirm' +
+      '</p>';
+
+  overlay.innerHTML = '<div class="auth-panel">' +
+    '<button class="auth-close" onclick="closeAuthModal()">&times;</button>' +
+    '<div class="auth-header">' +
+      '<img src="Pictures/compressed_image.jpg" alt="Ascend" class="auth-logo">' +
+      '<div class="auth-title">Add to Home Screen</div>' +
+      '<div class="auth-subtitle">Access Ascend Academy like a native app</div>' +
+    '</div>' +
+    '<div style="padding:20px 32px 32px;">' +
+      instructions +
+    '</div>' +
+  '</div>';
+  overlay.classList.add('open');
 }
 
 // ─── USER DROPDOWN MENU ───
