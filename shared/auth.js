@@ -67,21 +67,15 @@ function initAuth() {
 
 // ─── PROFILE CHECK ───
 function checkProfileAndUpdateUI() {
-  // Get name from the BEST available source (no DB query needed for name)
+  // Get name from auth metadata (always set during signup or backfilled)
   var name =
     localStorage.getItem('ascend_user_first') ||
     (currentUser.user_metadata && currentUser.user_metadata.first_name) ||
-    (currentUser.user_metadata && currentUser.user_metadata.full_name && currentUser.user_metadata.full_name.split(' ')[0]) ||
-    null;
+    (currentUser.user_metadata && currentUser.user_metadata.full_name && currentUser.user_metadata.full_name.split(' ')[0]);
 
-  if (name) {
-    localStorage.setItem('ascend_user_first', name);
-    updateNavForUser({ id: currentUser.id, first_name: name });
-    closeAuthModal();
-  } else {
-    updateNavForUser({ id: currentUser.id, first_name: 'Your' });
-    closeAuthModal();
-  }
+  localStorage.setItem('ascend_user_first', name);
+  updateNavForUser({ id: currentUser.id, first_name: name });
+  closeAuthModal();
 
   // Hydrate progress from DB (separate from name display)
   hydrateFromSupabase();
