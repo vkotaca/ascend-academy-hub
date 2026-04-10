@@ -79,7 +79,7 @@ function checkProfileAndUpdateUI() {
     updateNavForUser({ id: currentUser.id, first_name: name });
     closeAuthModal();
   } else {
-    updateNavForUser({ id: currentUser.id, first_name: 'Account' });
+    updateNavForUser({ id: currentUser.id, first_name: 'Your' });
     closeAuthModal();
   }
 
@@ -130,16 +130,22 @@ function updateNavForUser(profile) {
       '<button class="nav-auth-btn nav-logout" onclick="handleLogout()">Log Out</button>' +
     '</div>';
 
-  // Personalize UI
+  // Personalize UI (skip if fallback name)
   var badgeTitle = document.querySelector('.badge-section-title');
-  if (badgeTitle) badgeTitle.textContent = '🏅 ' + name + "'s Badges";
   var progressLabel = document.querySelector('.progress-label');
-  if (progressLabel) progressLabel.textContent = name + "'s Progress";
-  // Store name for module pages
-  localStorage.setItem('ascend_user_first', name);
+  if (name && name !== 'Your') {
+    if (badgeTitle) badgeTitle.textContent = '🏅 ' + name + "'s Badges";
+    if (progressLabel) progressLabel.textContent = name + "'s Progress";
+    localStorage.setItem('ascend_user_first', name);
+  } else {
+    if (badgeTitle) badgeTitle.textContent = '🏅 Your Badges';
+    if (progressLabel) progressLabel.textContent = 'Your Progress';
+  }
   // Personalize homepage promo header
   var homePromo = document.getElementById('homePromoHeader');
-  if (homePromo) homePromo.textContent = name + ', are you ready to take the next step?';
+  if (homePromo && name && name !== 'Your') {
+    homePromo.textContent = name + ', are you ready to take the next step?';
+  }
 }
 
 // ─── AUTH MODAL ───
@@ -596,7 +602,7 @@ function handleEmailLogin() {
       hydrateFromSupabase();
     } else {
       // No profile found after login. Show "Account" not email prefix.
-      updateNavForUser({ id: currentUser.id, first_name: 'Account' });
+      updateNavForUser({ id: currentUser.id, first_name: 'Your' });
     }
     closeAuthModal();
   });
