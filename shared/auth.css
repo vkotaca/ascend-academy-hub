@@ -343,6 +343,9 @@ select.auth-input {
   cursor: pointer;
   user-select: none;
 }
+.nav-user-dropdown.hidden {
+  display: none !important;
+}
 .nav-user-dropdown {
   position: absolute;
   top: 100%;

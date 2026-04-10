@@ -1077,7 +1077,8 @@ body.dark-mode .footer-logo img {
   .nav-logo-text span:first-child { font-size: 13px; }
   .nav-logo-text span:last-child { display: none; }
   .nav-badge-count { display: none; }
-  .nav-user-name { display: none; }
+  .nav-user-name { font-size: 0; }
+  .nav-user-name::before { content: '⚙️'; font-size: 18px; }
   .nav-auth-btn { padding: 6px 14px; font-size: 12px; }
 
   .hero { padding: 48px 20px 40px; }
