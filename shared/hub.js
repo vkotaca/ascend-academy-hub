@@ -76,7 +76,7 @@ var MODULES = [
     file: 'modules/unit-1-exam.html' },
 
   // ── UNIT 2: Building Arguments (6 modules) ──
-  { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: null,
+  { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: 'argument-builder',
     desc: 'Every argument has four parts: Claim, Warrant, Evidence, and Impact. Master CWEI and you\u2019ll have the foundation for everything that follows.',
     file: 'modules/anatomy-of-argument.html',
     lessons: [
@@ -237,7 +237,7 @@ var MODULES = [
     file: 'modules/unit-4-exam.html' },
 
   // ── UNIT 5: Performance, Presence & Strategy (9 modules) ──
-  { id: 'rhetoric-intros',      unit: 5, num: '5.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: null,
+  { id: 'rhetoric-intros',      unit: 5, num: '5.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: 'rhetorician',
     desc: 'How to turn arguments into stories judges remember. Writing rhetoric within blocks, crafting intros, tying conclusions, and finding your voice on paper.',
     file: 'modules/rhetoric-intros.html',
     lessons: [
@@ -248,7 +248,7 @@ var MODULES = [
       { icon: '\uD83D\uDD17', text: 'Conclusions \u2014 tying back to your theme and stakeholders' },
       { icon: '\uD83D\uDD25', text: 'Finding your voice \u2014 quantity first, quality second; experiment then refine' }
     ] },
-  { id: 'voice-delivery',       unit: 5, num: '5.2', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 5, badge: 'presence',
+  { id: 'voice-delivery',       unit: 5, num: '5.2', title: 'Voice & Delivery',                   icon: '\uD83C\uDFA4', duration: '20 min', activities: 5, badge: 'voice-master',
     desc: 'Finding your voice, base tone, fluctuation, speed, and passion \u2014 how to sound like yourself, not a debate robot.',
     file: 'modules/voice-delivery.html',
     lessons: [
@@ -297,7 +297,7 @@ var MODULES = [
       { icon: '\uD83D\uDCCA', text: 'Learning from bare ballots \u2014 patterns across rounds' },
       { icon: '\uD83D\uDD04', text: 'The improvement loop \u2014 one fix per tournament cycle' }
     ] },
-  { id: 'cx-strategy',          unit: 5, num: '5.7', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'strategist',
+  { id: 'cx-strategy',          unit: 5, num: '5.7', title: 'Cross-Examination Strategy',         icon: '\u2753',       duration: '20 min', activities: 5, badge: 'cx-master',
     desc: 'How to ask questions that expose weaknesses, how to handle hostile questioning, and how to use CX to set up your next speech.',
     file: 'modules/cx-strategy.html',
     lessons: [
@@ -332,13 +332,15 @@ var UNITS = [
 var BADGES = [
   { id: 'first-step',        emoji: '\uD83D\uDE80', name: 'First Step' },
   { id: 'presiding-officer', emoji: '\u2696\uFE0F', name: 'PO Expert' },
+  { id: 'argument-builder',  emoji: '\uD83D\uDCA1', name: 'Argument Builder' },
   { id: 'block-master',      emoji: '\uD83E\uDDF1', name: 'Block Master' },
   { id: 'researcher',        emoji: '\uD83D\uDD0D', name: 'Researcher' },
-  { id: 'presence',          emoji: '\uD83C\uDFA4', name: 'Presence' },
-  { id: 'strategist',        emoji: '\u265F\uFE0F', name: 'Strategist' },
+  { id: 'rhetorician',       emoji: '\u270D\uFE0F', name: 'Rhetorician' },
+  { id: 'voice-master',      emoji: '\uD83C\uDFA4', name: 'Voice Master' },
+  { id: 'cx-master',         emoji: '\u2753', name: 'CX Master' },
   { id: 'unit-1-complete',   emoji: '\uD83C\uDFDB\uFE0F', name: 'Foundations' },
   { id: 'unit-2-complete',   emoji: '\u2694\uFE0F', name: 'Argument Architect' },
-  { id: 'unit-3-complete',   emoji: '\uD83C\uDFAF', name: 'Advanced Strategist' },
+  { id: 'unit-3-complete',   emoji: '\uD83C\uDFAF', name: 'Round Strategist' },
   { id: 'unit-4-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine' },
   { id: 'unit-5-complete',   emoji: '\uD83C\uDFAD', name: 'Performer' },
   { id: 'halfway',           emoji: '\uD83D\uDD25', name: 'Halfway There' },
