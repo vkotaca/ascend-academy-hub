@@ -266,7 +266,7 @@ function getStudentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number (e.g., 555-123-4567)" oninput="formatPhone(this)">' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
@@ -315,7 +315,7 @@ function getParentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number (e.g., 555-123-4567)" oninput="formatPhone(this)">' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
@@ -340,7 +340,7 @@ function getEducatorForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<input type="tel" id="regPhone" class="auth-input" placeholder="Phone number (e.g., 555-123-4567)" oninput="formatPhone(this)">' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +

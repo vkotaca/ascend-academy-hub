@@ -214,6 +214,17 @@ select.auth-input {
   color: #b91c1c;
   margin-bottom: 12px;
 }
+.auth-phone-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.auth-phone-row .auth-input { margin-bottom: 0; }
+.auth-country-code {
+  width: 100px;
+  flex-shrink: 0;
+}
+
 .auth-error.hidden,
 .auth-success.hidden {
   display: none;
