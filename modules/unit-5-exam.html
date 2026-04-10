@@ -98,7 +98,7 @@
       <div class="quiz-q">The "speaker diamond" refers to:</div>
       <div class="options">
         <button class="option" onclick="mc('q4',this,'wrong')">A rare badge awarded to speakers who win four consecutive tournaments</button>
-        <button class="option" onclick="mc('q4',this,'correct')">The small area at the front of the room where a speaker can move deliberately — a few steps left, right, and forward — to use space with purpose</button>
+        <button class="option" onclick="mc('q4',this,'correct')">The small area at the front of the room where a speaker can move deliberately, a few steps left, right, and forward — to use space with purpose</button>
         <button class="option" onclick="mc('q4',this,'wrong')">A hand gesture that top speakers use to emphasize key statistics</button>
         <button class="option" onclick="mc('q4',this,'wrong')">The diamond-shaped seating arrangement in a Congressional Debate chamber</button>
       </div>
@@ -119,7 +119,7 @@
       <div class="options">
         <button class="option" onclick="mc('q5',this,'wrong')">Only when you're delivering your speech</button>
         <button class="option" onclick="mc('q5',this,'wrong')">Only during CX and your speech</button>
-        <button class="option" onclick="mc('q5',this,'correct')">The entire session — judges notice how you listen, take notes, react to other speakers, and carry yourself even when you're not speaking</button>
+        <button class="option" onclick="mc('q5',this,'correct')">The entire session, judges notice how you listen, take notes, react to other speakers, and carry yourself even when you're not speaking</button>
         <button class="option" onclick="mc('q5',this,'wrong')">Only in elimination rounds where judges are watching more closely</button>
       </div>
       <div class="feedback" id="q5-fb"></div>
@@ -137,9 +137,9 @@
       <div class="quiz-type-badge mc">Multiple Choice</div>
       <div class="quiz-q">How should you calibrate your energy level during a speech?</div>
       <div class="options">
-        <button class="option" onclick="mc('q6',this,'wrong')">Stay at maximum intensity the entire time — the most energetic speaker always wins</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">Stay at maximum intensity the entire time, the most energetic speaker always wins</button>
         <button class="option" onclick="mc('q6',this,'wrong')">Keep it low and calm throughout to appear sophisticated</button>
-        <button class="option" onclick="mc('q6',this,'correct')">Match your energy to the content — bring intensity for urgency, pull back for gravity, and build toward your strongest moments</button>
+        <button class="option" onclick="mc('q6',this,'correct')">Match your energy to the content, bring intensity for urgency, pull back for gravity, and build toward your strongest moments</button>
         <button class="option" onclick="mc('q6',this,'wrong')">Copy the energy level of whoever spoke before you</button>
       </div>
       <div class="feedback" id="q6-fb"></div>
@@ -178,7 +178,7 @@
       <div class="quiz-q">The "30-second rule" in CX means:</div>
       <div class="options">
         <button class="option" onclick="mc('q8',this,'wrong')">You must wait 30 seconds before asking your first question</button>
-        <button class="option" onclick="mc('q8',this,'correct')">Your question should be concise enough that the entire exchange — question and answer — takes about 30 seconds, keeping it sharp and strategic</button>
+        <button class="option" onclick="mc('q8',this,'correct')">Your question should be concise enough that the entire exchange, question and answer, takes about 30 seconds, keeping it sharp and strategic</button>
         <button class="option" onclick="mc('q8',this,'wrong')">You have exactly 30 seconds of total CX time per speech</button>
         <button class="option" onclick="mc('q8',this,'wrong')">Judges only pay attention to the first 30 seconds of any CX exchange</button>
       </div>
@@ -226,7 +226,7 @@
       <div class="options">
         <button class="option" onclick="mc('q10',this,'wrong')">Try an entirely new argument style to surprise the judges</button>
         <button class="option" onclick="mc('q10',this,'wrong')">Play it safe and avoid taking any risks with your speeches</button>
-        <button class="option" onclick="mc('q10',this,'correct')">Trust your preparation and focus on execution — finals rewards consistency, not reinvention</button>
+        <button class="option" onclick="mc('q10',this,'correct')">Trust your preparation and focus on execution, finals rewards consistency, not reinvention</button>
         <button class="option" onclick="mc('q10',this,'wrong')">Focus on what your competitors are doing and adjust your strategy to counter them</button>
       </div>
       <div class="feedback" id="q10-fb"></div>
@@ -287,16 +287,16 @@ var MODULE_ID = 'unit-5-exam';
 var TOTAL_STEPS = 10;
 
 var CORRECT_MSGS = {
-  q1:  "Rhetoric is the art of persuasion — word choice, stories, and framing that make your arguments land with the judge.",
+  q1:  "Rhetoric is the art of persuasion, word choice, stories, and framing that make your arguments land with the judge.",
   q2:  "Chasing the perfect line is a trap. Consistent clarity beats one flashy sentence. Great rhetoric is built across an entire speech, not in a single moment.",
   q3:  "Vocal variety is your emphasis tool. It tells the judge what matters most and keeps them listening instead of zoning out.",
-  q4:  "The speaker diamond is your movement zone — a small, deliberate space that makes your physicality purposeful rather than distracting.",
+  q4:  "The speaker diamond is your movement zone, a small, deliberate space that makes your physicality purposeful rather than distracting.",
   q5:  "Presence is always on. Judges form impressions of you the entire session, not just during your three minutes at the podium.",
   q6:  "Energy should serve the content. Matching intensity to urgency and pulling back for gravity creates a dynamic speech that holds attention.",
   q7:  "That's classic ballot code for 'you read evidence at me instead of explaining it.' Judges want your voice and reasoning, not just your sources.",
   q8:  "The 30-second rule keeps CX sharp. A concise question-and-answer exchange shows strategic thinking, not rambling.",
-  q9:  "Strategic setup questions are the most powerful — they create a moment the judge remembers when you reference it in your speech. Clarifying questions still add value. Gotcha questions without purpose waste your time.",
-  q10: "Finals is about execution. You earned your spot with your preparation — now trust it and deliver. Reinvention under pressure leads to mistakes."
+  q9:  "Strategic setup questions are the most powerful, they create a moment the judge remembers when you reference it in your speech. Clarifying questions still add value. Gotcha questions without purpose waste your time.",
+  q10: "Finals is about execution. You earned your spot with your preparation, now trust it and deliver. Reinvention under pressure leads to mistakes."
 };
 
 var WRONG_MSGS = {
@@ -305,8 +305,8 @@ var WRONG_MSGS = {
   q3:  "Think about what happens when a speaker talks at the same pace, pitch, and volume for three minutes straight. How does that feel to listen to?",
   q4:  "Think about deliberate movement during a speech. What describes the physical space a speaker uses purposefully?",
   q5:  "Think about all the time you spend in a session. Are judges only watching during speeches, or are they observing the whole time?",
-  q6:  "Think about whether one energy level works for every moment — a tragic impact and an exciting solution probably need different energy.",
-  q7:  "Think about what 'more of YOUR analysis' means. The judge has the evidence — what are they missing from you?",
+  q6:  "Think about whether one energy level works for every moment, a tragic impact and an exciting solution probably need different energy.",
+  q7:  "Think about what 'more of YOUR analysis' means. The judge has the evidence, what are they missing from you?",
   q8:  "Think about what makes CX exchanges effective. Is it about timing rules, or about keeping your questions sharp and strategic?",
   q9:  "Think about which approach directly sets up your next speech, which is helpful but generic, and which wastes your opportunity.",
   q10: "Think about what got you to finals. Should you abandon that approach, or trust it and focus on delivering your best?"

@@ -22,12 +22,12 @@
 <div class="mod-hero">
   <div class="mod-eyebrow">Unit 2 · Exam · Congressional Debate</div>
   <div class="mod-title">Unit 2 Exam</div>
-  <div class="mod-desc">Building Arguments — 10 questions covering CWEI, Block Format, Status Quo, Outcome & Action, and Impact Calculus.</div>
+  <div class="mod-desc">Building Arguments, 10 questions covering CWEI, Block Format, Status Quo, Outcome & Action, and Impact Calculus.</div>
 </div>
 
 <div class="content" id="moduleContent">
 
-  <!-- Q1 — CWEI Components (DD, shuffled order) -->
+  <!-- Q1. CWEI Components (DD, shuffled order) -->
   <div class="section" id="step1">
     <div class="section-eyebrow">Question 1 of 10</div>
     <div class="section-title">The CWEI Framework</div>
@@ -55,7 +55,7 @@
     <button class="next-btn hidden" id="next1" onclick="advance(1)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q2 — Warrant + Impact missing -->
+  <!-- Q2. Warrant + Impact missing -->
   <div class="section hidden" id="step2">
     <div class="section-eyebrow">Question 2 of 10</div>
     <div class="section-title">Identifying Missing Components</div>
@@ -63,17 +63,17 @@
       <div class="quiz-type-badge mc">Multiple Choice</div>
       <div class="quiz-q">A debater says: "Universal pre-K improves graduation rates. A 2023 study from Georgetown found that children in pre-K programs were 20% more likely to graduate." This argument has a claim and evidence. What's missing?</div>
       <div class="options">
-        <button class="option" onclick="mc('q2',this,'wrong')">More evidence — one study isn't enough to prove the claim</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">More evidence, one study isn't enough to prove the claim</button>
         <button class="option" onclick="mc('q2',this,'correct')">A warrant explaining WHY pre-K leads to higher graduation rates, and an impact explaining why higher graduation rates matter</button>
-        <button class="option" onclick="mc('q2',this,'wrong')">A stronger claim — "improves graduation rates" is too vague</button>
-        <button class="option" onclick="mc('q2',this,'wrong')">Nothing — claim + evidence is a complete argument</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">A stronger claim, "improves graduation rates" is too vague</button>
+        <button class="option" onclick="mc('q2',this,'wrong')">Nothing, claim + evidence is a complete argument</button>
       </div>
       <div class="feedback" id="q2-fb"></div>
     </div>
     <button class="next-btn hidden" id="next2" onclick="advance(2)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q3 — Block Format Three Components -->
+  <!-- Q3. Block Format Three Components -->
   <div class="section hidden" id="step3">
     <div class="section-eyebrow">Question 3 of 10</div>
     <div class="section-title">Block Format Structure</div>
@@ -91,7 +91,7 @@
     <button class="next-btn hidden" id="next3" onclick="advance(3)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q4 — Depth Over Breadth -->
+  <!-- Q4. Depth Over Breadth -->
   <div class="section hidden" id="step4">
     <div class="section-eyebrow">Question 4 of 10</div>
     <div class="section-title">Depth Over Breadth</div>
@@ -109,25 +109,25 @@
     <button class="next-btn hidden" id="next4" onclick="advance(4)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q5 — SQUO Is Argument-Specific -->
+  <!-- Q5. SQUO Is Argument-Specific -->
   <div class="section hidden" id="step5">
     <div class="section-eyebrow">Question 5 of 10</div>
     <div class="section-title">The Status Quo Is Argument-Specific</div>
     <div class="quiz" id="q5">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">Two speakers are both affirming a healthcare bill. Speaker A's SQUO describes the general state of American healthcare. Speaker B's SQUO specifically describes the problem their unique argument addresses — medical debt among young adults. Which approach is stronger?</div>
+      <div class="quiz-q">Two speakers are both affirming a healthcare bill. Speaker A's SQUO describes the general state of American healthcare. Speaker B's SQUO specifically describes the problem their unique argument addresses, medical debt among young adults. Which approach is stronger?</div>
       <div class="options">
         <button class="option" onclick="mc('q5',this,'wrong')">Speaker A, because a broad overview gives judges more context about the issue</button>
         <button class="option" onclick="mc('q5',this,'correct')">Speaker B, because the SQUO should set up their specific argument, not describe the entire topic</button>
         <button class="option" onclick="mc('q5',this,'wrong')">Both are equally valid since they're on the same side of the same bill</button>
-        <button class="option" onclick="mc('q5',this,'wrong')">Neither — the SQUO should describe the bill's text, not the problem</button>
+        <button class="option" onclick="mc('q5',this,'wrong')">Neither, the SQUO should describe the bill's text, not the problem</button>
       </div>
       <div class="feedback" id="q5-fb"></div>
     </div>
     <button class="next-btn hidden" id="next5" onclick="advance(5)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q6 — Action vs Outcome -->
+  <!-- Q6. Action vs Outcome -->
   <div class="section hidden" id="step6">
     <div class="section-eyebrow">Question 6 of 10</div>
     <div class="section-title">Action vs. Outcome</div>
@@ -138,14 +138,14 @@
         <button class="option" onclick="mc('q6',this,'wrong')">Funding after-school tutoring because spending money is the result of passing the bill</button>
         <button class="option" onclick="mc('q6',this,'correct')">Closing the achievement gap because that's the real-world change that results from the action</button>
         <button class="option" onclick="mc('q6',this,'wrong')">Both are outcomes, just at different levels of specificity</button>
-        <button class="option" onclick="mc('q6',this,'wrong')">Neither — outcomes can only be described with statistics</button>
+        <button class="option" onclick="mc('q6',this,'wrong')">Neither, outcomes can only be described with statistics</button>
       </div>
       <div class="feedback" id="q6-fb"></div>
     </div>
     <button class="next-btn hidden" id="next6" onclick="advance(6)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q7 — Terminalization Hierarchy -->
+  <!-- Q7. Terminalization Hierarchy -->
   <div class="section hidden" id="step7">
     <div class="section-eyebrow">Question 7 of 10</div>
     <div class="section-title">Impact Terminalization</div>
@@ -154,7 +154,7 @@
       <div class="quiz-q">Two debaters both argue against a military policy. Debater A's impact terminates at "this wastes taxpayer money." Debater B's impact terminates at "this costs human lives." Why does Debater B's framing tend to be stronger?</div>
       <div class="options">
         <button class="option" onclick="mc('q7',this,'wrong')">Because emotional arguments always beat logical ones</button>
-        <button class="option" onclick="mc('q7',this,'correct')">Because in the terminalization hierarchy, loss of life generally outweighs economic cost — the impact is more irreversible and severe</button>
+        <button class="option" onclick="mc('q7',this,'correct')">Because in the terminalization hierarchy, loss of life generally outweighs economic cost, the impact is more irreversible and severe</button>
         <button class="option" onclick="mc('q7',this,'wrong')">Because economic arguments are never persuasive in debate</button>
         <button class="option" onclick="mc('q7',this,'wrong')">Because Debater A used numbers and Debater B used abstract concepts</button>
       </div>
@@ -163,7 +163,7 @@
     <button class="next-btn hidden" id="next7" onclick="advance(7)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q8 — Comparative Framework (TF) -->
+  <!-- Q8. Comparative Framework (TF) -->
   <div class="section hidden" id="step8">
     <div class="section-eyebrow">Question 8 of 10</div>
     <div class="section-title">Comparative Impact Analysis</div>
@@ -179,7 +179,7 @@
     <button class="next-btn hidden" id="next8" onclick="advance(8)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q9 — SQUO as Preemptive Refutation -->
+  <!-- Q9. SQUO as Preemptive Refutation -->
   <div class="section hidden" id="step9">
     <div class="section-eyebrow">Question 9 of 10</div>
     <div class="section-title">SQUO as Strategic Defense</div>
@@ -187,17 +187,17 @@
       <div class="quiz-type-badge mc">Multiple Choice</div>
       <div class="quiz-q">A debater's SQUO is so well-evidenced that opponents must first disprove the problem exists before they can attack the outcome. What is this strategic advantage called?</div>
       <div class="options">
-        <button class="option" onclick="mc('q9',this,'wrong')">Impact calculus — weighing your impact against theirs</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Impact calculus, weighing your impact against theirs</button>
         <button class="option" onclick="mc('q9',this,'wrong')">Crystallization — summarizing why your side wins</button>
-        <button class="option" onclick="mc('q9',this,'correct')">Preemptive refutation — the SQUO forces opponents to fight on two fronts instead of one</button>
-        <button class="option" onclick="mc('q9',this,'wrong')">Terminalization — tracing the impact to its deepest value</button>
+        <button class="option" onclick="mc('q9',this,'correct')">Preemptive refutation, the SQUO forces opponents to fight on two fronts instead of one</button>
+        <button class="option" onclick="mc('q9',this,'wrong')">Terminalization, tracing the impact to its deepest value</button>
       </div>
       <div class="feedback" id="q9-fb"></div>
     </div>
     <button class="next-btn hidden" id="next9" onclick="advance(9)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q10 — Full Link Chain Application -->
+  <!-- Q10. Full Link Chain Application -->
   <div class="section hidden" id="step10">
     <div class="section-eyebrow">Question 10 of 10</div>
     <div class="section-title">Full Argument Link Chain</div>
@@ -220,7 +220,7 @@
     <div class="completion">
       <div class="completion-icon">&#127942;</div>
       <div class="completion-title">Exam Complete!</div>
-      <div class="completion-sub">You've proven you understand how to build championship-level arguments — from CWEI fundamentals through Block Format, Status Quo, Outcome, and Impact Calculus. On to Advanced Strategy.</div>
+      <div class="completion-sub">You've proven you understand how to build championship-level arguments, from CWEI fundamentals through Block Format, Status Quo, Outcome, and Impact Calculus. On to Advanced Strategy.</div>
       <div class="completion-badge">
         <div class="completion-badge-icon">&#9876;&#65039;</div>
         <div class="completion-badge-text">
@@ -266,7 +266,7 @@ var MODULE_ID = 'unit-2-exam';
 var TOTAL_STEPS = 10;
 
 var CORRECT_MSGS = {
-  q1:  "Claim, Warrant, Evidence, Impact — four components, each doing a different job in making your argument airtight.",
+  q1:  "Claim, Warrant, Evidence, Impact, four components, each doing a different job in making your argument airtight.",
   q2:  "Both a warrant AND an impact are missing. The warrant explains WHY pre-K leads to graduation; the impact explains WHY graduation rates matter to real people.",
   q3:  "SQUO sets up the problem, Outcome shows what changes, Impact explains why it matters. That's the architecture of a block.",
   q4:  "One deep argument with a complete logical chain is far more persuasive and memorable than scattering several shallow points.",
@@ -274,19 +274,19 @@ var CORRECT_MSGS = {
   q6:  "The action is what the bill does. The outcome is the real-world change that results. Strong debaters always push past the action to the outcome.",
   q7:  "Terminalization has a hierarchy. Loss of life generally outweighs economic cost because it's more irreversible and severe.",
   q8:  "Impact calculus is inherently comparative. Scope, magnitude, probability, and reversibility are the dimensions that make your impact win against theirs.",
-  q9:  "A strong SQUO creates a two-front war — opponents must disprove your problem AND attack your solution. Most only do one.",
+  q9:  "A strong SQUO creates a two-front war, opponents must disprove your problem AND attack your solution. Most only do one.",
   q10: "That's a complete chain: a specific SQUO problem, a concrete outcome caused by the bill, and a terminalized impact that reaches a deep, real-world harm."
 };
 
 var WRONG_MSGS = {
   q1:  "Think about what each letter in CWEI stands for, and what job each component does in an argument.",
   q2:  "The argument jumps from claim to evidence. Think about what's missing in between AND what's missing at the end.",
-  q3:  "Think about the three-part structure we use for a single argument block — what does each section describe?",
+  q3:  "Think about the three-part structure we use for a single argument block, what does each section describe?",
   q4:  "Consider what makes an argument hard to beat. Is it having more points, or having one point that's fully bulletproof?",
   q5:  "Think about what the SQUO is supposed to set up. Should it describe the whole topic, or specifically lead into your unique argument?",
   q6:  "Ask yourself: which statement describes what the bill physically does, and which describes what changes in the world as a result?",
   q7:  "Think about reversibility. Can you undo economic cost? Can you undo loss of life? That's the key to the hierarchy.",
-  q8:  "Impact calculus isn't just about asserting your impact is big. What makes it persuasive is showing it's bigger than theirs — on specific dimensions.",
+  q8:  "Impact calculus isn't just about asserting your impact is big. What makes it persuasive is showing it's bigger than theirs, on specific dimensions.",
   q9:  "Think about what happens when your SQUO is so strong that opponents can't just skip to attacking your outcome.",
   q10: "Look for the answer with a specific, unique SQUO that connects logically to an outcome which terminates at a deep, real-world impact."
 };
