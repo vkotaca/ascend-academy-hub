@@ -192,22 +192,32 @@
       <p>After each speech comes <strong>cross-examination (CX)</strong>. The format depends on where you are in the cycle:</p>
     </div>
 
-    <!-- CX TIMING DIAGRAM -->
-    <div style="background:#f9f9f9; border-radius:12px; padding:24px; margin:0 0 24px;">
-      <div style="display:flex; gap:20px; flex-wrap:wrap;">
-        <div style="flex:1; min-width:220px; background:#fff; border:2px solid #C8102E; border-radius:10px; padding:20px; text-align:center;">
-          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#C8102E;">2 min</div>
-          <div style="font-size:13px; color:#666; margin:8px 0 4px;">1st Aff & 1st Neg speakers</div>
-          <div style="font-size:20px; font-weight:700; color:#111;">4 questioners</div>
-          <div style="font-size:12px; color:#999;">30 seconds each</div>
-        </div>
-        <div style="flex:1; min-width:220px; background:#fff; border:2px solid #333; border-radius:10px; padding:20px; text-align:center;">
-          <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#333;">1 min</div>
-          <div style="font-size:13px; color:#666; margin:8px 0 4px;">All other speakers</div>
-          <div style="font-size:20px; font-weight:700; color:#111;">2 questioners</div>
-          <div style="font-size:12px; color:#999;">30 seconds each</div>
-        </div>
-      </div>
+    <!-- CX TIMING TABLE -->
+    <div style="background:#F1F1F1; border-radius:12px; padding:20px; margin:0 0 24px; overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="border-bottom:2px solid #ddd;">
+            <th style="text-align:left; padding:10px 12px; color:#666; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Who</th>
+            <th style="text-align:center; padding:10px 12px; color:#666; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">CX Time</th>
+            <th style="text-align:center; padding:10px 12px; color:#666; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Questioners</th>
+            <th style="text-align:center; padding:10px 12px; color:#666; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Per Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #e5e5e5;">
+            <td style="padding:12px; font-weight:600; color:#111;">1st Aff & 1st Neg</td>
+            <td style="padding:12px; text-align:center; font-family:'Playfair Display',serif; font-size:18px; font-weight:900; color:#C8102E;">2 min</td>
+            <td style="padding:12px; text-align:center; font-weight:700;">4</td>
+            <td style="padding:12px; text-align:center; color:#666;">30 sec</td>
+          </tr>
+          <tr>
+            <td style="padding:12px; font-weight:600; color:#111;">All other speakers</td>
+            <td style="padding:12px; text-align:center; font-family:'Playfair Display',serif; font-size:18px; font-weight:900; color:#333;">1 min</td>
+            <td style="padding:12px; text-align:center; font-weight:700;">2</td>
+            <td style="padding:12px; text-align:center; color:#666;">30 sec</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section-body">
@@ -441,7 +451,7 @@ var CORRECT_MSGS = {
   q3:  "These three pillars work together, the best debaters excel at all three simultaneously.",
   q4a: "Lay judges aren't less capable, they just reward what they can easily follow and connect with emotionally.",
   q4b: "Clash, directly engaging with the other side, is one of the most important things experienced judges reward.",
-  q5:  "CX is a scoring opportunity that shows engagement and strategic thinking whether you have 30 seconds or 2 minutes.",
+  q5:  "CX is a scoring opportunity that shows engagement and strategic thinking.",
   q6a: "When judges rank ~15 speakers from memory, the ones who were clear, dynamic, and memorable rise to the top.",
   q6b: "You have strategic freedom to choose what to argue. Engaging with previous speakers is smart, but not required.",
   q7:  "Your combined rankings across all prelim rounds determine whether you advance to elimination rounds.",
