@@ -67,20 +67,21 @@ function initAuth() {
 function checkProfileAndUpdateUI(retries) {
   if (retries === undefined) retries = 0;
 
-  // Check localStorage cache first
+  // 1. Try localStorage cache (instant, no DB needed)
   var cached = localStorage.getItem('ascend_profile_cache');
   if (cached) {
     try {
       var cachedProfile = JSON.parse(cached);
-      if (cachedProfile.id === currentUser.id) {
+      if (cachedProfile.id === currentUser.id && cachedProfile.first_name) {
         updateNavForUser(cachedProfile);
+        localStorage.setItem('ascend_user_first', cachedProfile.first_name);
         hydrateFromSupabase();
         closeAuthModal();
-        // Refresh from DB in background
+        // Refresh from DB in background (silent, no UI flash)
         sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
           if (res.data) {
             localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
-            updateNavForUser(res.data);
+            localStorage.setItem('ascend_user_first', res.data.first_name);
           }
         });
         return;
@@ -88,28 +89,38 @@ function checkProfileAndUpdateUI(retries) {
     } catch(e) {}
   }
 
-  // Immediately show something in nav while DB fetches
-  if (retries === 0) {
-    var savedName = localStorage.getItem('ascend_user_first');
-    var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
-    var cachedProfileName = null;
-    try { cachedProfileName = JSON.parse(localStorage.getItem('ascend_profile_cache') || '{}').first_name; } catch(e) {}
-    var displayName = savedName || cachedProfileName || (googleName ? googleName.split(' ')[0] : null) || currentUser.email.split('@')[0];
-    var fallbackProfile = { id: currentUser.id, first_name: displayName };
-    updateNavForUser(fallbackProfile);
+  // 2. Try ascend_user_first (set during signup form)
+  var savedName = localStorage.getItem('ascend_user_first');
+  if (savedName && retries === 0) {
+    updateNavForUser({ id: currentUser.id, first_name: savedName });
     closeAuthModal();
   }
 
+  // 3. Try Google metadata
+  var googleName = currentUser.user_metadata && currentUser.user_metadata.full_name;
+  if (!savedName && googleName && retries === 0) {
+    updateNavForUser({ id: currentUser.id, first_name: googleName.split(' ')[0] });
+    localStorage.setItem('ascend_user_first', googleName.split(' ')[0]);
+    closeAuthModal();
+  }
+
+  // 4. No cached name at all — show "Account" (NEVER email prefix)
+  if (!savedName && !googleName && retries === 0) {
+    updateNavForUser({ id: currentUser.id, first_name: 'Account' });
+    closeAuthModal();
+  }
+
+  // 5. Always fetch from DB to get the real name
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
     if (res.data) {
       localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
+      localStorage.setItem('ascend_user_first', res.data.first_name);
       updateNavForUser(res.data);
       hydrateFromSupabase();
       closeAuthModal();
     } else if (retries < 8) {
       setTimeout(function() { checkProfileAndUpdateUI(retries + 1); }, 2000);
-    } else if (!localStorage.getItem('ascend_profile_cache') && !localStorage.getItem('ascend_user_first') && !localStorage.getItem('ascend_learn_state')) {
-      // Only show profile form if zero evidence this user has ever used the platform
+    } else if (!localStorage.getItem('ascend_profile_cache') && !localStorage.getItem('ascend_user_first')) {
       showProfileForm();
     }
   });
@@ -610,7 +621,8 @@ function handleEmailLogin() {
       updateNavForUser(profileRes.data);
       hydrateFromSupabase();
     } else {
-      updateNavForUser({ id: currentUser.id, first_name: currentUser.email.split('@')[0] });
+      // No profile found after login. Show "Account" not email prefix.
+      updateNavForUser({ id: currentUser.id, first_name: 'Account' });
     }
     closeAuthModal();
   });
