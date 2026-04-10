@@ -14,9 +14,10 @@ var loginInProgress = false;
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // Use getUser() not getSession() — getUser() validates the token server-side
-  // and ensures the client is fully authenticated before we query the DB
-  sb.auth.getUser().then(function(res) {
+  // Refresh session to get latest user metadata, then init
+  sb.auth.refreshSession().then(function() {
+    return sb.auth.getUser();
+  }).then(function(res) {
     if (res.data.user) {
       currentUser = res.data.user;
       // Check if we have pending profile data from a Google signup
