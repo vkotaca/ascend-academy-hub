@@ -1060,9 +1060,11 @@ body.dark-mode .auth-input { background: #222; border-color: #333; color: #f0f0f
 body.dark-mode .auth-role-card { border-color: #333; }
 body.dark-mode .auth-role-card:hover { border-color: var(--red); }
 body.dark-mode .continue-card { background: linear-gradient(135deg, #1a1a1a, #222); }
-body.dark-mode .nav-logo-icon,
-body.dark-mode .footer-logo img {
+body.dark-mode .nav-logo-icon {
   content: url('../Pictures/Ascend%20Academy%20logo%20design_ALT%20DARK.png');
+}
+body.dark-mode .footer-logo img {
+  display: none;
 }
 
 @media (max-width: 768px) {
