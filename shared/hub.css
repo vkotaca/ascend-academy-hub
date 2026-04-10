@@ -1061,7 +1061,10 @@ body.dark-mode .auth-role-card { border-color: #333; }
 body.dark-mode .auth-role-card:hover { border-color: var(--red); }
 body.dark-mode .continue-card { background: linear-gradient(135deg, #1a1a1a, #222); }
 body.dark-mode .nav-logo-icon {
-  content: url('../Pictures/Ascend%20Academy%20logo%20design_ALT%20DARK.png');
+  display: none;
+}
+body.dark-mode .nav-logo-text span:last-child {
+  display: block;
 }
 body.dark-mode .footer-logo img {
   display: none;
