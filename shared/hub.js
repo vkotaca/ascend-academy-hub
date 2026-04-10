@@ -523,6 +523,11 @@ function _doLaunchModule(id) {
       if (state.completed.length === MODULES.length) awardBadge('congress-scholar');
       renderModuleCards();
       updateProgress();
+      renderContinueCard();
+      renderUnitProgressRings();
+      markRecentlyCompleted(id);
+      animateNewBadges();
+      addHoverPreviews();
       window.removeEventListener('message', handler);
     }
   }
@@ -533,11 +538,151 @@ function closeModule() {
   document.getElementById('moduleOverlay').classList.remove('open');
 }
 
+// --- CONTINUE WHERE YOU LEFT OFF ---
+function renderContinueCard() {
+  var container = document.getElementById('continueCard');
+  if (!container) return;
+  var next = MODULES.find(function(m) { return m.file && !state.completed.includes(m.id); });
+  if (!next || state.completed.length === 0) { container.innerHTML = ''; return; }
+  container.innerHTML =
+    '<div class="continue-card" onclick="openModule(\'' + next.id + '\')">' +
+      '<div class="continue-card-left">' +
+        '<div class="continue-card-icon">' + next.icon + '</div>' +
+        '<div>' +
+          '<div class="continue-card-eyebrow">Continue where you left off</div>' +
+          '<div class="continue-card-title">' + next.title + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<button class="continue-card-btn">Continue →</button>' +
+    '</div>';
+}
+
+// --- UNIT PROGRESS RINGS ---
+function renderUnitProgressRings() {
+  UNITS.forEach(function(unit) {
+    var countEl = document.getElementById('unit-' + unit.num + '-count');
+    if (!countEl) return;
+    var unitMods = MODULES.filter(function(m) { return m.unit === unit.num; });
+    var done = unitMods.filter(function(m) { return state.completed.includes(m.id); }).length;
+    var total = unitMods.length;
+    var pct = total > 0 ? done / total : 0;
+    var r = 16, c = 2 * Math.PI * r;
+    var offset = c * (1 - pct);
+    var isComplete = done === total && total > 0;
+
+    countEl.innerHTML =
+      '<svg class="unit-progress-ring" viewBox="0 0 40 40">' +
+        '<circle class="ring-bg" cx="20" cy="20" r="' + r + '"/>' +
+        '<circle class="ring-fill' + (isComplete ? ' complete' : '') + '" cx="20" cy="20" r="' + r + '" stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + offset.toFixed(1) + '"/>' +
+        '<text class="unit-progress-text" x="20" y="20">' + done + '/' + total + '</text>' +
+      '</svg>';
+
+    // Unit completion celebration
+    var header = countEl.closest('.unit-header');
+    if (header) {
+      if (isComplete) header.classList.add('complete');
+      else header.classList.remove('complete');
+    }
+  });
+}
+
+// --- RECENTLY COMPLETED HIGHLIGHT ---
+var lastCompleted = null;
+function markRecentlyCompleted(id) {
+  lastCompleted = id;
+  var card = document.getElementById('card-' + id);
+  if (card) card.classList.add('just-completed');
+  // Remove after 30 seconds
+  setTimeout(function() {
+    if (card) card.classList.remove('just-completed');
+  }, 30000);
+}
+
+// --- NEW BADGE ANIMATION ---
+var previousBadges = state.badges.slice();
+function animateNewBadges() {
+  state.badges.forEach(function(bid) {
+    if (!previousBadges.includes(bid)) {
+      var el = document.getElementById('badge-' + bid);
+      if (el) el.classList.add('new-badge');
+    }
+  });
+  previousBadges = state.badges.slice();
+}
+
+// --- SCROLL REVEAL ---
+function initScrollReveal() {
+  var units = document.querySelectorAll('.unit, .badge-section, .promo-section, .coming-soon-section');
+  units.forEach(function(el) { el.classList.add('scroll-reveal'); });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+}
+
+// --- DARK MODE ---
+function initDarkMode() {
+  var saved = localStorage.getItem('ascend_dark_mode');
+  if (saved === 'true') document.body.classList.add('dark-mode');
+
+  // Add toggle button to nav
+  var navRight = document.querySelector('.nav-right');
+  if (navRight) {
+    var btn = document.createElement('button');
+    btn.className = 'dark-toggle';
+    btn.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    btn.onclick = function() {
+      document.body.classList.toggle('dark-mode');
+      var isDark = document.body.classList.contains('dark-mode');
+      btn.innerHTML = isDark ? '☀️' : '🌙';
+      localStorage.setItem('ascend_dark_mode', isDark);
+    };
+    navRight.insertBefore(btn, navRight.firstChild);
+  }
+}
+
+// --- MODULE HOVER PREVIEWS ---
+function addHoverPreviews() {
+  MODULES.forEach(function(mod) {
+    if (!mod.lessons || !mod.lessons[0]) return;
+    var card = document.getElementById('card-' + mod.id);
+    if (!card) return;
+    var preview = document.createElement('div');
+    preview.className = 'module-preview';
+    preview.textContent = mod.lessons[0].text.split(' \u2014 ')[0];
+    card.appendChild(preview);
+  });
+}
+
+// --- PARALLAX HERO ---
+function initParallax() {
+  var hero = document.querySelector('.hero');
+  if (!hero || window.innerWidth < 768) return;
+  window.addEventListener('scroll', function() {
+    var scroll = window.pageYOffset;
+    hero.style.backgroundPositionY = 'calc(30% + ' + (scroll * 0.3) + 'px)';
+  });
+}
+
 // --- INIT ---
 document.addEventListener('DOMContentLoaded', function () {
   renderBadgeShelf();
   renderModuleCards();
   updateProgress();
+  renderContinueCard();
+  renderUnitProgressRings();
+  initScrollReveal();
+  initDarkMode();
+  addHoverPreviews();
+  initParallax();
 
   // Init auth if available
   if (typeof initAuth === 'function') initAuth();
