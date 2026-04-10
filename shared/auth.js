@@ -68,34 +68,38 @@ function initAuth() {
 
 // ─── PROFILE CHECK ───
 function checkProfileAndUpdateUI() {
-  // Get name from auth metadata (always set during signup or backfilled)
-  var name =
-    localStorage.getItem('ascend_user_first') ||
-    (currentUser.user_metadata && currentUser.user_metadata.first_name) ||
-    (currentUser.user_metadata && currentUser.user_metadata.full_name && currentUser.user_metadata.full_name.split(' ')[0]);
+  // Check localStorage first (instant)
+  var cachedName = localStorage.getItem('ascend_user_first');
+  if (cachedName) {
+    updateNavForUser({ id: currentUser.id, first_name: cachedName });
+    closeAuthModal();
+    document.body.classList.remove('auth-pending');
+    document.body.classList.add('auth-ready');
+    hydrateFromSupabase();
+    return;
+  }
 
-  localStorage.setItem('ascend_user_first', name);
-  updateNavForUser({ id: currentUser.id, first_name: name });
-  closeAuthModal();
-  document.body.classList.remove('auth-pending');
-  document.body.classList.add('auth-ready');
-
-  // Hydrate progress from DB (separate from name display)
-  hydrateFromSupabase();
-
-  // Background: fetch full profile for cache (updates name if different)
+  // No cache — must wait for DB query before showing anything
   sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
-    if (res.data) {
-      localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
+    if (res.data && res.data.first_name) {
       localStorage.setItem('ascend_user_first', res.data.first_name);
+      localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
       updateNavForUser(res.data);
-      // Also update auth metadata if it's missing
-      if (!currentUser.user_metadata || !currentUser.user_metadata.first_name) {
-        sb.auth.updateUser({ data: { first_name: res.data.first_name } });
+    } else {
+      // Try auth metadata as last resort
+      var metaName = (currentUser.user_metadata && currentUser.user_metadata.first_name) ||
+        (currentUser.user_metadata && currentUser.user_metadata.full_name && currentUser.user_metadata.full_name.split(' ')[0]);
+      if (metaName) {
+        localStorage.setItem('ascend_user_first', metaName);
+        updateNavForUser({ id: currentUser.id, first_name: metaName });
+      } else {
+        updateNavForGuest();
       }
     }
-    // Never show profile form on refresh — only on explicit new Google signup
-    // (handled by pending_profile logic in initAuth)
+    closeAuthModal();
+    document.body.classList.remove('auth-pending');
+    document.body.classList.add('auth-ready');
+    hydrateFromSupabase();
   });
 }
 
