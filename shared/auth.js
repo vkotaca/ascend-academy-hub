@@ -419,23 +419,33 @@ function collectStudentData() {
   var last = document.getElementById('regLast').value.trim();
   var email = document.getElementById('regEmail').value.trim();
 
-  if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
-  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
   var phone = document.getElementById('regPhone').value.trim();
-  if (phone && !validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
-
+  var school = document.getElementById('regSchool').value.trim();
+  var stateVal = document.getElementById('regState').value;
+  var grade = document.getElementById('regGrade').value;
+  var p1first = document.getElementById('regP1First').value.trim();
+  var p1last = document.getElementById('regP1Last').value.trim();
   var p1email = document.getElementById('regP1Email').value.trim();
-  if (p1email && !validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian 1.'); return null; }
+  var p1phone = document.getElementById('regP1Phone').value.trim();
+
+  if (!first || !last || !email || !phone || !school || !stateVal || !grade || !p1first || !p1last || !p1email || !p1phone) {
+    showAuthError('Please fill in all required fields.'); return null;
+  }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+  if (!validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
+  if (!validateEmail(p1email)) { showAuthError('Please enter a valid email for Parent/Guardian 1.'); return null; }
+  if (!validatePhone(p1phone)) { showAuthError('Please enter a valid phone for Parent/Guardian 1.'); return null; }
+
   var p2email = document.getElementById('regP2Email') ? document.getElementById('regP2Email').value.trim() : '';
   if (p2email && !validateEmail(p2email)) { showAuthError('Please enter a valid email for Parent/Guardian 2.'); return null; }
 
   return {
     role: 'student',
     first_name: first, last_name: last, email: email,
-    phone: document.getElementById('regPhone').value.trim(),
-    school: document.getElementById('regSchool').value.trim(),
-    state: document.getElementById('regState').value,
-    grade: document.getElementById('regGrade').value,
+    phone: (document.getElementById('regCountryCode').value + ' ' + phone),
+    school: school,
+    state: stateVal,
+    grade: grade,
     is_team_leader: document.getElementById('regLeader').checked,
     parent1_first: document.getElementById('regP1First').value.trim(),
     parent1_last: document.getElementById('regP1Last').value.trim(),
@@ -453,18 +463,23 @@ function collectParentData() {
   var first = document.getElementById('regFirst').value.trim();
   var last = document.getElementById('regLast').value.trim();
   var email = document.getElementById('regEmail').value.trim();
-
-  if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
-  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
   var phone = document.getElementById('regPhone').value.trim();
-  if (phone && !validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
+  var school = document.getElementById('regSchool').value.trim();
+  var stateVal = document.getElementById('regState').value;
+  var studentGrade = document.getElementById('regStudentGrade').value;
+
+  if (!first || !last || !email || !phone || !school || !stateVal || !studentGrade) {
+    showAuthError('Please fill in all required fields.'); return null;
+  }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+  if (!validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   return {
     role: 'parent',
     first_name: first, last_name: last, email: email,
-    phone: document.getElementById('regPhone').value.trim(),
-    school: document.getElementById('regSchool').value.trim(),
-    state: document.getElementById('regState').value,
+    phone: (document.getElementById('regCountryCode').value + ' ' + phone),
+    school: school,
+    state: stateVal,
     student_grade: document.getElementById('regStudentGrade').value,
     student_school: document.getElementById('regSchool').value.trim(),
     interested_camps: document.getElementById('regCamps').checked
@@ -475,18 +490,22 @@ function collectEducatorData() {
   var first = document.getElementById('regFirst').value.trim();
   var last = document.getElementById('regLast').value.trim();
   var email = document.getElementById('regEmail').value.trim();
-
-  if (!first || !last || !email) { showAuthError('Please fill in all required fields (*).'); return null; }
-  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
   var phone = document.getElementById('regPhone').value.trim();
-  if (phone && !validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
+  var school = document.getElementById('regSchool').value.trim();
+  var stateVal = document.getElementById('regState').value;
+
+  if (!first || !last || !email || !phone || !school || !stateVal) {
+    showAuthError('Please fill in all required fields.'); return null;
+  }
+  if (!validateEmail(email)) { showAuthError('Please enter a valid email address.'); return null; }
+  if (!validatePhone(phone)) { showAuthError('Please enter a valid 10-digit phone number.'); return null; }
 
   return {
     role: 'educator',
     first_name: first, last_name: last, email: email,
-    phone: document.getElementById('regPhone').value.trim(),
-    school: document.getElementById('regSchool').value.trim(),
-    state: document.getElementById('regState').value,
+    phone: (document.getElementById('regCountryCode').value + ' ' + phone),
+    school: school,
+    state: stateVal,
     interested_ascend_support: document.getElementById('regSupport').checked
   };
 }
