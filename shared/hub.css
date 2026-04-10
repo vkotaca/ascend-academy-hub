@@ -1060,9 +1060,11 @@ body.dark-mode .auth-input { background: #222; border-color: #333; color: #f0f0f
 body.dark-mode .auth-role-card { border-color: #333; }
 body.dark-mode .auth-role-card:hover { border-color: var(--red); }
 body.dark-mode .continue-card { background: linear-gradient(135deg, #1a1a1a, #222); }
-body.dark-mode .nav-logo-icon { filter: brightness(0) invert(1); }
-body.dark-mode .footer-logo img { filter: brightness(0) invert(1); }
-body.dark-mode .auth-logo { filter: brightness(0) invert(1); }
+body.dark-mode .nav-logo-icon,
+body.dark-mode .footer-logo img,
+body.dark-mode .auth-logo {
+  mix-blend-mode: lighten;
+}
 
 @media (max-width: 768px) {
   nav { padding: 0 12px; height: 52px; }
