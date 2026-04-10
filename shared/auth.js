@@ -96,10 +96,9 @@ function checkProfileAndUpdateUI() {
       if (!currentUser.user_metadata || !currentUser.user_metadata.first_name) {
         sb.auth.updateUser({ data: { first_name: res.data.first_name } });
       }
-    } else if (!name) {
-      // No profile AND no name anywhere — genuinely new user
-      showProfileForm();
     }
+    // Never show profile form on refresh — only on explicit new Google signup
+    // (handled by pending_profile logic in initAuth)
   });
 }
 
