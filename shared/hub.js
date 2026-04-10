@@ -632,21 +632,6 @@ function initScrollReveal() {
 function initDarkMode() {
   var saved = localStorage.getItem('ascend_dark_mode');
   if (saved === 'true') document.body.classList.add('dark-mode');
-
-  // Add toggle button to nav
-  var navRight = document.querySelector('.nav-right');
-  if (navRight) {
-    var btn = document.createElement('button');
-    btn.className = 'dark-toggle';
-    btn.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    btn.onclick = function() {
-      document.body.classList.toggle('dark-mode');
-      var isDark = document.body.classList.contains('dark-mode');
-      btn.innerHTML = isDark ? '☀️' : '🌙';
-      localStorage.setItem('ascend_dark_mode', isDark);
-    };
-    navRight.insertBefore(btn, navRight.firstChild);
-  }
 }
 
 // --- MODULE HOVER PREVIEWS ---
