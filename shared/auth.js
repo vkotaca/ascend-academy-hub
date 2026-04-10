@@ -697,6 +697,10 @@ function hydrateFromSupabase() {
     renderModuleCards();
     renderBadgeShelf();
     updateProgress();
+    if (typeof renderContinueCard === 'function') renderContinueCard();
+    if (typeof renderUnitProgressRings === 'function') renderUnitProgressRings();
+    if (typeof addHoverPreviews === 'function') addHoverPreviews();
+    if (typeof animateNewBadges === 'function') animateNewBadges();
   });
 }
 
