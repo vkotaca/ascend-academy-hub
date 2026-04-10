@@ -553,7 +553,10 @@ function handleEmailLogin() {
   sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
     if (res.error) { loginInProgress = false; showAuthError(res.error.message); return; }
     currentUser = res.data.user;
-    // Fetch profile FIRST, then update UI
+    // Wait a beat for the Supabase client to attach the session token
+    return new Promise(function(resolve) { setTimeout(resolve, 500); });
+  }).then(function() {
+    if (!currentUser) return;
     return sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle();
   }).then(function(profileRes) {
     loginInProgress = false;
