@@ -549,7 +549,7 @@ function renderContinueCard() {
       '<div class="continue-card-left">' +
         '<div class="continue-card-icon">' + next.icon + '</div>' +
         '<div>' +
-          '<div class="continue-card-eyebrow">Continue where you left off</div>' +
+          '<div class="continue-card-eyebrow">' + (localStorage.getItem('ascend_user_first') || '') + ', pick up where you left off</div>' +
           '<div class="continue-card-title">' + next.title + '</div>' +
         '</div>' +
       '</div>' +

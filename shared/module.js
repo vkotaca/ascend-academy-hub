@@ -17,6 +17,15 @@
 let stepsCompleted = 0;
 let dragData = null;
 
+function getUserName() {
+  return localStorage.getItem('ascend_user_first') || '';
+}
+
+function correctPrefix() {
+  var name = getUserName();
+  return name ? '\u2713 Great job, ' + name + '! ' : '\u2713 Correct! ';
+}
+
 function updateTopProgress() {
   const pct = (stepsCompleted / TOTAL_STEPS) * 100;
   document.getElementById('topFill').style.width = pct + '%';
@@ -36,11 +45,22 @@ function advance(step) {
 function showCompletion() {
   var lastNext = document.getElementById('next' + TOTAL_STEPS);
   if (lastNext) lastNext.classList.add('hidden');
-  document.getElementById('completionSection').classList.remove('hidden');
+  var section = document.getElementById('completionSection');
+  section.classList.remove('hidden');
   stepsCompleted = TOTAL_STEPS;
   updateTopProgress();
+
+  // Personalize completion screen
+  var name = getUserName();
+  if (name) {
+    var title = section.querySelector('.completion-title');
+    if (title) title.textContent = name + ', ' + title.textContent;
+    var badgeLabel = section.querySelector('.completion-badge-label');
+    if (badgeLabel) badgeLabel.textContent = name + ', you just earned a badge!';
+  }
+
   setTimeout(function () {
-    document.getElementById('completionSection').scrollIntoView({ behavior: 'smooth' });
+    section.scrollIntoView({ behavior: 'smooth' });
   }, 100);
 }
 
@@ -61,7 +81,7 @@ function mc(qId, btn, result) {
   if (result === 'correct') {
     btn.classList.add('correct');
     fb.className = 'feedback show correct-fb';
-    fb.textContent = '\u2713 Correct! ' + (CORRECT_MSGS[qId] || '');
+    fb.textContent = correctPrefix() + (CORRECT_MSGS[qId] || '');
     unlockAfter(qId);
   } else {
     btn.classList.add('wrong');
@@ -84,7 +104,7 @@ function tf(qId, btn, isCorrect) {
   if (isCorrect) {
     btn.classList.add('correct');
     fb.className = 'feedback show correct-fb';
-    fb.textContent = '\u2713 Correct! ' + (CORRECT_MSGS[qId] || '');
+    fb.textContent = correctPrefix() + (CORRECT_MSGS[qId] || '');
     unlockAfter(qId);
   } else {
     btn.classList.add('wrong');
@@ -183,7 +203,7 @@ function checkDrag(qId, targets) {
   var fb = document.getElementById(qId + '-fb');
   if (allCorrect) {
     fb.className = 'feedback show correct-fb';
-    fb.textContent = '\u2713 Correct! ' + (CORRECT_MSGS[qId] || '');
+    fb.textContent = correctPrefix() + (CORRECT_MSGS[qId] || '');
     unlockAfter(qId);
   } else {
     fb.className = 'feedback show wrong-fb';
