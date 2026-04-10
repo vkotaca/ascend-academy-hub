@@ -14,12 +14,10 @@ var loginInProgress = false;
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // Refresh session to get latest user metadata, then init
-  sb.auth.refreshSession().then(function() {
-    return sb.auth.getUser();
-  }).then(function(res) {
-    if (res.data.user) {
-      currentUser = res.data.user;
+  // Check for existing session
+  sb.auth.getSession().then(function(res) {
+    if (res.data.session) {
+      currentUser = res.data.session.user;
       // Check if we have pending profile data from a Google signup
       var pending = localStorage.getItem('ascend_pending_profile');
       if (pending) {
