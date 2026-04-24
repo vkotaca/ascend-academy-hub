@@ -244,16 +244,6 @@
       <div class="feedback" id="q5a-fb"></div>
     </div>
 
-    <div class="quiz hidden" id="q5b" style="margin-top:20px">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">You should fully refine and perfect your first argument's evidence before moving on to research your second argument.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q5b',this,false)">&#10003; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q5b',this,true)">&#10007; False</button>
-      </div>
-      <div class="feedback" id="q5b-fb"></div>
-    </div>
-
     <button class="next-btn hidden" id="next5" onclick="showCompletion()">Complete Module</button>
   </div>
 
@@ -315,8 +305,7 @@ var CORRECT_MSGS = {
   q3:  "That's a mechanism search. It targets the specific way untreated dental issues harm seniors, not the generic topic of Medicare expansion.",
   q4a: "These three tags let you instantly find the right evidence for the right part of your speech. Source for credibility, block for organization, finding for delivery.",
   q4b: "Your cards should have a one-sentence summary you can deliver from memory. In Congress, you paraphrase evidence, you don't read full quotes verbatim.",
-  q5a: "Outcome evidence is the hardest to find and the most critical. It proves the bill's mechanism actually works, which is the core of your argument.",
-  q5b: "Get the basics for every argument first, one SQUO, one Outcome, one Impact. Only refine after you have complete coverage across all your arguments."
+  q5a: "Outcome evidence is the hardest to find and the most critical. It proves the bill's mechanism actually works, which is the core of your argument."
 };
 
 var WRONG_MSGS = {
@@ -326,8 +315,7 @@ var WRONG_MSGS = {
   q3:  "Remember the keyword strategy: search the MECHANISM, not the topic. Which option targets a specific way the bill's provisions affect real outcomes?",
   q4a: "Think about what you need in the heat of a round. What information lets you quickly find and cite the right evidence for each part of your block?",
   q4b: "Think about how evidence works in Congressional Debate specifically. Do you read verbatim quotes, or do you paraphrase and cite the source?",
-  q5a: "Think about which type of evidence is easiest to find versus hardest. SQUO evidence (the problem exists) is usually well-documented. Which type requires more digging?",
-  q5b: "Think about risk management. What happens if you spend 40 minutes perfecting one argument and then run out of time to research your second and third arguments?"
+  q5a: "Think about which type of evidence is easiest to find versus hardest. SQUO evidence (the problem exists) is usually well-documented. Which type requires more digging?"
 };
 
 var UNLOCK_MAP = {
@@ -337,8 +325,7 @@ var UNLOCK_MAP = {
   q3:  'next3',
   q4a: 'q4b',
   q4b: 'next4',
-  q5a: 'q5b',
-  q5b: 'next5'
+  q5a: 'next5'
 };
 </script>
 <script src="../shared/module.js"></script>
