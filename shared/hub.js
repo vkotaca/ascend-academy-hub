@@ -88,11 +88,11 @@ var MODULES = [
       { icon: '\uD83D\uDD17', text: 'Putting it all together \u2014 building a complete CWEI argument' }
     ] },
   { id: 'block-format',         unit: 2, num: '2.2', title: 'The Block Format',                   icon: '\uD83E\uDDF1', duration: '25 min', activities: 6, badge: 'block-master',
-    desc: 'Ascend\u2019s signature argument structure. The same format that has won 5 TOCs and countless national championships.',
+    desc: 'Ascend\u2019s signature argument structure. The same format that has won 6 TOCs and countless national championships.',
     file: 'modules/block-format.html',
     lessons: [
       { icon: '\uD83D\uDCD6', text: 'Why argument formats matter \u2014 efficiency, clarity, depth' },
-      { icon: '\uD83D\uDD04', text: 'The origin of Block Format \u2014 how one idea became 5 TOC wins' },
+      { icon: '\uD83D\uDD04', text: 'The origin of Block Format \u2014 how one idea became 6 TOC wins' },
       { icon: '\uD83E\uDDF1', text: 'The 3 components: Status Quo, Outcome, Impact' },
       { icon: '\u270D\uFE0F', text: 'The Status Quo \u2014 proving a specific problem exists in the current world' },
       { icon: '\u26A1',       text: 'Outcome & Action \u2014 the legislative mechanism' },
