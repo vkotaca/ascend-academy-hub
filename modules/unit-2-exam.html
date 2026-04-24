@@ -163,16 +163,18 @@
     <button class="next-btn hidden" id="next7" onclick="advance(7)">Next Question &rarr;</button>
   </div>
 
-  <!-- Q8. Comparative Framework (TF) -->
+  <!-- Q8. The Comparative Framework (MC) -->
   <div class="section hidden" id="step8">
     <div class="section-eyebrow">Question 8 of 10</div>
-    <div class="section-title">Comparative Impact Analysis</div>
+    <div class="section-title">The Comparative Framework</div>
     <div class="quiz" id="q8">
-      <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">When doing impact calculus, you should compare your impact against the opposing side's impact using dimensions like scope (how many people), magnitude (how severe), and probability (how likely), not just assert that your impact is important in isolation.</div>
-      <div class="tf-row">
-        <button class="tf-btn true-btn" onclick="tf('q8',this,true)">&check; True</button>
-        <button class="tf-btn false-btn" onclick="tf('q8',this,false)">&cross; False</button>
+      <div class="quiz-type-badge mc">Multiple Choice</div>
+      <div class="quiz-q">A late-round debater closes with this line: "By passing this bill, 13 million workers come home for dinner. But if we go with Sen. Chen's plan, they keep working two jobs until their health collapses." What's the strategic power of this move?</div>
+      <div class="options">
+        <button class="option" onclick="mc('q8',this,'wrong')">It introduces a new argument that Sen. Chen didn't anticipate, catching the negation off-guard</button>
+        <button class="option" onclick="mc('q8',this,'correct')">It uses the Comparative framework to directly weigh the speaker's solution against another competitor's, forcing judges to choose between two specific worlds</button>
+        <button class="option" onclick="mc('q8',this,'wrong')">It attacks Sen. Chen personally, which lowers his ranking on the judge's ballot</button>
+        <button class="option" onclick="mc('q8',this,'wrong')">It repeats the speaker's Outcome twice, which reinforces memorability</button>
       </div>
       <div class="feedback" id="q8-fb"></div>
     </div>
@@ -273,7 +275,7 @@ var CORRECT_MSGS = {
   q5:  "Your SQUO is unique to your argument. Two speakers on the same side should have different SQUOs because they're making different arguments.",
   q6:  "The action is what the bill does. The outcome is the real-world change that results. Strong debaters always push past the action to the outcome.",
   q7:  "Terminalization has a hierarchy. Loss of life generally outweighs economic cost because it's more irreversible and severe.",
-  q8:  "Impact calculus is inherently comparative. Scope, magnitude, probability, and reversibility are the dimensions that make your impact win against theirs.",
+  q8:  "The Comparative framework mirrors the actual decision judges are making. Naming another competitor's plan specifically forces judges to weigh your world against theirs directly.",
   q9:  "A strong SQUO creates a two-front war, opponents must disprove your problem AND attack your solution. Most only do one.",
   q10: "That's a complete chain: a specific SQUO problem, a concrete outcome caused by the bill, and a terminalized impact that reaches a deep, real-world harm."
 };
@@ -286,7 +288,7 @@ var WRONG_MSGS = {
   q5:  "Think about what the SQUO is supposed to set up. Should it describe the whole topic, or specifically lead into your unique argument?",
   q6:  "Ask yourself: which statement describes what the bill physically does, and which describes what changes in the world as a result?",
   q7:  "Think about reversibility. Can you undo economic cost? Can you undo loss of life? That's the key to the hierarchy.",
-  q8:  "Impact calculus isn't just about asserting your impact is big. What makes it persuasive is showing it's bigger than theirs, on specific dimensions.",
+  q8:  "Think about what makes a Comparative framework powerful. What decision is it asking judges to make, and why does referencing another speaker's plan sharpen that decision?",
   q9:  "Think about what happens when your SQUO is so strong that opponents can't just skip to attacking your outcome.",
   q10: "Look for the answer with a specific, unique SQUO that connects logically to an outcome which terminates at a deep, real-world impact."
 };
