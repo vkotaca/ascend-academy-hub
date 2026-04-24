@@ -37,6 +37,11 @@ function initAuth() {
   });
 
   sb.auth.onAuthStateChange(function(event, session) {
+    if (event === 'PASSWORD_RECOVERY') {
+      // User clicked password reset email link. Show the set-new-password modal.
+      showSetNewPassword();
+      return;
+    }
     if (event === 'SIGNED_IN' && session) {
       // Skip if email login is handling this
       if (loginInProgress) return;
@@ -577,6 +582,62 @@ function handleForgotPassword() {
       el.textContent = 'Reset link sent! Check your email inbox.';
       el.classList.remove('hidden');
     }
+  }).catch(function() {
+    showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
+  });
+}
+
+// Triggered automatically when user lands on the page via a password-reset email link.
+function showSetNewPassword() {
+  var overlay = document.getElementById('authOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'authOverlay';
+    overlay.className = 'auth-overlay';
+    document.body.appendChild(overlay);
+  }
+  overlay.innerHTML = '<div class="auth-panel">' +
+    '<div class="auth-header">' +
+      '<img src="Pictures/compressed_image.jpg" alt="Ascend" class="auth-logo">' +
+      '<div class="auth-title">Set a New Password</div>' +
+      '<div class="auth-subtitle">Choose a password you\'ll remember.</div>' +
+    '</div>' +
+    '<div id="authTabContent">' +
+      '<div class="auth-form">' +
+        '<input type="password" id="newPw1" class="auth-input" placeholder="New password (min 6 characters)" required>' +
+        '<input type="password" id="newPw2" class="auth-input" placeholder="Confirm new password" required>' +
+        '<div class="auth-error hidden" id="authError"></div>' +
+        '<div class="auth-success hidden" id="authSuccess"></div>' +
+        '<button class="auth-submit-btn" onclick="handleSetNewPassword()">Update Password</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+  overlay.classList.add('open');
+}
+
+function handleSetNewPassword() {
+  clearAuthError();
+  var pw1 = document.getElementById('newPw1').value;
+  var pw2 = document.getElementById('newPw2').value;
+  if (!pw1 || pw1.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+  if (pw1 !== pw2) { showAuthError('Passwords don\'t match.'); return; }
+
+  sb.auth.updateUser({ password: pw1 }).then(function(res) {
+    if (res.error) { showAuthError(res.error.message); return; }
+    var el = document.getElementById('authSuccess');
+    if (el) {
+      el.textContent = 'Password updated. You\'re signed in.';
+      el.classList.remove('hidden');
+    }
+    setTimeout(function() {
+      closeAuthModal();
+      // Strip the recovery token from the URL so refresh doesn't re-trigger PASSWORD_RECOVERY.
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }, 1500);
+  }).catch(function() {
+    showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
   });
 }
 
@@ -621,6 +682,12 @@ function handleEmailLogin() {
       updateNavForUser({ id: currentUser.id, first_name: 'Your' });
     }
     closeAuthModal();
+  }).catch(function() {
+    loginInProgress = false;
+    var errEl = document.getElementById('authError');
+    if (errEl && errEl.classList.contains('hidden')) {
+      showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
+    }
   });
 }
 
@@ -644,7 +711,13 @@ function handleStudentSignup() {
     if (res.error) { showAuthError(res.error.message); return; }
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
-  }).catch(function() {});
+  }).catch(function() {
+    var errEl = document.getElementById('authError');
+    // Only show the generic network error if no specific error is already showing.
+    if (errEl && errEl.classList.contains('hidden')) {
+      showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
+    }
+  });
 }
 
 function handleParentSignup() {
@@ -666,7 +739,13 @@ function handleParentSignup() {
     if (res.error) { showAuthError(res.error.message); return; }
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
-  }).catch(function() {});
+  }).catch(function() {
+    var errEl = document.getElementById('authError');
+    // Only show the generic network error if no specific error is already showing.
+    if (errEl && errEl.classList.contains('hidden')) {
+      showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
+    }
+  });
 }
 
 function handleEducatorSignup() {
@@ -688,7 +767,13 @@ function handleEducatorSignup() {
     if (res.error) { showAuthError(res.error.message); return; }
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
-  }).catch(function() {});
+  }).catch(function() {
+    var errEl = document.getElementById('authError');
+    // Only show the generic network error if no specific error is already showing.
+    if (errEl && errEl.classList.contains('hidden')) {
+      showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
+    }
+  });
 }
 
 function handleLogout() {

@@ -631,7 +631,12 @@ function initScrollReveal() {
 // --- DARK MODE ---
 function initDarkMode() {
   var saved = localStorage.getItem('ascend_dark_mode');
-  if (saved === 'true') document.body.classList.add('dark-mode');
+  if (saved === 'true') {
+    document.body.classList.add('dark-mode');
+  } else if (saved === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // No explicit user preference. Honor the OS/browser dark-mode setting.
+    document.body.classList.add('dark-mode');
+  }
 }
 
 // --- MODULE HOVER PREVIEWS ---
