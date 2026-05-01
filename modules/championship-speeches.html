@@ -270,28 +270,7 @@
       <p>The gap between knowing these concepts and executing them is practice. Watch these speeches again. Study the structure. Then go build your own.</p>
     </div>
 
-    <div class="quiz" id="q6">
-      <div class="quiz-type-badge dd">Drag & Drop</div>
-      <div class="quiz-q">Match each speaker to the primary strategic skill their speech demonstrates.</div>
-      <div class="drag-area">
-        <div class="drag-label">Skills (drag these):</div>
-        <div class="drag-source" id="drag-source-6">
-          <div class="drag-chip" draggable="true" data-val="gap" ondragstart="dragStart(event)">Filling gaps and correcting his own side</div>
-          <div class="drag-chip" draggable="true" data-val="crystal" ondragstart="dragStart(event)">Moral framing and final crystallization</div>
-          <div class="drag-chip" draggable="true" data-val="flip" ondragstart="dragStart(event)">Offensive flip, turning the neg's argument</div>
-          <div class="drag-chip" draggable="true" data-val="compare" ondragstart="dragStart(event)">Late-round comparative and evidence flipping</div>
-        </div>
-        <div class="drag-targets" id="q6-targets">
-          <div class="drag-target" data-correct="gap" ondragover="dragOver(event)" ondrop="drop(event,'q6')"><span class="drag-target-label">Rohit Jhawar (Data Privacy)</span><span class="target-content"></span></div>
-          <div class="drag-target" data-correct="crystal" ondragover="dragOver(event)" ondrop="drop(event,'q6')"><span class="drag-target-label">Aditya Chordiya (Police Training Crystallization)</span><span class="target-content"></span></div>
-          <div class="drag-target" data-correct="flip" ondragover="dragOver(event)" ondrop="drop(event,'q6')"><span class="drag-target-label">Aditya Chordiya (CARSI / Foreign Aid)</span><span class="target-content"></span></div>
-          <div class="drag-target" data-correct="compare" ondragover="dragOver(event)" ondrop="drop(event,'q6')"><span class="drag-target-label">Adrian Baek (Medicare for All)</span><span class="target-content"></span></div>
-        </div>
-      </div>
-      <div class="feedback" id="q6-fb"></div>
-    </div>
-
-    <button class="next-btn hidden" id="next6" onclick="showCompletion()">Complete Module</button>
+    <button class="next-btn" id="next6" onclick="showCompletion()">Complete Module</button>
   </div>
 
   <!-- COMPLETION -->
@@ -342,8 +321,7 @@ var CORRECT_MSGS = {
   q2: "Correct! Anish Beeram doesn't just disagree, he provides evidence that the neg's argument is factually wrong (87% local funding), THEN pivots to his own case. Refute and build in the same move.",
   q3: "Correct! Tyler Luu narrows strategically. By focusing his SQUO on de-escalation training specifically, his Action and Outcome become provable with concrete evidence rather than abstract legal arguments.",
   q4: "Correct! Adrian Baek engages with what both sides have said, reframes the debate using the neg's own EU data, and delivers the decisive Commonwealth Fund comparative. Late-round speeches crystallize, they don't start from scratch.",
-  q5: "Correct! Aditya Chordiya plays offense, not defense. He doesn't just deny the extortion claim, he shows the programs work despite it AND actively weaken gangs. The neg's argument becomes a reason to affirm.",
-  q6: "Correct! Rohit Jhawar fills gaps and corrects his own side, Aditya Chordiya crystallizes with moral framing, Aditya flips the neg's extortion argument on CARSI, and Adrian Baek delivers the late-round comparative. Championship debaters deploy different skills for different round positions."
+  q5: "Correct! Aditya Chordiya plays offense, not defense. He doesn't just deny the extortion claim, he shows the programs work despite it AND actively weaken gangs. The neg's argument becomes a reason to affirm."
 };
 
 var WRONG_MSGS = {
@@ -351,8 +329,7 @@ var WRONG_MSGS = {
   q2: "Not quite. Anish Beeram doesn't ignore the neg or just acknowledge them. Watch how he responds, he has specific evidence against their funding claim before pivoting to quality.",
   q3: "Not quite. Tyler Luu makes a deliberate strategic choice here. Think about why narrowing to training specifically makes the rest of his block easier to prove.",
   q4: "Not quite. Watch Adrian Baek's speech structure, does he bring up a topic no one has mentioned, or does he engage with what's already been debated and deliver the decisive comparison?",
-  q5: "Not quite. Listen to Aditya Chordiya's logic carefully. Does he deny the extortion exists, or does he do something more sophisticated with it?",
-  q6: "Not quite. Think about what made each speaker's approach unique. Rohit identified what was missing, Aditya took a moral stance in crystallization, Aditya flipped the neg on CARSI, and Adrian delivered the comparative. Match the skill to the speaker."
+  q5: "Not quite. Listen to Aditya Chordiya's logic carefully. Does he deny the extortion exists, or does he do something more sophisticated with it?"
 };
 
 var UNLOCK_MAP = {
@@ -360,8 +337,7 @@ var UNLOCK_MAP = {
   q2: 'next2',
   q3: 'next3',
   q4: 'next4',
-  q5: 'next5',
-  q6: 'next6'
+  q5: 'next5'
 };
 </script>
 <script src="../shared/module.js?v=3"></script>

@@ -39,7 +39,7 @@
     <div class="section-body">
       <p>Presiding isn't for everyone. That's okay. Some debaters prefer to focus entirely on speaking. But if you're open to it, POing can be a strong addition to your competitive toolkit.</p>
       <p><strong>POs are scored separately from debaters.</strong> Many tournaments give PO awards, and a strong PO performance can earn you rankings even when speaking slots are limited. In crowded prelim rounds where getting recognized is tough, presiding guarantees you're doing something scoreable for the entire session.</p>
-      <p>Beyond scoring, presiding builds skills that transfer directly to debate performance: <strong>procedural knowledge, composure under pressure, and the ability to command a room.</strong> Judges notice when a PO is confident and competent, and those same judges are often the ones ranking your speeches later.</p>
+      <p>Beyond scoring, presiding builds skills that transfer directly to debate performance: <strong>procedural knowledge, composure under pressure, and the ability to command a room.</strong> When you preside, you typically don't give debate speeches that session, so the judges watching you preside usually won't be the ones ranking you in later rounds (the parliamentarian is the main exception). Even so, a sharp PO performance builds your reputation across the tournament: judges talk, parliamentarians remember names, and that credibility compounds in elimination rounds.</p>
       <p>That said, if you'd rather spend every round speaking, that's a perfectly valid strategy too. POing is an option, not a requirement.</p>
     </div>
 
@@ -206,10 +206,11 @@
     <div class="section-title">Handling Motions</div>
     <div class="section-body">
       <p>Motions are where most new POs get tripped up. Here's the standard process:</p>
-      <p><strong>1. Member makes a motion.</strong> "I move for the Previous Question." You respond: "Is there a second?" Someone says "Second." Now it's a live motion.</p>
-      <p><strong>2. Vote on the motion.</strong> "All those in favor of moving to the Previous Question, please raise your hand." Count hands. "All those opposed?" Count again. Announce the result: "The motion passes/fails."</p>
-      <p><strong>3. If it passes, execute it.</strong> For Previous Question: move to a vote on the bill. For Lay on the Table: set aside the bill and move to the next item. For Recess: announce the break length.</p>
-      <p>One of the most common motions you'll handle is <strong>Previous Question</strong>, it ends debate on the current bill and triggers a vote. Expect this motion after roughly 10-12 speeches on a bill.</p>
+      <p><strong>1. Member makes a motion.</strong> "I move for the Previous Question." Your first job is to <strong>decide whether the motion is valid</strong>, is it timely, in order, and not in conflict with a higher-priority motion? If it's valid, you proceed. If not, you rule it out of order and move on.</p>
+      <p><strong>2. Ask for a second (when required).</strong> Most motions need a second from another member: "Is there a second?" If someone says "Second," it's a live motion. Some motions are at the PO's discretion and don't require a second (see below).</p>
+      <p><strong>3. Vote on the motion.</strong> "All those in favor of moving to the Previous Question, please raise your hand." Count hands. "All those opposed?" Count again. Announce the result: "The motion passes/fails."</p>
+      <p><strong>4. If it passes, execute it.</strong> For Previous Question: move to a vote on the bill. For Table: set aside the bill and move to the next item. For Recess: announce the break length.</p>
+      <p>One of the most common motions you'll handle is <strong>Previous Question</strong>, it ends debate on the current bill and triggers a vote. Expect this motion after everyone in the chamber has given at least one speech.</p>
       <p>Important: while most motions require a second, <strong>certain motions are at the PO's discretion.</strong> Most notably, a <strong>Point of Personal Privilege</strong> (e.g., a member asking to exit the chamber) doesn't need a second; you can grant it on the spot.</p>
     </div>
 
@@ -218,8 +219,8 @@
       <div class="quiz-q">After a member makes a motion, what is the PO's immediate next step?</div>
       <div class="options">
         <button class="option" onclick="mc('q6a',this,'wrong')">Immediately execute the motion</button>
-        <button class="option" onclick="mc('q6a',this,'correct')">Ask if there is a second</button>
-        <button class="option" onclick="mc('q6a',this,'wrong')">Decide whether the motion is valid</button>
+        <button class="option" onclick="mc('q6a',this,'wrong')">Ask if there is a second</button>
+        <button class="option" onclick="mc('q6a',this,'correct')">Decide whether the motion is valid</button>
         <button class="option" onclick="mc('q6a',this,'wrong')">Open debate on the motion</button>
       </div>
       <div class="feedback" id="q6a-fb"></div>
@@ -357,7 +358,7 @@ var CORRECT_MSGS = {
   q4a: "The show must go on. If no one sponsors, open the floor for the first affirmative.",
   q4b: "The PO facilitates; the chamber votes. Multiple proposals get voted on democratically.",
   q5:  "Transparency is the most powerful tool a PO has for maintaining chamber trust.",
-  q6a: "Every motion needs a second before anything else happens. It's the most basic procedural rule.",
+  q6a: "Your first job as PO is to decide whether the motion is valid, is it timely, in order, and not in conflict with a higher-priority motion? Only after that do you ask for a second (when required) and proceed to a vote.",
   q6b: "Most motions require a second, but certain motions like Point of Personal Privilege are at the PO's discretion.",
   q7:  "Judges care about how you handle the role, not whether you're procedurally perfect. Lay judges especially don't know procedure well enough to evaluate your adherence to it!",
   q8a: "Composure beats speed. Pausing to think is a sign of maturity, not weakness."
@@ -370,7 +371,7 @@ var WRONG_MSGS = {
   q4a: "The PO can't force anyone to speak, but they also can't skip a bill unilaterally.",
   q4b: "Think about the PO's role: are they a dictator or a facilitator?",
   q5:  "Think about why chambers sometimes get frustrated with PO recognition decisions.",
-  q6a: "Think about the standard sequence: motion → second → vote → execute.",
+  q6a: "Think about the very first step: before you ask for a second or do anything else, you have to assess whether the motion itself is valid and in order.",
   q6b: "Think about it: most motions need a second, but are there exceptions the PO can handle on their own?",
   q7:  "Think about what makes you trust someone in a leadership role: perfection or poise?",
   q8a: "Think about what signals competence to judges watching the PO handle uncertainty."

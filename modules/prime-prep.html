@@ -165,16 +165,14 @@
     <div class="section-eyebrow">Lesson 4 of 4</div>
     <div class="section-title">Preparing for Adaptation</div>
     <div class="section-body">
-      <p>Here's an uncomfortable truth: <strong>your prep is a starting point, not a script.</strong> No matter how good your preparation is, the round will force you to adapt. Someone will cover your best argument. The debate will shift in a direction you didn't predict. A speaker before you will make a point that changes the landscape entirely.</p>
-      <p>Championship debaters prepare for this. They don't just have a Plan A, they have backup angles ready for when their primary argument gets covered. This means preparing at least <strong>one alternative approach per side</strong> that attacks the bill from a completely different angle.</p>
-      <p>For example, if your primary aff argument is economic (the bill creates jobs), your backup might be moral (the bill addresses a fundamental inequity). If your primary neg argument attacks the bill's mechanism (it won't work), your backup might attack the premise (the problem it claims to solve doesn't actually exist).</p>
-      <p>Adaptation also means knowing your material well enough to <strong>cut sections on the fly.</strong> If a previous speaker already established the Status Quo, you should be able to skip yours and jump straight to the Outcome without your speech falling apart. This requires understanding your argument deeply, not just memorizing a sequence of paragraphs.</p>
-      <p><strong>You also don't always have to scrap a covered argument entirely.</strong> Listen carefully to how the previous speaker handled it, then identify what they didn't do well and make that your focus. If they didn't impact, spend your time impacting. If they never explained <em>why</em> their argument is true, that's where you come in. Often, the same argument delivered with the missing piece lands harder than switching to a brand new angle.</p>
+      <p>Adapting effectively in round comes down to one thing: <strong>how well you actually know the topic.</strong> You won't be able to refute opponents, fill gaps, or adjust your speech on the fly unless you're an expert on the bill, and the broader policy area around it.</p>
+      <p>Don't just research your argument. Research the topic as a whole. Read the background. Understand who's affected, what's been tried before, what the strongest counterarguments are, and where the data points to. The deeper your foundation, the more flexibly you can move when the round shifts.</p>
+      <p>Championship debaters walk into rounds expecting the unexpected, because they've already learned 5x more than what fits in their speech. When a previous speaker takes their argument, they don't panic, they pivot to a related angle they already understand deeply. When CX exposes a weakness, they have context to fall back on. <strong>Background knowledge is the only adaptation tool that always works.</strong></p>
     </div>
 
     <div class="quiz" id="q4a">
       <div class="quiz-type-badge tf">True / False</div>
-      <div class="quiz-q">If your primary argument gets covered by another speaker, the best strategy is to deliver it anyway since your version is likely stronger.</div>
+      <div class="quiz-q">The most reliable way to adapt in round is to prepare a "Plan B" speech for each bill in case your primary argument gets covered.</div>
       <div class="tf-row">
         <button class="tf-btn true-btn" onclick="tf('q4a',this,false)">&#10003; True</button>
         <button class="tf-btn false-btn" onclick="tf('q4a',this,true)">&#10007; False</button>
@@ -184,12 +182,12 @@
 
     <div class="quiz hidden" id="q4b" style="margin-top:20px">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">What is the best way to prepare a backup argument?</div>
+      <div class="quiz-q">What's the single most important factor in being able to adapt to whatever a round throws at you?</div>
       <div class="options">
-        <button class="option" onclick="mc('q4b',this,'wrong')">Prepare a weaker version of the same argument</button>
-        <button class="option" onclick="mc('q4b',this,'correct')">Prepare an alternative approach that attacks the bill from a completely different angle</button>
-        <button class="option" onclick="mc('q4b',this,'wrong')">Wait until the round starts and improvise</button>
-        <button class="option" onclick="mc('q4b',this,'wrong')">Prepare only one side so you can go deeper on it</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Memorizing multiple alternative speeches per side</button>
+        <button class="option" onclick="mc('q4b',this,'correct')">Deep background knowledge of the bill and the broader policy area, so you have context to pivot from</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Improvising every speech without any prep</button>
+        <button class="option" onclick="mc('q4b',this,'wrong')">Sticking rigidly to your prepared speech regardless of what happens earlier in the round</button>
       </div>
       <div class="feedback" id="q4b-fb"></div>
     </div>
@@ -252,16 +250,16 @@ var CORRECT_MSGS = {
   q1:  "Intentionality is everything. Championship debaters don't out-work their opponents, they out-think them by identifying the strongest arguments and anticipating opposition.",
   q2:  "All four sections work together. Evidence cards give your arguments teeth, and pre-written refutations keep you prepared when opponents push back.",
   q3:  "Depth beats breadth. A single well-built argument with specific mechanisms and evidence is worth more than five vague talking points.",
-  q4a: "Repeating a covered argument tells judges you weren't listening. Switching to a backup angle shows adaptability, one of the most valued skills in Congress.",
-  q4b: "Your backup should come from a different direction entirely. If your primary is economic, your backup should be moral, social, or structural."
+  q4a: "Memorized backup speeches help, but they're not the foundation of real adaptation. The debater who knows the topic deeply can pivot to any angle the round demands, the debater with two scripted speeches and no broader context still gets stuck when the round goes somewhere unexpected.",
+  q4b: "Background knowledge is the only adaptation tool that always works. The deeper your foundation in the topic, the more flexibly you can pivot when the round shifts in a direction you didn't predict."
 };
 
 var WRONG_MSGS = {
   q1:  "Think about quality vs. quantity. Is it about how many hours you put in, or how you use those hours?",
   q2:  "Think about what happens in a live round when an opponent challenges your argument. Can you really build a strong refutation on the fly under pressure?",
   q3:  "Consider what makes an argument memorable and hard to refute. Is it the number of points, or the specificity and evidence behind each one?",
-  q4a: "Judges have already heard that argument. Repeating it, even a stronger version, tells them you weren't listening to the debate.",
-  q4b: "A backup argument needs to be truly different from your primary, not just a variation of the same approach."
+  q4a: "Think about what a 'Plan B' speech actually buys you. If the round shifts in a way neither your primary nor your Plan B anticipated, you're still stuck. What's a more general-purpose adaptation tool?",
+  q4b: "Think about which approach gives you the most flexibility no matter what direction the round takes."
 };
 
 var UNLOCK_MAP = {
