@@ -190,18 +190,13 @@ function showCompletion() {
   stepsCompleted = TOTAL_STEPS;
   updateTopProgress();
   saveModuleProgress();
-  injectShareButtons();
 
-  // Signal the hub IMMEDIATELY so completion lands in Supabase + hub state
-  // even if the user never clicks the in-page "Return" button (e.g. they
-  // use the iOS back gesture or close the tab).
+  // CRITICAL: persist + signal completion BEFORE any UI helpers that could
+  // throw (injectShareButtons has historically crashed on insertBefore in
+  // some module layouts). If we crash later, the data is already saved.
   if (window.opener && !window.opener.closed) {
     try { window.opener.postMessage(MODULE_ID + '-complete', '*'); } catch (e) {}
   }
-  // Belt-and-suspenders: write the completion straight into localStorage
-  // (same key the hub reads on load). Same-origin so this is shared. If
-  // the postMessage path fails (no opener / closed tab / different browser
-  // window), the hub still sees the completion next time it renders.
   try {
     var STATE_KEY = 'ascend_learn_state';
     var s = JSON.parse(localStorage.getItem(STATE_KEY) || '{"completed":[],"badges":[]}');
@@ -211,6 +206,12 @@ function showCompletion() {
       localStorage.setItem(STATE_KEY, JSON.stringify(s));
     }
   } catch (e) {}
+
+  // UI helpers — wrapped in try/catch so a stray DOM error never blocks
+  // the completion path again.
+  try { injectShareButtons(); } catch (e) {
+    try { console.error('injectShareButtons failed:', e); } catch (_) {}
+  }
 
   // Personalize completion screen
   var name = getUserName();
@@ -251,9 +252,15 @@ function injectShareButtons() {
       '<button class="share-btn share-copy-btn" type="button" onclick="copyShareLink(this,\'' + msg.replace(/'/g, "\\'") + '\')">' +
         '<span class="share-icon">' + linkIcon() + '</span><span class="share-copy-label">Copy Link</span></button>' +
     '</div>';
-  // Insert before the existing Return button.
+  // Insert before the existing Return button. .back-btn may be wrapped
+  // in another element (e.g. <div class="completion-cta">), so insertBefore
+  // needs the direct child of section that CONTAINS the back button —
+  // otherwise insertBefore throws NotFoundError and aborts everything that
+  // ran inside showCompletion below this line.
   var returnBtn = section.querySelector('.back-btn');
-  if (returnBtn) section.insertBefore(wrap, returnBtn);
+  var anchor = returnBtn;
+  while (anchor && anchor.parentNode !== section) anchor = anchor.parentNode;
+  if (anchor) section.insertBefore(wrap, anchor);
   else section.appendChild(wrap);
 }
 
