@@ -6,7 +6,7 @@
 // Modules across 5 units. Add file: 'modules/<id>.html' when module is built.
 var MODULES = [
   // ── UNIT 1: Foundations of Congressional Debate (5 modules) ──
-  { id: 'what-is-congress',     unit: 1, num: '1.1', title: 'What Is Congressional Debate?',     icon: '\u{1F3DB}\uFE0F', duration: '25 min', activities: 3, badge: null,
+  { id: 'what-is-congress',     unit: 1, num: '1.1', title: 'What Is Congressional Debate?',     icon: '\u{1F3DB}\uFE0F', duration: '25 min', activities: 3, badge: null, videoId: '68xO3Jk9NoQ',
     desc: 'How the event works, what judges look for, and why it\u2019s the most strategic event in speech & debate.',
     file: 'modules/what-is-congress.html',
     lessons: [
@@ -32,7 +32,7 @@ var MODULES = [
       { icon: '\u2753', text: 'Questioning (CX), strategy for questioners and speakers' },
       { icon: '\uD83C\uDFAC', text: 'A round from start to finish, full walkthrough' }
     ] },
-  { id: 'becoming-po',          unit: 1, num: '1.3', title: 'Becoming a Presiding Officer',       icon: '\uD83D\uDD28', duration: '30 min', activities: 5, badge: 'presiding-officer',
+  { id: 'becoming-po',          unit: 1, num: '1.3', title: 'Becoming a Presiding Officer',       icon: '\uD83D\uDD28', duration: '30 min', activities: 5, badge: 'presiding-officer', videoId: 'u-EfrKNziwg',
     desc: 'How to get elected, run your procedure speech, handle motions, and be a judge\u2019s best friend.',
     file: 'modules/becoming-po.html',
     lessons: [
@@ -76,7 +76,7 @@ var MODULES = [
     file: 'modules/unit-1-exam.html' },
 
   // ── UNIT 2: Building Arguments (6 modules) ──
-  { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: 'argument-builder',
+  { id: 'anatomy-of-argument',  unit: 2, num: '2.1', title: 'The Anatomy of an Argument',         icon: '\uD83D\uDCA1', duration: '20 min', activities: 6, badge: 'argument-builder', videoId: 'bZCo4kuuDUs',
     desc: 'Every argument has four parts: Claim, Warrant, Evidence, and Impact. Master CWEI and you\u2019ll have the foundation for everything that follows.',
     file: 'modules/anatomy-of-argument.html',
     lessons: [
@@ -87,7 +87,7 @@ var MODULES = [
       { icon: '\uD83D\uDCA5', text: 'The Impact, why your argument matters to real people' },
       { icon: '\uD83D\uDD17', text: 'Putting it all together, building a complete CWEI argument' }
     ] },
-  { id: 'block-format',         unit: 2, num: '2.2', title: 'The Block Format',                   icon: '\uD83E\uDDF1', duration: '25 min', activities: 6, badge: 'block-master',
+  { id: 'block-format',         unit: 2, num: '2.2', title: 'The Block Format',                   icon: '\uD83E\uDDF1', duration: '25 min', activities: 6, badge: 'block-master', videoId: 'EA8vfTFuAcg',
     desc: 'Ascend\u2019s signature argument structure. The same format that has won 6 TOCs and countless national championships.',
     file: 'modules/block-format.html',
     lessons: [
@@ -157,7 +157,7 @@ var MODULES = [
       { icon: '\uD83E\uDDF1', text: 'Generating arguments from gaps, building blocks in-round' },
       { icon: '\uD83E\uDDE0', text: 'The gap mindset, listening is the ultimate strategic skill' }
     ] },
-  { id: 'refutation',           unit: 3, num: '3.3', title: 'Prerequisites & Refutation',         icon: '\uD83D\uDEE1\uFE0F', duration: '20 min', activities: 6, badge: null,
+  { id: 'refutation',           unit: 3, num: '3.3', title: 'Prerequisites & Refutation',         icon: '\uD83D\uDEE1\uFE0F', duration: '20 min', activities: 6, badge: null, videoId: 'J9L2XodSuUk',
     desc: 'How to frame the debate before your argument, where to place refutation inside block format, and when to cut content and adapt.',
     file: 'modules/refutation.html',
     lessons: [
@@ -178,7 +178,7 @@ var MODULES = [
       { icon: '\uD83D\uDDE3\uFE0F', text: 'Controlling the narrative, reframing the debate' },
       { icon: '\uD83D\uDC8E', text: 'The crystallization speech, summarize, compare, win' }
     ] },
-  { id: 'championship-speeches', unit: 3, num: '3.5', title: 'Championship Speeches: Watch & Learn', icon: '\uD83C\uDFA5', duration: '25 min', activities: 6, badge: null,
+  { id: 'championship-speeches', unit: 3, num: '3.5', title: 'Championship Speeches: Watch & Learn', icon: '\uD83C\uDFA5', duration: '25 min', activities: 6, badge: null, videoId: '-5uuGfZRM0A',
     desc: 'Real competition speeches broken down lesson by lesson. See Block Format, prereqs, refutation, rhetoric, and CX in action at the national level.',
     file: 'modules/championship-speeches.html',
     lessons: [
@@ -237,7 +237,7 @@ var MODULES = [
     file: 'modules/unit-4-exam.html' },
 
   // ── UNIT 5: Performance, Presence & Strategy (9 modules) ──
-  { id: 'rhetoric-intros',      unit: 5, num: '5.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: 'rhetorician',
+  { id: 'rhetoric-intros',      unit: 5, num: '5.1', title: 'Rhetoric, Intros & Conclusions',     icon: '\u270D\uFE0F', duration: '22 min', activities: 6, badge: 'rhetorician', videoId: 'xTpvX0HQwHk',
     desc: 'How to turn arguments into stories judges remember. Writing rhetoric within blocks, crafting intros, tying conclusions, and finding your voice on paper.',
     file: 'modules/rhetoric-intros.html',
     lessons: [
@@ -685,6 +685,51 @@ function addHoverPreviews() {
     preview.className = 'module-preview';
     preview.textContent = mod.lessons[0].text.split(', ')[0];
     card.appendChild(preview);
+
+    // Modules with a hero video get an autoplaying-on-hover preview clip.
+    // Iframe is created on first hover (lazy) so we don't load 32 YouTube
+    // embeds at page load. Disabled on touch devices and tiny viewports.
+    if (mod.videoId && !mod.locked && window.innerWidth >= 768 && !('ontouchstart' in window)) {
+      attachVideoHover(card, mod.videoId);
+    }
+  });
+}
+
+function attachVideoHover(card, videoId) {
+  var built = false;
+  var hideTimer = null;
+
+  function build() {
+    var wrap = document.createElement('div');
+    wrap.className = 'module-video-preview';
+    // Keep the iframe muted and looping; player API params kill controls + branding
+    var src = 'https://www.youtube.com/embed/' + videoId +
+      '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + videoId +
+      '&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&start=2';
+    wrap.innerHTML = '<iframe src="' + src + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    card.appendChild(wrap);
+    return wrap;
+  }
+
+  card.addEventListener('mouseenter', function () {
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    var wrap = card.querySelector('.module-video-preview');
+    if (!wrap) wrap = build();
+    // Force reflow so the opacity transition runs.
+    void wrap.offsetWidth;
+    wrap.classList.add('show');
+    built = true;
+  });
+
+  card.addEventListener('mouseleave', function () {
+    var wrap = card.querySelector('.module-video-preview');
+    if (!wrap) return;
+    wrap.classList.remove('show');
+    // Drop the iframe a beat after fade-out so audio (even though muted) stops
+    // and we don't keep N background YouTube players running.
+    hideTimer = setTimeout(function () {
+      if (wrap && wrap.parentNode) wrap.parentNode.removeChild(wrap);
+    }, 400);
   });
 }
 

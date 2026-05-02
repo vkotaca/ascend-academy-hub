@@ -1037,7 +1037,39 @@ body.dark-mode .skeleton {
   background-attachment: fixed;
 }
 
-/* ═══ MODULE HOVER PREVIEW ═══ */
+/* ═══ MODULE VIDEO PREVIEW (hover, desktop only) ═══ */
+.module-card { position: relative; }
+.module-card .module-video-preview {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none; /* don't block clicks on the card */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: #000;
+  z-index: 2;
+}
+.module-card .module-video-preview iframe {
+  position: absolute;
+  /* Scale up so the YouTube branding bar at the bottom stays cropped off */
+  top: -10%; left: -10%;
+  width: 120%; height: 120%;
+  border: 0;
+  pointer-events: none;
+}
+.module-card .module-video-preview.show {
+  opacity: 0.95;
+}
+.module-card:has(.module-video-preview.show) .module-icon,
+.module-card:has(.module-video-preview.show) .module-title,
+.module-card:has(.module-video-preview.show) .module-meta,
+.module-card:has(.module-video-preview.show) .module-preview {
+  opacity: 0; /* let the video shine */
+  transition: opacity 0.3s ease;
+}
+
+/* ═══ MODULE HOVER TEXT PREVIEW ═══ */
 .module-card .module-preview {
   display: none;
   font-size: 11px;
