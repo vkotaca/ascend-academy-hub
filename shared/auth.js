@@ -1004,7 +1004,9 @@ function syncCompletionToSupabase(moduleId) {
   sb.from('hub_progress').upsert({
     user_id: currentUser.id,
     module_id: moduleId
-  }, { onConflict: 'user_id,module_id' });
+  }, { onConflict: 'user_id,module_id' }).then(function(res) {
+    if (res && res.error) console.warn('completion sync failed:', res.error.message);
+  });
 }
 
 function syncBadgeToSupabase(badgeId) {
@@ -1012,7 +1014,9 @@ function syncBadgeToSupabase(badgeId) {
   sb.from('hub_badges').upsert({
     user_id: currentUser.id,
     badge_id: badgeId
-  }, { onConflict: 'user_id,badge_id' });
+  }, { onConflict: 'user_id,badge_id' }).then(function(res) {
+    if (res && res.error) console.warn('badge sync failed:', res.error.message);
+  });
 }
 
 // Logged once per time the user opens a module page (every visit, no upsert).
