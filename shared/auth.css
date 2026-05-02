@@ -1,3 +1,33 @@
+/* ═══ PASSWORD INPUT + VISIBILITY TOGGLE ═══ */
+.auth-pw-row {
+  position: relative;
+  margin: 0 0 12px;
+}
+.auth-pw-input {
+  padding-right: 44px !important;
+  width: 100%;
+}
+.auth-pw-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.auth-pw-toggle:hover { color: #C8102E; background: rgba(200,16,46,0.08); }
+.auth-pw-toggle:focus { outline: 2px solid rgba(200,16,46,0.4); outline-offset: 1px; }
+body.dark-mode .auth-pw-toggle { color: #aaa; }
+body.dark-mode .auth-pw-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
 /* Generic hidden helper for any auth-form element with class="hidden". */
 .auth-form .hidden,
 .auth-reg-form .hidden,

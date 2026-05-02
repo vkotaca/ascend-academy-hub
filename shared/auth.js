@@ -218,7 +218,7 @@ function getSignInForm() {
     '</button>' +
     '<div class="auth-divider"><span>or</span></div>' +
     '<input type="email" id="authEmail" class="auth-input" placeholder="Email address" required>' +
-    '<input type="password" id="authPassword" class="auth-input" placeholder="Password" required>' +
+    pwInputWithToggle('authPassword', 'Password') +
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-submit-btn" onclick="handleEmailLogin()">Sign In</button>' +
     '<button class="auth-link-btn" style="width:100%;text-align:center;margin-top:8px;" onclick="showForgotPassword()">Forgot password?</button>' +
@@ -292,6 +292,36 @@ function yesNoToggle(id, question, defaultVal) {
   '</div>';
 }
 
+// Eye-icon SVGs for the password visibility toggle.
+function eyeOpenSvg() {
+  return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+}
+function eyeOffSvg() {
+  return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+}
+
+// Reusable password input + visibility toggle. Pass a placeholder and an id.
+function pwInputWithToggle(id, placeholder) {
+  return '<div class="auth-pw-row">' +
+    '<input type="password" id="' + id + '" class="auth-input auth-pw-input" placeholder="' + placeholder + '">' +
+    '<button type="button" class="auth-pw-toggle" tabindex="-1" aria-label="Show password" onclick="togglePasswordVisibility(\'' + id + '\',this)">' + eyeOpenSvg() + '</button>' +
+  '</div>';
+}
+
+function togglePasswordVisibility(inputId, btn) {
+  var input = document.getElementById(inputId);
+  if (!input) return;
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = eyeOffSvg();
+    btn.setAttribute('aria-label', 'Hide password');
+  } else {
+    input.type = 'password';
+    btn.innerHTML = eyeOpenSvg();
+    btn.setAttribute('aria-label', 'Show password');
+  }
+}
+
 // Toggle handler invoked by Yes/No buttons.
 function setYesNo(inputId, btn, value) {
   var input = document.getElementById(inputId);
@@ -338,7 +368,8 @@ function getStudentForm() {
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'student\')">' + googleSVG() + ' Sign up with Google</button>' +
     '<div style="text-align:center;font-size:12px;color:#999;margin:12px 0;">or</div>' +
-    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password (min 6 characters) *">' +
+    pwInputWithToggle('regPassword', 'Create password (min 6 characters) *') +
+    pwInputWithToggle('regPasswordConfirm', 'Confirm password *') +
     '<button class="auth-submit-btn" onclick="handleStudentSignup()">Create Account with Email</button>' +
     '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[1],\'signup\')">← Back to role selection</button>' +
   '</div>';
@@ -363,7 +394,8 @@ function getParentForm() {
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'parent\')">' + googleSVG() + ' Sign up with Google</button>' +
     '<div style="text-align:center;font-size:12px;color:#999;margin:12px 0;">or</div>' +
-    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password (min 6 characters) *">' +
+    pwInputWithToggle('regPassword', 'Create password (min 6 characters) *') +
+    pwInputWithToggle('regPasswordConfirm', 'Confirm password *') +
     '<button class="auth-submit-btn" onclick="handleParentSignup()">Create Account with Email</button>' +
     '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[1],\'signup\')">← Back to role selection</button>' +
   '</div>';
@@ -387,7 +419,8 @@ function getEducatorForm() {
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'educator\')">' + googleSVG() + ' Sign up with Google</button>' +
     '<div style="text-align:center;font-size:12px;color:#999;margin:12px 0;">or</div>' +
-    '<input type="password" id="regPassword" class="auth-input" placeholder="Create password (min 6 characters) *">' +
+    pwInputWithToggle('regPassword', 'Create password (min 6 characters) *') +
+    pwInputWithToggle('regPasswordConfirm', 'Confirm password *') +
     '<button class="auth-submit-btn" onclick="handleEducatorSignup()">Create Account with Email</button>' +
     '<button class="auth-back-btn" onclick="switchAuthTab(document.querySelectorAll(\'.auth-tab\')[1],\'signup\')">← Back to role selection</button>' +
   '</div>';
@@ -628,8 +661,8 @@ function showSetNewPassword() {
     '</div>' +
     '<div id="authTabContent">' +
       '<div class="auth-form">' +
-        '<input type="password" id="newPw1" class="auth-input" placeholder="New password (min 6 characters)" required>' +
-        '<input type="password" id="newPw2" class="auth-input" placeholder="Confirm new password" required>' +
+        pwInputWithToggle('newPw1', 'New password (min 6 characters)') +
+        pwInputWithToggle('newPw2', 'Confirm new password') +
         '<div class="auth-error hidden" id="authError"></div>' +
         '<div class="auth-success hidden" id="authSuccess"></div>' +
         '<button class="auth-submit-btn" onclick="handleSetNewPassword()">Update Password</button>' +
@@ -732,7 +765,9 @@ function handleStudentSignup() {
   if (!data) return;
 
   var password = document.getElementById('regPassword').value;
+  var passwordConfirm = document.getElementById('regPasswordConfirm') ? document.getElementById('regPasswordConfirm').value : password;
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+  if (password !== passwordConfirm) { showAuthError('Passwords don\'t match. Please re-type to confirm.'); return; }
 
   // Cache name immediately so nav updates instantly after signup
   localStorage.setItem('ascend_user_first', data.first_name);
@@ -767,7 +802,9 @@ function handleParentSignup() {
   if (!data) return;
 
   var password = document.getElementById('regPassword').value;
+  var passwordConfirm = document.getElementById('regPasswordConfirm') ? document.getElementById('regPasswordConfirm').value : password;
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+  if (password !== passwordConfirm) { showAuthError('Passwords don\'t match. Please re-type to confirm.'); return; }
 
   localStorage.setItem('ascend_user_first', data.first_name);
 
@@ -796,7 +833,9 @@ function handleEducatorSignup() {
   if (!data) return;
 
   var password = document.getElementById('regPassword').value;
+  var passwordConfirm = document.getElementById('regPasswordConfirm') ? document.getElementById('regPasswordConfirm').value : password;
   if (!password || password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+  if (password !== passwordConfirm) { showAuthError('Passwords don\'t match. Please re-type to confirm.'); return; }
 
   localStorage.setItem('ascend_user_first', data.first_name);
 
