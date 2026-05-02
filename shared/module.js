@@ -56,6 +56,20 @@ window.addEventListener('DOMContentLoaded', function () {
   restoreModuleProgress();
 });
 
+// ─── PREVENT BACKSPACE NAVIGATION ───
+// Safari (and some Firefox setups) navigate back when Backspace is pressed
+// outside an input — that triggers a re-load of the module and discards the
+// user's place in the lesson. Swallow the key when no editable element is
+// focused.
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Backspace' && e.keyCode !== 8) return;
+  var t = e.target;
+  if (!t) { e.preventDefault(); return; }
+  var tag = (t.tagName || '').toUpperCase();
+  var editable = tag === 'INPUT' || tag === 'TEXTAREA' || t.isContentEditable;
+  if (!editable) e.preventDefault();
+});
+
 // ─── PARTIAL-PROGRESS RESUME (per module, per device) ───
 // Saves stepsCompleted in localStorage after each advance() so closing
 // the tab mid-module and re-opening picks up where you left off instead

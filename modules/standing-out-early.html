@@ -202,10 +202,10 @@
       <div class="drag-area">
         <div class="drag-label">Elements (drag these):</div>
         <div class="drag-source" id="drag-source-6">
-          <div class="drag-chip" draggable="true" data-val="intro" ondragstart="dragStart(event)">Hook the room with why this bill matters now</div>
-          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">Establish the problem with expanded context</div>
           <div class="drag-chip" draggable="true" data-val="bill" ondragstart="dragStart(event)">Walk through what each section of the bill does</div>
           <div class="drag-chip" draggable="true" data-val="impact" ondragstart="dragStart(event)">Humanize why the new world matters</div>
+          <div class="drag-chip" draggable="true" data-val="intro" ondragstart="dragStart(event)">Hook the room with why this bill matters now</div>
+          <div class="drag-chip" draggable="true" data-val="squo" ondragstart="dragStart(event)">Establish the problem with expanded context</div>
         </div>
         <div class="drag-targets" id="q6a-targets">
           <div class="drag-target" data-correct="intro" ondragover="dragOver(event)" ondrop="drop(event,'q6a')"><span class="drag-target-label">First</span><span class="target-content"></span></div>
@@ -227,28 +227,28 @@
       <div class="feedback" id="q6b-fb"></div>
     </div>
 
-    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Constructive vs. Canned</button>
+    <button class="next-btn hidden" id="next6" onclick="advance(6)">Continue → Adaptive vs. Canned</button>
   </div>
 
   <!-- STEP 7 -->
   <div class="section hidden" id="step7">
     <div class="section-eyebrow">Lesson 7 of 8</div>
-    <div class="section-title">Constructive vs. Canned</div>
+    <div class="section-title">Adaptive vs. Canned</div>
     <div class="section-body">
-      <p>In early cycles, your speech should be <strong>constructive</strong>, actively building your side's advocacy and advancing the debate. The opposite of constructive is <strong>canned</strong>, a pre-written speech that could have been delivered in any round on this topic.</p>
-      <p>A constructive speech acknowledges the round. Even in Cycle 1, you can say something like: "The central tension in this debate will likely be [X vs. Y]. My argument addresses that head-on."</p>
-      <p>The key to effective early-round constructive speaking is <strong>simplicity and explanation.</strong> Your judges usually don't know much about the topic, and you can't assume they read the bill. Block Format (which we'll cover formally in Module 2.2) is extremely effective early because it's easy to follow, one argument, clearly structured, deeply explained.</p>
+      <p>In early cycles, your speech should be <strong>adaptive</strong>, actively engaging with what's happening in the round and advancing the debate. The opposite of adaptive is <strong>canned</strong>, a pre-written speech that could have been delivered in any round on this topic.</p>
+      <p>An adaptive speech acknowledges the round. Even in Cycle 1, you can say something like: "The central tension in this debate will likely be [X vs. Y]. My argument addresses that head-on."</p>
+      <p>The key to effective early-round adaptive speaking is <strong>simplicity and explanation.</strong> Your judges usually don't know much about the topic, and you can't assume they read the bill. Block Format (which we'll cover formally in Module 2.2) is extremely effective early because it's easy to follow, one argument, clearly structured, deeply explained.</p>
       <p>As Ascend teaches: <strong>cards do not eliminate the need for a warrant.</strong> Just because you have evidence doesn't mean you've explained why it matters. Over-explaining is always better than under-explaining in early rounds.</p>
     </div>
 
     <div class="quiz" id="q7">
       <div class="quiz-type-badge mc">Multiple Choice</div>
-      <div class="quiz-q">What is the key difference between a "constructive" speech and a "canned" speech?</div>
+      <div class="quiz-q">What is the key difference between an "adaptive" speech and a "canned" speech?</div>
       <div class="options">
-        <button class="option" onclick="mc('q7',this,'wrong')">Constructive speeches include refutation of the opposing side; canned speeches don't</button>
-        <button class="option" onclick="mc('q7',this,'correct')">Constructive speeches acknowledge and engage with the round; canned speeches could be delivered in any round on the topic</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">Canned speeches are fully written in advance while constructive speeches are mostly improvised on the spot</button>
-        <button class="option" onclick="mc('q7',this,'wrong')">Constructive speeches use Block Format while canned speeches use the older CWEI structure</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Adaptive speeches include refutation of the opposing side; canned speeches don't</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Canned speeches are fully written in advance while adaptive speeches are mostly improvised on the spot</button>
+        <button class="option" onclick="mc('q7',this,'correct')">Adaptive speeches acknowledge and engage with the round; canned speeches could be delivered in any round on the topic</button>
+        <button class="option" onclick="mc('q7',this,'wrong')">Adaptive speeches use Block Format while canned speeches use the older CWEI structure</button>
       </div>
       <div class="feedback" id="q7-fb"></div>
     </div>
@@ -355,7 +355,7 @@ var CORRECT_MSGS = {
   q5:  "Sponsoring gives you first-mover advantage with no obligation to respond to anyone. It's pure offense.",
   q6a: "The sponsorship follows Block Format but with expanded context-setting since you're the first to explain the bill.",
   q6b: "It's the opposite, sponsors should spend MORE time on the SQUO because they're establishing the entire context for the debate.",
-  q7:  "Constructive speeches live in the round. Canned speeches exist in a vacuum. Judges can tell the difference instantly.",
+  q7:  "Adaptive speeches live in the round. Canned speeches exist in a vacuum. Judges can tell the difference instantly.",
   q8a: "Prelims are where you earn your spot. A unique argument that stands out is worth far more than a safe one that blends in with everyone else.",
   q8b: "Rankings come from judges remembering you favorably. Being memorable is the whole game in prelims."
 };
@@ -369,7 +369,7 @@ var WRONG_MSGS = {
   q5:  "Think about what sponsors get to do that later speakers don't.",
   q6a: "Think about the natural flow of a speech, which elements set up which other elements?",
   q6b: "Re-read the sponsorship checklist, does it say 'expanded' or 'abbreviated' for the Status Quo?",
-  q7:  "Think about what 'constructive' literally means; it constructs something connected to the round.",
+  q7:  "Think about what 'adaptive' literally means; it adapts to what's actually happening in the round.",
   q8a: "Think about what this entire module has been teaching, what do judges remember? The safe argument or the unique one?",
   q8b: "Think about what actually drives rankings, is it quantity or quality and memorability?"
 };
@@ -388,7 +388,7 @@ var UNLOCK_MAP = {
   q8b: 'next8'
 };
 </script>
-<script src="../shared/module.js?v=32"></script>
+<script src="../shared/module.js?v=33"></script>
 <script src="../shared/hub-events.js?v=1"></script>
 </body>
 </html>

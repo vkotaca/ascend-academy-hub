@@ -85,7 +85,7 @@ var MODULES = [
       { icon: '\uD83D\uDC42', text: 'Paying attention in round, the #1 differentiator' },
       { icon: '\uD83D\uDCE3', text: 'The sponsorship advantage, why most debaters are wrong to avoid it' },
       { icon: '\u2705', text: 'The sponsorship checklist, structure for a strong first speech' },
-      { icon: '\uD83D\uDEE0\uFE0F', text: 'Constructive vs. canned, speeches that live in the round' },
+      { icon: '\uD83D\uDEE0\uFE0F', text: 'Adaptive vs. canned, speeches that live in the round' },
       { icon: '\uD83E\uDDE0', text: 'The early-round mindset, every interaction is a scoring opportunity' }
     ] },
   { id: 'unit-1-exam',          unit: 1, num: '1.6', title: 'Unit 1 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 10, badge: 'unit-1-complete', exam: true,
