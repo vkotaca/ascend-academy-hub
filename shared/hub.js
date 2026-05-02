@@ -503,9 +503,24 @@ function _doLaunchModule(id) {
 
   window.open(mod.file, '_blank');
 
-  // Listen for completion
+  // Listen for messages from the module page (lifecycle + telemetry).
   function handler(e) {
-    if (e.data === id + '-complete') {
+    var data = e.data;
+
+    // Object-format messages: module-started and quiz-attempt
+    if (data && typeof data === 'object' && data.moduleId === id) {
+      if (data.type === 'module-started') {
+        if (typeof syncModuleStartToSupabase === 'function') syncModuleStartToSupabase(id);
+      } else if (data.type === 'quiz-attempt' && data.questionId) {
+        if (typeof syncQuizAttemptToSupabase === 'function') {
+          syncQuizAttemptToSupabase(id, data.questionId, data.wasCorrect);
+        }
+      }
+      return;
+    }
+
+    // Legacy string format: completion
+    if (data === id + '-complete') {
       if (!state.completed.includes(id)) {
         state.completed.push(id);
         saveState();

@@ -17,6 +17,35 @@
 let stepsCompleted = 0;
 let dragData = null;
 
+// Notify the hub (window.opener) about lifecycle events.
+// The hub listens for these and writes to Supabase.
+function notifyOpener(payload) {
+  try {
+    if (window.opener && !window.opener.closed) {
+      window.opener.postMessage(payload, '*');
+    }
+  } catch (e) { /* fail silently — tracking is best-effort */ }
+}
+
+// Tell the hub the user opened this module page (one row per visit).
+// Fires once per page load.
+window.addEventListener('DOMContentLoaded', function () {
+  if (typeof MODULE_ID !== 'undefined') {
+    notifyOpener({ type: 'module-started', moduleId: MODULE_ID });
+  }
+});
+
+// Track a single quiz answer attempt.
+function trackQuizAttempt(questionId, wasCorrect) {
+  if (typeof MODULE_ID === 'undefined') return;
+  notifyOpener({
+    type: 'quiz-attempt',
+    moduleId: MODULE_ID,
+    questionId: questionId,
+    wasCorrect: !!wasCorrect
+  });
+}
+
 function getUserName() {
   return localStorage.getItem('ascend_user_first') || '';
 }
@@ -89,6 +118,8 @@ function mc(qId, btn, result) {
   btns.forEach(function (b) { b.disabled = true; });
   var fb = document.getElementById(qId + '-fb');
 
+  trackQuizAttempt(qId, result === 'correct');
+
   if (result === 'correct') {
     btn.classList.add('correct');
     fb.className = 'feedback show correct-fb';
@@ -111,6 +142,8 @@ function tf(qId, btn, isCorrect) {
   var btns = quiz.querySelectorAll('.tf-btn');
   btns.forEach(function (b) { b.disabled = true; });
   var fb = document.getElementById(qId + '-fb');
+
+  trackQuizAttempt(qId, !!isCorrect);
 
   if (isCorrect) {
     btn.classList.add('correct');
@@ -210,6 +243,8 @@ function checkDrag(qId, targets) {
       allCorrect = false;
     }
   });
+
+  trackQuizAttempt(qId, allCorrect);
 
   var fb = document.getElementById(qId + '-fb');
   if (allCorrect) {

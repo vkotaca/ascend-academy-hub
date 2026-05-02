@@ -989,6 +989,32 @@ function syncBadgeToSupabase(badgeId) {
   }, { onConflict: 'user_id,badge_id' });
 }
 
+// Logged once per time the user opens a module page (every visit, no upsert).
+// Lets us measure abandonment (started but never completed) and session count.
+function syncModuleStartToSupabase(moduleId) {
+  if (!currentUser) return;
+  sb.from('hub_module_starts').insert({
+    user_id: currentUser.id,
+    module_id: moduleId
+  }).then(function(res) {
+    if (res && res.error) console.warn('module-start sync failed:', res.error.message);
+  });
+}
+
+// Logged once per quiz answer attempt. Lets us identify problem questions
+// and per-question success rates.
+function syncQuizAttemptToSupabase(moduleId, questionId, wasCorrect) {
+  if (!currentUser) return;
+  sb.from('hub_quiz_attempts').insert({
+    user_id: currentUser.id,
+    module_id: moduleId,
+    question_id: questionId,
+    was_correct: !!wasCorrect
+  }).then(function(res) {
+    if (res && res.error) console.warn('quiz-attempt sync failed:', res.error.message);
+  });
+}
+
 // ─── ADD TO HOME SCREEN ───
 var deferredInstallPrompt = null;
 window.addEventListener('beforeinstallprompt', function(e) {
@@ -1249,9 +1275,11 @@ function resetProgress() {
   }
   Promise.all([
     sb.from('hub_progress').delete().eq('user_id', currentUser.id),
-    sb.from('hub_badges').delete().eq('user_id', currentUser.id)
+    sb.from('hub_badges').delete().eq('user_id', currentUser.id),
+    sb.from('hub_module_starts').delete().eq('user_id', currentUser.id),
+    sb.from('hub_quiz_attempts').delete().eq('user_id', currentUser.id)
   ]).then(function(results) {
-    var err = results[0].error || results[1].error;
+    var err = results[0].error || results[1].error || results[2].error || results[3].error;
     if (err) {
       console.error('Reset progress failed:', err);
       showAuthError('Failed to reset: ' + (err.message || err.code || 'unknown error'));
