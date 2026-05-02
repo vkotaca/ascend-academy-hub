@@ -790,4 +790,10 @@ document.addEventListener('DOMContentLoaded', function () {
       hydrateFromSupabase();
     }
   });
+
+  // bfcache restore (iOS native swipe-back / browser back button into the
+  // hub tab): force a fresh reload so completion state is never stale.
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) location.reload();
+  });
 });
