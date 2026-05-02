@@ -69,17 +69,23 @@ body {
       "counter counter counter"
       "prev    track   next";
     column-gap: 10px;
-    row-gap: 4px;
+    row-gap: 6px;
     align-items: center;
   }
   .progress-row .lesson-nav-prev { grid-area: prev; }
-  .progress-row .top-progress-track { grid-area: track; width: 100%; }
   .progress-row .lesson-nav-next { grid-area: next; }
+  .progress-row .top-progress-track {
+    grid-area: track;
+    width: 100%;
+    height: 7px;
+    background: rgba(0,0,0,0.16);
+  }
   .progress-row .progress-steps {
     grid-area: counter;
     text-align: center;
     white-space: nowrap;
     font-size: 11px;
+    font-weight: 600;
   }
 }
 

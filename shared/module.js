@@ -154,7 +154,11 @@ function correctPrefix() {
 function updateTopProgress() {
   const pct = (stepsCompleted / TOTAL_STEPS) * 100;
   document.getElementById('topFill').style.width = pct + '%';
-  document.getElementById('topSteps').textContent = stepsCompleted + ' / ' + TOTAL_STEPS;
+  // Counter shows the lesson the user is currently on (clamped to TOTAL_STEPS),
+  // not the number of completed quizzes — clearer for students. The fill bar
+  // itself still represents completion.
+  var pos = Math.min(Math.max(currentLesson || 1, 1), TOTAL_STEPS);
+  document.getElementById('topSteps').textContent = pos + ' / ' + TOTAL_STEPS;
 }
 
 function advance(step) {
@@ -417,6 +421,7 @@ function goToLesson(n) {
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   currentLesson = n;
   updateLessonNavButtons();
+  updateTopProgress();
 }
 
 function updateLessonNavButtons() {
@@ -445,6 +450,7 @@ function observeLessonScroll() {
         if (n && n !== currentLesson) {
           currentLesson = n;
           updateLessonNavButtons();
+          updateTopProgress();
         }
       }
     });
