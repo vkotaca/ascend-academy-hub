@@ -779,4 +779,12 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('moduleOverlay').addEventListener('click', function (e) {
     if (e.target === this) closeModule();
   });
+
+  // Re-hydrate when the tab regains focus so completions from the module
+  // tab show up immediately instead of waiting for postMessage.
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && typeof hydrateFromSupabase === 'function') {
+      hydrateFromSupabase();
+    }
+  });
 });
