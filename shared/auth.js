@@ -1192,7 +1192,6 @@ function showInviteFriend() {
       '<div style="display:flex;flex-wrap:wrap;gap:10px;">' +
         '<a class="share-btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodedFull + '">WhatsApp</a>' +
         '<a class="share-btn" href="sms:&body=' + encodedFull + '">iMessage</a>' +
-        '<a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=' + encodedText + '&url=' + encodedUrl + '">Post on X</a>' +
         '<a class="share-btn" target="_blank" rel="noopener" href="mailto:?subject=Try Ascend Academy with me&body=' + encodedFull + '">Email</a>' +
       '</div>' +
     '</div>' +

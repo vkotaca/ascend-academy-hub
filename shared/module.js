@@ -189,8 +189,6 @@ function injectShareButtons() {
         '<span class="share-icon">' + whatsappIcon() + '</span>WhatsApp</a>' +
       '<a class="share-btn" href="sms:&body=' + encoded + '">' +
         '<span class="share-icon">' + smsIcon() + '</span>iMessage</a>' +
-      '<a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=' + encodedTextOnly + '&url=' + encodedUrl + '">' +
-        '<span class="share-icon">' + xIcon() + '</span>Post on X</a>' +
       '<button class="share-btn share-copy-btn" type="button" onclick="copyShareLink(this,\'' + msg.replace(/'/g, "\\'") + '\')">' +
         '<span class="share-icon">' + linkIcon() + '</span><span class="share-copy-label">Copy Link</span></button>' +
     '</div>';
