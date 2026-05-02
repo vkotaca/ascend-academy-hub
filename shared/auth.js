@@ -840,6 +840,8 @@ function handleStudentSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    // Cache the full profile so Edit Profile renders instantly after signup
+    localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
     sendHubWelcomeEmail({
       email: data.email,
       first_name: data.first_name,
@@ -876,6 +878,8 @@ function handleParentSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    // Cache the full profile so Edit Profile renders instantly after signup
+    localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
     sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
@@ -907,6 +911,8 @@ function handleEducatorSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    // Cache the full profile so Edit Profile renders instantly after signup
+    localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
     sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
@@ -1053,8 +1059,23 @@ function showSettingsModal(tab) {
     document.body.appendChild(overlay);
   }
 
-  if (tab === 'profile') overlay.innerHTML = getEditProfileHTML();
-  else if (tab === 'password') overlay.innerHTML = getChangePasswordHTML();
+  if (tab === 'profile') {
+    // Profile form needs the full hub_profiles row. If cache is empty
+    // (which happens after a fresh signup), fetch from DB before rendering.
+    var cached = localStorage.getItem('ascend_profile_cache');
+    if (!cached && currentUser) {
+      overlay.innerHTML = '<div class="auth-panel"><div style="padding:48px 32px;text-align:center;color:#666;">Loading your profile&hellip;</div></div>';
+      overlay.classList.add('open');
+      sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
+        if (res.data) {
+          localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
+        }
+        overlay.innerHTML = getEditProfileHTML();
+      });
+      return;
+    }
+    overlay.innerHTML = getEditProfileHTML();
+  } else if (tab === 'password') overlay.innerHTML = getChangePasswordHTML();
   else if (tab === 'reset') overlay.innerHTML = getResetProgressHTML();
 
   overlay.classList.add('open');
