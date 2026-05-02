@@ -791,9 +791,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // bfcache restore (iOS native swipe-back / browser back button into the
-  // hub tab): force a fresh reload so completion state is never stale.
+  // Whenever the hub becomes visible again (bfcache restore, tab switch,
+  // module-tab close), re-read state from localStorage so any completion
+  // the module page wrote directly is reflected immediately. Plus: if
+  // bfcache restored the hub, force a fresh reload so DOM is regenerated.
   window.addEventListener('pageshow', function(e) {
-    if (e.persisted) location.reload();
+    if (e.persisted) {
+      location.reload();
+      return;
+    }
+    try {
+      var fresh = JSON.parse(localStorage.getItem(STATE_KEY) || '{"completed":[],"badges":[]}');
+      var changed =
+        (fresh.completed || []).length !== (state.completed || []).length ||
+        (fresh.badges || []).length !== (state.badges || []).length;
+      if (changed) {
+        state = fresh;
+        renderModuleCards();
+        updateProgress();
+        renderBadgeShelf();
+        if (typeof renderContinueCard === 'function') renderContinueCard();
+        if (typeof renderUnitProgressRings === 'function') renderUnitProgressRings();
+      }
+    } catch (err) {}
   });
 });

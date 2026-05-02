@@ -192,6 +192,26 @@ function showCompletion() {
   saveModuleProgress();
   injectShareButtons();
 
+  // Signal the hub IMMEDIATELY so completion lands in Supabase + hub state
+  // even if the user never clicks the in-page "Return" button (e.g. they
+  // use the iOS back gesture or close the tab).
+  if (window.opener && !window.opener.closed) {
+    try { window.opener.postMessage(MODULE_ID + '-complete', '*'); } catch (e) {}
+  }
+  // Belt-and-suspenders: write the completion straight into localStorage
+  // (same key the hub reads on load). Same-origin so this is shared. If
+  // the postMessage path fails (no opener / closed tab / different browser
+  // window), the hub still sees the completion next time it renders.
+  try {
+    var STATE_KEY = 'ascend_learn_state';
+    var s = JSON.parse(localStorage.getItem(STATE_KEY) || '{"completed":[],"badges":[]}');
+    if (!s.completed) s.completed = [];
+    if (!s.completed.includes(MODULE_ID)) {
+      s.completed.push(MODULE_ID);
+      localStorage.setItem(STATE_KEY, JSON.stringify(s));
+    }
+  } catch (e) {}
+
   // Personalize completion screen
   var name = getUserName();
   if (name) {
