@@ -33,7 +33,58 @@ window.addEventListener('DOMContentLoaded', function () {
   if (typeof MODULE_ID !== 'undefined') {
     notifyOpener({ type: 'module-started', moduleId: MODULE_ID });
   }
+  restoreModuleProgress();
 });
+
+// ─── PARTIAL-PROGRESS RESUME (per module, per device) ───
+// Saves stepsCompleted in localStorage after each advance() so closing
+// the tab mid-module and re-opening picks up where you left off instead
+// of restarting at lesson 1. Cleared once the module is fully completed.
+
+function saveModuleProgress() {
+  if (typeof MODULE_ID === 'undefined') return;
+  try { localStorage.setItem('mod_step_' + MODULE_ID, String(stepsCompleted)); } catch (e) {}
+}
+
+function clearModuleProgress() {
+  if (typeof MODULE_ID === 'undefined') return;
+  try { localStorage.removeItem('mod_step_' + MODULE_ID); } catch (e) {}
+}
+
+function restoreModuleProgress() {
+  if (typeof MODULE_ID === 'undefined' || typeof TOTAL_STEPS === 'undefined') return;
+  var saved = 0;
+  try { saved = parseInt(localStorage.getItem('mod_step_' + MODULE_ID) || '0', 10); } catch (e) {}
+  if (!saved || saved < 1) return;
+  saved = Math.min(saved, TOTAL_STEPS);
+
+  // Silently re-create the post-advance UI state: hide next-buttons
+  // for completed steps, reveal subsequent step sections.
+  for (var i = 1; i <= saved; i++) {
+    var nextBtn = document.getElementById('next' + i);
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (i < TOTAL_STEPS) {
+      var stepEl = document.getElementById('step' + (i + 1));
+      if (stepEl) stepEl.classList.remove('hidden');
+    }
+  }
+  stepsCompleted = saved;
+  updateTopProgress();
+
+  // If they reached the end before, surface the completion screen again so
+  // they can finish the module (which writes to hub_progress).
+  if (saved >= TOTAL_STEPS) {
+    showCompletion();
+    return;
+  }
+
+  // Otherwise scroll the user to the step they were last on, without animation
+  // (instant feels less disorienting than smooth-scroll on page load).
+  setTimeout(function () {
+    var target = document.getElementById('step' + (saved + 1));
+    if (target) target.scrollIntoView({ block: 'start' });
+  }, 50);
+}
 
 // Track a single quiz answer attempt.
 function trackQuizAttempt(questionId, wasCorrect) {
@@ -77,6 +128,7 @@ function advance(step) {
   document.getElementById('step' + (step + 1)).classList.remove('hidden');
   stepsCompleted = Math.max(stepsCompleted, step);
   updateTopProgress();
+  saveModuleProgress();
   setTimeout(function () {
     document.getElementById('step' + (step + 1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 100);
@@ -89,6 +141,7 @@ function showCompletion() {
   section.classList.remove('hidden');
   stepsCompleted = TOTAL_STEPS;
   updateTopProgress();
+  saveModuleProgress();
 
   // Personalize completion screen
   var name = getUserName();
@@ -108,6 +161,10 @@ function notifyComplete() {
   if (window.opener) {
     window.opener.postMessage(MODULE_ID + '-complete', '*');
   }
+  // Module is fully done and synced to Supabase — clear the local resume
+  // flag so a fresh re-open of the module doesn't drop the user straight
+  // onto the completion screen.
+  clearModuleProgress();
   window.close();
 }
 
