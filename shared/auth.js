@@ -15,6 +15,15 @@ var recoveryInProgress = false;
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  // Capture a referral code if present (?ref=<user_id>) so signup can attribute.
+  try {
+    var refParams = new URLSearchParams(window.location.search);
+    var refId = refParams.get('ref');
+    if (refId && /^[0-9a-f-]{36}$/i.test(refId)) {
+      localStorage.setItem('ascend_referrer', refId);
+    }
+  } catch (e) {}
+
   // Detect whether this page load came from a password-reset email link.
   // Supabase appends `#access_token=...&type=recovery` to the redirect URL.
   // We need to know this BEFORE getSession runs, because the SDK auto-creates
@@ -51,6 +60,7 @@ function initAuth() {
             // Cache full profile so Edit Profile renders correctly
             localStorage.setItem('ascend_profile_cache', JSON.stringify(profileData));
             localStorage.setItem('ascend_user_first', profileData.first_name);
+            processPendingReferral();
             // Fire welcome email, fire-and-forget, identical to email signup path
             sendHubWelcomeEmail({
               email: profileData.email,
@@ -217,6 +227,7 @@ function updateNavForUser(profile) {
         '<div class="nav-user-dropdown hidden" id="userDropdown">' +
           '<button onclick="showSettingsModal(\'profile\')">Edit Profile</button>' +
           '<button onclick="showSettingsModal(\'password\')">Change Password</button>' +
+          '<button onclick="showInviteFriend()">Invite a Friend</button>' +
           '<button onclick="showSettingsModal(\'reset\')">Reset Progress</button>' +
           '<button onclick="toggleDarkModeFromMenu()">Dark Mode</button>' +
           (('ontouchstart' in window) ? '<button onclick="showInstallInstructions()">Add to Home Screen</button>' : '') +
@@ -871,6 +882,7 @@ function handleStudentSignup() {
     if (res.error) { showAuthError(res.error.message); return; }
     // Cache the full profile so Edit Profile renders instantly after signup
     localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
+    processPendingReferral();
     sendHubWelcomeEmail({
       email: data.email,
       first_name: data.first_name,
@@ -909,6 +921,7 @@ function handleParentSignup() {
     if (res.error) { showAuthError(res.error.message); return; }
     // Cache the full profile so Edit Profile renders instantly after signup
     localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
+    processPendingReferral();
     sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
@@ -942,6 +955,7 @@ function handleEducatorSignup() {
     if (res.error) { showAuthError(res.error.message); return; }
     // Cache the full profile so Edit Profile renders instantly after signup
     localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
+    processPendingReferral();
     sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
@@ -980,6 +994,8 @@ function hydrateFromSupabase() {
     if (typeof renderUnitProgressRings === 'function') renderUnitProgressRings();
     if (typeof addHoverPreviews === 'function') addHoverPreviews();
     if (typeof animateNewBadges === 'function') animateNewBadges();
+    // Lazy-award the Squad badge to anyone whose referred friend has now signed up.
+    maybeAwardReferrerSquadBadge();
   });
 }
 
@@ -1008,6 +1024,44 @@ function syncModuleStartToSupabase(moduleId) {
     module_id: moduleId
   }).then(function(res) {
     if (res && res.error) console.warn('module-start sync failed:', res.error.message);
+  });
+}
+
+// Records a referral (referrer -> new user) if a ?ref=<uuid> param was
+// captured on the page that initiated this signup. Awards the Squad badge
+// to the new user immediately. The referrer earns Squad on their next hub
+// load via maybeAwardReferrerSquadBadge() below.
+function processPendingReferral() {
+  if (!currentUser) return;
+  var refId = '';
+  try { refId = localStorage.getItem('ascend_referrer') || ''; } catch (e) {}
+  if (!refId || refId === currentUser.id) {
+    localStorage.removeItem('ascend_referrer');
+    return;
+  }
+  sb.from('hub_referrals').insert({
+    referrer_id: refId,
+    referred_id: currentUser.id
+  }).then(function(res) {
+    if (res && res.error) {
+      console.warn('Referral insert failed:', res.error.message);
+      return;
+    }
+    localStorage.removeItem('ascend_referrer');
+    if (typeof awardBadge === 'function') awardBadge('squad');
+  });
+}
+
+// On hub load, if the user has at least one referral but doesn't yet have
+// the Squad badge, award it. Lets the referrer earn the badge whenever
+// their referred friend signs up.
+function maybeAwardReferrerSquadBadge() {
+  if (!currentUser || typeof state === 'undefined') return;
+  if (state.badges && state.badges.indexOf('squad') !== -1) return;
+  sb.from('hub_referrals').select('id').eq('referrer_id', currentUser.id).limit(1).then(function(res) {
+    if (res && res.data && res.data.length > 0) {
+      if (typeof awardBadge === 'function') awardBadge('squad');
+    }
   });
 }
 
@@ -1100,6 +1154,63 @@ function toggleDarkModeFromMenu() {
   var btn = document.querySelector('.dark-toggle');
   if (btn) btn.innerHTML = isDark ? '☀️' : '🌙';
   toggleUserMenu();
+}
+
+// Invite-a-friend modal: shows the user's personal referral URL and a row
+// of pre-filled share buttons. When the friend signs up, both users earn
+// the Squad badge.
+function showInviteFriend() {
+  toggleUserMenu();
+  if (!currentUser) { showAuthModal(); return; }
+  var overlay = document.getElementById('authOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'authOverlay';
+    overlay.className = 'auth-overlay';
+    overlay.onclick = function(e) { if (e.target === overlay) closeAuthModal(); };
+    document.body.appendChild(overlay);
+  }
+  var refUrl = 'https://learn.ascendacademy.org/?ref=' + currentUser.id;
+  var msg = 'Join me on Ascend Academy. Free Congressional Debate training and we both get a special badge when you sign up using my link:';
+  var encodedFull = encodeURIComponent(msg + ' ' + refUrl);
+  var encodedText = encodeURIComponent(msg);
+  var encodedUrl = encodeURIComponent(refUrl);
+
+  overlay.innerHTML = '<div class="auth-panel">' +
+    '<button class="auth-close" onclick="closeAuthModal()">&times;</button>' +
+    '<div class="auth-header">' +
+      '<div class="auth-title">Invite a Friend</div>' +
+      '<div class="auth-subtitle">When they sign up, you both earn the &#129309; Squad badge.</div>' +
+    '</div>' +
+    '<div style="padding:8px 32px 32px;">' +
+      '<label style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:#999;display:block;margin-bottom:8px;">Your invite link</label>' +
+      '<div style="display:flex;gap:8px;margin-bottom:20px;">' +
+        '<input type="text" id="inviteLink" class="auth-input" readonly value="' + refUrl + '" onclick="this.select()" style="flex:1;font-size:13px;">' +
+        '<button class="auth-submit-btn" type="button" style="padding:10px 16px;flex-shrink:0;width:auto;" onclick="copyInviteLink(this)">Copy</button>' +
+      '</div>' +
+      '<label style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:#999;display:block;margin-bottom:10px;">Share via</label>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:10px;">' +
+        '<a class="share-btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodedFull + '">WhatsApp</a>' +
+        '<a class="share-btn" href="sms:&body=' + encodedFull + '">iMessage</a>' +
+        '<a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=' + encodedText + '&url=' + encodedUrl + '">Post on X</a>' +
+        '<a class="share-btn" target="_blank" rel="noopener" href="mailto:?subject=Try Ascend Academy with me&body=' + encodedFull + '">Email</a>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+  overlay.classList.add('open');
+}
+
+function copyInviteLink(btn) {
+  var input = document.getElementById('inviteLink');
+  if (!input) return;
+  var orig = btn.textContent;
+  function ok() { btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = orig; }, 1500); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(input.value).then(ok);
+  } else {
+    input.select();
+    try { document.execCommand('copy'); ok(); } catch (e) {}
+  }
 }
 
 // ─── SETTINGS MODAL ───

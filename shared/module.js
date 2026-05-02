@@ -151,6 +151,7 @@ function showCompletion() {
   stepsCompleted = TOTAL_STEPS;
   updateTopProgress();
   saveModuleProgress();
+  injectShareButtons();
 
   // Personalize completion screen
   var name = getUserName();
@@ -165,6 +166,59 @@ function showCompletion() {
     section.scrollIntoView({ behavior: 'smooth' });
   }, 100);
 }
+
+// Build share buttons on the completion screen so students can broadcast
+// the moment they finish a module (WhatsApp / iMessage / X / copy link).
+function injectShareButtons() {
+  var section = document.getElementById('completionSection');
+  if (!section || section.querySelector('.completion-share')) return;
+  var moduleTitle = document.querySelector('.mod-title');
+  var moduleName = moduleTitle ? moduleTitle.textContent.trim() : 'a module';
+  var hubUrl = 'https://learn.ascendacademy.org';
+  var msg = 'I just finished "' + moduleName + '" on Ascend Academy. Free Congressional Debate training, you should check it out!';
+  var encoded = encodeURIComponent(msg + ' ' + hubUrl);
+  var encodedTextOnly = encodeURIComponent(msg);
+  var encodedUrl = encodeURIComponent(hubUrl);
+
+  var wrap = document.createElement('div');
+  wrap.className = 'completion-share';
+  wrap.innerHTML =
+    '<div class="completion-share-label">Share your progress</div>' +
+    '<div class="completion-share-btns">' +
+      '<a class="share-btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encoded + '">' +
+        '<span class="share-icon">' + whatsappIcon() + '</span>WhatsApp</a>' +
+      '<a class="share-btn" href="sms:&body=' + encoded + '">' +
+        '<span class="share-icon">' + smsIcon() + '</span>iMessage</a>' +
+      '<a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=' + encodedTextOnly + '&url=' + encodedUrl + '">' +
+        '<span class="share-icon">' + xIcon() + '</span>Post on X</a>' +
+      '<button class="share-btn share-copy-btn" type="button" onclick="copyShareLink(this,\'' + msg.replace(/'/g, "\\'") + '\')">' +
+        '<span class="share-icon">' + linkIcon() + '</span><span class="share-copy-label">Copy Link</span></button>' +
+    '</div>';
+  // Insert before the existing Return button.
+  var returnBtn = section.querySelector('.back-btn');
+  if (returnBtn) section.insertBefore(wrap, returnBtn);
+  else section.appendChild(wrap);
+}
+
+function copyShareLink(btn, msg) {
+  var text = (msg || 'Ascend Academy Learning Platform') + ' https://learn.ascendacademy.org';
+  var label = btn.querySelector('.share-copy-label');
+  function show(t) { if (label) { label.textContent = t; setTimeout(function () { if (label) label.textContent = 'Copy Link'; }, 1800); } }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { show('Copied!'); }, function () { show('Press Cmd+C'); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); show('Copied!'); } catch (e) { show('Press Cmd+C'); }
+    document.body.removeChild(ta);
+  }
+}
+
+function whatsappIcon() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>'; }
+function smsIcon() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>'; }
+function xIcon() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'; }
+function linkIcon() { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'; }
 
 function notifyComplete() {
   if (window.opener) {
@@ -287,20 +341,42 @@ function tapTarget(el, qId) {
   if (allFilled) checkDrag(qId, targets);
 }
 
-// Auto-attach tap handlers on touch devices
+// Robust tap handler that fires on both touchend (mobile, instant) and
+// click (desktop / fallback). Tracks finger movement to avoid scroll-induced
+// false positives. preventDefault on touchend stops the synthetic click that
+// would otherwise fire 300ms later and double-trigger the handler.
+function attachTap(el, handler) {
+  var startX = 0, startY = 0, moved = false;
+  el.addEventListener('touchstart', function(e) {
+    var t = e.touches[0]; startX = t.clientX; startY = t.clientY; moved = false;
+  }, { passive: true });
+  el.addEventListener('touchmove', function(e) {
+    var t = e.touches[0];
+    if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) moved = true;
+  }, { passive: true });
+  el.addEventListener('touchend', function(e) {
+    if (moved) return;
+    e.preventDefault();
+    handler.call(el, e);
+  });
+  el.addEventListener('click', function(e) {
+    handler.call(el, e);
+  });
+}
+
+// Wire chip + target tap handlers on every page. Click also covers desktop
+// (lets users either drag or tap-to-place — both work). On touch devices we
+// remove the native draggable attribute so it doesn't conflict with scroll.
 document.addEventListener('DOMContentLoaded', function() {
-  if ('ontouchstart' in window) {
-    // Add tap handlers to all drag chips
-    document.querySelectorAll('.drag-chip').forEach(function(chip) {
-      chip.removeAttribute('draggable');
-      chip.addEventListener('click', function() { tapChip(this); });
-    });
-    // Add tap handlers to all drag targets
-    document.querySelectorAll('.drag-target').forEach(function(target) {
-      var qId = target.parentElement.id.replace('-targets', '');
-      target.addEventListener('click', function() { tapTarget(this, qId); });
-    });
-  }
+  var isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+  document.querySelectorAll('.drag-chip').forEach(function(chip) {
+    if (isTouch) chip.removeAttribute('draggable');
+    attachTap(chip, function() { tapChip(this); });
+  });
+  document.querySelectorAll('.drag-target').forEach(function(target) {
+    var qId = target.parentElement.id.replace('-targets', '');
+    attachTap(target, function() { tapTarget(this, qId); });
+  });
 });
 
 function checkDrag(qId, targets) {

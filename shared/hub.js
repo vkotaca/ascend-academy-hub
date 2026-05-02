@@ -344,7 +344,8 @@ var BADGES = [
   { id: 'unit-4-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine' },
   { id: 'unit-5-complete',   emoji: '\uD83C\uDFAD', name: 'Performer' },
   { id: 'halfway',           emoji: '\uD83D\uDD25', name: 'Halfway There' },
-  { id: 'congress-scholar',  emoji: '\uD83C\uDFC6', name: 'Congress Scholar' }
+  { id: 'congress-scholar',  emoji: '\uD83C\uDFC6', name: 'Congress Scholar' },
+  { id: 'squad',             emoji: '\uD83E\uDD1D', name: 'Squad' }
 ];
 
 // --- STATE ---
