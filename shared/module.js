@@ -35,6 +35,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // Telemetry: also log to the OS dashboard via hub-events.
     try { window.HubEvents && window.HubEvents.moduleStarted(MODULE_ID); } catch (e) {}
   }
+  injectLessonNav();
   restoreModuleProgress();
 });
 
@@ -138,6 +139,9 @@ function advance(step) {
   stepsCompleted = Math.max(stepsCompleted, step);
   updateTopProgress();
   saveModuleProgress();
+  // Newly-revealed step is now "current"; refresh nav arrow enable state.
+  currentLesson = step + 1;
+  updateLessonNavButtons();
   setTimeout(function () {
     nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 100);
@@ -337,6 +341,82 @@ function tapTarget(el, qId) {
   var targets = document.querySelectorAll('#' + qId + '-targets .drag-target');
   var allFilled = Array.from(targets).every(function (t) { return t.dataset.placed; });
   if (allFilled) checkDrag(qId, targets);
+}
+
+// ─── LESSON NAVIGATOR (prev/next arrows in the topbar) ───
+// Injects two arrow buttons into the topbar's progress-row. Lets students
+// jump backward to review or forward into already-unlocked lessons. The
+// "current" lesson is detected via IntersectionObserver as the user scrolls.
+var currentLesson = 1;
+
+function injectLessonNav() {
+  if (typeof TOTAL_STEPS === 'undefined') return;
+  var progressRow = document.querySelector('.progress-row');
+  if (!progressRow || progressRow.querySelector('.lesson-nav-prev')) return;
+  var prevSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+  var nextSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+  var prev = document.createElement('button');
+  prev.className = 'lesson-nav-btn lesson-nav-prev';
+  prev.setAttribute('aria-label', 'Previous lesson');
+  prev.innerHTML = prevSvg;
+  prev.addEventListener('click', function () { goToLesson(currentLesson - 1); });
+  var next = document.createElement('button');
+  next.className = 'lesson-nav-btn lesson-nav-next';
+  next.setAttribute('aria-label', 'Next lesson');
+  next.innerHTML = nextSvg;
+  next.addEventListener('click', function () { goToLesson(currentLesson + 1); });
+  progressRow.insertBefore(prev, progressRow.firstChild);
+  progressRow.appendChild(next);
+  updateLessonNavButtons();
+  observeLessonScroll();
+}
+
+function goToLesson(n) {
+  if (typeof TOTAL_STEPS === 'undefined') return;
+  if (n < 1 || n > TOTAL_STEPS) return;
+  var target = document.getElementById('step' + n);
+  if (!target) return;
+  // Don't jump forward into a locked lesson — only allow forward-into-unlocked.
+  if (target.classList.contains('hidden')) return;
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  currentLesson = n;
+  updateLessonNavButtons();
+}
+
+function updateLessonNavButtons() {
+  var prev = document.querySelector('.lesson-nav-prev');
+  var next = document.querySelector('.lesson-nav-next');
+  if (prev) prev.disabled = currentLesson <= 1;
+  if (next) {
+    if (typeof TOTAL_STEPS === 'undefined' || currentLesson >= TOTAL_STEPS) {
+      next.disabled = true;
+    } else {
+      var nextStep = document.getElementById('step' + (currentLesson + 1));
+      next.disabled = !nextStep || nextStep.classList.contains('hidden');
+    }
+  }
+}
+
+function observeLessonScroll() {
+  if (!window.IntersectionObserver) return;
+  var sections = document.querySelectorAll('.section[id^="step"]');
+  if (!sections.length) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        var n = parseInt(id.replace('step', ''), 10);
+        if (n && n !== currentLesson) {
+          currentLesson = n;
+          updateLessonNavButtons();
+        }
+      }
+    });
+  }, {
+    rootMargin: '-30% 0px -50% 0px',  // section is "current" when its top crosses ~30% from viewport top
+    threshold: 0
+  });
+  sections.forEach(function (s) { observer.observe(s); });
 }
 
 // Cross-platform tap handler using pointer events. On touch, pointerup only

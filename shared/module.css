@@ -58,6 +58,35 @@ body {
   gap: 12px;
 }
 
+/* Lesson nav arrows in the topbar — prev/next between unlocked lessons. */
+.lesson-nav-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gray);
+  padding: 0;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.lesson-nav-btn:hover:not(:disabled) {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(200,16,46,0.06);
+}
+.lesson-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .lesson-nav-btn { width: 30px; height: 30px; }
+}
+
 .top-progress-track {
   width: 200px;
   height: 5px;
