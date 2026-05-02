@@ -658,7 +658,7 @@ function handleForgotPassword() {
     if (res.error) { showAuthError(res.error.message); return; }
     var el = document.getElementById('authSuccess');
     if (el) {
-      el.textContent = 'Reset link sent! Check your email inbox.';
+      el.innerHTML = 'Reset link sent! Check your email inbox.<br><span style="font-size:12px;opacity:0.85;">Don\'t see it after a few minutes? You may not have an account yet, try creating one instead.</span>';
       el.classList.remove('hidden');
     }
   }).catch(function() {
