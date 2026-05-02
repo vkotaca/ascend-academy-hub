@@ -87,6 +87,10 @@ function initAuth() {
         return;
       }
       currentUser = session.user;
+      // Telemetry: catches Google sign-in + persisted-session auto-login.
+      // Email/password sign-in fires HubEvents.login() inline so it can
+      // distinguish itself from a session-restore.
+      try { window.HubEvents && window.HubEvents.login(session.user.id); } catch(e) {}
       checkProfileAndUpdateUI();
     } else if (event === 'SIGNED_OUT') {
       currentUser = null;
@@ -802,8 +806,14 @@ function handleEmailLogin() {
 
   loginInProgress = true;
   sb.auth.signInWithPassword({ email: email, password: password }).then(function(res) {
-    if (res.error) { loginInProgress = false; showAuthError(res.error.message); return; }
+    if (res.error) {
+      loginInProgress = false;
+      try { window.HubEvents && window.HubEvents.loginFailed({ method: 'password', reason: String(res.error.message || '').slice(0, 200) }); } catch(e) {}
+      showAuthError(res.error.message);
+      return;
+    }
     currentUser = res.data.user;
+    try { window.HubEvents && window.HubEvents.login(currentUser.id); } catch(e) {}
     // signInWithPassword returns a fully authenticated session, query immediately
     return sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle();
   }).then(function(profileRes) {
@@ -1109,7 +1119,16 @@ function showSettingsModal(tab) {
     // (which happens after a fresh signup), fetch from DB before rendering.
     var cached = localStorage.getItem('ascend_profile_cache');
     if (!cached && currentUser) {
-      overlay.innerHTML = '<div class="auth-panel"><div style="padding:48px 32px;text-align:center;color:#666;">Loading your profile&hellip;</div></div>';
+      overlay.innerHTML = '<div class="auth-panel">' +
+        '<div class="auth-header"><div class="auth-title">Edit Profile</div><div class="auth-subtitle">Loading your information&hellip;</div></div>' +
+        '<div style="padding: 16px 32px 32px;">' +
+          '<div style="display:flex;gap:12px;margin-bottom:12px;"><span class="skeleton" style="height:46px;flex:1;border-radius:10px;"></span><span class="skeleton" style="height:46px;flex:1;border-radius:10px;"></span></div>' +
+          '<span class="skeleton" style="height:46px;width:100%;border-radius:10px;display:block;margin-bottom:12px;"></span>' +
+          '<div style="display:flex;gap:12px;margin-bottom:12px;"><span class="skeleton" style="height:46px;flex:1;border-radius:10px;"></span><span class="skeleton" style="height:46px;flex:1;border-radius:10px;"></span></div>' +
+          '<span class="skeleton" style="height:46px;width:100%;border-radius:10px;display:block;margin-bottom:16px;"></span>' +
+          '<span class="skeleton" style="height:46px;width:100%;border-radius:10px;display:block;"></span>' +
+        '</div>' +
+      '</div>';
       overlay.classList.add('open');
       sb.from('hub_profiles').select('*').eq('id', currentUser.id).maybeSingle().then(function(res) {
         if (res.data) {

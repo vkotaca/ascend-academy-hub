@@ -32,6 +32,8 @@ function notifyOpener(payload) {
 window.addEventListener('DOMContentLoaded', function () {
   if (typeof MODULE_ID !== 'undefined') {
     notifyOpener({ type: 'module-started', moduleId: MODULE_ID });
+    // Telemetry: also log to the OS dashboard via hub-events.
+    try { window.HubEvents && window.HubEvents.moduleStarted(MODULE_ID); } catch (e) {}
   }
   restoreModuleProgress();
 });
@@ -125,12 +127,19 @@ function updateTopProgress() {
 
 function advance(step) {
   document.getElementById('next' + step).classList.add('hidden');
-  document.getElementById('step' + (step + 1)).classList.remove('hidden');
+  var nextStep = document.getElementById('step' + (step + 1));
+  nextStep.classList.remove('hidden');
+  // Trigger the reveal animation. Force reflow then add the class so the
+  // animation actually runs even if the class was already present.
+  nextStep.classList.remove('reveal');
+  // eslint-disable-next-line no-unused-expressions
+  void nextStep.offsetWidth;
+  nextStep.classList.add('reveal');
   stepsCompleted = Math.max(stepsCompleted, step);
   updateTopProgress();
   saveModuleProgress();
   setTimeout(function () {
-    document.getElementById('step' + (step + 1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 100);
 }
 
@@ -178,11 +187,13 @@ function mc(qId, btn, result) {
   trackQuizAttempt(qId, result === 'correct');
 
   if (result === 'correct') {
+    if (navigator.vibrate) navigator.vibrate(40);
     btn.classList.add('correct');
     fb.className = 'feedback show correct-fb';
     fb.textContent = correctPrefix() + (CORRECT_MSGS[qId] || '');
     unlockAfter(qId);
   } else {
+    if (navigator.vibrate) navigator.vibrate([20, 60, 20]);
     btn.classList.add('wrong');
     fb.className = 'feedback show wrong-fb';
     fb.textContent = '\u2717 Not quite. ' + (WRONG_MSGS[qId] || 'Try again.');
@@ -203,11 +214,13 @@ function tf(qId, btn, isCorrect) {
   trackQuizAttempt(qId, !!isCorrect);
 
   if (isCorrect) {
+    if (navigator.vibrate) navigator.vibrate(40);
     btn.classList.add('correct');
     fb.className = 'feedback show correct-fb';
     fb.textContent = correctPrefix() + (CORRECT_MSGS[qId] || '');
     unlockAfter(qId);
   } else {
+    if (navigator.vibrate) navigator.vibrate([20, 60, 20]);
     btn.classList.add('wrong');
     fb.className = 'feedback show wrong-fb';
     fb.textContent = '\u2717 Not quite. ' + (WRONG_MSGS[qId] || 'Try again.');
@@ -305,10 +318,12 @@ function checkDrag(qId, targets) {
 
   var fb = document.getElementById(qId + '-fb');
   if (allCorrect) {
+    if (navigator.vibrate) navigator.vibrate(40);
     fb.className = 'feedback show correct-fb';
     fb.textContent = correctPrefix() + (CORRECT_MSGS[qId] || '');
     unlockAfter(qId);
   } else {
+    if (navigator.vibrate) navigator.vibrate([20, 60, 20]);
     fb.className = 'feedback show wrong-fb';
     fb.textContent = "\u2717 Some items are in the wrong place. Let's try again.";
     setTimeout(function () {
