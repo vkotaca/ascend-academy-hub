@@ -1243,12 +1243,18 @@ function getResetProgressHTML() {
 }
 
 function resetProgress() {
+  if (!currentUser || !currentUser.id) {
+    showAuthError('Not signed in. Please sign in again and try.');
+    return;
+  }
   Promise.all([
     sb.from('hub_progress').delete().eq('user_id', currentUser.id),
     sb.from('hub_badges').delete().eq('user_id', currentUser.id)
   ]).then(function(results) {
-    if (results[0].error || results[1].error) {
-      showAuthError('Failed to reset. Try again.');
+    var err = results[0].error || results[1].error;
+    if (err) {
+      console.error('Reset progress failed:', err);
+      showAuthError('Failed to reset: ' + (err.message || err.code || 'unknown error'));
       return;
     }
     state.completed = [];
@@ -1261,6 +1267,9 @@ function resetProgress() {
     if (typeof renderUnitProgressRings === 'function') renderUnitProgressRings();
     var el = document.getElementById('authSuccess');
     if (el) { el.textContent = 'Progress reset! Starting fresh.'; el.classList.remove('hidden'); }
+  }).catch(function(err) {
+    console.error('Reset progress threw:', err);
+    showAuthError('Failed to reset: ' + (err && err.message ? err.message : 'network error'));
   });
 }
 
