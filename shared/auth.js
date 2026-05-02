@@ -273,6 +273,34 @@ function showRoleForm(role) {
   else if (role === 'educator') content.innerHTML = getEducatorForm();
 }
 
+// Reusable country code dropdown options.
+function countryCodeOptions() {
+  return '<option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option>';
+}
+
+// Yes/No toggle component. Stores the value in a hidden input with the given id.
+// "default" can be "yes" or "no" (defaults to "no" if omitted).
+function yesNoToggle(id, question, defaultVal) {
+  defaultVal = defaultVal === 'yes' ? 'yes' : 'no';
+  return '<div class="auth-yesno-row">' +
+    '<span class="auth-yesno-q">' + question + '</span>' +
+    '<div class="auth-yesno-btns">' +
+      '<button type="button" class="auth-yesno-btn' + (defaultVal === 'yes' ? ' active' : '') + '" onclick="setYesNo(\'' + id + '\',this,\'yes\')">Yes</button>' +
+      '<button type="button" class="auth-yesno-btn' + (defaultVal === 'no' ? ' active' : '') + '" onclick="setYesNo(\'' + id + '\',this,\'no\')">No</button>' +
+    '</div>' +
+    '<input type="hidden" id="' + id + '" value="' + defaultVal + '">' +
+  '</div>';
+}
+
+// Toggle handler invoked by Yes/No buttons.
+function setYesNo(inputId, btn, value) {
+  var input = document.getElementById(inputId);
+  if (input) input.value = value;
+  var siblings = btn.parentElement.querySelectorAll('.auth-yesno-btn');
+  for (var i = 0; i < siblings.length; i++) siblings[i].classList.remove('active');
+  btn.classList.add('active');
+}
+
 function getStudentForm() {
   return '<div class="auth-form auth-reg-form">' +
     '<div class="auth-form-title">Student Registration</div>' +
@@ -281,37 +309,31 @@ function getStudentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School *">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
-    '<div class="auth-row">' +
-      '<select id="regGrade" class="auth-input">' + gradeOptions() + '</select>' +
-      '<label class="auth-checkbox"><input type="checkbox" id="regLeader"> Are you a member of your team\'s leadership?</label>' +
-    '</div>' +
+    '<select id="regGrade" class="auth-input">' + gradeOptions() + '</select>' +
+    yesNoToggle('regLeader', 'Are you a member of your team\'s leadership?', 'no') +
     '<div class="auth-section-label">Parent / Guardian</div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regP1First" class="auth-input" placeholder="First name *">' +
       '<input type="text" id="regP1Last" class="auth-input" placeholder="Last name *">' +
     '</div>' +
-    '<div class="auth-row">' +
-      '<input type="email" id="regP1Email" class="auth-input" placeholder="Email *">' +
-      '<input type="tel" id="regP1Phone" class="auth-input" placeholder="Phone *" oninput="formatPhone(this)">' +
-    '</div>' +
+    '<input type="email" id="regP1Email" class="auth-input" placeholder="Email *">' +
+    '<div class="auth-phone-row"><select id="regP1CountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regP1Phone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div id="parent2Section" class="hidden">' +
       '<div class="auth-section-label">Parent / Guardian 2</div>' +
       '<div class="auth-row">' +
         '<input type="text" id="regP2First" class="auth-input" placeholder="First name">' +
         '<input type="text" id="regP2Last" class="auth-input" placeholder="Last name">' +
       '</div>' +
-      '<div class="auth-row">' +
-        '<input type="email" id="regP2Email" class="auth-input" placeholder="Email">' +
-        '<input type="tel" id="regP2Phone" class="auth-input" placeholder="Phone" oninput="formatPhone(this)">' +
-      '</div>' +
+      '<input type="email" id="regP2Email" class="auth-input" placeholder="Email">' +
+      '<div class="auth-phone-row"><select id="regP2CountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regP2Phone" class="auth-input" placeholder="555-123-4567" oninput="formatPhone(this)"></div>' +
     '</div>' +
     '<button class="auth-link-btn" onclick="document.getElementById(\'parent2Section\').classList.toggle(\'hidden\')">+ Add second parent/guardian</button>' +
-    '<label class="auth-checkbox"><input type="checkbox" id="regCamps"> I\'m interested in learning more about Ascend\'s summer camps</label>' +
+    yesNoToggle('regCamps', 'Interested in learning more about Ascend\'s summer camps?', 'no') +
     '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'student\')">' + googleSVG() + ' Sign up with Google</button>' +
@@ -330,13 +352,13 @@ function getParentForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school *">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
     '<select id="regStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
-    '<label class="auth-checkbox"><input type="checkbox" id="regCamps"> I\'m interested in learning more about Ascend\'s summer camps</label>' +
+    yesNoToggle('regCamps', 'Interested in learning more about Ascend\'s summer camps?', 'no') +
     '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'parent\')">' + googleSVG() + ' Sign up with Google</button>' +
@@ -355,12 +377,12 @@ function getEducatorForm() {
       '<input type="text" id="regLast" class="auth-input" placeholder="Last name *" required>' +
     '</div>' +
     '<input type="email" id="regEmail" class="auth-input" placeholder="Email address *" required>' +
-    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code"><option value="+1">+1 (US)</option><option value="+44">+44 (UK)</option><option value="+91">+91 (IN)</option><option value="+86">+86 (CN)</option><option value="+81">+81 (JP)</option><option value="+82">+82 (KR)</option><option value="+61">+61 (AU)</option><option value="+49">+49 (DE)</option><option value="+33">+33 (FR)</option><option value="+52">+52 (MX)</option><option value="+55">+55 (BR)</option></select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
+    '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School *">' +
       '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
     '</div>' +
-    '<label class="auth-checkbox"><input type="checkbox" id="regSupport"> I\'m interested in exploring ways Ascend can support my team</label>' +
+    yesNoToggle('regSupport', 'Interested in exploring ways Ascend can support your team?', 'no') +
     '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
     '<button class="auth-google-btn" onclick="handleRoleGoogleSignup(\'educator\')">' + googleSVG() + ' Sign up with Google</button>' +
@@ -454,6 +476,8 @@ function collectStudentData() {
   var p2email = document.getElementById('regP2Email') ? document.getElementById('regP2Email').value.trim() : '';
   if (p2email && !validateEmail(p2email)) { showAuthError('Please enter a valid email for Parent/Guardian 2.'); return null; }
 
+  var p2phone = document.getElementById('regP2Phone') ? document.getElementById('regP2Phone').value.trim() : '';
+  var p2cc = document.getElementById('regP2CountryCode') ? document.getElementById('regP2CountryCode').value : '';
   return {
     role: 'student',
     first_name: first, last_name: last, email: email,
@@ -461,16 +485,16 @@ function collectStudentData() {
     school: school,
     state: stateVal,
     grade: grade,
-    is_team_leader: document.getElementById('regLeader').checked,
+    is_team_leader: document.getElementById('regLeader').value === 'yes',
     parent1_first: document.getElementById('regP1First').value.trim(),
     parent1_last: document.getElementById('regP1Last').value.trim(),
     parent1_email: p1email,
-    parent1_phone: document.getElementById('regP1Phone').value.trim(),
+    parent1_phone: (document.getElementById('regP1CountryCode').value + ' ' + p1phone),
     parent2_first: document.getElementById('regP2First') ? document.getElementById('regP2First').value.trim() : null,
     parent2_last: document.getElementById('regP2Last') ? document.getElementById('regP2Last').value.trim() : null,
     parent2_email: p2email || null,
-    parent2_phone: document.getElementById('regP2Phone') ? document.getElementById('regP2Phone').value.trim() : null,
-    interested_camps: document.getElementById('regCamps').checked
+    parent2_phone: p2phone ? (p2cc + ' ' + p2phone) : null,
+    interested_camps: document.getElementById('regCamps').value === 'yes'
   };
 }
 
@@ -497,7 +521,7 @@ function collectParentData() {
     state: stateVal,
     student_grade: document.getElementById('regStudentGrade').value,
     student_school: document.getElementById('regSchool').value.trim(),
-    interested_camps: document.getElementById('regCamps').checked
+    interested_camps: document.getElementById('regCamps').value === 'yes'
   };
 }
 
@@ -521,7 +545,7 @@ function collectEducatorData() {
     phone: (document.getElementById('regCountryCode').value + ' ' + phone),
     school: school,
     state: stateVal,
-    interested_ascend_support: document.getElementById('regSupport').checked
+    interested_ascend_support: document.getElementById('regSupport').value === 'yes'
   };
 }
 
@@ -939,7 +963,7 @@ function getEditProfileHTML() {
         '<select id="editState" class="auth-input">' + stateOptions() + '</select>' +
       '</div>' +
       (p.role === 'student' ? '<select id="editGrade" class="auth-input">' + gradeOptions() + '</select>' +
-        '<label class="auth-checkbox"><input type="checkbox" id="editLeader"' + (p.is_team_leader ? ' checked' : '') + '> Are you a member of your team\'s leadership?</label>' +
+        yesNoToggle('editLeader', 'Are you a member of your team\'s leadership?', p.is_team_leader ? 'yes' : 'no') +
         '<div class="auth-section-label">Parent / Guardian 1</div>' +
         '<div class="auth-row">' +
           '<input type="text" id="editP1First" class="auth-input" placeholder="First name" value="' + (p.parent1_first || '') + '">' +
@@ -949,12 +973,13 @@ function getEditProfileHTML() {
           '<input type="email" id="editP1Email" class="auth-input" placeholder="Email" value="' + (p.parent1_email || '') + '">' +
           '<input type="tel" id="editP1Phone" class="auth-input" placeholder="Phone" value="' + (p.parent1_phone || '') + '">' +
         '</div>' +
-        '<label class="auth-checkbox"><input type="checkbox" id="editCamps"' + (p.interested_camps ? ' checked' : '') + '> Interested in Ascend summer camps</label>'
+        yesNoToggle('editCamps', 'Interested in Ascend summer camps?', p.interested_camps ? 'yes' : 'no')
       : '') +
       (p.role === 'parent' ? '<select id="editStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
-        '<label class="auth-checkbox"><input type="checkbox" id="editCamps"' + (p.interested_camps ? ' checked' : '') + '> Interested in Ascend summer camps</label>'
+        yesNoToggle('editCamps', 'Interested in Ascend summer camps?', p.interested_camps ? 'yes' : 'no')
       : '') +
-      (p.role === 'educator' ? '<label class="auth-checkbox"><input type="checkbox" id="editSupport"' + (p.interested_ascend_support ? ' checked' : '') + '> Interested in Ascend team support</label>'
+      (p.role === 'educator' ?
+        yesNoToggle('editSupport', 'Interested in Ascend team support?', p.interested_ascend_support ? 'yes' : 'no')
       : '') +
       '<div class="auth-error hidden" id="authError"></div>' +
       '<div class="auth-success hidden" id="authSuccess"></div>' +
@@ -979,7 +1004,7 @@ function saveProfile() {
 
   // Student fields
   if (document.getElementById('editGrade')) updates.grade = document.getElementById('editGrade').value;
-  if (document.getElementById('editLeader')) updates.is_team_leader = document.getElementById('editLeader').checked;
+  if (document.getElementById('editLeader')) updates.is_team_leader = document.getElementById('editLeader').value === 'yes';
   if (document.getElementById('editP1First')) {
     updates.parent1_first = document.getElementById('editP1First').value.trim();
     updates.parent1_last = document.getElementById('editP1Last').value.trim();
@@ -987,11 +1012,11 @@ function saveProfile() {
     updates.parent1_phone = document.getElementById('editP1Phone').value.trim();
   }
   // Camp interest
-  if (document.getElementById('editCamps')) updates.interested_camps = document.getElementById('editCamps').checked;
+  if (document.getElementById('editCamps')) updates.interested_camps = document.getElementById('editCamps').value === 'yes';
   // Parent student grade
   if (document.getElementById('editStudentGrade')) updates.student_grade = document.getElementById('editStudentGrade').value;
   // Educator support
-  if (document.getElementById('editSupport')) updates.interested_ascend_support = document.getElementById('editSupport').checked;
+  if (document.getElementById('editSupport')) updates.interested_ascend_support = document.getElementById('editSupport').value === 'yes';
 
   sb.from('hub_profiles').update(updates).eq('id', currentUser.id).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
