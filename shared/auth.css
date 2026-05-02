@@ -1,3 +1,8 @@
+/* Generic hidden helper for any auth-form element with class="hidden". */
+.auth-form .hidden,
+.auth-reg-form .hidden,
+#parent2Section.hidden { display: none; }
+
 /* ═══ YES/NO TOGGLE ═══ */
 .auth-yesno-row {
   display: flex;
