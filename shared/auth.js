@@ -110,21 +110,34 @@ function checkProfileAndUpdateUI() {
       localStorage.setItem('ascend_user_first', res.data.first_name);
       localStorage.setItem('ascend_profile_cache', JSON.stringify(res.data));
       updateNavForUser(res.data);
+      closeAuthModal();
+      document.body.classList.remove('auth-pending');
+      document.body.classList.add('auth-ready');
+      hydrateFromSupabase();
     } else {
-      // Try auth metadata as last resort
-      var metaName = (currentUser.user_metadata && currentUser.user_metadata.first_name) ||
-        (currentUser.user_metadata && currentUser.user_metadata.full_name && currentUser.user_metadata.full_name.split(' ')[0]);
-      if (metaName) {
-        localStorage.setItem('ascend_user_first', metaName);
-        updateNavForUser({ id: currentUser.id, first_name: metaName });
-      } else {
-        updateNavForGuest();
-      }
+      // No hub_profiles row: this user has an auth.users row (likely from a
+      // Google sign-in attempt) but never went through the proper signup flow.
+      // Bounce them out and tell them to create an account first.
+      bounceUnregisteredUser();
     }
-    closeAuthModal();
+  });
+}
+
+// Sign out a user who's authenticated but has no hub_profiles row.
+// Reopens the auth modal with a clear error directing them to Create Account.
+function bounceUnregisteredUser() {
+  sb.auth.signOut().then(function() {
+    currentUser = null;
+    localStorage.removeItem('ascend_user_first');
+    localStorage.removeItem('ascend_profile_cache');
     document.body.classList.remove('auth-pending');
     document.body.classList.add('auth-ready');
-    hydrateFromSupabase();
+    updateNavForGuest();
+    showAuthModal();
+    // The modal opens to the Sign In tab. Surface a clear error there.
+    setTimeout(function() {
+      showAuthError("We couldn't find an Ascend account for that email. Click \"Create Account\" above to sign up first.");
+    }, 100);
   });
 }
 
