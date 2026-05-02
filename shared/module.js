@@ -44,6 +44,53 @@ function notifyOpener(payload) {
   } catch (e) { /* fail silently — tracking is best-effort */ }
 }
 
+// Direct Supabase sync from the module page itself. This is the ONLY path
+// guaranteed to work on iOS PWA, where module pages open in Safari (a
+// different localStorage / window context from the installed PWA hub) so
+// neither postMessage(opener) nor localStorage hand-off reach the hub.
+//
+// Reads the existing Supabase auth session from localStorage (key
+// "sb-jbiqzdavkwioxhtwchiy-auth-token") and POSTs an upsert to the
+// hub_progress table via REST. RLS policy already restricts inserts to
+// the authenticated user's own rows, so this is safe.
+var ASCEND_SUPABASE_URL = 'https://jbiqzdavkwioxhtwchiy.supabase.co';
+var ASCEND_SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpiaXF6ZGF2a3dpb3hodHdjaGl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDEwMTUsImV4cCI6MjA5MDk3NzAxNX0.se1MOm_Rl8KOi_0lRN3JDrcv9eNqpWDrfOdHDgKVM_E';
+
+function getAscendAuthSession() {
+  try {
+    var raw = localStorage.getItem('sb-jbiqzdavkwioxhtwchiy-auth-token');
+    if (!raw) return null;
+    var s = JSON.parse(raw);
+    if (s && s.access_token && s.user && s.user.id) return s;
+  } catch (e) {}
+  return null;
+}
+
+function syncCompletionDirectToSupabase(moduleId) {
+  var session = getAscendAuthSession();
+  if (!session) {
+    try { console.warn('[ascend] no auth session, skipping direct sync for', moduleId); } catch (e) {}
+    return;
+  }
+  fetch(ASCEND_SUPABASE_URL + '/rest/v1/hub_progress', {
+    method: 'POST',
+    headers: {
+      'apikey': ASCEND_SUPABASE_ANON,
+      'Authorization': 'Bearer ' + session.access_token,
+      'Content-Type': 'application/json',
+      'Prefer': 'resolution=merge-duplicates'
+    },
+    body: JSON.stringify({
+      user_id: session.user.id,
+      module_id: moduleId
+    })
+  }).then(function (r) {
+    try { console.log('[ascend] direct completion sync', moduleId, r.status); } catch (e) {}
+  }).catch(function (e) {
+    try { console.warn('[ascend] direct completion sync failed', moduleId, e); } catch (_) {}
+  });
+}
+
 // Tell the hub the user opened this module page (one row per visit).
 // Fires once per page load.
 window.addEventListener('DOMContentLoaded', function () {
@@ -206,6 +253,12 @@ function showCompletion() {
       localStorage.setItem(STATE_KEY, JSON.stringify(s));
     }
   } catch (e) {}
+
+  // MOST CRITICAL: sync directly to Supabase from this page. iOS PWAs render
+  // module links in Safari (separate storage context), so localStorage writes
+  // here never reach the PWA hub. Direct REST upsert guarantees completion
+  // lands in the database regardless of which context the user is in.
+  syncCompletionDirectToSupabase(MODULE_ID);
 
   // UI helpers — wrapped in try/catch so a stray DOM error never blocks
   // the completion path again.
