@@ -1054,8 +1054,26 @@ body.dark-mode .module-card.exam { background: #1a1810; border-color: #3d3520; }
 body.dark-mode .badge-section { background: #151515; }
 body.dark-mode .progress-banner { background: #1a1115; border-bottom-color: rgba(200,16,46,0.2); }
 body.dark-mode footer { background: #111; border-top-color: #2a2a2a; }
-body.dark-mode .module-overlay .module-panel { background: #1a1a1a; }
-body.dark-mode .panel-body { background: #1a1a1a; }
+/* Module preview popup: keep the panel light-themed even in dark mode so
+   the title/description stay readable. Background stays light, text dark. */
+body.dark-mode .module-overlay .module-panel {
+  background: #fff;
+  color: #111;
+}
+body.dark-mode .panel-hero {
+  background: #0d0d0d;
+}
+body.dark-mode .panel-title { color: #fff; }
+body.dark-mode .panel-desc { color: rgba(255,255,255,0.75); }
+body.dark-mode .panel-meta-row { color: rgba(255,255,255,0.6); }
+body.dark-mode .panel-eyebrow { color: var(--red); }
+body.dark-mode .panel-body {
+  background: #fff;
+  color: #111;
+}
+body.dark-mode .panel-section-title { color: #555; }
+body.dark-mode .panel-close { background: rgba(0,0,0,0.08); color: #333; }
+body.dark-mode .panel-close:hover { background: rgba(0,0,0,0.16); }
 body.dark-mode .auth-panel { background: #1a1a1a; }
 body.dark-mode .auth-input { background: #222; border-color: #333; color: #f0f0f0; }
 body.dark-mode .auth-role-card { border-color: #333; }
