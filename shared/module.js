@@ -70,8 +70,10 @@ function syncCompletionDirectToSupabase(moduleId) {
   var session = getAscendAuthSession();
   if (!session) {
     try { console.warn('[ascend] no auth session, skipping direct sync for', moduleId); } catch (e) {}
+    setSaveStatus('error', 'Not signed in — please log in and reopen this module');
     return;
   }
+  setSaveStatus('saving', 'Saving your progress…');
   fetch(ASCEND_SUPABASE_URL + '/rest/v1/hub_progress', {
     method: 'POST',
     headers: {
@@ -86,9 +88,52 @@ function syncCompletionDirectToSupabase(moduleId) {
     })
   }).then(function (r) {
     try { console.log('[ascend] direct completion sync', moduleId, r.status); } catch (e) {}
+    if (r.ok) {
+      setSaveStatus('ok', 'Progress saved ✓');
+    } else {
+      setSaveStatus('error', 'Save failed (HTTP ' + r.status + '). Tap to retry.');
+    }
   }).catch(function (e) {
     try { console.warn('[ascend] direct completion sync failed', moduleId, e); } catch (_) {}
+    setSaveStatus('error', 'Save failed (offline?). Tap to retry.');
   });
+}
+
+// Renders a small status pill on the completion screen so users (and we
+// during testing) can see whether the direct Supabase sync landed.
+function setSaveStatus(state, text) {
+  var section = document.getElementById('completionSection');
+  if (!section) return;
+  var pill = section.querySelector('.completion-save-status');
+  if (!pill) {
+    pill = document.createElement('div');
+    pill.className = 'completion-save-status';
+    pill.style.cssText = 'display:inline-flex;align-items:center;gap:6px;margin:12px auto 0;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;cursor:default;';
+    var inner = section.querySelector('.completion') || section;
+    inner.insertBefore(pill, inner.firstChild.nextSibling);
+  }
+  pill.textContent = text;
+  if (state === 'saving') {
+    pill.style.background = '#fef3c7';
+    pill.style.color = '#92400e';
+    pill.style.border = '1px solid #fde68a';
+    pill.onclick = null;
+    pill.style.cursor = 'default';
+  } else if (state === 'ok') {
+    pill.style.background = '#dcfce7';
+    pill.style.color = '#166534';
+    pill.style.border = '1px solid #86efac';
+    pill.onclick = null;
+    pill.style.cursor = 'default';
+  } else if (state === 'error') {
+    pill.style.background = '#fee2e2';
+    pill.style.color = '#991b1b';
+    pill.style.border = '1px solid #fca5a5';
+    pill.style.cursor = 'pointer';
+    pill.onclick = function () {
+      if (typeof MODULE_ID !== 'undefined') syncCompletionDirectToSupabase(MODULE_ID);
+    };
+  }
 }
 
 // Tell the hub the user opened this module page (one row per visit).
