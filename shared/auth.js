@@ -276,14 +276,14 @@ function getRoleSelection() {
 var US_STATES = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','U.S. Virgin Islands','Utah','Vermont','Virginia','Washington','Washington, D.C.','West Virginia','Wisconsin','Wyoming','Outside U.S.'];
 var GRADES = ['12th','11th','10th','9th','8th','7th','6th','5th','4th','Other'];
 
-function stateOptions() {
+function stateOptions(selected) {
   return '<option value="">Select state...</option>' + US_STATES.map(function(s) {
-    return '<option value="' + s + '">' + s + '</option>';
+    return '<option value="' + s + '"' + (s === selected ? ' selected' : '') + '>' + s + '</option>';
   }).join('');
 }
-function gradeOptions() {
+function gradeOptions(selected) {
   return '<option value="">Select grade...</option>' + GRADES.map(function(g) {
-    return '<option value="' + g + '">' + g + '</option>';
+    return '<option value="' + g + '"' + (g === selected ? ' selected' : '') + '>' + g + '</option>';
   }).join('');
 }
 
@@ -1045,9 +1045,9 @@ function getEditProfileHTML() {
       '<input type="tel" id="editPhone" class="auth-input" placeholder="Phone" value="' + (p.phone || '') + '">' +
       '<div class="auth-row">' +
         '<input type="text" id="editSchool" class="auth-input" placeholder="School" value="' + (p.school || '') + '">' +
-        '<select id="editState" class="auth-input">' + stateOptions() + '</select>' +
+        '<select id="editState" class="auth-input">' + stateOptions(p.state) + '</select>' +
       '</div>' +
-      (p.role === 'student' ? '<select id="editGrade" class="auth-input">' + gradeOptions() + '</select>' +
+      (p.role === 'student' ? '<select id="editGrade" class="auth-input">' + gradeOptions(p.grade) + '</select>' +
         yesNoToggle('editLeader', 'Are you a member of your team\'s leadership?', p.is_team_leader ? 'yes' : 'no') +
         '<div class="auth-section-label">Parent / Guardian 1</div>' +
         '<div class="auth-row">' +
@@ -1060,7 +1060,7 @@ function getEditProfileHTML() {
         '</div>' +
         yesNoToggle('editCamps', 'Interested in Ascend summer camps?', p.interested_camps ? 'yes' : 'no')
       : '') +
-      (p.role === 'parent' ? '<select id="editStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
+      (p.role === 'parent' ? '<select id="editStudentGrade" class="auth-input">' + gradeOptions(p.student_grade) + '</select>' +
         yesNoToggle('editCamps', 'Interested in Ascend summer camps?', p.interested_camps ? 'yes' : 'no')
       : '') +
       (p.role === 'educator' ?
