@@ -715,6 +715,17 @@ function handleEmailLogin() {
   });
 }
 
+// Fire-and-forget welcome email via Supabase edge function. Failure must not block signup UX.
+function sendHubWelcomeEmail(payload) {
+  try {
+    fetch('https://jbiqzdavkwioxhtwchiy.supabase.co/functions/v1/hub-welcome-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function() {});
+  } catch (e) {}
+}
+
 function handleStudentSignup() {
   clearAuthError();
   var data = collectStudentData();
@@ -733,6 +744,12 @@ function handleStudentSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    sendHubWelcomeEmail({
+      email: data.email,
+      first_name: data.first_name,
+      role: 'student',
+      parent_email: data.parent1_email || ''
+    });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {
@@ -761,6 +778,7 @@ function handleParentSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {
@@ -789,6 +807,7 @@ function handleEducatorSignup() {
     return sb.from('hub_profiles').insert(data);
   }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return; }
+    sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {
