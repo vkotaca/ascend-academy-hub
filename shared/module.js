@@ -339,43 +339,48 @@ function tapTarget(el, qId) {
   if (allFilled) checkDrag(qId, targets);
 }
 
-// Robust tap handler that fires on both touchend (mobile, instant) and
-// click (desktop / fallback). Tracks finger movement to avoid scroll-induced
-// false positives. preventDefault on touchend stops the synthetic click that
-// would otherwise fire 300ms later and double-trigger the handler.
+// Cross-platform tap handler using pointer events. On touch, pointerup only
+// fires for genuine taps (the OS sends pointercancel if the gesture turns into
+// a scroll). On mouse, pointerup behaves like click. Deduped against the
+// regular click event to handle browsers that fire both.
 function attachTap(el, handler) {
-  var startX = 0, startY = 0, moved = false;
-  el.addEventListener('touchstart', function(e) {
-    var t = e.touches[0]; startX = t.clientX; startY = t.clientY; moved = false;
-  }, { passive: true });
-  el.addEventListener('touchmove', function(e) {
-    var t = e.touches[0];
-    if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) moved = true;
-  }, { passive: true });
-  el.addEventListener('touchend', function(e) {
-    if (moved) return;
-    e.preventDefault();
+  var lastFire = 0;
+  function fire(source, e) {
+    var now = Date.now();
+    if (now - lastFire < 250) return;
+    lastFire = now;
+    try { console.log('[ascend] tap fired via', source, 'on', el.className); } catch (err) {}
     handler.call(el, e);
-  });
-  el.addEventListener('click', function(e) {
-    handler.call(el, e);
-  });
+  }
+  // Pointer events: universal across mouse + touch + pen on modern browsers.
+  el.addEventListener('pointerup', function (e) { fire('pointerup:' + (e.pointerType || '?'), e); });
+  // Click: belt-and-suspenders fallback for any environment where pointer
+  // events misbehave. Deduped above.
+  el.addEventListener('click', function (e) { fire('click', e); });
 }
 
-// Wire chip + target tap handlers on every page. Click also covers desktop
-// (lets users either drag or tap-to-place — both work). On touch devices we
-// remove the native draggable attribute so it doesn't conflict with scroll.
-document.addEventListener('DOMContentLoaded', function() {
+// Wire chip + target tap handlers on every page. On touch devices we remove
+// the native draggable attribute so it doesn't conflict with page scroll.
+function wireDragHandlers(scope) {
+  scope = scope || document;
   var isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-  document.querySelectorAll('.drag-chip').forEach(function(chip) {
+  var chips = scope.querySelectorAll('.drag-chip');
+  var targets = scope.querySelectorAll('.drag-target');
+  try { console.log('[ascend] wiring', chips.length, 'chips and', targets.length, 'targets, isTouch=', isTouch); } catch (e) {}
+  chips.forEach(function(chip) {
+    if (chip.dataset.tapWired === '1') return;
+    chip.dataset.tapWired = '1';
     if (isTouch) chip.removeAttribute('draggable');
-    attachTap(chip, function() { tapChip(this); });
+    attachTap(chip, function () { tapChip(this); });
   });
-  document.querySelectorAll('.drag-target').forEach(function(target) {
+  targets.forEach(function(target) {
+    if (target.dataset.tapWired === '1') return;
+    target.dataset.tapWired = '1';
     var qId = target.parentElement.id.replace('-targets', '');
-    attachTap(target, function() { tapTarget(this, qId); });
+    attachTap(target, function () { tapTarget(this, qId); });
   });
-});
+}
+document.addEventListener('DOMContentLoaded', function () { wireDragHandlers(); });
 
 function checkDrag(qId, targets) {
   var allCorrect = true;
