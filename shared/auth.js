@@ -35,16 +35,35 @@ function initAuth() {
       // Check if we have pending profile data from a Google signup
       var pending = localStorage.getItem('ascend_pending_profile');
       if (pending) {
-        var profileData = JSON.parse(pending);
-        profileData.id = currentUser.id;
-        profileData.email = currentUser.email || profileData.email;
-        sb.from('hub_profiles').upsert(profileData, { onConflict: 'id' }).then(function() {
-          localStorage.removeItem('ascend_pending_profile');
-          checkProfileAndUpdateUI();
-        });
-      } else {
-        checkProfileAndUpdateUI();
+        var profileData = null;
+        try { profileData = JSON.parse(pending); } catch (e) { profileData = null; }
+        if (profileData) {
+          profileData.id = currentUser.id;
+          profileData.email = currentUser.email || profileData.email;
+          sb.from('hub_profiles').upsert(profileData, { onConflict: 'id' }).then(function(upsertRes) {
+            localStorage.removeItem('ascend_pending_profile');
+            if (upsertRes.error) {
+              console.error('Profile upsert failed after Google signup:', upsertRes.error);
+              // Couldn't save the profile, bounce them out and surface the issue.
+              bounceUnregisteredUser();
+              return;
+            }
+            // Cache full profile so Edit Profile renders correctly
+            localStorage.setItem('ascend_profile_cache', JSON.stringify(profileData));
+            localStorage.setItem('ascend_user_first', profileData.first_name);
+            // Fire welcome email, fire-and-forget, identical to email signup path
+            sendHubWelcomeEmail({
+              email: profileData.email,
+              first_name: profileData.first_name,
+              role: profileData.role,
+              parent_email: profileData.parent1_email || ''
+            });
+            checkProfileAndUpdateUI();
+          });
+          return;
+        }
       }
+      checkProfileAndUpdateUI();
     } else {
       updateNavForGuest();
     }
