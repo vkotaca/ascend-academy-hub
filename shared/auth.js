@@ -124,20 +124,39 @@ function checkProfileAndUpdateUI() {
 }
 
 // Sign out a user who's authenticated but has no hub_profiles row.
+// Before signing out, calls hub-delete-orphan-auth to clean up the
+// orphaned auth.users row Supabase created during the OAuth handshake,
+// so the user can re-sign up cleanly with the same email.
 // Reopens the auth modal with a clear error directing them to Create Account.
 function bounceUnregisteredUser() {
-  sb.auth.signOut().then(function() {
-    currentUser = null;
-    localStorage.removeItem('ascend_user_first');
-    localStorage.removeItem('ascend_profile_cache');
-    document.body.classList.remove('auth-pending');
-    document.body.classList.add('auth-ready');
-    updateNavForGuest();
-    showAuthModal();
-    // The modal opens to the Sign In tab. Surface a clear error there.
-    setTimeout(function() {
-      showAuthError("We couldn't find an Ascend account for that email. Click \"Create Account\" above to sign up first.");
-    }, 100);
+  sb.auth.getSession().then(function(sessionRes) {
+    var token = sessionRes && sessionRes.data && sessionRes.data.session
+      ? sessionRes.data.session.access_token
+      : null;
+
+    var cleanup = token
+      ? fetch('https://jbiqzdavkwioxhtwchiy.supabase.co/functions/v1/hub-delete-orphan-auth', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }
+        }).catch(function() {})
+      : Promise.resolve();
+
+    cleanup.then(function() {
+      // Sign out clears the cookie/session in this browser even if the
+      // server-side auth row was deleted by the cleanup call above.
+      return sb.auth.signOut().catch(function() {});
+    }).then(function() {
+      currentUser = null;
+      localStorage.removeItem('ascend_user_first');
+      localStorage.removeItem('ascend_profile_cache');
+      document.body.classList.remove('auth-pending');
+      document.body.classList.add('auth-ready');
+      updateNavForGuest();
+      showAuthModal();
+      setTimeout(function() {
+        showAuthError("We couldn't find an Ascend account for that email. Click \"Create Account\" above to sign up first.");
+      }, 100);
+    });
   });
 }
 
