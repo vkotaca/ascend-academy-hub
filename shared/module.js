@@ -470,6 +470,7 @@ function attachTouchDrag(chip) {
   var ghost = null;
   var startX = 0, startY = 0;
   var data = null;
+  var ghostW = 0, ghostH = 0;
 
   chip.addEventListener('touchstart', function (e) {
     if (e.touches.length !== 1) return;
@@ -491,10 +492,14 @@ function attachTouchDrag(chip) {
       if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
       dragMode = true;
       // Build the ghost element that visually follows the finger.
+      var rect = chip.getBoundingClientRect();
+      ghostW = rect.width;
+      ghostH = rect.height;
       ghost = chip.cloneNode(true);
       ghost.classList.add('drag-ghost');
-      ghost.style.cssText = 'position:fixed;left:' + (t.clientX - 30) + 'px;top:' + (t.clientY - 22) + 'px;' +
-        'opacity:0.92;z-index:9999;pointer-events:none;transform:rotate(-3deg) scale(1.05);' +
+      ghost.style.cssText = 'position:fixed;left:' + (t.clientX - ghostW / 2) + 'px;top:' + (t.clientY - ghostH / 2) + 'px;' +
+        'width:' + ghostW + 'px;height:' + ghostH + 'px;margin:0;box-sizing:border-box;' +
+        'opacity:0.92;z-index:9999;pointer-events:none;transform:rotate(-2deg) scale(1.03);transform-origin:center center;' +
         'box-shadow:0 8px 24px rgba(0,0,0,0.25);background:#fff;';
       document.body.appendChild(ghost);
       chip.classList.add('dragging');
@@ -503,8 +508,8 @@ function attachTouchDrag(chip) {
 
     if (dragMode) {
       e.preventDefault(); // suppress page scroll while dragging
-      ghost.style.left = (t.clientX - 30) + 'px';
-      ghost.style.top = (t.clientY - 22) + 'px';
+      ghost.style.left = (t.clientX - ghostW / 2) + 'px';
+      ghost.style.top = (t.clientY - ghostH / 2) + 'px';
       // Highlight whichever drag-target is under the finger.
       ghost.style.display = 'none';
       var below = document.elementFromPoint(t.clientX, t.clientY);
