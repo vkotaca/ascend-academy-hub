@@ -542,7 +542,21 @@ function _doLaunchModule(id) {
   var mod = MODULES.find(function (m) { return m.id === id; });
   if (!mod || !mod.file) return;
 
-  window.open(mod.file, '_blank');
+  // PWA / iOS Safari often refuses window.open or returns null. Detect that
+  // and fall back to a same-tab navigation. State sync still works because
+  // module page writes completion straight into localStorage and the hub
+  // re-reads it on pageshow / pageload.
+  var isStandalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+                     window.navigator.standalone === true;
+  if (isStandalone) {
+    window.location.href = mod.file;
+    return;
+  }
+  var newWin = window.open(mod.file, '_blank');
+  if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+    window.location.href = mod.file;
+    return;
+  }
 
   // Listen for messages from the module page (lifecycle + telemetry).
   function handler(e) {
@@ -802,9 +816,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     try {
       var fresh = JSON.parse(localStorage.getItem(STATE_KEY) || '{"completed":[],"badges":[]}');
-      var changed =
-        (fresh.completed || []).length !== (state.completed || []).length ||
-        (fresh.badges || []).length !== (state.badges || []).length;
+      var prevCompleted = state.completed || [];
+      var prevBadges = state.badges || [];
+      var newCompletions = (fresh.completed || []).filter(function (id) {
+        return prevCompleted.indexOf(id) === -1;
+      });
+      var changed = newCompletions.length > 0 ||
+        (fresh.badges || []).length !== prevBadges.length;
       if (changed) {
         state = fresh;
         renderModuleCards();
@@ -812,6 +830,21 @@ document.addEventListener('DOMContentLoaded', function () {
         renderBadgeShelf();
         if (typeof renderContinueCard === 'function') renderContinueCard();
         if (typeof renderUnitProgressRings === 'function') renderUnitProgressRings();
+        // PWA / same-tab flow: the module page wrote completions to
+        // localStorage but never had a chance to ask the hub to sync to
+        // Supabase. Do it now for any newly-seen completions.
+        if (typeof syncCompletionToSupabase === 'function') {
+          newCompletions.forEach(function (id) {
+            syncCompletionToSupabase(id);
+            // Also award badges that fire on completion paths.
+            var mod = MODULES.find(function (m) { return m.id === id; });
+            if (mod && mod.badge) awardBadge(mod.badge);
+          });
+          if (state.completed.length === 1) awardBadge('first-step');
+          checkUnitBadges();
+          if (state.completed.length >= Math.ceil(MODULES.length / 2)) awardBadge('halfway');
+          if (state.completed.length === MODULES.length) awardBadge('congress-scholar');
+        }
       }
     } catch (err) {}
   });
