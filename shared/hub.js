@@ -88,8 +88,8 @@ var MODULES = [
       { icon: '\uD83D\uDEE0\uFE0F', text: 'Constructive vs. canned, speeches that live in the round' },
       { icon: '\uD83E\uDDE0', text: 'The early-round mindset, every interaction is a scoring opportunity' }
     ] },
-  { id: 'unit-1-exam',          unit: 1, num: '1.6', title: 'Unit 1 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 15, badge: 'unit-1-complete', exam: true,
-    desc: 'Test your knowledge of Congressional Debate foundations, 15 questions covering how the event works, chamber procedure, presiding, legislation, and strategy.',
+  { id: 'unit-1-exam',          unit: 1, num: '1.6', title: 'Unit 1 Exam',                        icon: '\uD83D\uDCDD', duration: '10 min', activities: 10, badge: 'unit-1-complete', exam: true,
+    desc: 'Test your knowledge of Congressional Debate foundations, 10 questions covering how the event works, chamber procedure, presiding, legislation, and strategy.',
     file: 'modules/unit-1-exam.html' },
 
   // ── UNIT 2: Building Arguments (6 modules) ──
@@ -199,12 +199,12 @@ var MODULES = [
     desc: 'Real competition speeches broken down lesson by lesson. See Block Format, prereqs, refutation, rhetoric, and CX in action at the national level.',
     file: 'modules/championship-speeches.html',
     lessons: [
-      { icon: '\uD83D\uDDF3\uFE0F', text: 'Redistricting, Block Format fundamentals in a clean first speech' },
-      { icon: '\uD83D\uDC6E', text: 'Police reform, prereqs and integrated refutation' },
-      { icon: '\uD83C\uDFE5', text: 'Medicare for All, late-round crystallization and the comparative' },
-      { icon: '\uD83D\uDD12', text: 'Data privacy, filling gaps and quantifying what others missed' },
-      { icon: '\uD83C\uDF0E', text: 'Foreign aid (CARSI), playing offense by turning the negation\u2019s strongest argument' },
-      { icon: '\u2696\uFE0F', text: 'Final crystallization, telling judges why the affirmation wins the debate' }
+      { icon: '\uD83D\uDDF3\uFE0F', text: 'Tyler Luu on Redistricting, Block Format fundamentals in a clean early-round speech' },
+      { icon: '\uD83D\uDC6E', text: 'Anish Beeram on Police Training Standards, prereqs and integrated refutation' },
+      { icon: '\u2696\uFE0F', text: 'Tyler Luu on Qualified Immunity, building offense in an early round' },
+      { icon: '\uD83C\uDFE5', text: 'Adrian Baek on Medicare for All, mid-round crystallization and the comparative' },
+      { icon: '\uD83C\uDF0E', text: 'Aditya Chordiya on CARSI / Foreign Aid, turning the negation\u2019s strongest argument' },
+      { icon: '\uD83C\uDFC6', text: 'Late round combined analysis, telling judges why the affirmation wins the debate' }
     ] },
   { id: 'unit-3-exam',          unit: 3, num: '3.6', title: 'Unit 3 Exam',                        icon: '\uD83D\uDCDD', duration: '8 min', activities: 10, badge: 'unit-3-complete', exam: true,
     desc: 'Test your mid and late round strategy, 10 questions on win conditions, gaps, refutation, crystallization, and championship speeches.',
