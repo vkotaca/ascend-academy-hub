@@ -562,6 +562,20 @@ body {
 
 .hidden { display: none; }
 
+/* Smooth reveal when a lesson section becomes visible after the user
+   clicks Next. Triggered by JS adding .reveal to the previously-hidden
+   .section element. Animation runs once. */
+@keyframes section-reveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section.reveal {
+  animation: section-reveal 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .section.reveal { animation: none; }
+}
+
 /* ═══ MOBILE ═══ */
 @media (max-width: 768px) {
   .topbar { padding: 0 16px; height: 48px; }

@@ -419,7 +419,27 @@ function awardBadge(id) {
     renderBadgeShelf();
     updateProgress();
     showBadgeToast(id);
+    fireBadgeConfetti();
   }
+}
+
+// Fire a celebratory burst of confetti from the bottom-right (where the badge
+// toast appears) using the brand red + gold palette.
+function fireBadgeConfetti() {
+  if (typeof confetti !== 'function') return;
+  var defaults = {
+    particleCount: 80,
+    spread: 70,
+    startVelocity: 35,
+    ticks: 200,
+    zIndex: 10000,
+    colors: ['#C8102E', '#D4AF37', '#ffffff', '#9e0c23']
+  };
+  // Two staggered bursts from the right (bottom and middle) for a richer feel.
+  confetti(Object.assign({}, defaults, { origin: { x: 0.9, y: 0.85 } }));
+  setTimeout(function () {
+    confetti(Object.assign({}, defaults, { origin: { x: 0.85, y: 0.7 }, particleCount: 50 }));
+  }, 180);
 }
 
 function showBadgeToast(id) {
