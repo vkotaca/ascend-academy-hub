@@ -276,13 +276,15 @@ function getRoleSelection() {
 var US_STATES = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','U.S. Virgin Islands','Utah','Vermont','Virginia','Washington','Washington, D.C.','West Virginia','Wisconsin','Wyoming','Outside U.S.'];
 var GRADES = ['12th','11th','10th','9th','8th','7th','6th','5th','4th','Other'];
 
-function stateOptions(selected) {
-  return '<option value="">Select state...</option>' + US_STATES.map(function(s) {
+function stateOptions(selected, placeholder) {
+  var ph = placeholder || 'Select state...';
+  return '<option value="">' + ph + '</option>' + US_STATES.map(function(s) {
     return '<option value="' + s + '"' + (s === selected ? ' selected' : '') + '>' + s + '</option>';
   }).join('');
 }
-function gradeOptions(selected) {
-  return '<option value="">Select grade...</option>' + GRADES.map(function(g) {
+function gradeOptions(selected, placeholder) {
+  var ph = placeholder || 'Select grade...';
+  return '<option value="">' + ph + '</option>' + GRADES.map(function(g) {
     return '<option value="' + g + '"' + (g === selected ? ' selected' : '') + '>' + g + '</option>';
   }).join('');
 }
@@ -364,9 +366,9 @@ function getStudentForm() {
     '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School *">' +
-      '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
+      '<select id="regState" class="auth-input">' + stateOptions(null, 'Select state... *') + '</select>' +
     '</div>' +
-    '<select id="regGrade" class="auth-input">' + gradeOptions() + '</select>' +
+    '<select id="regGrade" class="auth-input">' + gradeOptions(null, 'Select grade... *') + '</select>' +
     yesNoToggle('regLeader', 'Are you a member of your team\'s leadership?', 'no') +
     '<div class="auth-section-label">Parent / Guardian</div>' +
     '<div class="auth-row">' +
@@ -408,9 +410,9 @@ function getParentForm() {
     '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="Student\'s school *">' +
-      '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
+      '<select id="regState" class="auth-input">' + stateOptions(null, 'Select state... *') + '</select>' +
     '</div>' +
-    '<select id="regStudentGrade" class="auth-input">' + gradeOptions() + '</select>' +
+    '<select id="regStudentGrade" class="auth-input">' + gradeOptions(null, 'Select student\'s current grade *') + '</select>' +
     yesNoToggle('regCamps', 'Interested in learning more about Ascend\'s summer camps?', 'no') +
     '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
     '<div class="auth-error hidden" id="authError"></div>' +
@@ -434,7 +436,7 @@ function getEducatorForm() {
     '<div class="auth-phone-row"><select id="regCountryCode" class="auth-input auth-country-code">' + countryCodeOptions() + '</select><input type="tel" id="regPhone" class="auth-input" placeholder="555-123-4567 *" oninput="formatPhone(this)"></div>' +
     '<div class="auth-row">' +
       '<input type="text" id="regSchool" class="auth-input" placeholder="School *">' +
-      '<select id="regState" class="auth-input">' + stateOptions() + '</select>' +
+      '<select id="regState" class="auth-input">' + stateOptions(null, 'Select state... *') + '</select>' +
     '</div>' +
     yesNoToggle('regSupport', 'Interested in exploring ways Ascend can support your team?', 'no') +
     '<div class="auth-divider"><span>How would you like to sign in?</span></div>' +
@@ -1060,7 +1062,7 @@ function getEditProfileHTML() {
         '</div>' +
         yesNoToggle('editCamps', 'Interested in Ascend summer camps?', p.interested_camps ? 'yes' : 'no')
       : '') +
-      (p.role === 'parent' ? '<select id="editStudentGrade" class="auth-input">' + gradeOptions(p.student_grade) + '</select>' +
+      (p.role === 'parent' ? '<select id="editStudentGrade" class="auth-input">' + gradeOptions(p.student_grade, 'Select student\'s current grade') + '</select>' +
         yesNoToggle('editCamps', 'Interested in Ascend summer camps?', p.interested_camps ? 'yes' : 'no')
       : '') +
       (p.role === 'educator' ?
