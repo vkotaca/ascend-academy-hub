@@ -1072,6 +1072,10 @@ body.dark-mode .panel-body {
   color: #111;
 }
 body.dark-mode .panel-section-title { color: #555; }
+body.dark-mode .panel-lesson-list li {
+  color: #333;
+  border-bottom-color: #e5e5e5;
+}
 body.dark-mode .panel-close { background: rgba(0,0,0,0.08); color: #333; }
 body.dark-mode .panel-close:hover { background: rgba(0,0,0,0.16); }
 body.dark-mode .auth-panel { background: #1a1a1a; }
