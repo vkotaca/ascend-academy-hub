@@ -9,15 +9,29 @@ var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSI
 var sb;
 var currentUser = null;
 var loginInProgress = false;
+var recoveryInProgress = false;
 
 // ─── INIT ───
 function initAuth() {
   sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  // Detect whether this page load came from a password-reset email link.
+  // Supabase appends `#access_token=...&type=recovery` to the redirect URL.
+  // We need to know this BEFORE getSession runs, because the SDK auto-creates
+  // a session from the recovery token (we don't want to treat that as a normal sign-in).
+  var inRecoveryFlow = (window.location.hash || '').indexOf('type=recovery') !== -1;
+  if (inRecoveryFlow) recoveryInProgress = true;
+
   // Check for existing session
   sb.auth.getSession().then(function(res) {
     if (res.data.session) {
       currentUser = res.data.session.user;
+      // If we landed here from a recovery link, force the user to set a new
+      // password before they get into the platform.
+      if (recoveryInProgress) {
+        showSetNewPassword();
+        return;
+      }
       // Check if we have pending profile data from a Google signup
       var pending = localStorage.getItem('ascend_pending_profile');
       if (pending) {
@@ -39,12 +53,20 @@ function initAuth() {
   sb.auth.onAuthStateChange(function(event, session) {
     if (event === 'PASSWORD_RECOVERY') {
       // User clicked password reset email link. Show the set-new-password modal.
+      recoveryInProgress = true;
       showSetNewPassword();
       return;
     }
     if (event === 'SIGNED_IN' && session) {
       // Skip if email login is handling this
       if (loginInProgress) return;
+      // Skip if we're in a password-recovery flow. The recovery token creates
+      // a session, but the user must set a new password before entering the app.
+      if (recoveryInProgress) {
+        currentUser = session.user;
+        showSetNewPassword();
+        return;
+      }
       currentUser = session.user;
       checkProfileAndUpdateUI();
     } else if (event === 'SIGNED_OUT') {
@@ -686,12 +708,17 @@ function handleSetNewPassword() {
       el.textContent = 'Password updated. You\'re signed in.';
       el.classList.remove('hidden');
     }
+    // Recovery flow is complete. Clear the flag so the rest of the app
+    // treats the existing session as a normal signed-in user.
+    recoveryInProgress = false;
     setTimeout(function() {
       closeAuthModal();
       // Strip the recovery token from the URL so refresh doesn't re-trigger PASSWORD_RECOVERY.
       if (window.history && window.history.replaceState) {
         window.history.replaceState({}, document.title, window.location.pathname);
       }
+      // Now that the password is set, finish the normal signed-in UI update.
+      if (currentUser) checkProfileAndUpdateUI();
     }, 1500);
   }).catch(function() {
     showAuthError('We couldn\'t reach the server. Please check your connection and try again.');
