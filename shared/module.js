@@ -440,9 +440,13 @@ function observeLessonScroll() {
 // fires for genuine taps (the OS sends pointercancel if the gesture turns into
 // a scroll). On mouse, pointerup behaves like click. Deduped against the
 // regular click event to handle browsers that fire both.
+var lastDragEnd = 0;
 function attachTap(el, handler) {
   var lastFire = 0;
   function fire(source, e) {
+    // Suppress tap events that fire immediately after a touch-drag ended,
+    // so dropping a chip doesn't also trigger the tap-to-place handler.
+    if (Date.now() - lastDragEnd < 400) return;
     var now = Date.now();
     if (now - lastFire < 250) return;
     lastFire = now;
@@ -456,8 +460,107 @@ function attachTap(el, handler) {
   el.addEventListener('click', function (e) { fire('click', e); });
 }
 
+// Real touch drag-and-drop on mobile. The HTML5 drag-and-drop API doesn't
+// fire on touch devices, so we polyfill it: track touchstart -> touchmove
+// (with a 'ghost' chip element following the finger) -> touchend (place
+// where the finger releases). Tap-to-place still works as a coexisting
+// alternate interaction (short press = tap; press-and-move = drag).
+function attachTouchDrag(chip) {
+  var dragMode = false;
+  var ghost = null;
+  var startX = 0, startY = 0;
+  var data = null;
+
+  chip.addEventListener('touchstart', function (e) {
+    if (e.touches.length !== 1) return;
+    var t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    dragMode = false;
+    data = { val: chip.dataset.val, text: chip.textContent.trim() };
+  }, { passive: true });
+
+  chip.addEventListener('touchmove', function (e) {
+    if (!data || e.touches.length !== 1) return;
+    var t = e.touches[0];
+    var dx = t.clientX - startX;
+    var dy = t.clientY - startY;
+
+    if (!dragMode) {
+      // Wait for ~8px movement to distinguish drag from tap/scroll attempt.
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      dragMode = true;
+      // Build the ghost element that visually follows the finger.
+      ghost = chip.cloneNode(true);
+      ghost.classList.add('drag-ghost');
+      ghost.style.cssText = 'position:fixed;left:' + (t.clientX - 30) + 'px;top:' + (t.clientY - 22) + 'px;' +
+        'opacity:0.92;z-index:9999;pointer-events:none;transform:rotate(-3deg) scale(1.05);' +
+        'box-shadow:0 8px 24px rgba(0,0,0,0.25);background:#fff;';
+      document.body.appendChild(ghost);
+      chip.classList.add('dragging');
+      try { console.log('[ascend] touch drag start'); } catch (err) {}
+    }
+
+    if (dragMode) {
+      e.preventDefault(); // suppress page scroll while dragging
+      ghost.style.left = (t.clientX - 30) + 'px';
+      ghost.style.top = (t.clientY - 22) + 'px';
+      // Highlight whichever drag-target is under the finger.
+      ghost.style.display = 'none';
+      var below = document.elementFromPoint(t.clientX, t.clientY);
+      ghost.style.display = '';
+      var target = below ? below.closest && below.closest('.drag-target') : null;
+      document.querySelectorAll('.drag-target.over').forEach(function (el) { el.classList.remove('over'); });
+      if (target) target.classList.add('over');
+    }
+  }, { passive: false });
+
+  chip.addEventListener('touchend', function (e) {
+    if (!dragMode || !data) {
+      data = null;
+      dragMode = false;
+      return;
+    }
+    var t = (e.changedTouches && e.changedTouches[0]) || { clientX: 0, clientY: 0 };
+    if (ghost) ghost.style.display = 'none';
+    var below = document.elementFromPoint(t.clientX, t.clientY);
+    var target = below ? (below.closest && below.closest('.drag-target')) : null;
+    document.querySelectorAll('.drag-target.over').forEach(function (el) { el.classList.remove('over'); });
+    if (target) {
+      // Place the chip on the target — same effect as drop()/tapTarget().
+      var contentEl = target.querySelector('.target-content');
+      if (contentEl) contentEl.textContent = data.text;
+      target.classList.add('filled');
+      target.dataset.placed = data.val;
+      var qId = target.parentElement.id.replace('-targets', '');
+      var allTargets = document.querySelectorAll('#' + qId + '-targets .drag-target');
+      var allFilled = Array.prototype.slice.call(allTargets).every(function (t2) { return t2.dataset.placed; });
+      try { console.log('[ascend] dropped', data.val, '->', target.dataset.correct); } catch (err) {}
+      if (allFilled && typeof checkDrag === 'function') checkDrag(qId, allTargets);
+    } else {
+      // Released away from any target — return chip to source visually.
+      chip.classList.remove('dragging');
+    }
+    if (ghost && ghost.parentNode) ghost.parentNode.removeChild(ghost);
+    ghost = null;
+    dragMode = false;
+    data = null;
+    lastDragEnd = Date.now();
+  });
+
+  chip.addEventListener('touchcancel', function () {
+    if (ghost && ghost.parentNode) ghost.parentNode.removeChild(ghost);
+    ghost = null;
+    dragMode = false;
+    data = null;
+    chip.classList.remove('dragging');
+    document.querySelectorAll('.drag-target.over').forEach(function (el) { el.classList.remove('over'); });
+  });
+}
+
 // Wire chip + target tap handlers on every page. On touch devices we remove
-// the native draggable attribute so it doesn't conflict with page scroll.
+// the native draggable attribute and add the touch drag polyfill so users
+// can press-and-drag chips onto targets.
 function wireDragHandlers(scope) {
   scope = scope || document;
   var isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
@@ -467,7 +570,10 @@ function wireDragHandlers(scope) {
   chips.forEach(function(chip) {
     if (chip.dataset.tapWired === '1') return;
     chip.dataset.tapWired = '1';
-    if (isTouch) chip.removeAttribute('draggable');
+    if (isTouch) {
+      chip.removeAttribute('draggable');
+      attachTouchDrag(chip);
+    }
     attachTap(chip, function () { tapChip(this); });
   });
   targets.forEach(function(target) {
