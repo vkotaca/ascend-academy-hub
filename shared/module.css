@@ -58,9 +58,9 @@ body {
   gap: 12px;
 }
 
-/* Mobile: lay the row out as a 2-row grid so the "1 / 5" counter sits
-   horizontally on its own line above the progress bar instead of getting
-   squeezed between the bar and the next-arrow. */
+/* Mobile: lay the row out as a compact 2-row grid so the "1 / 5" counter
+   sits on top and the [prev | bar | next] row sits below. Total width is
+   capped (~150px) so it fits in the topbar's right corner. */
 @media (max-width: 768px) {
   .progress-row {
     display: grid;
@@ -68,16 +68,17 @@ body {
     grid-template-areas:
       "counter counter counter"
       "prev    track   next";
-    column-gap: 10px;
-    row-gap: 6px;
+    column-gap: 6px;
+    row-gap: 3px;
     align-items: center;
   }
   .progress-row .lesson-nav-prev { grid-area: prev; }
   .progress-row .lesson-nav-next { grid-area: next; }
+  .progress-row .lesson-nav-btn { width: 26px; height: 26px; }
   .progress-row .top-progress-track {
     grid-area: track;
     width: 100%;
-    height: 7px;
+    height: 6px;
     background: rgba(0,0,0,0.16);
   }
   .progress-row .progress-steps {
@@ -86,6 +87,7 @@ body {
     white-space: nowrap;
     font-size: 11px;
     font-weight: 600;
+    line-height: 1.1;
   }
 }
 
@@ -687,21 +689,29 @@ body.dark-mode .share-btn:hover { border-color: var(--red); color: var(--red); }
 
 /* ═══ MOBILE ═══ */
 @media (max-width: 768px) {
-  /* Two-row topbar on mobile: logo+title up top, full-width progress row
-     below. Without this the progress-row gets squeezed into a tiny corner
-     on the right and the bar collapses to 0 width. */
+  /* Single-row topbar on mobile: logo+title on the left (truncating with
+     ellipsis if too long), compact progress block on the right with
+     counter on top and arrows+bar below. */
   .topbar {
-    padding: 8px 16px;
-    height: auto;
-    flex-wrap: wrap;
-    row-gap: 6px;
+    padding: 0 12px;
+    height: 56px;
+    gap: 10px;
   }
-  .topbar-logo { font-size: 13px; gap: 8px; flex: 1 1 auto; min-width: 0; }
-  .topbar-logo-img { height: 28px; }
+  .topbar-logo {
+    font-size: 13px;
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .topbar-logo-img { height: 26px; flex-shrink: 0; }
   /* Hide the "Ascend Academy ·" brand text on mobile so the module name
      gets the room it needs. Logo + module name only. */
   .topbar-brand { display: none; }
-  .progress-row { flex: 1 1 100%; width: 100%; }
+  /* Compact progress block ~150px wide pinned to the right. */
+  .progress-row { flex: 0 0 auto; width: 150px; }
 
   .mod-hero { padding: 32px 20px 28px; }
   .mod-title { font-size: clamp(24px, 6vw, 36px); }
