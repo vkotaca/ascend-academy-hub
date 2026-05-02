@@ -347,22 +347,22 @@ var UNITS = [
 ];
 
 var BADGES = [
-  { id: 'first-step',        emoji: '\uD83D\uDE80', name: 'First Step' },
-  { id: 'presiding-officer', emoji: '\u2696\uFE0F', name: 'PO Expert' },
-  { id: 'argument-builder',  emoji: '\uD83D\uDCA1', name: 'Argument Builder' },
-  { id: 'block-master',      emoji: '\uD83E\uDDF1', name: 'Block Master' },
-  { id: 'researcher',        emoji: '\uD83D\uDD0D', name: 'Researcher' },
-  { id: 'rhetorician',       emoji: '\u270D\uFE0F', name: 'Rhetorician' },
-  { id: 'voice-master',      emoji: '\uD83C\uDFA4', name: 'Voice Master' },
-  { id: 'cx-master',         emoji: '\u2753', name: 'CX Master' },
-  { id: 'unit-1-complete',   emoji: '\uD83C\uDFDB\uFE0F', name: 'Foundations' },
-  { id: 'unit-2-complete',   emoji: '\u2694\uFE0F', name: 'Argument Architect' },
-  { id: 'unit-3-complete',   emoji: '\uD83C\uDFAF', name: 'Round Strategist' },
-  { id: 'unit-4-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine' },
-  { id: 'unit-5-complete',   emoji: '\uD83C\uDFAD', name: 'Performer' },
-  { id: 'halfway',           emoji: '\uD83D\uDD25', name: 'Halfway There' },
-  { id: 'congress-scholar',  emoji: '\uD83C\uDFC6', name: 'Congress Scholar' },
-  { id: 'squad',             emoji: '\uD83E\uDD1D', name: 'Squad' }
+  { id: 'first-step',        emoji: '\uD83D\uDE80', name: 'First Step',          how: 'Complete your very first module.' },
+  { id: 'presiding-officer', emoji: '\u2696\uFE0F', name: 'PO Expert',            how: 'Complete Module 1.3 \u2014 Becoming a Presiding Officer.' },
+  { id: 'argument-builder',  emoji: '\uD83D\uDCA1', name: 'Argument Builder',    how: 'Complete Module 2.1 \u2014 The Anatomy of an Argument.' },
+  { id: 'block-master',      emoji: '\uD83E\uDDF1', name: 'Block Master',        how: 'Complete Module 2.2 \u2014 The Block Format.' },
+  { id: 'researcher',        emoji: '\uD83D\uDD0D', name: 'Researcher',          how: 'Complete Module 4.1 \u2014 How to Research.' },
+  { id: 'rhetorician',       emoji: '\u270D\uFE0F', name: 'Rhetorician',          how: 'Complete Module 5.1 \u2014 Rhetoric, Intros & Conclusions.' },
+  { id: 'voice-master',      emoji: '\uD83C\uDFA4', name: 'Voice Master',        how: 'Complete Module 5.2 \u2014 Voice & Delivery.' },
+  { id: 'cx-master',         emoji: '\u2753', name: 'CX Master',            how: 'Complete Module 5.7 \u2014 Cross-Examination Strategy.' },
+  { id: 'unit-1-complete',   emoji: '\uD83C\uDFDB\uFE0F', name: 'Foundations',          how: 'Pass the Unit 1 Exam.' },
+  { id: 'unit-2-complete',   emoji: '\u2694\uFE0F', name: 'Argument Architect',   how: 'Pass the Unit 2 Exam.' },
+  { id: 'unit-3-complete',   emoji: '\uD83C\uDFAF', name: 'Round Strategist',    how: 'Pass the Unit 3 Exam.' },
+  { id: 'unit-4-complete',   emoji: '\uD83D\uDCDA', name: 'Prep Machine',        how: 'Pass the Unit 4 Exam.' },
+  { id: 'unit-5-complete',   emoji: '\uD83C\uDFAD', name: 'Performer',           how: 'Pass the Unit 5 Exam.' },
+  { id: 'halfway',           emoji: '\uD83D\uDD25', name: 'Halfway There',       how: 'Complete half of all modules (16 of 32).' },
+  { id: 'congress-scholar',  emoji: '\uD83C\uDFC6', name: 'Congress Scholar',    how: 'Complete every module on the platform.' },
+  { id: 'squad',             emoji: '\uD83E\uDD1D', name: 'Squad',               how: 'Invite a friend who creates an account using your referral link.' }
 ];
 
 // --- STATE ---
@@ -378,9 +378,12 @@ function renderBadgeShelf() {
   var shelf = document.getElementById('badgeShelf');
   shelf.innerHTML = BADGES.map(function (b) {
     var earned = state.badges.includes(b.id);
-    return '<div class="badge-item">' +
+    var tip = (earned ? 'Earned · ' : 'Locked · ') + (b.how || '');
+    var tipEsc = tip.replace(/"/g, '&quot;');
+    return '<div class="badge-item" tabindex="0" data-tip="' + tipEsc + '">' +
       '<div class="badge-circle ' + (earned ? 'earned' : 'locked-badge') + '" id="badge-' + b.id + '">' + b.emoji + '</div>' +
       '<div class="badge-name">' + b.name + '</div>' +
+      '<div class="badge-tooltip"><strong>' + b.name + '</strong><span>' + (b.how || '') + '</span></div>' +
     '</div>';
   }).join('');
 }

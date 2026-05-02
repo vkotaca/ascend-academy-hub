@@ -517,6 +517,59 @@ nav {
   align-items: center;
   gap: 8px;
   width: 80px;
+  position: relative;
+  cursor: help;
+}
+
+/* Hover tooltip explaining how to earn the badge */
+.badge-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1a1a1a;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.badge-tooltip strong {
+  font-size: 12px;
+  color: #ffd966;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.badge-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a1a1a;
+}
+.badge-item:hover .badge-tooltip,
+.badge-item:focus .badge-tooltip,
+.badge-item:focus-within .badge-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* On narrow phones, anchor the tooltip to the viewport so it doesn't clip
+   off the left/right edge for badges near the screen edge. */
+@media (max-width: 480px) {
+  .badge-tooltip { width: min(220px, 70vw); font-size: 11px; }
 }
 
 .badge-circle {
