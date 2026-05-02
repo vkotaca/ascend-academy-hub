@@ -58,6 +58,31 @@ body {
   gap: 12px;
 }
 
+/* Mobile: lay the row out as a 2-row grid so the "1 / 5" counter sits
+   horizontally on its own line above the progress bar instead of getting
+   squeezed between the bar and the next-arrow. */
+@media (max-width: 768px) {
+  .progress-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "counter counter counter"
+      "prev    track   next";
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: center;
+  }
+  .progress-row .lesson-nav-prev { grid-area: prev; }
+  .progress-row .top-progress-track { grid-area: track; width: 100%; }
+  .progress-row .lesson-nav-next { grid-area: next; }
+  .progress-row .progress-steps {
+    grid-area: counter;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+}
+
 /* Lesson nav arrows in the topbar — prev/next between unlocked lessons. */
 .lesson-nav-btn {
   background: none;
