@@ -1,3 +1,20 @@
+// ─── MOBILE DEBUG CONSOLE (Eruda) ───
+// Load Eruda (a Chrome-DevTools-like in-page console) when the user has
+// enabled debug mode by visiting any page with ?debug=1 once. The flag
+// persists in localStorage so module pages opened in new tabs inherit it.
+(function () {
+  try {
+    if (location.search.indexOf('debug=1') !== -1) localStorage.setItem('ascend_debug', '1');
+    if (location.search.indexOf('debug=0') !== -1) localStorage.removeItem('ascend_debug');
+    if (localStorage.getItem('ascend_debug') === '1') {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/eruda';
+      s.onload = function () { try { eruda.init(); } catch (e) {} };
+      document.head.appendChild(s);
+    }
+  } catch (e) {}
+})();
+
 /*  Ascend Academy — Shared Module Quiz Engine
     Used by all module HTML files. Provides:
     - Multiple choice (mc)

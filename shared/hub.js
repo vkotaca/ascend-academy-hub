@@ -2,6 +2,23 @@
     State management, module registry, card rendering, overlay, progress.
 */
 
+// ─── MOBILE DEBUG CONSOLE (Eruda) ───
+// Visit any URL with ?debug=1 once to enable an in-page DevTools console
+// (works on iOS without a Mac). Persists across all hub + module pages
+// via localStorage. Visit ?debug=0 to disable.
+(function () {
+  try {
+    if (location.search.indexOf('debug=1') !== -1) localStorage.setItem('ascend_debug', '1');
+    if (location.search.indexOf('debug=0') !== -1) localStorage.removeItem('ascend_debug');
+    if (localStorage.getItem('ascend_debug') === '1') {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/eruda';
+      s.onload = function () { try { eruda.init(); } catch (e) {} };
+      document.head.appendChild(s);
+    }
+  } catch (e) {}
+})();
+
 // --- MODULE REGISTRY ---
 // Modules across 5 units. Add file: 'modules/<id>.html' when module is built.
 var MODULES = [
