@@ -65,6 +65,7 @@ function initAuth() {
             sendHubWelcomeEmail({
               email: profileData.email,
               first_name: profileData.first_name,
+              last_name: profileData.last_name || '',
               role: profileData.role,
               parent_email: profileData.parent1_email || ''
             });
@@ -886,6 +887,7 @@ function handleStudentSignup() {
     sendHubWelcomeEmail({
       email: data.email,
       first_name: data.first_name,
+      last_name: data.last_name || '',
       role: 'student',
       parent_email: data.parent1_email || ''
     });
@@ -922,7 +924,7 @@ function handleParentSignup() {
     // Cache the full profile so Edit Profile renders instantly after signup
     localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
     processPendingReferral();
-    sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
+    sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, last_name: data.last_name || '', role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {
@@ -956,7 +958,7 @@ function handleEducatorSignup() {
     // Cache the full profile so Edit Profile renders instantly after signup
     localStorage.setItem('ascend_profile_cache', JSON.stringify(data));
     processPendingReferral();
-    sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, role: data.role });
+    sendHubWelcomeEmail({ email: data.email, first_name: data.first_name, last_name: data.last_name || '', role: data.role });
     showAccountCreated(data.first_name);
     checkProfileAndUpdateUI();
   }).catch(function() {
