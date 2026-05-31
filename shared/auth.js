@@ -10,6 +10,11 @@ var sb;
 var currentUser = null;
 var loginInProgress = false;
 var recoveryInProgress = false;
+// Single-flight guard for the pending-profile upsert. Both the initial
+// getSession() resolve AND the onAuthStateChange SIGNED_IN handler can fire
+// after a Google signup redirect; without this flag they'd race and one
+// would bounce the user before the other finished upserting.
+var pendingProfileInFlight = false;
 
 // ─── INIT ───
 function initAuth() {
@@ -41,39 +46,9 @@ function initAuth() {
         showSetNewPassword();
         return;
       }
-      // Check if we have pending profile data from a Google signup
-      var pending = localStorage.getItem('ascend_pending_profile');
-      if (pending) {
-        var profileData = null;
-        try { profileData = JSON.parse(pending); } catch (e) { profileData = null; }
-        if (profileData) {
-          profileData.id = currentUser.id;
-          profileData.email = currentUser.email || profileData.email;
-          sb.from('hub_profiles').upsert(profileData, { onConflict: 'id' }).then(function(upsertRes) {
-            localStorage.removeItem('ascend_pending_profile');
-            if (upsertRes.error) {
-              console.error('Profile upsert failed after Google signup:', upsertRes.error);
-              // Couldn't save the profile, bounce them out and surface the issue.
-              bounceUnregisteredUser();
-              return;
-            }
-            // Cache full profile so Edit Profile renders correctly
-            localStorage.setItem('ascend_profile_cache', JSON.stringify(profileData));
-            localStorage.setItem('ascend_user_first', profileData.first_name);
-            processPendingReferral();
-            // Fire welcome email, fire-and-forget, identical to email signup path
-            sendHubWelcomeEmail({
-              email: profileData.email,
-              first_name: profileData.first_name,
-              last_name: profileData.last_name || '',
-              role: profileData.role,
-              parent_email: profileData.parent1_email || ''
-            });
-            checkProfileAndUpdateUI();
-          });
-          return;
-        }
-      }
+      // Hand off to the unified profile check — it now handles pending
+      // Google-signup data itself so both this path and the SIGNED_IN
+      // handler below can't race each other into a wrongful bounce.
       checkProfileAndUpdateUI();
     } else {
       updateNavForGuest();
@@ -127,6 +102,50 @@ function initAuth() {
 
 // ─── PROFILE CHECK ───
 function checkProfileAndUpdateUI() {
+  if (!currentUser) return;
+
+  // FIRST: if there's pending Google-signup profile data, upsert it before
+  // doing anything else. Both initAuth callsites converge here, so the
+  // single-flight guard prevents a double upsert if both fire in parallel.
+  var pending = localStorage.getItem('ascend_pending_profile');
+  if (pending && !pendingProfileInFlight) {
+    var profileData = null;
+    try { profileData = JSON.parse(pending); } catch (e) { profileData = null; }
+    if (profileData) {
+      pendingProfileInFlight = true;
+      profileData.id = currentUser.id;
+      profileData.email = currentUser.email || profileData.email;
+      sb.from('hub_profiles').upsert(profileData, { onConflict: 'id' }).then(function (upsertRes) {
+        pendingProfileInFlight = false;
+        if (upsertRes && upsertRes.error) {
+          console.error('Profile upsert failed after Google signup:', upsertRes.error);
+          // Keep the pending data so a retry / page reload can recover; do
+          // NOT remove it on error. Bounce surfaces the failure to the user.
+          bounceUnregisteredUser();
+          return;
+        }
+        localStorage.removeItem('ascend_pending_profile');
+        localStorage.setItem('ascend_profile_cache', JSON.stringify(profileData));
+        localStorage.setItem('ascend_user_first', profileData.first_name);
+        processPendingReferral();
+        sendHubWelcomeEmail({
+          email: profileData.email,
+          first_name: profileData.first_name,
+          last_name: profileData.last_name || '',
+          role: profileData.role,
+          parent_email: profileData.parent1_email || ''
+        });
+        // Now resume the normal happy path with the row written.
+        checkProfileAndUpdateUI();
+      });
+      return;
+    }
+  }
+
+  // If another caller is mid-upsert, defer this run — they'll re-invoke
+  // checkProfileAndUpdateUI when done.
+  if (pendingProfileInFlight) return;
+
   // Check localStorage first (instant)
   var cachedName = localStorage.getItem('ascend_user_first');
   if (cachedName) {
@@ -149,9 +168,15 @@ function checkProfileAndUpdateUI() {
       document.body.classList.add('auth-ready');
       hydrateFromSupabase();
     } else {
-      // No hub_profiles row: this user has an auth.users row (likely from a
-      // Google sign-in attempt) but never went through the proper signup flow.
-      // Bounce them out and tell them to create an account first.
+      // One more belt-and-suspenders check: if ascend_pending_profile
+      // appeared between the start of this function and the DB roundtrip
+      // (e.g. user signed up in another tab), handle it instead of bouncing.
+      if (localStorage.getItem('ascend_pending_profile')) {
+        checkProfileAndUpdateUI();
+        return;
+      }
+      // No hub_profiles row and no pending data: this user has an auth.users
+      // row but never went through the signup flow. Bounce them out.
       bounceUnregisteredUser();
     }
   });
