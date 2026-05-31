@@ -15,6 +15,11 @@ var recoveryInProgress = false;
 // after a Google signup redirect; without this flag they'd race and one
 // would bounce the user before the other finished upserting.
 var pendingProfileInFlight = false;
+// Per-page-lifetime flag: once we've processed (or rejected) pending-profile
+// data, don't re-enter the pending branch on subsequent checkProfile calls
+// (e.g. token refresh, visibilitychange, or any other re-entry). Prevents
+// duplicate welcome emails to the team.
+var pendingProfileResolved = false;
 
 // ─── INIT ───
 function initAuth() {
@@ -105,22 +110,38 @@ function checkProfileAndUpdateUI() {
   if (!currentUser) return;
 
   // FIRST: if there's pending Google-signup profile data, upsert it before
-  // doing anything else. Both initAuth callsites converge here, so the
-  // single-flight guard prevents a double upsert if both fire in parallel.
+  // doing anything else. Three guards prevent duplicate welcome emails:
+  //   1) pendingProfileInFlight — race-condition flag for parallel calls
+  //   2) pendingProfileResolved — one-shot per page lifetime, so a token
+  //      refresh / visibilitychange / second SIGNED_IN can't re-trigger
+  //   3) email match — pending data must match the signed-in user's email,
+  //      otherwise it's stale data from an aborted earlier signup attempt
+  //      (by THIS user or a previous user on the same browser).
   var pending = localStorage.getItem('ascend_pending_profile');
-  if (pending && !pendingProfileInFlight) {
+  if (pending && !pendingProfileInFlight && !pendingProfileResolved) {
     var profileData = null;
     try { profileData = JSON.parse(pending); } catch (e) { profileData = null; }
-    if (profileData) {
+
+    var staleEmail = profileData && profileData.email && currentUser.email &&
+      profileData.email.toLowerCase() !== currentUser.email.toLowerCase();
+    if (staleEmail) {
+      // Stale form data from an aborted attempt. Clear it so we don't
+      // upsert it onto this (different) user, and don't fire a duplicate
+      // welcome email. Mark resolved and fall through to the normal flow.
+      console.warn('Discarding stale ascend_pending_profile (email mismatch).');
+      localStorage.removeItem('ascend_pending_profile');
+      pendingProfileResolved = true;
+    } else if (profileData) {
       pendingProfileInFlight = true;
+      pendingProfileResolved = true;
       profileData.id = currentUser.id;
       profileData.email = currentUser.email || profileData.email;
       sb.from('hub_profiles').upsert(profileData, { onConflict: 'id' }).then(function (upsertRes) {
         pendingProfileInFlight = false;
         if (upsertRes && upsertRes.error) {
           console.error('Profile upsert failed after Google signup:', upsertRes.error);
-          // Keep the pending data so a retry / page reload can recover; do
-          // NOT remove it on error. Bounce surfaces the failure to the user.
+          // Reset resolved so a retry / page reload can recover.
+          pendingProfileResolved = false;
           bounceUnregisteredUser();
           return;
         }
@@ -898,6 +919,12 @@ function handleStudentSignup() {
 
   // Cache name immediately so nav updates instantly after signup
   localStorage.setItem('ascend_user_first', data.first_name);
+  // Email-signup path owns its own welcome email. Mark pending as resolved
+  // so the SIGNED_IN echo from sb.auth.signUp can't re-enter the pending
+  // branch in checkProfileAndUpdateUI and fire a duplicate welcome email
+  // off of any stale ascend_pending_profile data still in localStorage.
+  pendingProfileResolved = true;
+  localStorage.removeItem('ascend_pending_profile');
 
   sb.auth.signUp({ email: data.email, password: password, options: { data: { first_name: data.first_name } } }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
@@ -938,6 +965,10 @@ function handleParentSignup() {
   if (password !== passwordConfirm) { showAuthError('Passwords don\'t match. Please re-type to confirm.'); return; }
 
   localStorage.setItem('ascend_user_first', data.first_name);
+  // Suppress any stale pending-profile data from a previous Google attempt
+  // so the SIGNED_IN echo can't fire a duplicate welcome email.
+  pendingProfileResolved = true;
+  localStorage.removeItem('ascend_pending_profile');
 
   sb.auth.signUp({ email: data.email, password: password, options: { data: { first_name: data.first_name } } }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
@@ -972,6 +1003,10 @@ function handleEducatorSignup() {
   if (password !== passwordConfirm) { showAuthError('Passwords don\'t match. Please re-type to confirm.'); return; }
 
   localStorage.setItem('ascend_user_first', data.first_name);
+  // Suppress any stale pending-profile data from a previous Google attempt
+  // so the SIGNED_IN echo can't fire a duplicate welcome email.
+  pendingProfileResolved = true;
+  localStorage.removeItem('ascend_pending_profile');
 
   sb.auth.signUp({ email: data.email, password: password, options: { data: { first_name: data.first_name } } }).then(function(res) {
     if (res.error) { showAuthError(res.error.message); return Promise.reject(); }
