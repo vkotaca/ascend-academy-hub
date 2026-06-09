@@ -62,8 +62,23 @@ Module files are self-contained HTML — each includes `shared/module.css` and `
 **RLS:** Most tables enforce auth-only access. Admin reads go through `is_admin()` SECURITY DEFINER function (uses `admin_users.email` match).
 
 **Edge functions:**
-- `hub-welcome-email` (v4, Brevo-based) — fires on signup
+- `hub-welcome-email` (Resend-based) — fires on signup. Sends welcome to user + parent (for student role), AND a rich team notification with the full profile (name, school, state, grade, team-leader, parent 1/2 contacts, interests)
 - `hub-delete-orphan-auth` (verify_jwt:true, 10-min safety window) — cleans up auth.users rows that have no matching hub_profiles
+- `hub-reengagement-scan` (cron-triggered daily 17:00 UTC) — sends 3-stage re-engagement ladder to inactive students
+- `hub-reengagement-unsubscribe` (public, HMAC token-protected) — handles unsubscribe clicks from re-engagement emails
+
+**Re-engagement ladder** (reset-the-clock semantics):
+- Stage 1 at 3+ days inactive: "Pick up where you left off" — names next module
+- Stage 2 at 10+ days inactive: "What top debaters do in their first month" — social proof
+- Stage 3 at 30+ days inactive: "Catch-up conversation about your debate goals" — Aditya's Calendly (`calendly.com/ascend-info/info-call`)
+- `last_active` = MAX(auth.users.last_sign_in_at, hub_progress.completed_at, hub_module_starts.started_at, hub_events.occurred_at, hub_profiles.created_at)
+- A stage fires only if no send of that stage has occurred since `last_active`. Any login/start/completion resets the clock.
+- Hard guardrails: opt-out via `hub_profiles.reengagement_opt_out`, hard cap of 1 re-engagement email per user per 7 days regardless of stage, students only (role='student'), valid email required
+- Sends logged to `hub_reengagement_sends (user_id, stage, sent_at, email, resend_id, next_module_id)`
+- Manual run: `POST /functions/v1/hub-reengagement-scan?dry=1` to preview without sending
+- Required env vars on the scan function: `RESEND_API_KEY`, `REENGAGEMENT_UNSUBSCRIBE_SECRET` (any random string, must match the unsubscribe function's secret)
+- pg_cron job name: `hub-reengagement-daily` (`SELECT * FROM cron.job` to inspect; `SELECT * FROM cron.job_run_details ORDER BY start_time DESC` to debug)
+- **MODULES order is hardcoded in `hub-reengagement-scan/index.ts`** — when curriculum changes, update both `shared/hub.js` AND the edge function's MODULES array
 
 ---
 
